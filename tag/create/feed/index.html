@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>create Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/create/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/create/</link>
+	<description></description>
+	<lastBuildDate>Thu, 16 Apr 2020 20:29:13 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>create Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/create/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Create a directory or folder in Go (Golang)</title>
+		<link>https://golangbyexamples.com/create-directory-folder-golang/</link>
+					<comments>https://golangbyexamples.com/create-directory-folder-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2020 18:31:08 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[create]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[folder]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2019</guid>
+
+					<description><![CDATA[<p>Overview os.Mkdir() function can be used to create a directory or folder in go. Below is the signature of the function. It takes in two parameters The first parameter is the named...</p>
+<p>The post <a href="https://golangbyexamples.com/create-directory-folder-golang/">Create a directory or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>os.Mkdir()</strong> function can be used to create a directory or folder in go.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Mkdir(name string, perm FileMode)</code></pre>
+
+
+
+<p class="has-medium-font-size">It takes in two parameters</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The first parameter is the named directory. If the named directory is a fully qualified path it will create a directory at that path. If not it will create a directory with respect to current working directory</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The second parameter specifies the permission bits. The folder or directory is created with this permission bits</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a folder/directory at a full qualified path
+    err := os.Mkdir("/Users/temp", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    //Create a folder/directory at a full qualified path
+    err = os.Mkdir("temp", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">It will create a directory temp at location /Users location and at the current working directory location</code></pre>
+
+
+
+<p class="has-medium-font-size"></p>
+<p>The post <a href="https://golangbyexamples.com/create-directory-folder-golang/">Create a directory or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/create-directory-folder-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2019</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>permissions Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/permissions/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/permissions/</link>
+	<description></description>
+	<lastBuildDate>Fri, 17 Apr 2020 17:45:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>permissions Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/permissions/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Change folder/directory permissions in Go (Golang)</title>
+		<link>https://golangbyexamples.com/change-folder-directory-permissions-go/</link>
+					<comments>https://golangbyexamples.com/change-folder-directory-permissions-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 17:45:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[folder]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[permissions]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2036</guid>
+
+					<description><![CDATA[<p>os.Chmod() function can be used to change the permissions of an existing folder or directory. Below is the signature of the function Code Output:</p>
+<p>The post <a href="https://golangbyexamples.com/change-folder-directory-permissions-go/">Change folder/directory permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.Chmod()</strong> function can be used to change the permissions of an existing folder or directory. Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Chmod(name string, mode FileMode) error</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    err := os.Mkdir("new", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+    stats, err := os.Stat("new")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission Folder Before: %s\n", stats.Mode())
+    err = os.Chmod("new", 0700)
+    if err != nil {
+        log.Fatal(err)
+    }
+    stats, err = os.Stat("new")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission Folder After:  %s\n", stats.Mode())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Permission Folder Before: drwxr-xr-x
+Permission Folder After:  drwx------</code></pre>
+<p>The post <a href="https://golangbyexamples.com/change-folder-directory-permissions-go/">Change folder/directory permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/change-folder-directory-permissions-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2036</post-id>	</item>
+		<item>
+		<title>Change file permissions in Go (Golang)</title>
+		<link>https://golangbyexamples.com/change-file-permissions-golang/</link>
+					<comments>https://golangbyexamples.com/change-file-permissions-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 17:41:09 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[permissions]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2031</guid>
+
+					<description><![CDATA[<p>os.Chmod() function can be used to change the permissions of an existing file. Below is the signature of the function Code Output:</p>
+<p>The post <a href="https://golangbyexamples.com/change-file-permissions-golang/">Change file permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">os.Chmod() function can be used to change the permissions of an existing file. Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Chmod(name string, mode FileMode) error</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    // Create new file
+    new, err := os.Create("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer new.Close()
+
+    stats, err := os.Stat("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission File Before: %s\n", stats.Mode())
+    err = os.Chmod("new.txt", 0700)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    stats, err = os.Stat("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission File After: %s\n", stats.Mode())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Permission File Before: -rw-r--r--
+Permission File After: -rwx------</code></pre>
+<p>The post <a href="https://golangbyexamples.com/change-file-permissions-golang/">Change file permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/change-file-permissions-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2031</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>designpattern Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/designpattern/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/designpattern/</link>
+	<description></description>
+	<lastBuildDate>Sat, 30 Nov 2019 18:24:33 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>designpattern Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/designpattern/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>State Design pattern in Go</title>
+		<link>https://golangbyexamples.com/state-design-pattern-go/</link>
+					<comments>https://golangbyexamples.com/state-design-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 25 Sep 2019 16:44:45 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[designpattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[patter]]></category>
+		<category><![CDATA[state]]></category>
+		<category><![CDATA[state design pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=259</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition: State design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/state-design-pattern-go/">State Design pattern in Go</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:</strong></h2>
+
+
+
+<p class="has-medium-font-size">State design pattern is a behavioral design pattern that is based on Finite State Machine. We will explain the State Design Pattern in the context of an example of a Vending Machine. For simplicity, let&#8217;s assume that vending machine only has one type of item or product.&nbsp;Also for simplicity lets assume that a Vending Machine can be in 4 different states</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>hasItem</strong></li><li><strong>noItem</strong></li><li><strong>itemRequested</strong></li><li><strong>hasMoney</strong></li></ol>
+
+
+
+<p class="has-medium-font-size">A vending machine will also have different actions. Again for simplicity lets assume that there are only four actions:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>Select the item</strong></li><li><strong>Add the item</strong></li><li><strong>Insert Money</strong></li><li><strong>Dispense Item</strong></li></ol>
+
+
+
+<h2 class="wp-block-heading"><strong>When To Use</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Use the State design pattern when the object can be in many different states.&nbsp;Depending upon current request the object needs to change its current state</strong><ul><li>In the above example, Vending Machine can be in many different states. A Vending Machine will move from one state to another. Let&#8217;s say Vending Machine is in&nbsp;<strong>itemRequested </strong>then it will move to&nbsp;<strong>hasMoney </strong>state once the action &#8220;Insert Money&#8221; is done</li></ul></li><li>Use when an object will have different responses to the same request depending upon the current state. Using state design pattern here will prevent a lot of conditional statements<ul><li>For example in the case of Vending Machine, if a user is want to purchase an item then the machine will proceed if it is <strong>hasItemState</strong> or it will reject if it is in <strong>noItemState</strong>. If you notice here that the Vending Machine on the request of purchase of an item gives two different responses depending upon whether it is in&nbsp;<strong>hasItemState </strong>or&nbsp;<strong>noItemState.&nbsp; </strong>Do notice the vendingMachine.go file below, it doesn&#8217;t have any kind of conditional statement. All the logic is being handled by concrete state implementations.</li></ul></li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram</strong></h2>
+
+
+
+<figure class="wp-block-image"><img fetchpriority="high" decoding="async" width="639" height="271" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/State-Design-Pattern-1.jpg?resize=639%2C271&#038;ssl=1" alt="" class="wp-image-260" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/State-Design-Pattern-1.jpg?w=639&amp;ssl=1 639w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/State-Design-Pattern-1.jpg?resize=300%2C127&amp;ssl=1 300w" sizes="(max-width: 639px) 100vw, 639px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size"><br>The below table represents the mapping from the UML diagram actors to actual implementation actors in code.<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Context</td><td>vendingMachine.go</td></tr><tr><td>State Interface</td><td>state.go</td></tr><tr><td>Concrete State 1</td><td>noItemState.go</td></tr><tr><td>Concrete State 2</td><td>hasItemState.go</td></tr><tr><td>Concrete State 3</td><td>itemRequestedState.go</td></tr><tr><td>Concrete State 4</td><td>hasMoneyState.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Explanation:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have an interface &#8220;State&#8221; which defines signatures of functions that represents action in the context of Vending Machine. Below are the actions function signatures<ol><li>addItem(int) error</li><li>requestItem() error</li><li>insertMoney(money int) error</li><li>dispenseItem() error</li></ol></li><li>Each of the concrete state implementations implements all 4 above function and either move to another state on these actions or gives some response.</li><li>Each of the concrete state also embeds a pointer to current Vending Machine object so that state transition can happen on that object.</li></ul>
+
+
+
+<p>Now lets look at code&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example:</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>vendingMachine.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type vendingMachine struct {
+    hasItem       state
+    itemRequested state
+    hasMoney      state
+    noItem        state
+
+    currentState state
+
+    itemCount int
+    itemPrice int
+}
+
+func newVendingMachine(itemCount, itemPrice int) *vendingMachine {
+    v := &vendingMachine{
+        itemCount: itemCount,
+        itemPrice: itemPrice,
+    }
+    hasItemState := &hasItemState{
+        vendingMachine: v,
+    }
+    itemRequestedState := &itemRequestedState{
+        vendingMachine: v,
+    }
+    hasMoneyState := &hasMoneyState{
+        vendingMachine: v,
+    }
+    noItemState := &noItemState{
+        vendingMachine: v,
+    }
+
+    v.setState(hasItemState)
+    v.hasItem = hasItemState
+    v.itemRequested = itemRequestedState
+    v.hasMoney = hasMoneyState
+    v.noItem = noItemState
+    return v
+}
+
+func (v *vendingMachine) requestItem() error {
+    return v.currentState.requestItem()
+}
+
+func (v *vendingMachine) addItem(count int) error {
+    return v.currentState.addItem(count)
+}
+
+func (v *vendingMachine) insertMoney(money int) error {
+    return v.currentState.insertMoney(money)
+}
+
+func (v *vendingMachine) dispenseItem() error {
+    return v.currentState.dispenseItem()
+}
+
+func (v *vendingMachine) setState(s state) {
+    v.currentState = s
+}
+
+func (v *vendingMachine) incrementItemCount(count int) {
+    fmt.Printf("Adding %d items\n", count)
+    v.itemCount = v.itemCount + count
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>state.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type state interface {
+    addItem(int) error
+    requestItem() error
+    insertMoney(money int) error
+    dispenseItem() error
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>noItemState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type noItemState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *noItemState) requestItem() error {
+    return fmt.Errorf("Item out of stock")
+}
+
+func (i *noItemState) addItem(count int) error {
+    i.vendingMachine.incrementItemCount(count)
+    i.vendingMachine.setState(i.vendingMachine.hasItem)
+    return nil
+}
+
+func (i *noItemState) insertMoney(money int) error {
+    return fmt.Errorf("Item out of stock")
+}
+func (i *noItemState) dispenseItem() error {
+    return fmt.Errorf("Item out of stock")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>hasItemState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type hasItemState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *hasItemState) requestItem() error {
+    if i.vendingMachine.itemCount == 0 {
+        i.vendingMachine.setState(i.vendingMachine.noItem)
+        return fmt.Errorf("No item present")
+    }
+    fmt.Printf("Item requestd\n")
+    i.vendingMachine.setState(i.vendingMachine.itemRequested)
+    return nil
+}
+
+func (i *hasItemState) addItem(count int) error {
+    fmt.Printf("%d items added\n", count)
+    i.vendingMachine.incrementItemCount(count)
+    return nil
+}
+
+func (i *hasItemState) insertMoney(money int) error {
+    return fmt.Errorf("Please select item first")
+}
+func (i *hasItemState) dispenseItem() error {
+    return fmt.Errorf("Please select item first")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>itemRequestedState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type itemRequestedState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *itemRequestedState) requestItem() error {
+    return fmt.Errorf("Item already requested")
+}
+
+func (i *itemRequestedState) addItem(count int) error {
+    return fmt.Errorf("Item Dispense in progress")
+}
+
+func (i *itemRequestedState) insertMoney(money int) error {
+    if money < i.vendingMachine.itemPrice {
+        fmt.Errorf("Inserted money is less. Please insert %d", i.vendingMachine.itemPrice)
+    }
+    fmt.Println("Money entered is ok")
+    i.vendingMachine.setState(i.vendingMachine.hasMoney)
+    return nil
+}
+
+func (i *itemRequestedState) dispenseItem() error {
+    return fmt.Errorf("Please insert money first")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>hasMoneyState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type hasMoneyState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *hasMoneyState) requestItem() error {
+    return fmt.Errorf("Item dispense in progress")
+}
+
+func (i *hasMoneyState) addItem(count int) error {
+    return fmt.Errorf("Item dispense in progress")
+}
+
+func (i *hasMoneyState) insertMoney(money int) error {
+    return fmt.Errorf("Item out of stock")
+}
+
+func (i *hasMoneyState) dispenseItem() error {
+    fmt.Println("Dispensing Item")
+    i.vendingMachine.itemCount = i.vendingMachine.itemCount - 1
+    if i.vendingMachine.itemCount == 0 {
+        i.vendingMachine.setState(i.vendingMachine.noItem)
+    } else {
+        i.vendingMachine.setState(i.vendingMachine.hasItem)
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+)
+
+func main() {
+    vendingMachine := newVendingMachine(1, 10)
+    err := vendingMachine.requestItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    err = vendingMachine.insertMoney(10)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    err = vendingMachine.dispenseItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    fmt.Println()
+    err = vendingMachine.addItem(2)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    fmt.Println()
+
+    err = vendingMachine.requestItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    err = vendingMachine.insertMoney(10)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    err = vendingMachine.dispenseItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Item requestd
+Money entered is ok
+Dispensing Item
+
+Adding 2 items
+
+Item requestd
+Money entered is ok
+Dispensing Item</code></pre>
+<p>The post <a href="https://golangbyexamples.com/state-design-pattern-go/">State Design pattern in Go</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/state-design-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">259</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>goroutines Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/goroutines/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/goroutines/</link>
+	<description></description>
+	<lastBuildDate>Tue, 25 Feb 2020 20:16:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>goroutines Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/goroutines/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Wait for all Go routines to finish execution in Golang</title>
+		<link>https://golangbyexamples.com/wait-all-goroutines-go/</link>
+					<comments>https://golangbyexamples.com/wait-all-goroutines-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 25 Feb 2020 11:24:57 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[goroutines]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1490</guid>
+
+					<description><![CDATA[<p>sync package of golang provides WaitGroup struct which can be used to wait for collection of goroutines to finish execution. The WaitGroup provides: Add method to set the number of goroutines to...</p>
+<p>The post <a href="https://golangbyexamples.com/wait-all-goroutines-go/">Wait for all Go routines to finish execution in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>sync</strong> package of golang provides <strong>WaitGroup</strong> struct which can be used to wait for collection of goroutines to finish execution. The WaitGroup provides:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Add</strong> method to set the number of goroutines to wait for.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Done</strong> method which is called by each of the goroutines when finished.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Wait</strong> method which is used to block till all goroutines have finished and have called the <strong>Done</strong> method</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+func main() {
+    var wg sync.WaitGroup
+    wg.Add(2)
+ 
+    go sleep(&wg, time.Second*1)
+    go sleep(&wg, time.Second*2)
+ 
+    wg.Wait()
+    fmt.Println("All goroutines finished")
+}
+
+func sleep(wg *sync.WaitGroup, t time.Duration) {
+    defer wg.Done()
+    time.Sleep(t)
+    fmt.Println("Finished Execution")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Finished Execution
+Finished Execution
+All goroutines finished</code></pre>
+<p>The post <a href="https://golangbyexamples.com/wait-all-goroutines-go/">Wait for all Go routines to finish execution in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/wait-all-goroutines-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1490</post-id>	</item>
+		<item>
+		<title>Get number of currently running/active goroutines</title>
+		<link>https://golangbyexamples.com/number-currently-running-active-goroutines/</link>
+					<comments>https://golangbyexamples.com/number-currently-running-active-goroutines/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 23 Feb 2020 06:29:57 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[goroutines]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1437</guid>
+
+					<description><![CDATA[<p>NumGoroutine function of runtime package can be used to know the currently running/active goroutines. https://golang.org/pkg/runtime/#NumGoroutine Below is the signature of the function Working Code: Output:</p>
+<p>The post <a href="https://golangbyexamples.com/number-currently-running-active-goroutines/">Get number of currently running/active goroutines</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>NumGoroutine</strong> function of <strong>runtime</strong> package can be used to know the currently running/active goroutines.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/runtime/#NumGoroutine">https://golang.org/pkg/runtime/#NumGoroutine</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func NumGoroutine() int</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Working Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "runtime"
+    "time"
+)
+
+func main() {
+    for i := 0; i < 20; i++ {
+        go execute()
+    }
+    fmt.Println(runtime.NumGoroutine())
+}
+
+func execute() {
+    time.Sleep(time.Second * 10)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">21</code></pre>
+<p>The post <a href="https://golangbyexamples.com/number-currently-running-active-goroutines/">Get number of currently running/active goroutines</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/number-currently-running-active-goroutines/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1437</post-id>	</item>
+	</channel>
+</rss>

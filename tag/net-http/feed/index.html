@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>net http Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/net-http/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/net-http/</link>
+	<description></description>
+	<lastBuildDate>Fri, 08 Jan 2021 16:23:47 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>net http Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/net-http/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>net/http package get Query Params in Go(Golang)</title>
+		<link>https://golangbyexamples.com/net-http-package-get-query-params-golang/</link>
+					<comments>https://golangbyexamples.com/net-http-package-get-query-params-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 13 Nov 2019 16:44:50 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[net http]]></category>
+		<category><![CDATA[query params]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=537</guid>
+
+					<description><![CDATA[<p>Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out – Golang Comprehensive Tutorial Series. Now let&#8217;s see current tutorial Often...</p>
+<p>The post <a href="https://golangbyexamples.com/net-http-package-get-query-params-golang/">net/http package get Query Params in Go(Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>Note:</strong> If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a>. Now let&#8217;s see current tutorial</p>
+
+
+
+<p class="has-medium-font-size">Often in the context of an HTTP request, it is required to fetch the query params which are sent as part of the request. A particular query param key value can have one or multiple values. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In below example <strong>filters</strong> have one value which is [&#8220;color&#8221;]</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http://localhost:8080/products?filters=color</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In below example <strong>filters</strong> have multiple value which is [&#8220;color&#8221;, &#8220;price&#8221;, &#8220;brand&#8221;]. Notice how multiple values are defined</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http://localhost:8080/products?filters=red&filters=color&filters=price&filters=brand</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s explore two methods of getting these query params</p>
+
+
+
+<h1 class="wp-block-heading">1.<strong>Using reqeust.URL.Query()</strong></h1>
+
+
+
+<p class="has-medium-font-size">The query params lie in the <strong>URL</strong> itself. We get Query params via r.URL.Query() which returns <strong>Values </strong>which is of map[string][]string. There are two cases: </p>
+
+
+
+<p class="has-medium-font-size"><strong>1.1 When a particular key contains multiple values in a query params. For example, see below request-</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http://localhost:8080/products?filters=red&filters=color&filters=price&filters=brand</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "net/http"
+    "strings"
+)
+
+func main() {
+    getProductsHandler := http.HandlerFunc(getProducts)
+    http.Handle("/products", getProductsHandler)
+    http.ListenAndServe(":8080", nil)
+}
+
+func getProducts(w http.ResponseWriter, r *http.Request) {
+    query := r.URL.Query()
+    filters, present := query["filters"] //filters=["color", "price", "brand"]
+    if !present || len(filters) == 0 {
+        fmt.Println("filters not present")
+    }
+    w.WriteHeader(200)
+    w.Write([]byte(strings.Join(filters, ",")))
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">color,price,brand
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>1.2 When a particular key contains a single value in query params.  For example, see below request</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http://localhost:8080/products?filters=color</code></pre>
+
+
+
+<p class="has-medium-font-size">When we know that a particular key has only one value in the query params, then r.URL.Query().Get(keyName) can also be used. Get function will get the first value associated with the key. If you want to all values then the map has to be directly accessed as we did in the above program. In the below program, we are using Get() on the r.URL.Query() and it returns a single value</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "net/http"
+)
+
+func main() {
+    getProductsHandler := http.HandlerFunc(getProducts)
+    http.Handle("/products", getProductsHandler)
+    http.ListenAndServe(":8080", nil)
+}
+
+func getProducts(w http.ResponseWriter, r *http.Request) {
+    query := r.URL.Query()
+    filters := query.Get("filters") //filters="color"
+    w.WriteHeader(200)
+    w.Write([]byte(filters))
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">color</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>2.Using request.Form</strong></h1>
+
+
+
+<p class="has-medium-font-size">The query params lie in the <strong>URL</strong> itself. We get Query params via r.URL.Query() which returns <strong>values </strong>which is of map[string][]string. There are two cases:</p>
+
+
+
+<p class="has-medium-font-size"><strong>2.1</strong> <strong>When a particular key contains multiple values in a query params. For example, see below request</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http://localhost:8080/products?filters=red&filters=color&filters=price&filters=brand</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "net/http"
+    "strings"
+)
+
+func main() {
+    getProductsHandler := http.HandlerFunc(getProducts)
+    http.Handle("/products", getProductsHandler)
+    http.ListenAndServe(":8080", nil)
+}
+
+func getProducts(w http.ResponseWriter, r *http.Request) {
+    r.ParseForm()
+    filters, present := r.Form["filters"] //filters=["color", "price", "brand"]
+    if !present || len(filters) == 0 {
+        fmt.Println("filters not present")
+    }
+    w.WriteHeader(200)
+    w.Write([]byte(strings.Join(filters, ",")))
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">color,price,brand</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-medium-font-size">An important point to be noted:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>While trying to get query param value via r.Form , be careful that in case of POST and PUT request, body parameters will take precedence over URL query string values i.e, if there is a key say <strong>X </strong>present in both form body (=&#8221;a&#8221;) and in query param(=&#8221;b&#8221;).&nbsp; Then on calling r.Form[&#8220;X&#8221;] it will return [&#8220;a&#8221;] and not [&#8220;b&#8221;]</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>2.2 When a particular key contains a single value in query params. For example, see below request</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http://localhost:8080/products?filters=color</code></pre>
+
+
+
+<p class="has-medium-font-size">When we know that a particular key has only one value in the query params, then r.FormValue(keyName) can also be used. FormValue function will get the first value associated with the key. If you want to all values then request. The form map has to be directly accessed as we did in the above program. In the below program, we are using FormValue() function and it returns a single value.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "net/http"
+)
+
+func main() {
+    getProductsHandler := http.HandlerFunc(getProducts)
+    http.Handle("/products", getProductsHandler)
+    http.ListenAndServe(":8080", nil)
+}
+
+func getProducts(w http.ResponseWriter, r *http.Request) {
+    filters := r.FormValue("filters") //filters=["color"]
+    w.WriteHeader(200)
+    w.Write([]byte(filters))
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">color</code></pre>
+
+
+
+<p class="has-medium-font-size">An important point to be noted:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>While trying to get query param value via r.FormValue() , be careful that in case of POST and PUT request, body parameters will take precedence over URL query string values i.e, if there is a key say <strong>X </strong>present in both form body (=&#8221;a&#8221;) and in query param(=&#8221;b&#8221;).&nbsp; Then on calling r.Form[&#8220;X&#8221;] it will return [&#8220;a&#8221;] and not [&#8220;b&#8221;]</li></ul>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/net-http-package-get-query-params-golang/">net/http package get Query Params in Go(Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/net-http-package-get-query-params-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">537</post-id>	</item>
+	</channel>
+</rss>

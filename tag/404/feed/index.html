@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>404 Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/404/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/404/</link>
+	<description></description>
+	<lastBuildDate>Sat, 10 Jul 2021 11:19:57 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>404 Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/404/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Return 404 (Resource Not Found) Status Code in http response in Go (Golang)</title>
+		<link>https://golangbyexamples.com/404-http-status-code-golang/</link>
+					<comments>https://golangbyexamples.com/404-http-status-code-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 10 Jul 2021 07:19:49 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[404]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5876</guid>
+
+					<description><![CDATA[<p>Overview http package of golang provides the status code constant which could be used to return different status codes- https://golang.org/src/net/http/status.go The same can also be used to return the 404 (Resource Not...</p>
+<p>The post <a href="https://golangbyexamples.com/404-http-status-code-golang/">Return 404 (Resource Not Found) Status Code in http response in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">http package of golang provides the status code constant which could be used to return different status codes- <a href="https://golang.org/src/net/http/status.go">https://golang.org/src/net/http/status.go</a></p>
+
+
+
+<p class="has-medium-font-size">The same can also be used to return the 404 (Resource Not Found) http status code. The http 404 status code is defined by the below constant</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http.StatusNotFound</code></pre>
+
+
+
+<p class="has-medium-font-size">In this article, we will also see how to return a JSON body along with the 404 (Resource Not Found) http status code</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+)
+
+func main() {
+	handler := http.HandlerFunc(handleRequest)
+	http.Handle("/example", handler)
+	http.ListenAndServe(":8080", nil)
+}
+
+func handleRequest(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusNotFound)
+	w.Header().Set("Content-Type", "application/json")
+	resp := make(map[string]string)
+	resp["message"] = "Resource Not Found"
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
+	return
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Here we are using the <strong>WriteHeader</strong> function to specify the 404 http status code and uses the <strong>Write</strong> function to also return the response bodyThe above code returns the below JSON request body back in response</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">{"message":"Resource Not Found"}</code></pre>
+
+
+
+<p class="has-medium-font-size">Run the above program. It will start a server on 8080 port on your local machine. Now make the below curl call to the server</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST http://localhost:8080/example</code></pre>
+
+
+
+<p class="has-medium-font-size">Below will be the output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">* Connected to localhost (::1) port 8080 (#0)
+> POST /example HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.54.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Date: Sat, 10 Jul 2021 06:18:12 GMT
+< Content-Length: 32
+< Content-Type: text/plain; charset=utf-8
+< 
+* Connection #0 to host localhost left intact
+{"message":"Resource Not Found"}</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can see from the output, it correctly returns the <strong>404</strong> status code along with the body.</p>
+
+
+
+<p class="has-medium-font-size">You can also directly pass 404 to the <strong>WriteHeader</strong> function to send the 404 response.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">w.WriteHeader(404)</code></pre>
+
+
+
+<p class="has-medium-font-size">This also works correctly. Try it out.</p>
+
+
+
+<p class="has-medium-font-size"><strong>net/http</strong> package of golang also provides a <strong>"NotFound"</strong> handler that could be used to return a 404 for a particular API every time.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/net/http/#NotFound">https://golang.org/pkg/net/http/#NotFound</a></p>
+
+
+
+<p class="has-medium-font-size">This handler function return 404 status and below response body</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">404 page not found</code></pre>
+
+
+
+<p class="has-medium-font-size">Below is the simple program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/example", http.NotFound)
+	http.ListenAndServe(":8080", nil)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, we simply specified the NotFound handler for <strong>localhost:8080/example</strong> API as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http.HandleFunc("/example", http.NotFound)</code></pre>
+
+
+
+<p class="has-medium-font-size">Run the above program. It will start a server on 8080 port on your local machine. Now make the below curl call to the server</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST http://localhost:8080/example</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">* Connected to localhost (::1) port 8080 (#0)
+> POST /example HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.54.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Content-Type: text/plain; charset=utf-8
+< X-Content-Type-Options: nosniff
+< Date: Sat, 10 Jul 2021 06:23:41 GMT
+< Content-Length: 19
+< 
+404 page not found
+* Connection #0 to host localhost left intact</code></pre>
+
+
+
+<p class="has-medium-font-size">Also, check out our Golang advance tutorial Series - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+<p>The post <a href="https://golangbyexamples.com/404-http-status-code-golang/">Return 404 (Resource Not Found) Status Code in http response in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/404-http-status-code-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5876</post-id>	</item>
+	</channel>
+</rss>

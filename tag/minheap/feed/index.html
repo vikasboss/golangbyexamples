@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>minheap Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/minheap/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/minheap/</link>
+	<description></description>
+	<lastBuildDate>Mon, 04 Apr 2022 17:44:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>minheap Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/minheap/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Heap in Golang</title>
+		<link>https://golangbyexamples.com/heap-in-golang/</link>
+					<comments>https://golangbyexamples.com/heap-in-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 18 Dec 2019 18:49:47 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[heap]]></category>
+		<category><![CDATA[heap in go]]></category>
+		<category><![CDATA[maxheap]]></category>
+		<category><![CDATA[minheap]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=853</guid>
+
+					<description><![CDATA[<p>Introduction A Heap is a complete binary tree. A complete binary tree is a binary tree in which all levels are full except the last level. Heap is of two types: MinHeap:...</p>
+<p>The post <a href="https://golangbyexamples.com/heap-in-golang/">Heap in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Introduction</strong></h1>
+
+
+
+<p class="has-medium-font-size">A Heap is a complete binary tree. A complete binary tree is a binary tree in which all levels are full except the last level. Heap is of two types:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>MinHeap</strong>: A MinHeap is a complete binary tree in which the value of the parent node is lesser than or equal to the value of its left and right child.</li></ul>
+
+
+
+<p></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>MaxHeap</strong> : A MaxHeap is a complete binary tree in which the value of the parent node is greater than or equal to the value of its left and right child.</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is a representation of a minheap. Notice that the parent node is always smaller than or equal to the child nodes</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="201" height="191" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/12/MinHeap-Example-1.png?resize=201%2C191&#038;ssl=1" alt="" class="wp-image-845" data-recalc-dims="1"/></figure>
+
+
+
+<p class="has-medium-font-size">Below is a representation of a maxheap.&nbsp; Notice that the parent node is always greater than or equal to the child nodes</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="201" height="191" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/12/Max-Heap.png?resize=201%2C191&#038;ssl=1" alt="" class="wp-image-849" data-recalc-dims="1"/></figure>
+
+
+
+<p></p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s look at the implementation of a minheap in GO in this post.</p>
+
+
+
+<p class="has-medium-font-size">MaxHeap implementation you can find at link &#8211; <a href="https://golangbyexamples.com/maxheap-in-golang/">https://golangbyexamples.com/maxheap-in-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">MinHeap full description can be found at link &#8211;<a href="https://golangbyexamples.com/minheap-in-golang/">https://golangbyexamples.com/minheap-in-golang/</a></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Implementation of MinHeap</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type minheap struct {
+    heapArray []int
+    size      int
+    maxsize   int
+}
+
+func newMinHeap(maxsize int) *minheap {
+    minheap := &minheap{
+        heapArray: []int{},
+        size:      0,
+        maxsize:   maxsize,
+    }
+    return minheap
+}
+
+func (m *minheap) leaf(index int) bool {
+    if index >= (m.size/2) && index <= m.size {
+        return true
+    }
+    return false
+}
+
+func (m *minheap) parent(index int) int {
+    return (index - 1) / 2
+}
+
+func (m *minheap) leftchild(index int) int {
+    return 2*index + 1
+}
+
+func (m *minheap) rightchild(index int) int {
+    return 2*index + 2
+}
+
+func (m *minheap) insert(item int) error {
+    if m.size >= m.maxsize {
+        return fmt.Errorf("Heal is ful")
+    }
+    m.heapArray = append(m.heapArray, item)
+    m.size++
+    m.upHeapify(m.size - 1)
+    return nil
+}
+
+func (m *minheap) swap(first, second int) {
+    temp := m.heapArray[first]
+    m.heapArray[first] = m.heapArray[second]
+    m.heapArray[second] = temp
+}
+
+func (m *minheap) upHeapify(index int) {
+    for m.heapArray[index] < m.heapArray[m.parent(index)] {
+        m.swap(index, m.parent(index))
+    }
+}
+
+func (m *minheap) downHeapify(current int) {
+    if m.leaf(current) {
+        return
+    }
+    smallest := current
+    leftChildIndex := m.leftchild(current)
+    rightRightIndex := m.rightchild(current)
+    //If current is smallest then return
+    if leftChildIndex < m.size &#038;&#038; m.heapArray[leftChildIndex] < m.heapArray[smallest] {
+        smallest = leftChildIndex
+    }
+    if rightRightIndex < m.size &#038;&#038; m.heapArray[rightRightIndex] < m.heapArray[smallest] {
+        smallest = rightRightIndex
+    }
+    if smallest != current {
+        m.swap(current, smallest)
+        m.downHeapify(smallest)
+    }
+    return
+}
+func (m *minheap) buildMinHeap() {
+    for index := ((m.size / 2) - 1); index >= 0; index-- {
+        m.downHeapify(index)
+    }
+}
+
+func (m *minheap) remove() int {
+    top := m.heapArray[0]
+    m.heapArray[0] = m.heapArray[m.size-1]
+    m.heapArray = m.heapArray[:(m.size)-1]
+    m.size--
+    m.downHeapify(0)
+    return top
+}
+
+func main() {
+    inputArray := []int{6, 5, 3, 7, 2, 8}
+    minHeap := newMinHeap(len(inputArray))
+    for i := 0; i < len(inputArray); i++ {
+        minHeap.insert(inputArray[i])
+    }
+    minHeap.buildMinHeap()
+    for i := 0; i < len(inputArray); i++ {
+        fmt.Println(minHeap.remove())
+    }
+    fmt.Scanln()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+3
+5
+6
+7
+8</code></pre>
+<p>The post <a href="https://golangbyexamples.com/heap-in-golang/">Heap in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/heap-in-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">853</post-id>	</item>
+	</channel>
+</rss>

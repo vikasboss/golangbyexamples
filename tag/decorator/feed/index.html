@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>decorator Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/decorator/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/decorator/</link>
+	<description></description>
+	<lastBuildDate>Mon, 26 Apr 2021 14:23:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>decorator Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/decorator/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Decorator design pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/decorator-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/decorator-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 03 Dec 2020 17:07:48 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[decorator]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=4619</guid>
+
+					<description><![CDATA[<p>Overview Decorator design pattern is a structural design pattern. It lets you provide additional functionality or decorates an object without altering that object. It is better understood with an example. Imagine you...</p>
+<p>The post <a href="https://golangbyexamples.com/decorator-pattern-golang/">Decorator design pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Decorator design pattern is a structural design pattern. It lets you provide additional functionality or decorates an object without altering that object.</p>
+
+
+
+<p class="has-medium-font-size">It is better understood with an example. Imagine you are opening a pizza chain. You started with two kinds of pizzas</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Veggie Mania Pizza</li><li>Peppy Tofu pizza</li></ul>
+
+
+
+<p class="has-medium-font-size">Each of the above pizza had its price. So you would create a pizza interface as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type pizza interface {
+	getPrice() int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">You need to also create two pizza struct with a <strong>getPrice</strong> function which will return the price. These two pizza structs implement the pizza interface as they define the getPrice() method</p>
+
+
+
+<p class="has-medium-font-size">Later on, you started to offer toppings along with the pizza with some additional price for each of the topping. So the original base pizza now needs to be decorated with a topping. Imaging you added below two toppings to the menu</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Tomato Topping</li><li>Cheese Topping</li></ul>
+
+
+
+<p class="has-medium-font-size">Also, remember that pizza along with the topping is also a pizza. Customer can choose their pizza in different ways. For eg</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Veggie mania with tomato topping</li><li>Veggie main with tomato and cheese topping</li><li>Peppy Paneer pizza without any topping</li><li>Peppy Paneer pizza with cheese topping</li><li>&#8230;</li></ul>
+
+
+
+<p class="has-medium-font-size">So how would you design now given that you now have the toppings as well. Decorator pattern will come into picture. It can help additional functionality without actually modifying any of the existing structs.&nbsp; Decorator pattern recommends in this case to create separate structs for each of the topping available.&nbsp; Each topping struct will implement the pizza interface above and also have an embed and instance of pizza.</p>
+
+
+
+<p class="has-medium-font-size">We now have separate structs for different types of pizza and separate struct for the types of topping available. Each of the pizza and topping has its own price. And whenever you add any topping to a pizza then price of that topping is added to the price of base pizza and that is how you get a resultant price.</p>
+
+
+
+<p class="has-medium-font-size">So the decorator pattern let&#8217;s you decorate the original base pizza object without altering that pizza object. The pizza object knows nothing about toppings. It just knows its price and nothing else.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is UML diagram for the decorator design pattern</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="356" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/04/Decorator-Design-Patter-min.jpg?resize=640%2C356&#038;ssl=1" alt="" class="wp-image-5506" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/04/Decorator-Design-Patter-min.jpg?w=781&amp;ssl=1 781w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/04/Decorator-Design-Patter-min.jpg?resize=300%2C167&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/04/Decorator-Design-Patter-min.jpg?resize=768%2C427&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">The concrete component (<strong>Veggie Mania </strong>and <strong>Peppy Tofu</strong> here) and concrete decorator (<strong>Toppings</strong> here)&nbsp;implement the component&nbsp; interface (<strong>Pizza</strong> here). Also&nbsp; concrete decorator&nbsp; would embed an instance of component as well.</p>
+
+
+
+<p class="has-medium-font-size">As in below example we have</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The component is represented by pizza interface</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The concrete component is represented by <strong>veggieMania</strong> and <strong>peppyPanner</strong> <strong>struct</strong>. They both implement the pizza interface</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Concrete decorators are represented by cheeseTopping and tomatoTopping struct. They both implement the pizza interface.&nbsp; Also, they embed an instance of type <strong>pizza</strong> as well</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>pizza.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type pizza interface {
+	getPrice() int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>peppyPaneer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type peppyPaneer struct {
+}
+
+func (p *peppyPaneer) getPrice() int {
+	return 20
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>veggeMania.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type veggeMania struct {
+}
+
+func (p *veggeMania) getPrice() int {
+	return 15
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>cheeseTopping.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type cheeseTopping struct {
+	pizza pizza
+}
+
+func (c *cheeseTopping) getPrice() int {
+	pizzaPrice := c.pizza.getPrice()
+	return pizzaPrice + 10
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>tomatoTopping.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+type tomatoTopping struct {
+    pizza pizza
+}
+func (c *tomatoTopping) getPrice() int {
+    pizzaPrice := c.pizza.getPrice()
+    return pizzaPrice + 7
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+
+	veggiePizza := &veggeMania{}
+
+	//Add cheese topping
+	veggiePizzaWithCheese := &cheeseTopping{
+		pizza: veggiePizza,
+	}
+
+	//Add tomato topping
+	veggiePizzaWithCheeseAndTomato := &tomatoTopping{
+		pizza: veggiePizzaWithCheese,
+	}
+
+	fmt.Printf("Price of veggieMania pizza with tomato and cheese topping is %d\n", veggiePizzaWithCheeseAndTomato.getPrice())
+
+	peppyPaneerPizza := &peppyPaneer{}
+
+	//Add cheese topping
+	peppyPaneerPizzaWithCheese := &cheeseTopping{
+		pizza: peppyPaneerPizza,
+	}
+
+	fmt.Printf("Price of peppyPaneer with tomato and cheese topping is %d\n", peppyPaneerPizzaWithCheese.getPrice())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Price of veggieMania pizza with tomato and cheese topping is 32
+Price of peppyPaneer with tomato and cheese topping is 30</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type pizza interface {
+	getPrice() int
+}
+
+type peppyPaneer struct {
+}
+
+func (p *peppyPaneer) getPrice() int {
+	return 20
+}
+
+type veggeMania struct {
+}
+
+func (p *veggeMania) getPrice() int {
+	return 15
+}
+
+type tomatoTopping struct {
+	pizza pizza
+}
+
+func (c *tomatoTopping) getPrice() int {
+	pizzaPrice := c.pizza.getPrice()
+	return pizzaPrice + 7
+}
+
+type cheeseTopping struct {
+	pizza pizza
+}
+
+func (c *cheeseTopping) getPrice() int {
+	pizzaPrice := c.pizza.getPrice()
+	return pizzaPrice + 10
+}
+
+func main() {
+
+	veggiePizza := &veggeMania{}
+
+	//Add cheese topping
+	veggiePizzaWithCheese := &cheeseTopping{
+		pizza: veggiePizza,
+	}
+
+	//Add tomato topping
+	veggiePizzaWithCheeseAndTomato := &tomatoTopping{
+		pizza: veggiePizzaWithCheese,
+	}
+
+	fmt.Printf("Price of veggieMania pizza with tomato and cheese topping is %d\n", veggiePizzaWithCheeseAndTomato.getPrice())
+
+	peppyPaneerPizza := &peppyPaneer{}
+
+	//Add cheese topping
+	peppyPaneerPizzaWithCheese := &cheeseTopping{
+		pizza: peppyPaneerPizza,
+	}
+
+	fmt.Printf("Price of peppyPaneer with tomato and cheese topping is %d\n", peppyPaneerPizzaWithCheese.getPrice())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Price of veggieMania pizza with tomato and cheese topping is 32
+Price of peppyPaneer with tomato and cheese topping is 30</code></pre>
+<p>The post <a href="https://golangbyexamples.com/decorator-pattern-golang/">Decorator design pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/decorator-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">4619</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>copy Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/copy/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/copy/</link>
+	<description></description>
+	<lastBuildDate>Thu, 16 Apr 2020 20:34:22 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>copy Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/copy/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Make a copy of a file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/copy-file-go/</link>
+					<comments>https://golangbyexamples.com/copy-file-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2020 20:34:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[copy]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2027</guid>
+
+					<description><![CDATA[<p>In this article we will see two methods of copying a file. First Method io.Copy() can be used to create a copy of the file from src to dest. A successful copy...</p>
+<p>The post <a href="https://golangbyexamples.com/copy-file-go/">Make a copy of a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In this article we will see two methods of copying a file.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>First Method</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>io.Copy() </strong>can be used to create a copy of the file from src to dest. A successful copy will return err != nil instead of err == EOF</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It returns the number of bytes written to the dest</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Copy(dst Writer, src Reader) (written int64, err error)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<p class="has-medium-font-size">First create a file named <strong>&#8220;original.txt&#8221;</strong> and write some content in it.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "io"
+    "log"
+    "os"
+)
+
+// Copy a file
+func main() {
+    // Open original file
+    original, err := os.Open("original.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer original.Close()
+
+    // Create new file
+    new, err := os.Create("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer new.Close()
+
+    //This will copy
+    bytesWritten, err := io.Copy(new, original)
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Bytes Written: %d\n", bytesWritten)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Bytes Written: <some_number_of_bytes></code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Second Method</strong></h2>
+
+
+
+<p class="has-medium-font-size">If the contents of the file is less then we can also read the contents of the file first and then write all the contents to the new file. See below code.</p>
+
+
+
+<p class="has-medium-font-size">Here also first create a file named <strong>&#8220;original.txt</strong>&#8221; and write some content in it</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "io/ioutil"
+    "log"
+)
+
+// Copy a file
+func main() {
+    //Read all the contents of the  original file
+    bytesRead, err := ioutil.ReadFile("original.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    //Copy all the contents to the desitination file
+    err = ioutil.WriteFile("new.txt", bytesRead, 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">new.txt file will have same content as original.txt</code></pre>
+<p>The post <a href="https://golangbyexamples.com/copy-file-go/">Make a copy of a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/copy-file-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2027</post-id>	</item>
+	</channel>
+</rss>

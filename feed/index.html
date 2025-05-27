@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/</link>
+	<description></description>
+	<lastBuildDate>Sun, 10 Dec 2023 16:12:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Check all groups that current logged in user belong to on Linux</title>
+		<link>https://golangbyexamples.com/current-log-user-groups/</link>
+					<comments>https://golangbyexamples.com/current-log-user-groups/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 10 Dec 2023 16:12:07 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=14244</guid>
+
+					<description><![CDATA[<p>groups command on linux can be used to know which all groups a user belongs to Just type in groups on the terminal. Below is the output on my Mac machine</p>
+<p>The post <a href="https://golangbyexamples.com/current-log-user-groups/">Check all groups that current logged in user belong to on Linux</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>groups</strong> command on linux can be used to know which all groups a user belongs to</p>
+
+
+
+<p class="has-medium-font-size">Just type in groups on the terminal. Below is the output on my Mac machine</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-bash">staff everyone localaccounts _appserverusr admin</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/current-log-user-groups/">Check all groups that current logged in user belong to on Linux</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/current-log-user-groups/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">14244</post-id>	</item>
+		<item>
+		<title>Ruby convert string to bool</title>
+		<link>https://golangbyexamples.com/string-bool-ruby/</link>
+					<comments>https://golangbyexamples.com/string-bool-ruby/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 24 Aug 2023 07:26:30 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=12978</guid>
+
+					<description><![CDATA[<p>Overview In the Ruby language, strings &#8220;true&#8221; and &#8220;false&#8221; are interpreted as true when used in the if condition. See example below Output &#8220;false&#8221; evaluates to true Therefore it becomes important to...</p>
+<p>The post <a href="https://golangbyexamples.com/string-bool-ruby/">Ruby convert string to bool</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">In the Ruby language, strings &#8220;true&#8221; and &#8220;false&#8221; are interpreted as true when used in the <strong>if</strong> condition. See example below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-ruby">if "false"
+   puts "yes"
+end</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-ruby">"yes"</code></pre>
+
+
+
+<p class="has-medium-font-size">&#8220;false&#8221; evaluates to true</p>
+
+
+
+<p class="has-medium-font-size">Therefore it becomes important to handle string &#8220;false&#8221; or string &#8220;true&#8221; correctly.</p>
+
+
+
+<p class="has-medium-font-size">We can create a custom method that can return boolean true or false based on the content of the string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-ruby">def true?(str)
+  str.to_s.downcase == "true"
+end</code></pre>
+
+
+
+<p class="has-medium-font-size">We can try out the above function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-ruby">true?("false")
+ => false</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">true?("true")
+ => true</code></pre>
+
+
+
+<p class="has-medium-font-size">Also, note that for strings other than &#8220;false&#8221; it will give true in return, but the function could be easily modified to handle that case</p>
+<p>The post <a href="https://golangbyexamples.com/string-bool-ruby/">Ruby convert string to bool</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/string-bool-ruby/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">12978</post-id>	</item>
+		<item>
+		<title>Know the current user on Linux</title>
+		<link>https://golangbyexamples.com/know-the-current-user-on-linux/</link>
+					<comments>https://golangbyexamples.com/know-the-current-user-on-linux/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 09 Aug 2023 13:14:38 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=12839</guid>
+
+					<description><![CDATA[<p>Overview Linux command &#8216;whoami&#8217; can be used to know the currently logged-in user. Let&#8217;s see this command in action. Go to the terminal and type in the command It will print the...</p>
+<p>The post <a href="https://golangbyexamples.com/know-the-current-user-on-linux/">Know the current user on Linux</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Linux command <strong>&#8216;whoami&#8217;</strong> can be used to know the currently logged-in user.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see this command in action. Go to the terminal and type in the command</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">whoami</code></pre>
+
+
+
+<p class="has-medium-font-size">It will print the current user. Let&#8217;s say the current user is <strong>john </strong>then running the above command will simply print <strong>john</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">whoami
+john</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/know-the-current-user-on-linux/">Know the current user on Linux</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/know-the-current-user-on-linux/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">12839</post-id>	</item>
+		<item>
+		<title>Convert an array of int or numbers to string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/array-int-string-golang/</link>
+					<comments>https://golangbyexamples.com/array-int-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 06 Mar 2023 17:39:47 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=11347</guid>
+
+					<description><![CDATA[<p>Overview In this tutorial, we will see how to convert an array of ints or numbers to a string in Go. Below is the program for the same. Program Here is the...</p>
+<p>The post <a href="https://golangbyexamples.com/array-int-string-golang/">Convert an array of int or numbers to string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color has-x-large-font-size wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">In this tutorial, we will see how to convert an array of ints or numbers to a string in Go.</p>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same.</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color has-x-large-font-size wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<p class="has-medium-font-size">Here is the program for the same.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	sample := []int{2, 1, 3}
+
+	output := ""
+	for _, v := range sample {
+		temp := strconv.Itoa(v)
+		output = output + temp
+	}
+	fmt.Println(output)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">213</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211;</p>
+
+
+
+<p><a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our system design tutorial series <a href="https://techbyexample.com/system-design-questions/">System Design Questions</a></p>
+<p>The post <a href="https://golangbyexamples.com/array-int-string-golang/">Convert an array of int or numbers to string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/array-int-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">11347</post-id>	</item>
+		<item>
+		<title>Check if a string contains single or multiple whitespaces in Go (Golang)</title>
+		<link>https://golangbyexamples.com/string-whitespace-golang/</link>
+					<comments>https://golangbyexamples.com/string-whitespace-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2023 14:55:10 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=10985</guid>
+
+					<description><![CDATA[<p>Overview A simple regex can be used to check if a string contains single or multiple white spaces in Go. Here is the program for the same Program Output Note: Check out...</p>
+<p>The post <a href="https://golangbyexamples.com/string-whitespace-golang/">Check if a string contains single or multiple whitespaces in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">A simple regex can be used to check if a string contains single or multiple white spaces in Go.</p>
+
+
+
+<p class="has-medium-font-size">Here is the program for the same</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"regexp"
+)
+
+func main() {
+	//Single whitespace
+	sampleWord := "Good morning"
+
+	isWhitespacePresent := regexp.MustCompile(`\s`).MatchString(sampleWord)
+	fmt.Println(isWhitespacePresent)
+
+	//Multiple Whitespace
+	sampleWord = "Good   morning"
+	isMultipleWhitespacePresent := regexp.MustCompile(`\s*`).MatchString(sampleWord)
+	fmt.Println(isMultipleWhitespacePresent)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+true</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211;</p>
+
+
+
+<p><a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our system design tutorial series <a href="https://techbyexample.com/system-design-questions/">System Design Questions</a></p>
+<p>The post <a href="https://golangbyexamples.com/string-whitespace-golang/">Check if a string contains single or multiple whitespaces in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/string-whitespace-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">10985</post-id>	</item>
+		<item>
+		<title>Create or initialize a new string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/create-string-golang/</link>
+					<comments>https://golangbyexamples.com/create-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 07 Feb 2023 08:48:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=10933</guid>
+
+					<description><![CDATA[<p>Overview Below is a simple way to initialize or create a string in Go. In the below program, we have simply declared as well as defined a string named sample Notice the...</p>
+<p>The post <a href="https://golangbyexamples.com/create-string-golang/">Create or initialize a new string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is a simple way to initialize or create a string in Go. In the below program, we have simply declared as well as defined a string named <strong>sample</strong></p>
+
+
+
+<p class="has-medium-font-size">Notice the syntax</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := "test"</code></pre>
+
+
+
+<p class="has-medium-font-size">Here is the full program</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading">Program</h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := "test"
+	fmt.Println(sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">test</code></pre>
+
+
+
+<p class="has-medium-font-size">If we want to only declare a string variable then below is the way. A declared string is initialized to an empty string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var sample string
+    fmt.Println(sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"><Empty string></code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211;</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our system design tutorial series <a href="https://techbyexample.com/system-design-questions/">System Design Questions</a></p>
+<p>The post <a href="https://golangbyexamples.com/create-string-golang/">Create or initialize a new string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/create-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">10933</post-id>	</item>
+		<item>
+		<title>Delete or Remove a key from a map in Go (Golang)</title>
+		<link>https://golangbyexamples.com/delete-key-map-golang/</link>
+					<comments>https://golangbyexamples.com/delete-key-map-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 02 Jan 2023 14:41:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=10495</guid>
+
+					<description><![CDATA[<p>Overview Below is the format to delete a given key from a map There are two cases Let’s see an example of both the cases Key exists in the Map Below is...</p>
+<p>The post <a href="https://golangbyexamples.com/delete-key-map-golang/">Delete or Remove a key from a map in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the format to delete a given key from a map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">delete(mapName, keyToDelete)</code></pre>
+
+
+
+<p class="has-medium-font-size">There are two cases</p>
+
+
+
+<ul class="wp-block-list">
+<li class="has-medium-font-size">The <strong>keyToDelete</strong> exists in the map. In this case, it will simply delete the key</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li class="has-medium-font-size">The <strong>keyToDelete</strong> doesn&#8217;t exist in the map. In this case, it will do nothing. A</li>
+</ul>
+
+
+
+<p class="has-medium-font-size">Let’s see an example of both the cases</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Key exists in the Map</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the case where the key exists in the Map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := make(map[string]int)
+	sample["a"] = 1
+	sample["b"] = 2
+	sample["c"] = 3
+
+        fmt.Println(sample)
+	delete(sample, "a")
+
+	fmt.Println(sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[a:1 b:2 c:3]
+map[b:2 c:3]</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in the output that the key &#8220;a&#8221; got deleted from the map. It is always a good practice to check if a key exists in the map and then delete it. Below is the code snippet for that.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := make(map[string]int)
+	sample["a"] = 1
+	sample["b"] = 2
+	sample["c"] = 3
+
+	fmt.Println(sample)
+
+	if _, ok := sample["a"]; ok {
+		delete(sample, "a")
+	}
+
+	fmt.Println(sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[a:1 b:2 c:3]
+map[b:2 c:3]</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>The Key doesn&#8217;t exist in the Map</strong></h1>
+
+
+
+<p class="has-medium-font-size">In this case, also it is a good practice to check if the key exists and then delete it. Even if we delete directly without checking, then also it is not a problem though. The below code snippet shows both the cases</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := make(map[string]int)
+	sample["a"] = 1
+	sample["b"] = 2
+	sample["c"] = 3
+
+	fmt.Println(sample)
+
+	//Check and delete
+	if _, ok := sample["d"]; ok {
+		delete(sample, "d")
+	}
+
+	fmt.Println(sample)
+
+	//Directly delete
+	delete(sample, "d")
+
+	fmt.Println(sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[a:1 b:2 c:3]
+map[a:1 b:2 c:3]
+map[a:1 b:2 c:3]</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211;</p>
+
+
+
+<p><a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+<p>The post <a href="https://golangbyexamples.com/delete-key-map-golang/">Delete or Remove a key from a map in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/delete-key-map-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">10495</post-id>	</item>
+		<item>
+		<title>Convert an IOTA or Enum to a string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/convert-an-iota-or-enum-to-a-string-in-go-golang/</link>
+					<comments>https://golangbyexamples.com/convert-an-iota-or-enum-to-a-string-in-go-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 10 Nov 2022 13:51:54 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=9986</guid>
+
+					<description><![CDATA[<p>Overview Enum in Golang can be created by using IOTA. Please refer to this post to learn more about IOTA In this post, we will see how to convert an IOTA or...</p>
+<p>The post <a href="https://golangbyexamples.com/convert-an-iota-or-enum-to-a-string-in-go-golang/">Convert an IOTA or Enum to a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading">Overview</h1>
+
+
+
+<p>Enum in Golang can be created by using IOTA. Please refer to this post to learn more about IOTA</p>
+
+
+
+<figure class="wp-block-embed is-type-wp-embed is-provider-welcome-to-golang-by-example wp-block-embed-welcome-to-golang-by-example"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="4y3pVxudgT"><a href="https://golangbyexamples.com/iota-in-golang/">IOTA in Go (Golang)</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted"  title="&#8220;IOTA in Go (Golang)&#8221; &#8212; Welcome To Golang By Example" src="https://golangbyexamples.com/iota-in-golang/embed/#?secret=0FEJ5OZNxf#?secret=4y3pVxudgT" data-secret="4y3pVxudgT" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+
+
+
+<p>In this post, we will see how to convert an IOTA or enum to a string value. By default when you will print an IOTA or enum value it will print the integer part of it. See this example. Later we will see an example of we can define a custom <strong>toString </strong>method to print the string value of IOTA or enum</p>
+
+
+
+<h1 class="wp-block-heading">Example</h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type Size uint8
+
+const (
+	small Size = iota
+	medium
+	large
+	extraLarge
+)
+
+func main() {
+	fmt.Println(small)
+	fmt.Println(medium)
+	fmt.Println(large)
+	fmt.Println(extraLarge)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+1
+2
+3</code></pre>
+
+
+
+<p class="has-medium-font-size">We can also define a method <strong>toString</strong> on Size type to print the exact value of enum . See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type Size int
+const (
+    small = Size(iota)
+    medium
+    large
+    extraLarge
+)
+func main() {
+    var m Size = 1
+    m.toString()
+}
+func (s Size) toString() {
+    switch s {
+    case small:
+        fmt.Println("Small")
+    case medium:
+        fmt.Println("Medium")
+    case large:
+        fmt.Println("Large")
+    case extraLarge:
+        fmt.Println("Extra Large")
+    default:
+        fmt.Println("Invalid Size entry")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">medium</code></pre>
+
+
+
+<p class="has-medium-font-size">We will now define a <strong>toString </strong>method for the <strong>Size</strong> type. It can be used to the print the string value of the constant of Size type.</p>
+<p>The post <a href="https://golangbyexamples.com/convert-an-iota-or-enum-to-a-string-in-go-golang/">Convert an IOTA or Enum to a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/convert-an-iota-or-enum-to-a-string-in-go-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9986</post-id>	</item>
+		<item>
+		<title>Enum in Golang</title>
+		<link>https://golangbyexamples.com/enum-in-golang/</link>
+					<comments>https://golangbyexamples.com/enum-in-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 10 Nov 2022 13:44:03 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=9981</guid>
+
+					<description><![CDATA[<p>Overview IOTA provides an automated way to create an enum in Golang. Let&#8217;s see an example. Example Output In above program we created a new type Then we declared some const of&#160;...</p>
+<p>The post <a href="https://golangbyexamples.com/enum-in-golang/">&lt;strong&gt;Enum in Golang&lt;/strong&gt;</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading">Overview</h1>
+
+
+
+<p class="has-medium-font-size"><strong>IOTA </strong>provides an automated way to create an enum in Golang. Let&#8217;s see an example.</p>
+
+
+
+<h1 class="wp-block-heading">Example</h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type Size uint8
+
+const (
+	small Size = iota
+	medium
+	large
+	extraLarge
+)
+
+func main() {
+	fmt.Println(small)
+	fmt.Println(medium)
+	fmt.Println(large)
+	fmt.Println(extraLarge)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+1
+2
+3</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program we created a new type</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Size uint8</code></pre>
+
+
+
+<p class="has-medium-font-size">Then we declared some const of&nbsp; type <strong>Size</strong>. The first constant <strong>small</strong> is set to iota so it will be set to zero</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">small Size = iota</code></pre>
+
+
+
+<p class="has-medium-font-size">That&#8217;s why</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Println(small)      >> outputs 0  
+fmt.Println(medium)     >> outputs 1
+fmt.Println(large)      >> outputs 2
+fmt.Println(extraLarge) >> outputs 3</code></pre>
+
+
+
+<p class="has-medium-font-size">Without IOTA we had to explicitly set the values of each of the enum value</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type Size uint8
+
+const (
+	small      Size = 0
+	medium     Size = 1
+	large      Size = 2
+	extraLarge Size = 3
+)
+
+func main() {
+	fmt.Println(small)
+	fmt.Println(medium)
+	fmt.Println(large)
+	fmt.Println(extraLarge)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+1
+2
+3</code></pre>
+
+
+
+<p class="has-medium-font-size">We can also define a method <strong>toString</strong> on Size type to print the exact value of enum . See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type Size int
+const (
+    small = Size(iota)
+    medium
+    large
+    extraLarge
+)
+func main() {
+    var m Size = 1
+    m.toString()
+}
+func (s Size) toString() {
+    switch s {
+    case small:
+        fmt.Println("Small")
+    case medium:
+        fmt.Println("Medium")
+    case large:
+        fmt.Println("Large")
+    case extraLarge:
+        fmt.Println("Extra Large")
+    default:
+        fmt.Println("Invalid Size entry")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">medium</code></pre>
+
+
+
+<p class="has-medium-font-size">We have defined a <strong>toString </strong>method for the <strong>Size</strong> type. It can be used to the print the string value of the constant of Size type.</p>
+<p>The post <a href="https://golangbyexamples.com/enum-in-golang/">&lt;strong&gt;Enum in Golang&lt;/strong&gt;</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/enum-in-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9981</post-id>	</item>
+		<item>
+		<title>Sort a slice of Int in Ascending and Descending order in  Go (Golang)</title>
+		<link>https://golangbyexamples.com/sort-slice-asc-desc-golang/</link>
+					<comments>https://golangbyexamples.com/sort-slice-asc-desc-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2022 17:13:49 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=9648</guid>
+
+					<description><![CDATA[<p>Sort a slice in Ascending order sort.Ints package of going can be used to sort a full slice or a part of the slice. It is going to sort the string into...</p>
+<p>The post <a href="https://golangbyexamples.com/sort-slice-asc-desc-golang/">Sort a slice of Int in Ascending and Descending order in  Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong>Sort a slice in Ascending order</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>sort.Ints</strong> package of going can be used to sort a full slice or a part of the slice. It is going to sort the string into Ascending order.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the method</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://pkg.go.dev/sort#Ints">https://pkg.go.dev/sort#Ints</a></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Ints(x []int)</code></pre>
+
+
+
+<p class="has-medium-font-size">It takes a slice &#8216;x&#8217; as an argument and sorts the slice &#8216;x&#8217; in place.</p>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+
+	nums := []int{3, 4, 2, 1}
+	fmt.Printf("Before: %v", nums)
+	sort.Ints(nums)
+	fmt.Printf("\nAfter: %v", nums)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Before: [3 4 2 1]
+After: [1 2 3 4]</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Sort a slice in Descending order</strong></h1>
+
+
+
+<p class="has-medium-font-size">To sort a slice in descending order we will use <strong>Slice</strong> method of <strong>sort</strong> pacakge</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://pkg.go.dev/sort#Slice">https://pkg.go.dev/sort#Slice</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the method</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Slice(x any, less func(i, j int) bool)</code></pre>
+
+
+
+<p class="has-medium-font-size">So this function takes two arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>x any</strong> &#8211; any is nothing here but an empty interface <a href="https://pkg.go.dev/builtin#any">https://pkg.go.dev/builtin#any</a></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>less func(i, j int) </strong>&#8211; This function is nothing but a comparator function</li></ul>
+
+
+
+<p class="has-medium-font-size">We can use this comparator function to decide the descending order of the elements in the slice. Below is an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+
+	nums := []int{3, 4, 2, 1}
+	fmt.Printf("Before: %v", nums)
+	sort.Slice(nums, func(i, j int) bool {
+		return nums[i] > nums[j]
+	})
+	fmt.Printf("\nAfter: %v", nums)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Before: [3 4 2 1]
+After: [4 3 2 1]</code></pre>
+
+
+
+<p class="has-medium-font-size">As a matter of fact, you can use <strong>sort.Slice</strong> method to also sort a slice in descending order. Below is an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+
+	nums := []int{3, 4, 2, 1}
+	fmt.Printf("Before: %v", nums)
+	sort.Slice(nums, func(i, j int) bool {
+		return nums[i] < nums[j]
+	})
+	fmt.Printf("\nAfter: %v", nums)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Before: [3 4 2 1]
+After: [1 2 3 4]</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you -</p>
+
+
+
+<p><a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our system design tutorial series <a href="https://techbyexample.com/system-design-questions/">System Design Questions</a></p>
+<p>The post <a href="https://golangbyexamples.com/sort-slice-asc-desc-golang/">Sort a slice of Int in Ascending and Descending order in  Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/sort-slice-asc-desc-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9648</post-id>	</item>
+	</channel>
+</rss>

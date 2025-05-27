@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>log e Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/log-e/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/log-e/</link>
+	<description></description>
+	<lastBuildDate>Sat, 28 Mar 2020 14:05:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>log e Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/log-e/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Log of number in Go (Golang)</title>
+		<link>https://golangbyexamples.com/log-of-number-go-golang/</link>
+					<comments>https://golangbyexamples.com/log-of-number-go-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 09:58:54 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[log]]></category>
+		<category><![CDATA[log 10]]></category>
+		<category><![CDATA[log 2]]></category>
+		<category><![CDATA[log e]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1850</guid>
+
+					<description><![CDATA[<p>Overview In this tutorial, we will see three types of logarithm possible Natural logarithm Binary Exponent Log (log e) Binary Log (log 2) Decimal Log (log 10) Natural logarithm math package of...</p>
+<p>The post <a href="https://golangbyexamples.com/log-of-number-go-golang/">Log of number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">In this tutorial, we will see three types of logarithm possible</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Natural logarithm</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Binary Exponent Log (log e)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Binary Log (log 2)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Decimal Log (log 10)</li></ul>
+
+
+
+<h1 class="wp-block-heading">Natural logarithm</h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Log</strong> method that can be used to get the natural logarithm of a number</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as a <strong>float64</strong> number and returns a <strong>float64</strong>. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Log(x float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Logb</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Log(±Inf) = +Inf</li><li>Log(0) = -Inf</li><li>Log(NaN) = NaN</li><li>Log(x &lt; 0) = NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Log(4)
+    fmt.Println(res)
+
+    res = math.Log(10.2)
+    fmt.Println(res)
+
+    res = math.Log(-10)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1.3862943611198906
+2.322387720290225
+NaN</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Binary Exponent Log (log e)</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of golang provides a <strong>Logb</strong> method that can be used to get the binary exponent of a number</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as a <strong>float64</strong> number and returns a <strong>float64</strong>. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Logb(x float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Logb</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Logb(±Inf) = +Inf</li><li>Logb(0) = -Inf</li><li>Logb(NaN) = NaN</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Code</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Logb(4)
+    fmt.Println(res)
+
+    res = math.Logb(10.2)
+    fmt.Println(res)
+
+    res = math.Logb(-10)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+3
+3</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Binary Log (log 2)</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of golang provides a <strong>Log2</strong> method that can be used to get the binary logarithm or log to base 2 of a number</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as a float64 number and returns a float64. </p>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Log2</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Log2</strong>(±Inf) = +Inf</li><li><strong>Log2</strong>(0) = -Inf</li><li><strong>Log2</strong>(NaN) = NaN</li><li><strong>Log2</strong>(x &lt; 0) = NaN</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Code</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Log2(4)
+    fmt.Println(res)
+
+    res = math.Log2(10.2)
+    fmt.Println(res)
+
+    res = math.Log2(-10)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+3.321928094887362
+NaN</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Decimal Log (log 10)</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of go provides a <strong>Log10</strong> method that can be used to get the decimal logarithm or log to base 10 of a number </p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as a float64 number and returns a float64. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Log10(x float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Log10</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Log10(±Inf) = +Inf</li><li>Log10(0) = -Inf</li><li>Log10(NaN) = NaN</li><li>Log10(x &lt; 0) = NaN</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Code</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Log10(100)
+    fmt.Println(res)
+
+    res = math.Log10(10)
+    fmt.Println(res)
+
+    res = math.Log10(-10)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+1
+NaN</code></pre>
+<p>The post <a href="https://golangbyexamples.com/log-of-number-go-golang/">Log of number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/log-of-number-go-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1850</post-id>	</item>
+	</channel>
+</rss>

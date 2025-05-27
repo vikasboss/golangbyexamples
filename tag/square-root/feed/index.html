@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>square root Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/square-root/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/square-root/</link>
+	<description></description>
+	<lastBuildDate>Thu, 26 Mar 2020 05:40:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>square root Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/square-root/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Square Root of a number in Go (Golang)</title>
+		<link>https://golangbyexamples.com/square-root-number-golang/</link>
+					<comments>https://golangbyexamples.com/square-root-number-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 26 Mar 2020 05:40:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[square root]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1846</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Sqrt method that can be used to get the cube root of that number. Below is the signature of the function. It takes input a...</p>
+<p>The post <a href="https://golangbyexamples.com/square-root-number-golang/">Square Root of a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Sqrt</strong> method that can be used to get the cube root of that number.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input a float and also returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Sqrt(x float64) float64</code></pre>
+
+
+
+<p>Some special cases of Sqrt function are</p>
+
+
+
+<ul class="wp-block-list"><li>Sqrt(±0) = ±0</li><li>Sqrt(±Inf) = ±Inf</li><li>Sqrt(x &lt; 0) = NaN</li><li>Sqrt(NaN) = NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	//Square root of a integer
+	res := math.Sqrt(4)
+	fmt.Println(res)
+
+	//Square root of a integer
+	res = math.Sqrt(9)
+	fmt.Println(res)
+
+	//Square Root of a float
+	res = math.Sqrt(30.33)
+	fmt.Println(res)
+
+	//Square Root of a negative number
+	res = math.Sqrt(-9)
+	fmt.Println(res)
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+3
+5.5072679252057455</code></pre>
+<p>The post <a href="https://golangbyexamples.com/square-root-number-golang/">Square Root of a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/square-root-number-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1846</post-id>	</item>
+	</channel>
+</rss>

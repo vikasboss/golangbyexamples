@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>system Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/system/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/system/</link>
+	<description></description>
+	<lastBuildDate>Mon, 13 Apr 2020 18:44:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>system Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/system/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Execute an OS/System Command in Go (Golang)</title>
+		<link>https://golangbyexamples.com/execute-os-system-command-golang/</link>
+					<comments>https://golangbyexamples.com/execute-os-system-command-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 13 Apr 2020 18:43:51 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[command]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[system]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1991</guid>
+
+					<description><![CDATA[<p>Overview os/exec package can be used to trigger any OS or system command from Go. It has two functions which can be used to achieve the same Command &#8211; Used to create...</p>
+<p>The post <a href="https://golangbyexamples.com/execute-os-system-command-golang/">Execute an OS/System Command in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>os/exec</strong> package can be used to trigger any OS or system command from Go. It has two functions which can be used to achieve the same</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Command</strong> &#8211; Used to create the cmd object</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Output</strong> &#8211; It runs the command and returns the standard output</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os/exec"
+)
+
+func main() {
+    out, err := exec.Command("pwd").Output()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println(string(out))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">It will output the location of current working directory</code></pre>
+<p>The post <a href="https://golangbyexamples.com/execute-os-system-command-golang/">Execute an OS/System Command in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/execute-os-system-command-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1991</post-id>	</item>
+	</channel>
+</rss>

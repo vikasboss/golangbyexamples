@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>timezone Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/timezone/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/timezone/</link>
+	<description></description>
+	<lastBuildDate>Fri, 08 Jan 2021 16:27:42 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>timezone Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/timezone/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Understanding time and date in Go (Golang) &#8211; Complete Guide</title>
+		<link>https://golangbyexamples.com/all-about-time-and-date-golang/</link>
+					<comments>https://golangbyexamples.com/all-about-time-and-date-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 01 Feb 2020 08:08:05 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete guide]]></category>
+		<category><![CDATA[format]]></category>
+		<category><![CDATA[parse]]></category>
+		<category><![CDATA[timezone]]></category>
+		<category><![CDATA[using]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1292</guid>
+
+					<description><![CDATA[<p>Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&#160;Golang Comprehensive Tutorial Series. Now let&#8217;s see the current tutorial....</p>
+<p>The post <a href="https://golangbyexamples.com/all-about-time-and-date-golang/">Understanding time and date in Go (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>Note:</strong> If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a>. Now let&#8217;s see the current tutorial. Below is the table of contents.</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>Time</strong> or <strong>Date</strong> is represented in Go using <strong>time.Time</strong> struct. time can be also be represented as a</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unix Time (Also known as Epoch Time)</strong> &#8211; It is the number of seconds elapsed since 00:00:00 UTC&nbsp;on 1 January 1970. This time is also known as the Unix epoch.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Structure</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>time.Time</strong> object is used to represent a specific point in time. The <strong>time.Time</strong> struct is as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Time struct {
+    // wall and ext encode the wall time seconds, wall time nanoseconds,
+    // and optional monotonic clock reading in nanoseconds.
+    wall uint64
+    ext  int64
+    //Location to represent timeZone
+    // The nil location means UTC
+    loc *Location
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can notice that every <strong>time.Time</strong> object has an associated <strong>location</strong> value which is used to determine the minute, hour, month, day and year corresponding to that time.</p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Create a new time</strong></h1>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Using time.Now()</strong></h2>
+
+
+
+<p class="has-medium-font-size">This function can be used to get the current local timestamp. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Now() Time</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Using time.Date()</strong></h2>
+
+
+
+<p class="has-medium-font-size">This function returns the time which is <strong>yyyy-mm-dd hh:mm:ss + nsec</strong> nanoseconds with the appropriate time zone corresponding to the given location. The signature of the function is:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Understanding Duration</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>duration</strong> is the time that has elapsed between two instants of time. It is represented as <strong>int64nanosecond</strong> count. So duration is nothing in Go but just a number representing time in nanoseconds. So if duration value is&nbsp; equal to <strong>1000000000 </strong>then it represents <strong>1 sec</strong> or <strong>1000 milliseconds</strong> or <strong>10000000000 nanoseconds</strong><br></p>
+
+
+
+<p class="has-medium-font-size">As an example duration between two time values 1 hour apart will be below value which is equal number of nanoseconds in 1 hour. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1 *60*60*1000*1000*1000</code></pre>
+
+
+
+<p class="has-medium-font-size">It is represented as below in the <strong>time</strong> package. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Duration int64</code></pre>
+
+
+
+<p class="has-medium-font-size">Below are some common duration which are defined in <strong>time</strong> package</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">const (
+    Nanosecond  Duration = 1
+    Microsecond          = 1000 * Nanosecond
+    Millisecond          = 1000 * Microsecond
+    Second               = 1000 * Millisecond
+    Minute               = 60 * Second
+    Hour                 = 60 * Minute
+)</code></pre>
+
+
+
+<p class="has-medium-font-size">Some of the function defined on<strong> time.Time</strong> object that returns the <strong>Duration</strong> are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>func (t Time) Sub(u Time) Duration</strong> &#8211; It returns the duration t-u </li><li><strong>func Since(t Time) Duration &#8211; </strong>It returns the duration which has elapsed since t</li><li><strong>func Until(t Time) Duration</strong> &#8211; It returns the duration until t</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Add or Subtract to a time</strong></h1>
+
+
+
+<p class="has-medium-font-size">Now that you have understood what duration , let&#8217;s see how we can add or subtract to a time instance</p>
+
+
+
+<p class="has-medium-font-size"><strong>time</strong> package in golang defines two ways of adding or subtracting to a time.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Add </strong>function &#8211; It is used to add/subtract a duration to time t. Since duration can be represented in hours, minutes, seconds, milliseconds, microseconds and nanoseconds, therefore Add function can be used to add/subtract hours, minutes, seconds, milliseconds, microseconds and nanoseconds from a time . Its signature is</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) Add(d Duration) Time</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>AddDate </strong>function &#8211; It is used to add/subtract years, months and days to time t. Its signature is </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) AddDate(years int, months int, days int) Time</code></pre>
+
+
+
+<p class="has-medium-font-size">Note: Positive values are used to add to time and negative values are used to subtract. Let&#8217;s see a working example of Add and Subtract to time.</p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Add to time </strong></h2>
+
+
+
+<p class="has-medium-font-size">Below code can be used to add to time</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    t := time.Now()
+
+    //Add 1 hours
+    newT := t.Add(time.Hour * 1)
+    fmt.Printf("Adding 1 hour\n: %s\n", newT)
+
+    //Add 15 min
+    newT = t.Add(time.Minute * 15)
+    fmt.Printf("Adding 15 minute\n: %s\n", newT)
+
+    //Add 10 sec
+    newT = t.Add(time.Second * 10)
+    fmt.Printf("Adding 10 sec\n: %s\n", newT)
+
+    //Add 100 millisecond
+    newT = t.Add(time.Millisecond * 10)
+    fmt.Printf("Adding 100 millisecond\n: %s\n", newT)
+
+    //Add 1000 microsecond
+    newT = t.Add(time.Millisecond * 10)
+    fmt.Printf("Adding 1000 microsecond\n: %s\n", newT)
+
+    //Add 10000 nanosecond
+    newT = t.Add(time.Nanosecond * 10000)
+    fmt.Printf("Adding 1000 nanosecond\n: %s\n", newT)
+
+    //Add 1 year 2 month 4 day
+    newT = t.AddDate(1, 2, 4)
+    fmt.Printf("Adding 1 year 2 month 4 day\n: %s\n", newT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Adding 1 hour:
+ 2020-02-01 02:16:35.893847 +0530 IST m=+3600.000239893
+
+Adding 15 minute:
+ 2020-02-01 01:31:35.893847 +0530 IST m=+900.000239893
+
+Adding 10 sec:
+ 2020-02-01 01:16:45.893847 +0530 IST m=+10.000239893
+
+Adding 100 millisecond:
+ 2020-02-01 01:16:35.903847 +0530 IST m=+0.010239893
+
+Adding 1000 microsecond:
+ 2020-02-01 01:16:35.903847 +0530 IST m=+0.010239893
+
+Adding 1000 nanosecond:
+ 2020-02-01 01:16:35.893857 +0530 IST m=+0.000249893
+
+Adding 1 year 2 month 4 day:
+ 2021-04-05 01:16:35.893847 +0530 IST</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Subtract to time </strong></h2>
+
+
+
+<p class="has-medium-font-size">Below code can be used to subtract to time</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    t := time.Now()
+
+    //Add 1 hours
+    newT := t.Add(-time.Hour * 1)
+    fmt.Printf("Subtracting 1 hour:\n %s\n", newT)
+
+    //Add 15 min
+    newT = t.Add(-time.Minute * 15)
+    fmt.Printf("Subtracting 15 minute:\n %s\n", newT)
+
+    //Add 10 sec
+    newT = t.Add(-time.Second * 10)
+    fmt.Printf("Subtracting 10 sec:\n %s\n", newT)
+
+    //Add 100 millisecond
+    newT = t.Add(-time.Millisecond * 10)
+    fmt.Printf("Subtracting 100 millisecond:\n %s\n", newT)
+
+    //Add 1000 microsecond
+    newT = t.Add(-time.Millisecond * 10)
+    fmt.Printf("Subtracting 1000 microsecond:\n %s\n", newT)
+
+    //Add 10000 nanosecond
+    newT = t.Add(-time.Nanosecond * 10000)
+    fmt.Printf("Subtracting 1000 nanosecond:\n %s\n", newT)
+
+    //Add 1 year 2 month 4 day
+    newT = t.AddDate(-1, -2, -4)
+    fmt.Printf("Subtracting 1 year 2 month 4 day:\n %s\n", newT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Subtracting 1 hour:
+ 2020-02-01 00:18:29.772673 +0530 IST m=-3599.999784391
+
+Subtracting 15 minute:
+ 2020-02-01 01:03:29.772673 +0530 IST m=-899.999784391
+
+Subtracting 10 sec:
+ 2020-02-01 01:18:19.772673 +0530 IST m=-9.999784391
+
+Subtracting 100 millisecond:
+ 2020-02-01 01:18:29.762673 +0530 IST m=-0.009784391
+
+Subtracting 1000 microsecond:
+ 2020-02-01 01:18:29.762673 +0530 IST m=-0.009784391
+
+Subtracting 1000 nanosecond:
+ 2020-02-01 01:18:29.772663 +0530 IST m=+0.000205609
+
+Subtracting 1 year 2 month 4 day:
+ 2018-11-27 01:18:29.772673 +0530 IST</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Time Parsing/Formatting</strong></h1>
+
+
+
+<p class="has-medium-font-size"> If you have worked with time/date formatting/parsing in other languages you might have noticed that the other languages use special placeholders for time/date formatting. For eg ruby language uses</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>%d for day</li><li>%Y for year</li></ul>
+
+
+
+<p class="has-medium-font-size">etc</p>
+
+
+
+<p class="has-medium-font-size">Golang, instead of using codes such as above, uses date and time format placeholders that look like date and time only. Go uses standard time, which is:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Mon Jan 2 15:04:05 MST 2006  (MST is GMT-0700)
+or 
+01/02 03:04:05PM '06 -0700</code></pre>
+
+
+
+<p class="has-medium-font-size"><br>So if you notice go uses </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>01 for day of the month , </li><li>02 for the month </li><li>03 for hours , </li><li>04 for minutes </li><li>05 for second </li><li>and so on </li></ul>
+
+
+
+<p class="has-medium-font-size">Below placeholder table describes the exact mapping. Go takes a more pragmatic approach where you don&#8217;t need to remember or lookup for the traditional formatting codes as in other languages</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td><strong>Type</strong></td><td><strong>Placeholder</strong></td></tr><tr><td>Day</td><td><strong>2</strong> or <strong>02</strong> or <strong>_2</strong></td></tr><tr><td>Day of Week</td><td><strong>Monday</strong> or <strong>Mon</strong></td></tr><tr><td>Month</td><td><strong>01</strong> or <strong>1</strong> or <strong>Jan</strong> or <strong>January</strong></td></tr><tr><td>Year</td><td><strong>2006</strong> or <strong>06</strong></td></tr><tr><td>Hour</td><td><strong>03</strong> or <strong>3 </strong>or <strong>15</strong></td></tr><tr><td>Minutes</td><td><strong>04</strong> or <strong>4</strong></td></tr><tr><td>Seconds</td><td><strong>05</strong> or <strong>5</strong></td></tr><tr><td>Milli Seconds&nbsp; (ms)</td><td><strong>.000&nbsp; &nbsp; &nbsp; &nbsp; </strong>//Trailing zero will be includedor<strong> .999 </strong>&nbsp; //Trailing zero will be omitted</td></tr><tr><td>Micro Seconds (μs)</td><td><strong>.000000&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </strong>//Trailing zero will be includedor <strong>.999999</strong>&nbsp; &nbsp; &nbsp; &nbsp; //Trailing zero will be omitted</td></tr><tr><td>Nano Seconds (ns)</td><td><strong>.000000000&nbsp; &nbsp; &nbsp; &nbsp; </strong>//Trailing zero will be includedor <strong>.999999999 </strong> //Trailing zero will be omitted</td></tr><tr><td>am/pm</td><td><strong>PM</strong> or <strong>pm</strong></td></tr><tr><td>Timezone</td><td><strong>MST</strong></td></tr><tr><td>Timezone offset</td><td><strong> Z0700 </strong>or<strong> Z070000</strong> or <strong>Z07</strong> or <strong>Z07:00</strong> or <strong>Z07:00:00</strong>&nbsp; or <strong>-0700</strong> or&nbsp; <strong>-070000</strong> or <strong>-07</strong> or <strong>-07:00</strong> or <strong>-07:00:00</strong></td></tr></tbody></table></figure>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Time Parse Example</strong></h2>
+
+
+
+<p class="has-medium-font-size">Now coming back to <strong>time.Parse</strong>. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">func Parse(layout, value string) (Time, error)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>time.Parse</strong> function takes in two arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First argument is the layout consisting of time format placeholder</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Second argument is the actual formatted string representing a time.</li></ul>
+
+
+
+<p class="has-medium-font-size">The way you have to go about this is to make sure that the layout string (first argument ) matches the string representation (second argument) of the time you want to parse into time.Time. For parsing</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For parsing <strong>2020-01-29</strong>, layout string should be <strong>06-01-02 </strong>or<strong> 2006-01-02</strong> or something which maps correctly based on above placeholder table.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Similarly for parsing <strong>&#8220;2020-Jan-29 Wednesday 12:19:25&#8221;</strong> the layout string can be <strong>&#8220;2006-Jan-02 Monday 03:04:05&#8221;</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Below are the working Code Examples of <strong>time.Parse(). </strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    //Parse YYYY-MM-DD
+    timeT, _ := time.Parse("2006-01-02", "2020-01-29")
+    fmt.Println(timeT)
+
+    //Parse YY-MM-DD
+    timeT, _ = time.Parse("06-01-02", "20-01-29")
+    fmt.Println(timeT)
+
+    //Parse YYYY-#{MonthName}-DD
+    timeT, _ = time.Parse("2006-Jan-02", "2020-Jan-29")
+    fmt.Println(timeT)
+
+    //Parse YYYY-#{MonthName}-DD WeekDay HH:MM:SS
+    timeT, _ = time.Parse("2006-Jan-02 Monday 03:04:05", "2020-Jan-29 Wednesday 12:19:25")
+    fmt.Println(timeT)
+
+    //Parse YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset
+    timeT, _ = time.Parse("2006-Jan-02 Monday 03:04:05 PM MST -07:00", "2020-Jan-29 Wednesday 12:19:25 AM IST +05:30")
+    fmt.Println(timeT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2020-01-29 00:00:00 +0000 UTC
+2020-01-29 00:00:00 +0000 UTC
+2020-01-29 00:00:00 +0000 UTC
+2020-01-29 12:19:25 +0000 UTC
+2020-01-29 00:19:25 +0530 IST</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Time Formatting Example</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>time.Format </strong>function can be used to format time to a string representation. The signature of the function is </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) Format(layout string)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see some time format code examples</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    now := time.Now()
+    
+    //Format YYYY-MM-DD
+    fmt.Printf("YYYY-MM-DD: %s\n", now.Format("2006-01-02"))
+
+    //Format YY-MM-DD
+    fmt.Printf("YY-MM-DD: %s\n", now.Format("06-01-02"))
+
+    //Format YYYY-#{MonthName}-DD
+    fmt.Printf("YYYY-#{MonthName}-DD: %s\n", now.Format("2006-Jan-02"))
+
+    //Format HH:MM:SS
+    fmt.Printf("HH:MM:SS: %s\n", now.Format("03:04:05"))
+
+    //Format HH:MM:SS Millisecond
+    fmt.Printf("HH:MM:SS Millisecond: %s\n", now.Format("03:04:05 .999"))
+
+    //Format YYYY-#{MonthName}-DD WeekDay HH:MM:SS
+    fmt.Printf("YYYY-#{MonthName}-DD WeekDay HH:MM:SS: %s\n", now.Format("2006-Jan-02 Monday 03:04:05"))
+
+    //Format YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset
+    fmt.Printf("YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset: %s\n", now.Format("2006-Jan-02 Monday 03:04:05 PM MST -07:00"))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">YYYY-MM-DD: 2020-01-25
+YY-MM-DD: 20-01-25
+YYYY-#{MonthName}-DD: 2020-Jan-25
+HH:MM:SS: 11:14:16
+HH:MM:SS Millisecond: 11:14:16 .213
+YYYY-#{MonthName}-DD WeekDay HH:MM:SS: 2020-Jan-25 Saturday 11:14:16
+YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset: 2020-Jan-25 Saturday 11:14:16 PM IST +05:30</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Time Diff</strong></h1>
+
+
+
+<p class="has-medium-font-size"> <strong>time</strong> package has a method <strong>Sub</strong> which can be used to get the difference between two different time values. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) Sub(u Time) Duration</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">currentTime := time.Now()
+oldTime := time.Date(2020, 1, 2, 0, 0, 0, 0, time.UTC)
+diff := currentTime.Sub(oldTime)</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Time Conversion </strong></h1>
+
+
+
+<p class="has-medium-font-size">Below code shows conversion of </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>time.Time to Unix Timestamp</li><li>Unix Timestamp to time.Time</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    tNow := time.Now()
+
+    //time.Time to Unix Timestamp
+    tUnix := tNow.Unix()
+    fmt.Printf("timeUnix %d\n", tUnix)
+
+    //Unix Timestamp to time.Time
+    timeT := time.Unix(tUnix, 0)
+    fmt.Printf("time.Time: %s\n", timeT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">timeUnix 1257894000
+time.Time: 2009-11-10 23:00:00 +0000 UTC</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Convert time between different timezones</strong></h2>
+
+
+
+<p class="has-medium-font-size">The <strong>In</strong> function can be used to change the <strong>location</strong> associated with a particular <strong>time.Time</strong> object. Whenever the <strong>In</strong> function is called on any <strong>time.Time</strong> object (say t)&nbsp; then, </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A copy of <strong>t</strong> is created representing the same time instant.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>t&#8217;s location is set to the location passed to In function for display purposes</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>t</strong> is returned back</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see the below working code which can be used to change the location value associated with a particular time.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    now := time.Now()
+
+    loc, _ := time.LoadLocation("UTC")
+    fmt.Printf("UTC Time: %s\n", now.In(loc))
+   
+    loc, _ = time.LoadLocation("Europe/Berlin")
+    fmt.Printf("Berlin Time: %s\n", now.In(loc))
+
+    loc, _ = time.LoadLocation("America/New_York")
+    fmt.Printf("New York Time: %s\n", now.In(loc))
+
+    loc, _ = time.LoadLocation("Asia/Dubai")
+    fmt.Printf("Dubai Time: %s\n", now.In(loc))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">UTC Time: 2020-01-31 18:09:41.705858 +0000 UTC
+Berlin Time: 2020-01-31 19:09:41.705858 +0100 CET
+New York Time: 2020-01-31 13:09:41.705858 -0500 EST
+Dubai Time: 2020-01-31 22:09:41.705858 +0400 +04</code></pre>
+<p>The post <a href="https://golangbyexamples.com/all-about-time-and-date-golang/">Understanding time and date in Go (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/all-about-time-and-date-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1292</post-id>	</item>
+		<item>
+		<title>Get current time and date of different timezones in Go (Golang)</title>
+		<link>https://golangbyexamples.com/get-current-time-and-date-of-different-timezones-golang/</link>
+					<comments>https://golangbyexamples.com/get-current-time-and-date-of-different-timezones-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 31 Jan 2020 17:35:01 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[timezone]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1261</guid>
+
+					<description><![CDATA[<p>time package has a LoadLocation(name string) function which can be used to load a location of anywhere. Once you have the location, then In function can be used to change the location...</p>
+<p>The post <a href="https://golangbyexamples.com/get-current-time-and-date-of-different-timezones-golang/">Get current time and date of different timezones in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>time</strong> package has a <strong>LoadLocation(name string)</strong> function which can be used to load a location of anywhere. Once you have the location, then <strong>In</strong> function can be used to change the location associated with a particular <strong>time.Time </strong>object.</p>
+
+
+
+<p class="has-medium-font-size">For <strong>LoadLocation(locationName)</strong> function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the locationName is &#8220;&#8221; or &#8220;UTC&#8221; , it return UTC</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the locationName is local, it returns the local Location</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Else the location name has to be specified corresponding to IANA Time Zone Database (Refer wiki- <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a>). Eg are <ul><li>Europe/Berlin</li><li>America/New_York</li><li>Asia/Dubai</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	now := time.Now()
+	loc, _ := time.LoadLocation("UTC")
+	fmt.Printf("UTC Time: %s\n", now.In(loc))
+
+	loc, _ = time.LoadLocation("Local")
+	fmt.Printf("Local Time: %s\n", now.In(loc))
+
+	loc, _ = time.LoadLocation("Europe/Berlin")
+	fmt.Printf("Berlin Time: %s\n", now.In(loc))
+
+	loc, _ = time.LoadLocation("America/New_York")
+	fmt.Printf("New York Time: %s\n", now.In(loc))
+
+	loc, _ = time.LoadLocation("Asia/Dubai")
+	fmt.Printf("Dubai Time: %s\n", now.In(loc))
+
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">UTC Time: 2020-01-31 17:36:26.481946 +0000 UTC
+Local Time: 2020-02-01 01:36:26.481946 +0800 +08
+Berlin Time: 2020-01-31 18:36:26.481946 +0100 CET
+New York Time: 2020-01-31 12:36:26.481946 -0500 EST
+Dubai Time: 2020-01-31 21:36:26.481946 +0400 +04</code></pre>
+<p>The post <a href="https://golangbyexamples.com/get-current-time-and-date-of-different-timezones-golang/">Get current time and date of different timezones in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/get-current-time-and-date-of-different-timezones-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1261</post-id>	</item>
+	</channel>
+</rss>

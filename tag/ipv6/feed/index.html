@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>ipv6 Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/ipv6/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/ipv6/</link>
+	<description></description>
+	<lastBuildDate>Tue, 04 Feb 2020 14:56:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>ipv6 Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/ipv6/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Validate an IP address in GO</title>
+		<link>https://golangbyexamples.com/validate-an-ip-address-in-go/</link>
+					<comments>https://golangbyexamples.com/validate-an-ip-address-in-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 04 Feb 2020 14:56:24 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[ipv6]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1367</guid>
+
+					<description><![CDATA[<p>ParseIP function of the net package can be used to validate an IP address. The same function can be used to validate both IPV4 and IPV6 addresses. Below is the signature of...</p>
+<p>The post <a href="https://golangbyexamples.com/validate-an-ip-address-in-go/">Validate an IP address in GO</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">ParseIP function of the net package can be used to validate an IP address. The same function can be used to validate both IPV4 and IPV6 addresses. Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func ParseIP(s string) IP</code></pre>
+
+
+
+<p><a href="https://golang.org/pkg/net/#ParseIP">https://golang.org/pkg/net/#ParseIP</a></p>
+
+
+
+<p class="has-medium-font-size">The ParseIP function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Returns nil if the given IP address is not valid</li><li>Else it creates an instance of IP struct and returns that.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working code:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "net"
+)
+
+func main() {
+    validIPV4 := "10.40.210.253"
+    
+    checkIPAddress(validIPV4)
+
+    invalidIPV4 := "1000.40.210.253"
+    checkIPAddress(invalidIPV4)
+
+    valiIPV6 := "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
+    checkIPAddress(valiIPV6)
+
+    invalidIPV6 := "2001:0db8:85a3:0000:0000:8a2e:0370:7334:3445"
+    checkIPAddress(invalidIPV6)
+}
+
+func checkIPAddress(ip string) {
+    if net.ParseIP(ip) == nil {
+        fmt.Printf("IP Address: %s - Invalid\n", ip)
+    } else {
+        fmt.Printf("IP Address: %s - Valid\n", ip)
+    }
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">IP Address: 10.40.210.253 - Valid
+IP Address: 1000.40.210.253 - Invalid
+IP Address: 2001:0db8:85a3:0000:0000:8a2e:0370:7334 - Valid
+IP Address: 2001:0db8:85a3:0000:0000:8a2e:0370:7334:3445 - Invalid</code></pre>
+<p>The post <a href="https://golangbyexamples.com/validate-an-ip-address-in-go/">Validate an IP address in GO</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/validate-an-ip-address-in-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1367</post-id>	</item>
+	</channel>
+</rss>

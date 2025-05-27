@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>mode Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/mode/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/mode/</link>
+	<description></description>
+	<lastBuildDate>Thu, 16 Apr 2020 17:02:13 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>mode Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/mode/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Get File Name, Size, Permission Bits, Mode, Modified Time in Go (Golang)</title>
+		<link>https://golangbyexamples.com/file-info-golang/</link>
+					<comments>https://golangbyexamples.com/file-info-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2020 17:02:01 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[mode]]></category>
+		<category><![CDATA[modified time]]></category>
+		<category><![CDATA[permission bits]]></category>
+		<category><![CDATA[size]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2014</guid>
+
+					<description><![CDATA[<p>Overview os.Stat() function can be used to the info of a file in go. This function returns stats which can be used to get Name of the file Size of the file...</p>
+<p>The post <a href="https://golangbyexamples.com/file-info-golang/">Get File Name, Size, Permission Bits, Mode, Modified Time in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>os.Stat()</strong> function can be used to the info of a file in go. This function returns stats which can be used to get</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Name of the file</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Size of the file in bytes</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Modified Time of the file</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Permission Bits or Mode of the file</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes in the named file and return <strong>FileInfo</strong> struct which defines utility method to get above information</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Stat(name string) (FileInfo, error)</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a file
+    file, err := os.Create("temp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+
+    //Write something to the file
+    file.WriteString("some sample text" + "\n")
+
+    //Gets stats of the file
+    stats, err := os.Stat("temp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    //Prints stats of the file
+    fmt.Printf("Permission: %s\n", stats.Mode())
+    fmt.Printf("Name: %s\n", stats.Name())
+    fmt.Printf("Size: %d\n", stats.Size())
+    fmt.Printf("Modification Time: %s\n", stats.ModTime())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Permission: -rwxrwxrwx
+Name: temp.txt
+Size: 17
+Modification Time: 2020-04-16 22:26:47.080128602 +0530 IST</code></pre>
+<p>The post <a href="https://golangbyexamples.com/file-info-golang/">Get File Name, Size, Permission Bits, Mode, Modified Time in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/file-info-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2014</post-id>	</item>
+	</channel>
+</rss>

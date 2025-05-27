@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>class Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/class/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/class/</link>
+	<description></description>
+	<lastBuildDate>Tue, 12 Nov 2019 18:46:41 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>class Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/class/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Abstract Class in GO: Complete Guide</title>
+		<link>https://golangbyexamples.com/go-abstract-class/</link>
+					<comments>https://golangbyexamples.com/go-abstract-class/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 18 Aug 2019 15:02:35 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[abstract]]></category>
+		<category><![CDATA[abstract class]]></category>
+		<category><![CDATA[class]]></category>
+		<category><![CDATA[complete]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[guide]]></category>
+		<category><![CDATA[oop]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=203</guid>
+
+					<description><![CDATA[<p>Go Interface doesn&#8217;t have fields and also it doesn&#8217;t allow the definition of methods inside it. Any type needs to implements all methods of interface to become of that interface type. There...</p>
+<p>The post <a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Go Interface doesn&#8217;t have fields and also it doesn&#8217;t allow the definition of methods inside it. Any type needs to implements all methods of interface to become of that interface type. There are use cases where it is useful to have a default implementation of a method and also default fields in GO. Before understanding how to do it lets first understand the requirements of an abstract class:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Abstract class should have default fields</li><li> Abstract class should have the default method</li><li>It should not be possible to create a direct instance of the abstract class</li></ol>
+
+
+
+<p class="has-medium-font-size">We will use a combination of a <strong>interface (abstract interface)</strong> and <strong>struct (abstract concrete type).</strong> Together they can provide the functionalities of an abstract class. See the below program:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common()
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+}
+
+func (a *alpha) common() {
+    fmt.Println("common called")
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("name is %s\n", b.name)
+    b.common()
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.work()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">work called
+name is test
+common called</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created an abstract interface <strong>iAlpha</strong>, an abstract concrete struct <strong>alpha, </strong>and an implementor struct <strong>beta</strong></li><li><strong>alpha </strong>struct is embedded in <strong>beta </strong>struct</li><li>The beta struct is able to access default field <strong>&#8220;name&#8221;</strong></li><li>The beta struct is able to access the default method <strong>&#8220;common&#8221;</strong></li><li>It is not able to create a direct instance of <strong>iAlpha </strong> as <strong>alpha</strong> struct only implement only one of the method of <strong>iAlpha.</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">So it fulfills all three requirements but there is also one limitation of the above method. It is not possible to call the &#8220;<strong>work</strong>&#8221; method from <strong>&#8220;common&#8221; </strong>method of alpha. Basically there is no way to call an undefined method of the abstract interface from default methods of an abstract concrete type. There is one way to fix it, though. See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common()
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+    work func()
+}
+
+func (a *alpha) common() {
+    fmt.Println("common called")
+    a.work()
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("name is %s\n", b.name)
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.alpha.work = b.work
+    b.common()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">common called
+work called
+name is test</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created a new field&nbsp;<strong>&#8220;work&#8221; </strong>of type func in alpha</li><li>We assigned alpha&#8217;s <strong>&#8220;work&#8221; </strong>method to beta <strong>&#8220;work&#8221; </strong>method</li></ul>
+
+
+
+<p class="has-medium-font-size">The only problem with the above program is that it is possible to create a direct instantiation of <strong>alpha</strong> struct and by providing the definition of <strong>work</strong> method, an instance of type <strong>iAlpha </strong>is created. This violates point 3 of the above Abstract class requirement as without creating our own new type we are able to create a type of <strong>iAlpha. </strong>Let&#8217;s try to fix this problem. The below program additionally also solves the problem where it was not possible to call the undefined methods from default methods.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common(iAlpha)
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+}
+
+func (a *alpha) common(i iAlpha) {
+    fmt.Println("common called")
+    i.work()
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("Name is %s\n", b.name)
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.common(b)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">common called
+work called
+Name is test</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li> All the default methods will accept the first argument of interface type <strong>iAlpha. </strong>All the undefined methods of <strong>alpha </strong>struct will be called using this argument from default methods.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion:</strong> We can see in the above program that we are able to fulfill all three requirements of an abstract class. This is one of the ways to simulate abstract class in GO.</p>
+<p>The post <a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-abstract-class/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">203</post-id>	</item>
+	</channel>
+</rss>

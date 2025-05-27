@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>heapsort Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/heapsort/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/heapsort/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 11:16:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>heapsort Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/heapsort/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>HeapSort in Golang</title>
+		<link>https://golangbyexamples.com/heapsort-in-golang/</link>
+					<comments>https://golangbyexamples.com/heapsort-in-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 27 Dec 2019 11:13:57 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[heapsort]]></category>
+		<category><![CDATA[heapsort in go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=996</guid>
+
+					<description><![CDATA[<p>Introduction HeapSort is a comparison-based sorting algorithm that uses the Heap Data Structure. Please refer to this link for more information about Heap &#8211;https://golangbyexamples.com/heap-in-golang/ We demonstrate the heapsort in this article using...</p>
+<p>The post <a href="https://golangbyexamples.com/heapsort-in-golang/">HeapSort in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Introduction</strong></h1>
+
+
+
+<p class="has-medium-font-size">HeapSort is a comparison-based sorting algorithm that uses the Heap Data Structure. Please refer to this link for more information about Heap &#8211;<a href="https://golangbyexamples.com/heap-in-golang/">https://golangbyexamples.com/heap-in-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">We demonstrate the heapsort in this article using min-heap. The same can be achieved using max heap as well. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Left Child – 2*i + 1</li><li>Right Child – 2*i + 2</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is a representation of a minheap</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="201" height="191" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/12/MinHeap-Example-1.png?resize=201%2C191&#038;ssl=1" alt="" class="wp-image-845" data-recalc-dims="1"/></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Steps for HeapSort:</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Build minheap. After the minheap is built, the first element becomes the smallest</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Move the first element to the last in the array. Call heapify again with size-1. Repeat it for the size of the array</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The final array is sorted from largest to smallest</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type minheap struct {
+    arr []int
+}
+
+func newMinHeap(arr []int) *minheap {
+    minheap := &minheap{
+        arr: arr,
+    }
+    return minheap
+}
+
+func (m *minheap) leftchildIndex(index int) int {
+    return 2*index + 1
+}
+
+func (m *minheap) rightchildIndex(index int) int {
+    return 2*index + 2
+}
+
+func (m *minheap) swap(first, second int) {
+    temp := m.arr[first]
+    m.arr[first] = m.arr[second]
+    m.arr[second] = temp
+}
+
+func (m *minheap) leaf(index int, size int) bool {
+    if index >= (size/2) && index <= size {
+        return true
+    }
+    return false
+}
+
+func (m *minheap) downHeapify(current int, size int) {
+    if m.leaf(current, size) {
+        return
+    }
+    smallest := current
+    leftChildIndex := m.leftchildIndex(current)
+    rightRightIndex := m.rightchildIndex(current)
+    if leftChildIndex < size &#038;&#038; m.arr[leftChildIndex] < m.arr[smallest] {
+        smallest = leftChildIndex
+    }
+    if rightRightIndex < size &#038;&#038; m.arr[rightRightIndex] < m.arr[smallest] {
+        smallest = rightRightIndex
+    }
+    if smallest != current {
+        m.swap(current, smallest)
+        m.downHeapify(smallest, size)
+    }
+    return
+}
+
+func (m *minheap) buildMinHeap(size int) {
+    for index := ((size / 2) - 1); index >= 0; index-- {
+        m.downHeapify(index, size)
+    }
+}
+
+func (m *minheap) sort(size int) {
+    m.buildMinHeap(size)
+    for i := size - 1; i > 0; i-- {
+        // Move current root to end
+        m.swap(0, i)
+        m.downHeapify(0, i)
+    }
+}
+
+func (m *minheap) print() {
+    for _, val := range m.arr {
+        fmt.Println(val)
+    }
+}
+
+func main() {
+    inputArray := []int{6, 5, 3, 7, 2, 8, -1}
+    minHeap := newMinHeap(inputArray)
+    minHeap.sort(len(inputArray))
+    minHeap.print()
+    fmt.Scanln()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8
+7
+6
+5
+3
+2
+-1</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Time Complexity</strong></h1>
+
+
+
+<p class="has-medium-font-size">Time Complexity of Heap Sort is  O(nLogn).</p>
+<p>The post <a href="https://golangbyexamples.com/heapsort-in-golang/">HeapSort in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/heapsort-in-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">996</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>power Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/power/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/power/</link>
+	<description></description>
+	<lastBuildDate>Sat, 28 Mar 2020 10:23:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>power Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/power/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Calculate x^y &#8211; Pow() in Go (Golang)</title>
+		<link>https://golangbyexamples.com/power-golang/</link>
+					<comments>https://golangbyexamples.com/power-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 10:23:24 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[power]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1870</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Pow method that can be used to calculate x to the power y. Below is the signature of the function. It takes input as two...</p>
+<p>The post <a href="https://golangbyexamples.com/power-golang/">Calculate x^y &#8211; Pow() in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Pow</strong> method that can be used to calculate x to the power y. </p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as two float arguments and returns a float</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Pow(x, y float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">The same function can also be used to calculate the square or cube of a number. Just pass the second argument y as 2 in case of <strong>square</strong> and 3 in case of <strong>cube</strong></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    //Power for integers
+    res := math.Pow(2, 10)
+    fmt.Println(res)
+
+    //Power for float
+    res = math.Pow(1.5, 2)
+    fmt.Println(res)
+
+    //Anything to power 0 is 1
+    res = math.Pow(3, 0)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">1024
+2.25
+1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/power-golang/">Calculate x^y &#8211; Pow() in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/power-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1870</post-id>	</item>
+	</channel>
+</rss>

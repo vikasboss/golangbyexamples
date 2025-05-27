@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>empty Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/empty/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/empty/</link>
+	<description></description>
+	<lastBuildDate>Sun, 23 Feb 2020 18:30:04 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>empty Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/empty/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Create an empty file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/create-empty-file-go/</link>
+					<comments>https://golangbyexamples.com/create-empty-file-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 21 Feb 2020 15:06:25 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[empty]]></category>
+		<category><![CDATA[file]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1415</guid>
+
+					<description><![CDATA[<p>Overview os.Create() can be used to create an empty file in go. The signature of the function is Basically this function Create a named file with mode 0666 It truncates the file...</p>
+<p>The post <a href="https://golangbyexamples.com/create-empty-file-go/">Create an empty file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>os.Create() </strong>can be used to create an empty file in go. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Create(name string) (*File, error) </code></pre>
+
+
+
+<p class="has-medium-font-size">Basically this function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Create a named file with mode 0666</li><li>It truncates the file if it already exits</li><li>In case of path issue, it returns a Path error</li><li>It returns a file descriptor which can be used for both reading and write</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    file, err := os.Create("emptyFile.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong>:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Check the contents of the file. It will be empty</code></pre>
+<p>The post <a href="https://golangbyexamples.com/create-empty-file-go/">Create an empty file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/create-empty-file-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1415</post-id>	</item>
+		<item>
+		<title>Touch a file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/touch-file-golang/</link>
+					<comments>https://golangbyexamples.com/touch-file-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Jan 2020 18:33:03 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[empty]]></category>
+		<category><![CDATA[file]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1176</guid>
+
+					<description><![CDATA[<p>Touching a file means Create an empty file if the file doesn&#8217;t already exist If the file already exists then update the modified time of the file. Output: When running the first...</p>
+<p>The post <a href="https://golangbyexamples.com/touch-file-golang/">Touch a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Touching a file means</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Create an empty file if the file doesn&#8217;t already exist</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the file already exists then update the modified time of the file.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+    "time"
+)
+
+func main() {
+    fileName := "temp.txt"
+    _, err := os.Stat(fileName)
+    if os.IsNotExist(err) {
+        file, err := os.Create("temp.txt")
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer file.Close()
+    } else {
+        currentTime := time.Now().Local()
+        err = os.Chtimes(fileName, currentTime, currentTime)
+        if err != nil {
+            fmt.Println(err)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">When running the first time it will create the file. After the first time, it will update the modified time of the file.</p>
+<p>The post <a href="https://golangbyexamples.com/touch-file-golang/">Touch a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/touch-file-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1176</post-id>	</item>
+	</channel>
+</rss>

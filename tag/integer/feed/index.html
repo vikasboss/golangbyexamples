@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>integer Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/integer/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/integer/</link>
+	<description></description>
+	<lastBuildDate>Sat, 28 Mar 2020 10:19:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>integer Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/integer/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Break number into integer and fraction parts in Go (Golang)</title>
+		<link>https://golangbyexamples.com/break-integer-fraction-part-go/</link>
+					<comments>https://golangbyexamples.com/break-integer-fraction-part-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 10:17:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[integer]]></category>
+		<category><![CDATA[math]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1864</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Modf method that can be used to break a floating-point number into integer and floating part. Please note that the integer part is also returned...</p>
+<p>The post <a href="https://golangbyexamples.com/break-integer-fraction-part-go/">Break number into integer and fraction parts in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Modf</strong> method that can be used to break a floating-point number into integer and floating part. Please note that the integer part is also returned as a float by this function.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as a float number and returns two float64. The first one is the integer part and second is the fractional part.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Modf(f float64) (int float64, frac float64)</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to note about above function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The return values <strong>int</strong> and <strong>frac</strong> add up to input <strong>f</strong></li><li><strong>int </strong>and <strong>frac</strong> has same sign a input <strong>f</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Modf</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Modf(±Inf) = ±Inf, NaN</li><li>Modf(NaN) = NaN, NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    //Contain both integer and fraction
+    integer, fraction := math.Modf(2.5)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+
+    //Contain only integer part
+    integer, fraction = math.Modf(2)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+
+    //Negative floating point number
+    integer, fraction = math.Modf(-2.5)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+
+    //Contains only fraction part
+    integer, fraction = math.Modf(0.5)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Integer: 2.000000. Fraction: 0.500000
+Integer: 2.000000. Fraction: 0.000000
+Integer: -2.000000. Fraction: -0.500000
+Integer: 0.000000. Fraction: 0.500000</code></pre>
+<p>The post <a href="https://golangbyexamples.com/break-integer-fraction-part-go/">Break number into integer and fraction parts in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/break-integer-fraction-part-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1864</post-id>	</item>
+	</channel>
+</rss>

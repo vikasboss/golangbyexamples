@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>home Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/home/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/home/</link>
+	<description></description>
+	<lastBuildDate>Fri, 17 Apr 2020 20:32:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>home Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/home/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Get Current User&#8217;s Home Directory in Go (Golang)</title>
+		<link>https://golangbyexamples.com/get-current-user-home-directory-go/</link>
+					<comments>https://golangbyexamples.com/get-current-user-home-directory-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 20:31:59 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[home]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2049</guid>
+
+					<description><![CDATA[<p>Overview &#8216;os/user&#8217; package can be used to get the current user home directory Let&#8217;s see a working code Code Output</p>
+<p>The post <a href="https://golangbyexamples.com/get-current-user-home-directory-go/">Get Current User&#8217;s Home Directory in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-large-font-size"><strong>Overview</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;os/user&#8217; </strong>package can be used to get the current user home directory</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working code</p>
+
+
+
+<p class="has-large-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os/user"
+)
+
+func main() {
+    user, err := user.Current()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    homeDirectory := user.HomeDir
+    fmt.Printf("Home Directory: %s\n", homeDirectory)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Home Directory: "some_home_directory"</code></pre>
+<p>The post <a href="https://golangbyexamples.com/get-current-user-home-directory-go/">Get Current User&#8217;s Home Directory in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/get-current-user-home-directory-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2049</post-id>	</item>
+	</channel>
+</rss>

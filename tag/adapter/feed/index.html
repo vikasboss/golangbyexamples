@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>adapter Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/adapter/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/adapter/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:37:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>adapter Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/adapter/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Adapter Design Pattern in Go (GoLang)</title>
+		<link>https://golangbyexamples.com/adapter-design-pattern-go/</link>
+					<comments>https://golangbyexamples.com/adapter-design-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 01 Nov 2019 13:50:07 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[adapter]]></category>
+		<category><![CDATA[adapter design pattern]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=334</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: This design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/adapter-design-pattern-go/">Adapter Design Pattern in Go (GoLang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction: </strong></h1>
+
+
+
+<p class="has-medium-font-size">This design pattern is a Structural Design Pattern. The patter is best understood with an example. Let&#8217;s say you have two laptops<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>MacBook Pro</li><li>Windows Laptop</li></ol>
+
+
+
+<p class="has-medium-font-size">MacBook Pro has a USB port that is <strong>square</strong> in shape and Windows have a USB port that is <strong>circular</strong> in shape. You as a client have a USB cable that is square in shape so it can only be inserted in the mac laptop. So you see the problem here</p>
+
+
+
+<p class="has-medium-font-size"><strong>Problem:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have a class (Client) that is expecting some features of an object (square USB port here), but we have another object called adaptee (Windows Laptop here) which offers the same functionality but through a different interface( circular port)</li></ul>
+
+
+
+<p class="has-medium-font-size">This is where Adapter Pattern comes into the picture. We create a class known as Adapter that will </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Adhere to the same interface which client expects ( Square USB port here)</li><li>Translate the request from the client to the adaptee in the form that adaptee expects. Basically, in our example act as an adapter that accepts USB in square port and then inserts into circular port in windows laptop.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>When to Use</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use this design pattern when the objects implement a different interface as required by the client. </li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram</strong></h1>
+
+
+
+<figure class="wp-block-image"><img fetchpriority="high" decoding="async" width="561" height="421" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-1.jpg?resize=561%2C421&#038;ssl=1" alt="" class="wp-image-469" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-1.jpg?w=561&amp;ssl=1 561w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-1.jpg?resize=300%2C225&amp;ssl=1 300w" sizes="(max-width: 561px) 100vw, 561px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the example given above</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" width="581" height="421" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-2.jpg?resize=581%2C421&#038;ssl=1" alt="" class="wp-image-470" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-2.jpg?w=581&amp;ssl=1 581w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-2.jpg?resize=300%2C217&amp;ssl=1 300w" sizes="(max-width: 581px) 100vw, 581px" data-recalc-dims="1" /></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h1>
+
+
+
+<p class="has-medium-font-size"><br>The below table represents the mapping from the UML diagram actors to actual implementation actors in code.<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Target</td><td>computer.go</td></tr><tr><td>Concrete Prototype 1</td><td>mac.go</td></tr><tr><td>Concrete Prototype 2 (Adapter)</td><td>windowsAdapter.go</td></tr><tr><td>adaptee</td><td>windows.go</td></tr><tr><td>client</td><td>client.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong>:</h1>
+
+
+
+<p class="has-medium-font-size"><strong>computer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type computer interface {
+    insertInSquarePort()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>mac.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type mac struct {
+}
+
+func (m *mac) insertInSquarePort() {
+    fmt.Println("Insert square port into mac machine")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>windowsAdapter.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type windowsAdapter struct {
+	windowMachine *windows
+}
+
+func (w *windowsAdapter) insertInSquarePort() {
+	w.windowMachine.insertInCirclePort()
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>windows.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type windows struct{}
+
+func (w *windows) insertInCirclePort() {
+    fmt.Println("Insert circle port into windows machine")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>client.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type client struct {
+}
+
+func (c *client) insertSquareUsbInComputer(com computer) {
+    com.insertInSquarePort()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    client := &client{}
+    mac := &mac{}
+    client.insertSquareUsbInComputer(mac)
+    windowsMachine := &windows{}
+    windowsMachineAdapter := &windowsAdapter{
+        windowMachine: windowsMachine,
+    }
+    client.insertSquareUsbInComputer(windowsMachineAdapter)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Insert square port into mac machine
+Insert circle port into windows machine</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/adapter-design-pattern-go/">Adapter Design Pattern in Go (GoLang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/adapter-design-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">334</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>factory Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/factory/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/factory/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:38:49 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>factory Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/factory/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Factory Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/golang-factory-design-pattern/</link>
+					<comments>https://golangbyexamples.com/golang-factory-design-pattern/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 09:33:49 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[factory]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=707</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction:&#160; Factory design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/golang-factory-design-pattern/">Factory Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Introduction:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size">Factory design pattern is a creational design pattern and it is also one of the most commonly used pattern. This pattern provides a way to hide the creation logic of the instances being created.<br>The client only interacts with a factory struct and tells the kind of instances that needs to be created. The factory class interacts with the corresponding concrete structs and returns the correct instance back.<br>In below example </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have <strong>iGun</strong> interface which defines all methods a gun should have</li><li>There is <strong>gun</strong> struct that implements the <strong>iGun</strong> interface.</li><li>Two concrete guns <strong>ak47</strong> and <strong>maverick</strong>. Both embed <strong>gun</strong> struct and hence also indirectly implement all methods of <strong>iGun</strong> and hence are of <strong>iGun</strong> type</li><li> We have a <strong>gunFactory</strong> struct which creates the gun of type <strong>ak47</strong> or <strong>maverick</strong>. </li><li>The <strong>main.go</strong> acts as a client and instead of directly interacting with <strong>ak47</strong> or <strong>maverick</strong>, it relies on <strong>gunFactory</strong> to create instances of <strong>ak47</strong> and <strong>maverick</strong></li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="320" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?resize=640%2C320&#038;ssl=1" alt="" class="wp-image-708" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?w=807&amp;ssl=1 807w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?resize=300%2C150&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?resize=768%2C384&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the example given above</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="640" height="415" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?resize=640%2C415&#038;ssl=1" alt="" class="wp-image-709" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?w=809&amp;ssl=1 809w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?resize=300%2C195&amp;ssl=1 300w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?resize=768%2C498&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping:</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Example&#8221;</strong> below</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>ProductFactory</td><td>gunFactory.go</td></tr><tr><td>iProduct</td><td>iGun.go</td></tr><tr><td>Product</td><td>gun.go</td></tr><tr><td>Concrete iProduct 1</td><td>ak47go</td></tr><tr><td>Concrete iProduct 1</td><td>maverick.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Example:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>iGun.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iGun interface {
+    setName(name string)
+    setPower(power int)
+    getName() string
+    getPower() int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>gun.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type gun struct {
+    name  string
+    power int
+}
+
+func (g *gun) setName(name string) {
+    g.name = name
+}
+
+func (g *gun) getName() string {
+    return g.name
+}
+
+func (g *gun) setPower(power int) {
+    g.power = power
+}
+
+func (g *gun) getPower() int {
+    return g.power
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>ak47.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type ak47 struct {
+    gun
+}
+
+func newAk47() iGun {
+    return &ak47{
+        gun: gun{
+            name:  "AK47 gun",
+            power: 4,
+        },
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>maverick.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type maverick struct {
+    gun
+}
+
+func newMaverick() iGun {
+    return &maverick{
+        gun: gun{
+            name:  "Maverick gun",
+            power: 5,
+        },
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>gunFactory.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func getGun(gunType string) (iGun, error) {
+    if gunType == "ak47" {
+        return newAk47(), nil
+    }
+    if gunType == "maverick" {
+        return newMaverick(), nil
+    }
+    return nil, fmt.Errorf("Wrong gun type passed")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    ak47, _ := getGun("ak47")
+    maverick, _ := getGun("maverick")
+    printDetails(ak47)
+    printDetails(maverick)
+}
+
+func printDetails(g iGun) {
+    fmt.Printf("Gun: %s", g.getName())
+    fmt.Println()
+    fmt.Printf("Power: %d", g.getPower())
+    fmt.Println()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Gun: AK47 gun
+Power: 4
+Gun: Maverick gun
+Power: 5</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type iGun interface {
+    setName(name string)
+    setPower(power int)
+    getName() string
+    getPower() int
+}
+
+type gun struct {
+    name  string
+    power int
+}
+
+func (g *gun) setName(name string) {
+    g.name = name
+}
+
+func (g *gun) getName() string {
+    return g.name
+}
+
+func (g *gun) setPower(power int) {
+    g.power = power
+}
+
+func (g *gun) getPower() int {
+    return g.power
+}
+
+type ak47 struct {
+    gun
+}
+
+func newAk47() iGun {
+    return &ak47{
+        gun: gun{
+            name:  "AK47 gun",
+            power: 4,
+        },
+    }
+}
+
+type maverick struct {
+    gun
+}
+
+func newMaverick() iGun {
+    return &maverick{
+        gun: gun{
+            name:  "Maverick gun",
+            power: 5,
+        },
+    }
+}
+
+func getGun(gunType string) (iGun, error) {
+    if gunType == "ak47" {
+        return newAk47(), nil
+    }
+    if gunType == "maverick" {
+        return newMaverick(), nil
+    }
+    return nil, fmt.Errorf("Wrong gun type passed")
+}
+
+func main() {
+    ak47, _ := getGun("ak47")
+    maverick, _ := getGun("maverick")
+    printDetails(ak47)
+    printDetails(maverick)
+}
+
+func printDetails(g iGun) {
+    fmt.Printf("Gun: %s", g.getName())
+    fmt.Println()
+    fmt.Printf("Power: %d", g.getPower())
+    fmt.Println()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Gun: AK47 gun
+Power: 4
+Gun: Maverick gun
+Power: 5</code></pre>
+<p>The post <a href="https://golangbyexamples.com/golang-factory-design-pattern/">Factory Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/golang-factory-design-pattern/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">707</post-id>	</item>
+	</channel>
+</rss>

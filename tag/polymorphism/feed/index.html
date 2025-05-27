@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>polymorphism Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/polymorphism/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/polymorphism/</link>
+	<description></description>
+	<lastBuildDate>Wed, 13 Nov 2019 16:07:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>polymorphism Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/polymorphism/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Compile Time Polymorphism in Go (Golang)</title>
+		<link>https://golangbyexamples.com/compile-time-polymorphism-go/</link>
+					<comments>https://golangbyexamples.com/compile-time-polymorphism-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 15 Oct 2019 02:27:30 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[compile]]></category>
+		<category><![CDATA[compile-polymorphism]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[polymorphism]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=273</guid>
+
+					<description><![CDATA[<p>In compile-time polymorphism, the call is resolved during compile time by the compiler. Some of the  forms for compile-time polymorphism are Method/Function Overloading: more than one method/function exists with the same name but...</p>
+<p>The post <a href="https://golangbyexamples.com/compile-time-polymorphism-go/">Compile Time Polymorphism in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In compile-time polymorphism, the call is resolved during compile time by the compiler. Some of the  forms for compile-time polymorphism are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Method/Function Overloading</strong>: more than one method/function exists with the same name but with different signatures or possibly different return types</li><li><strong>Operator Overloading</strong>: the Same operator is used for operating on different data types</li></ul>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t support Method Overloading. For example, see below program demonstrating that go doesn&#8217;t support method overloading.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type maths struct{}
+
+func (m *maths) add(a, b int) int {
+    return a + b
+}
+
+func (m *maths) add(a, b, c int) int {
+    return a + b + c
+}
+
+func main() {
+   m := &maths{}
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">(*maths).add redeclared in this block
+        previous declaration at ./main.go:5:6</code></pre>
+
+
+
+<p class="has-medium-font-size">Go also doesn&#8217;t support operator overloading. Reason for this is stated in faq of go &#8211;&nbsp;<a href="https://golang.org/doc/faq#overloading">https://golang.org/doc/faq#overloading</a></p>
+
+
+
+<p class="has-background has-very-light-gray-background-color">Method dispatch is simplified if it doesn&#8217;t need to do type matching as well. Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. Matching only by name and requiring consistency in the types was a major simplifying decision in Go&#8217;s type system.<br>
+Regarding operator overloading, it seems more a convenience than an absolute requirement. Again, things are simpler without it.</p>
+
+
+
+<p class="has-medium-font-size">Now the question is there any alternative to do method overloading in GO. This is where <strong>Variadic function</strong>&nbsp;in go comes into the picture. See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type maths struct{}
+
+func (m *maths) add(numbers ...int) int {
+    result := 0
+    for _, num := range numbers {
+        result += num
+    }
+    return result
+}
+
+func main() {
+    m := &maths{}
+
+
+    fmt.Printf("Result: %d\n", m.add(2, 3))
+    fmt.Printf("Result: %d\n", m.add(2, 3, 4))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Result: 5
+Result: 9</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion</strong>:</p>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t directly support method/function/operator overloading but variadic function provides a way of achieving the same with increased code complexity.</p>
+<p>The post <a href="https://golangbyexamples.com/compile-time-polymorphism-go/">Compile Time Polymorphism in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/compile-time-polymorphism-go/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">273</post-id>	</item>
+	</channel>
+</rss>

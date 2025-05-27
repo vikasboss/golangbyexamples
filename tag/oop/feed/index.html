@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>oop Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/oop/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/oop/</link>
+	<description></description>
+	<lastBuildDate>Wed, 20 Jan 2021 05:24:11 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>oop Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/oop/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Encapsulation in Go (Golang)</title>
+		<link>https://golangbyexamples.com/encapsulation-in-go/</link>
+					<comments>https://golangbyexamples.com/encapsulation-in-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 23 Nov 2019 08:12:35 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[encapsulation]]></category>
+		<category><![CDATA[encapsulation in golang]]></category>
+		<category><![CDATA[object oriented go]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[oop in go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=646</guid>
+
+					<description><![CDATA[<p>Golang provides encapsulation at the package level. Go doesn&#8217;t have any public,&#160; private or protected keyword. The only mechanism to control the visibility is using the capitalized and non-capitalized formats Capitalized Identifiers...</p>
+<p>The post <a href="https://golangbyexamples.com/encapsulation-in-go/">Encapsulation in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Golang provides encapsulation at the package level. Go doesn&#8217;t have any public,&nbsp; private or protected keyword. The only mechanism to control the visibility is using the capitalized and non-capitalized formats<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Capitalized Identifiers</strong> are exported. The capital letter indicates that this is an exported identifier. </li><li><strong>Non-capitalized identifiers </strong>are not exported.&nbsp;The lowercase indicates that the identifier is not exported and will only be accessed from within the same package. </li></ul>
+
+
+
+<p class="has-medium-font-size">There are five kinds of identifier which can be exported or non-exported</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Structure</li><li>Structure&#8217;s Method</li><li>Structure&#8217;s Field</li><li>Function</li><li>Variable</li></ol>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example that shows exporting and non-exporting of all the above identifiers. See <strong>data.go</strong> below. The package is <strong>model</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Structure<ul><li>Struct <strong>Person</strong> is exported</li><li>Struct <strong>company</strong> is non-exported</li></ul></li><li>Structure&#8217;s Method<ul><li><strong>Person</strong> Struct&#8217;s Method <strong>GetAge()</strong> is exported</li><li><strong>Person</strong> Struct&#8217;s Method <strong>getName()</strong> is not exported</li></ul></li><li>Structure&#8217;s Field <ul><li><strong>Person</strong> struct field <strong>Name</strong> is exported</li><li><strong>Person</strong> struct field <strong>age</strong> is not exported</li></ul></li><li>Function<ul><li>Function <strong>GetPerson()</strong> is exported</li><li>Function <strong>getCompanyName()</strong> is not exported</li></ul></li><li>Variables<ul><li>Variable  <strong>CompanyName</strong> is exported</li><li>Variable <strong>companyLocation</strong> is not exported</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>data.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package model
+
+import "fmt"
+
+var (
+    //CompanyName represents the company name
+    CompanyName     = "test"
+    companyLocation = "somecity"
+)
+
+//Person struct
+type Person struct {
+    Name string
+    age  int
+}
+
+//GetAge of person
+func (p *Person) GetAge() int {
+    return p.age
+}
+
+func (p *Person) getName() string {
+    return p.Name
+}
+
+type company struct {
+}
+
+//GetPerson get the person object
+func GetPerson() *Person {
+    p := &Person{
+        Name: "test",
+        age:  21,
+    }
+    fmt.Println("Model Package:")
+    fmt.Println(p.Name)
+    fmt.Println(p.age)
+    return p
+}
+
+func getCompanyName() string {
+    return CompanyName
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s write a file <strong>test.go</strong> in <strong>model</strong> package. See below.<br></p>
+
+
+
+<p class="has-medium-font-size"><strong>test.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package model
+
+import "fmt"
+
+//Test function
+func Test() {
+    //STRUCTURE IDENTIFIER
+    p := &Person{
+        Name: "test",
+        age:  21,
+    }
+    fmt.Println(p)
+    c := &company{}
+    fmt.Println(c)
+   
+    //STRUCTURE'S METHOD
+    fmt.Println(p.GetAge())
+    fmt.Println(p.getName())
+    
+    //STRUCTURE'S FIELDS
+    fmt.Println(p.Name)
+    fmt.Println(p.age)
+    
+    //FUNCTION
+    person2 := GetPerson()
+    fmt.Println(person2)
+    companyName := getCompanyName()
+    fmt.Println(companyName)
+    
+    //VARIBLES
+    fmt.Println(companyLocation)
+    fmt.Println(CompanyName)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">On running this file, it is able to access all exported and unexported fields in <strong>data.go</strong> as both lies in the same package model. There is no compilation error and it gives below output</p>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">&{test 21}
+&{}
+21
+test
+test
+21
+Model Package:
+test
+21
+&{test 21}
+test
+somecity
+test</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s move the above file <strong>test.go</strong> to a different package named <strong>view. </strong>Now notice the output on running &#8216;go build&#8217;. It gives compilation errors. All the compilation error are due to not able to refer to unexported fields</p>
+
+
+
+<p class="has-medium-font-size"><strong>test.go </strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package view
+
+import "fmt"
+
+//Test function
+func Test() {
+    //STRUCTURE IDENTIFIER
+    p := &model.Person{
+        Name: "test",
+        age:  21,
+    }
+    fmt.Println(p)
+    c := &model.company{}
+    fmt.Println(c)
+    
+    //STRUCTURE'S METHOD
+    fmt.Println(p.GetAge())
+    fmt.Println(p.getName())
+    
+    //STRUCTURE'S FIELDS
+    fmt.Println(p.Name)
+    fmt.Println(p.age)
+    
+    //FUNCTION
+    person2 := model.GetPerson()
+    fmt.Println(person2)
+    companyName := model.getCompanyName()
+    fmt.Println(companyName)
+    
+    //VARIBLES
+    fmt.Println(model.companyLocation)
+    fmt.Println(model.CompanyName)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">test.go:13:3: unknown field 'age' in struct literal of type model.Person
+test.go:17:8: cannot refer to unexported name model.company
+test.go:17:8: undefined: model.company
+test.go:22:15: p.getName undefined (cannot refer to unexported field or method model.(*Person).getName)
+test.go:26:15: p.age undefined (cannot refer to unexported field or method age)
+test.go:31:17: cannot refer to unexported name model.getCompanyName
+test.go:31:17: undefined: model.getCompanyName
+test.go:35:14: cannot refer to unexported name model.companyLocation
+test.go:35:14: undefined: model.companyLocation</code></pre>
+<p>The post <a href="https://golangbyexamples.com/encapsulation-in-go/">Encapsulation in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/encapsulation-in-go/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">646</post-id>	</item>
+		<item>
+		<title>Compile Time Polymorphism in Go (Golang)</title>
+		<link>https://golangbyexamples.com/compile-time-polymorphism-go/</link>
+					<comments>https://golangbyexamples.com/compile-time-polymorphism-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 15 Oct 2019 02:27:30 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[compile]]></category>
+		<category><![CDATA[compile-polymorphism]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[polymorphism]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=273</guid>
+
+					<description><![CDATA[<p>In compile-time polymorphism, the call is resolved during compile time by the compiler. Some of the  forms for compile-time polymorphism are Method/Function Overloading: more than one method/function exists with the same name but...</p>
+<p>The post <a href="https://golangbyexamples.com/compile-time-polymorphism-go/">Compile Time Polymorphism in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In compile-time polymorphism, the call is resolved during compile time by the compiler. Some of the  forms for compile-time polymorphism are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Method/Function Overloading</strong>: more than one method/function exists with the same name but with different signatures or possibly different return types</li><li><strong>Operator Overloading</strong>: the Same operator is used for operating on different data types</li></ul>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t support Method Overloading. For example, see below program demonstrating that go doesn&#8217;t support method overloading.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type maths struct{}
+
+func (m *maths) add(a, b int) int {
+    return a + b
+}
+
+func (m *maths) add(a, b, c int) int {
+    return a + b + c
+}
+
+func main() {
+   m := &maths{}
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">(*maths).add redeclared in this block
+        previous declaration at ./main.go:5:6</code></pre>
+
+
+
+<p class="has-medium-font-size">Go also doesn&#8217;t support operator overloading. Reason for this is stated in faq of go &#8211;&nbsp;<a href="https://golang.org/doc/faq#overloading">https://golang.org/doc/faq#overloading</a></p>
+
+
+
+<p class="has-background has-very-light-gray-background-color">Method dispatch is simplified if it doesn&#8217;t need to do type matching as well. Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. Matching only by name and requiring consistency in the types was a major simplifying decision in Go&#8217;s type system.<br>
+Regarding operator overloading, it seems more a convenience than an absolute requirement. Again, things are simpler without it.</p>
+
+
+
+<p class="has-medium-font-size">Now the question is there any alternative to do method overloading in GO. This is where <strong>Variadic function</strong>&nbsp;in go comes into the picture. See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type maths struct{}
+
+func (m *maths) add(numbers ...int) int {
+    result := 0
+    for _, num := range numbers {
+        result += num
+    }
+    return result
+}
+
+func main() {
+    m := &maths{}
+
+
+    fmt.Printf("Result: %d\n", m.add(2, 3))
+    fmt.Printf("Result: %d\n", m.add(2, 3, 4))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Result: 5
+Result: 9</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion</strong>:</p>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t directly support method/function/operator overloading but variadic function provides a way of achieving the same with increased code complexity.</p>
+<p>The post <a href="https://golangbyexamples.com/compile-time-polymorphism-go/">Compile Time Polymorphism in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/compile-time-polymorphism-go/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">273</post-id>	</item>
+		<item>
+		<title>OOP: Inheritance in GOLANG complete guide</title>
+		<link>https://golangbyexamples.com/oop-inheritance-golang-complete/</link>
+					<comments>https://golangbyexamples.com/oop-inheritance-golang-complete/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 29 Aug 2019 01:37:34 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[inheritance]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[oops]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=195</guid>
+
+					<description><![CDATA[<p>We will try to explain inheritance in GO using comparisons with inheritance in JAVA. The first thing we want to mention here is that GOLANG doesn&#8217;t have keywords such as &#8220;Extends&#8221; and...</p>
+<p>The post <a href="https://golangbyexamples.com/oop-inheritance-golang-complete/">OOP: Inheritance in GOLANG complete guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">We will try to explain inheritance in GO using comparisons with inheritance in JAVA. The first thing we want to mention here is that GOLANG doesn&#8217;t have keywords such as <strong>&#8220;Extends&#8221;</strong> and <strong>&#8220;Implements&#8221;</strong> keyword as in JAVA. Go does provide limited functionalities of &#8220;<strong>Extends</strong>&#8221; and &#8220;<strong>Implements</strong>&#8221; keyword in a different way which each having its own limitations. Before we proceed to understand inheritance in GO there are some points worth mentioning.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Go prefers composition over inheritance. It allows embedding of struct into other struct.</li><li>Go does not support type inheritance.</li></ul>
+
+
+
+<p class="has-medium-font-size">We will start with the simplest of an example of inheritance in GO. Then we will list down a limitation or missing feature. In further iterations, we will fix limitation or keep adding missing features until we have written a program which shows all properties of inheritance possible/impossible in Go. So let&#8217;s start</p>
+
+
+
+<p class="has-medium-font-size">The very basic use case of inheritance is child type should be able to access common data and methods of a parent type.&nbsp; This is done in GO via embedding. The&nbsp;base struct is embedded in child struct and base&#8217;s data and methods can directly be accessed by child struct. See below code:&nbsp; child struct is able to access the data&nbsp;<strong>&#8220;color&#8221;</strong> directly and also call the function <strong>&#8220;say()&#8221; </strong>directly.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type base struct {
+    color string
+}
+func (b *base) say() {
+    fmt.Println("Hi from say function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+    fmt.Println("The color is " + child.color)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Hi from say function
+The color is Red</code></pre>
+
+
+
+<p class="has-medium-font-size">One of the limitations of the above program is that you cannot pass the child type to a function that expects the base type as GO does not allow type inheritance. For example, the below code does not compile and gives an error &#8211; &#8220;<strong>cannot use child (type *child) as type base in argument to check&#8221;</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type base struct {
+    color string
+}
+func (b *base) say() {
+    fmt.Println("Hi from say function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func check(b base) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+    fmt.Println("The color is " + child.color)
+    check(child)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">cannot use child (type *child) as type base in argument to check</code></pre>
+
+
+
+<p class="has-medium-font-size">The above error tells basically that sub-typing is not possible in GO by just using embedding. Let&#8217;s try to fix this error. This is where GO interfaces come into the picture. See below version of the program which in addition to above functionalities also fixes this sub-typing error&nbsp;</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 3</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase interface {
+    say()
+}
+type base struct {
+    color string
+}
+func (b *base) say() {
+    fmt.Println("Hi from say function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func check(b iBase) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+    fmt.Println("The color is " + child.color)
+    check(child)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Hi from say function
+The color is Red
+Hi from say function</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, we:&nbsp;&nbsp; &nbsp;(a) Created an interface <strong>&#8220;iBase&#8221;</strong>&nbsp;which has <strong>&#8220;say&#8221;&nbsp;</strong>method&nbsp;&nbsp; &nbsp;(b) We changed the <strong>&#8220;check&#8221;&nbsp;</strong>method to accept the argument of type iBase</p>
+
+
+
+<p class="has-medium-font-size">Since base struct implements the <strong>&#8220;say&#8221;</strong> method and in turn, child struct embeds base. So the child method indirectly implements <strong>&#8220;say&#8221;</strong> method and becomes a type of <strong>&#8220;iBase&#8221;</strong>&nbsp;and that is why we can pass the child to the check function now. Great that we have fixed one limitation now using a combination of struct and interface.&nbsp;<br />But there is one more limitation. Let&#8217;s say child and base both have one more function <strong>&#8220;clear&#8221; .&nbsp;</strong>Now <strong>&#8220;say&#8221;</strong> method makes a call to&nbsp;<strong>&#8220;clear&#8221; </strong>method. Then when&nbsp;<strong>&#8220;say&#8221;</strong> method is called using child struct, in turn, <strong>&#8220;say&#8221; </strong>method&nbsp;will call <strong>&#8220;clear&#8221;</strong> method of base and not <strong>&#8220;clear&#8221;</strong> method of the child. See below example</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 4</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase interface {
+    say()
+}
+type base struct {
+    color string
+}
+func (b *base) say() {
+    b.clear()
+}
+func (b *base) clear() {
+    fmt.Println("Clear from base's function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func (b *child) clear() {
+    fmt.Println("Clear from child's function")
+}
+func check(b iBase) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Clear from base's function</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can see above <strong>&#8220;clear&#8221;</strong> function of the base is called instead of<strong>&#8220;clear&#8221;</strong> method of the child. This is unlike Java where<strong>&#8220;clear&#8221;</strong> method of <strong>&#8220;child&#8221;</strong>&nbsp;would have been called.</p>
+
+
+
+<p class="has-medium-font-size">One way to fix the above problem is to make <strong>&#8220;clear&#8221;</strong> as a property which is of type function in the base struct. This is possible in GO as functions are first-class variables in GO. See below solution</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 5</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase interface {
+    say()
+}
+type base struct {
+    color string
+    clear func()
+}
+func (b *base) say() {
+    b.clear()
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func check(b iBase) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red",
+        clear: func() {
+            fmt.Println("Clear from child's function")
+        }}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Clear from child's function</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s try to add one more feature to the above program which is &#8211;</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Multiple Inheritance &#8211; child struct should be able to access multiple properties and methods from two base struct and also sub-typing should be possible. Here is the code</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Program 6</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase1 interface {
+    say()
+}
+type iBase2 interface {
+    walk()
+}
+type base1 struct {
+    color string
+}
+func (b *base1) say() {
+    fmt.Println("Hi from say function")
+}
+type base2 struct {
+}
+func (b *base1) walk() {
+    fmt.Println("Hi from walk function")
+}
+type child struct {
+    base1 //embedding
+    base2 //embedding
+    style string
+}
+func (b *child) clear() {
+    fmt.Println("Clear from child's function")
+}
+func check1(b iBase1) {
+    b.say()
+}
+func check2(b iBase2) {
+    b.walk()
+}
+func main() {
+    base1 := base1{color: "Red"}
+    base2 := base2{}
+    child := &child{
+        base1: base1,
+        base2: base2,
+        style: "somestyle",
+    }
+    child.say()
+    child.walk()
+    check1(child)
+    check2(child)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Hi from say function
+Hi from walk function
+Hi from say function
+Hi from walk function</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, the child embeds both base1 and base2. It can also be passed as an instance of iBase1 and iBase2 interface to the check1 and check2 function respectively. This is how we achieve multiple inheritance.</p>
+
+
+
+<p class="has-medium-font-size">Now a big question is how do we implement <strong>&#8220;Type Hierarchy&#8221;</strong> in GO. As already mentioned type inheritance is not allowed to go and hence it does not have type hierarchy.GO intentionally doesn&#8217;t allow this feature<strong>&nbsp;so</strong> any change in the behavior of an interface is only propagated to its immediate structures which defines all methods of the interface.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size">Although we can implement type hierarchy using interfaces and struct like below</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 7</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iAnimal interface {
+    breathe()
+}
+type animal struct {
+}
+func (a *animal) breathe() {
+    fmt.Println("Animal breate")
+}
+type iAquatic interface {
+    iAnimal
+    swim()
+}
+type aquatic struct {
+    animal
+}
+func (a *aquatic) swim() {
+    fmt.Println("Aquatic swim")
+}
+type iNonAquatic interface {
+    iAnimal
+    walk()
+}
+type nonAquatic struct {
+    animal
+}
+func (a *nonAquatic) walk() {
+    fmt.Println("Non-Aquatic walk")
+}
+type shark struct {
+    aquatic
+}
+type lion struct {
+    nonAquatic
+}
+func main() {
+    shark := &shark{}
+    checkAquatic(shark)
+    checkAnimal(shark)
+    lion := &lion{}
+    checkNonAquatic(lion)
+    checkAnimal(lion)
+}
+func checkAquatic(a iAquatic) {}
+func checkNonAquatic(a iNonAquatic) {}
+func checkAnimal(a iAnimal) {}</code></pre>
+
+
+
+<p class="has-medium-font-size">See in above program how we are able to create a hierarchy (see below). This is the idiomatic way of go to create type hierarchy and we are able to achieve this by using&nbsp;embedding both on struct level and on the interface level. The point to be noted here is that if you want distinction in your type hierarchy where lets say a <strong>&#8220;shark&#8221;&nbsp;</strong>&nbsp;should not be both <strong>&#8220;iAquatic&#8221; </strong>and <strong>&#8220;iNonAquatic&#8221;&nbsp;</strong>&nbsp;, then there should be at least&nbsp;one method in the method sets of&nbsp;<strong>&#8220;iAquatic&#8221; </strong>and <strong>&#8220;iNonAquatic&#8221;&nbsp; </strong>which is not present in the other. In our example <strong>&#8220;swim&#8221;&nbsp;</strong>&nbsp;and <strong>&#8220;walk&#8221;&nbsp;</strong>&nbsp;are those methods.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">iAnimal
+--iAquatic
+----shark
+--iNonAquatic
+----lion</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion:</strong></p>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t have support for type inheritance but the same can be achieved using embedding buts one needs to be careful while creating such kind of type hierarchy. Also, go does not provide method overriding.</p>
+<p>The post <a href="https://golangbyexamples.com/oop-inheritance-golang-complete/">OOP: Inheritance in GOLANG complete guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/oop-inheritance-golang-complete/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">195</post-id>	</item>
+		<item>
+		<title>Abstract Class in GO: Complete Guide</title>
+		<link>https://golangbyexamples.com/go-abstract-class/</link>
+					<comments>https://golangbyexamples.com/go-abstract-class/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 18 Aug 2019 15:02:35 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[abstract]]></category>
+		<category><![CDATA[abstract class]]></category>
+		<category><![CDATA[class]]></category>
+		<category><![CDATA[complete]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[guide]]></category>
+		<category><![CDATA[oop]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=203</guid>
+
+					<description><![CDATA[<p>Go Interface doesn&#8217;t have fields and also it doesn&#8217;t allow the definition of methods inside it. Any type needs to implements all methods of interface to become of that interface type. There...</p>
+<p>The post <a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Go Interface doesn&#8217;t have fields and also it doesn&#8217;t allow the definition of methods inside it. Any type needs to implements all methods of interface to become of that interface type. There are use cases where it is useful to have a default implementation of a method and also default fields in GO. Before understanding how to do it lets first understand the requirements of an abstract class:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Abstract class should have default fields</li><li> Abstract class should have the default method</li><li>It should not be possible to create a direct instance of the abstract class</li></ol>
+
+
+
+<p class="has-medium-font-size">We will use a combination of a <strong>interface (abstract interface)</strong> and <strong>struct (abstract concrete type).</strong> Together they can provide the functionalities of an abstract class. See the below program:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common()
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+}
+
+func (a *alpha) common() {
+    fmt.Println("common called")
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("name is %s\n", b.name)
+    b.common()
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.work()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">work called
+name is test
+common called</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created an abstract interface <strong>iAlpha</strong>, an abstract concrete struct <strong>alpha, </strong>and an implementor struct <strong>beta</strong></li><li><strong>alpha </strong>struct is embedded in <strong>beta </strong>struct</li><li>The beta struct is able to access default field <strong>&#8220;name&#8221;</strong></li><li>The beta struct is able to access the default method <strong>&#8220;common&#8221;</strong></li><li>It is not able to create a direct instance of <strong>iAlpha </strong> as <strong>alpha</strong> struct only implement only one of the method of <strong>iAlpha.</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">So it fulfills all three requirements but there is also one limitation of the above method. It is not possible to call the &#8220;<strong>work</strong>&#8221; method from <strong>&#8220;common&#8221; </strong>method of alpha. Basically there is no way to call an undefined method of the abstract interface from default methods of an abstract concrete type. There is one way to fix it, though. See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common()
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+    work func()
+}
+
+func (a *alpha) common() {
+    fmt.Println("common called")
+    a.work()
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("name is %s\n", b.name)
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.alpha.work = b.work
+    b.common()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">common called
+work called
+name is test</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created a new field&nbsp;<strong>&#8220;work&#8221; </strong>of type func in alpha</li><li>We assigned alpha&#8217;s <strong>&#8220;work&#8221; </strong>method to beta <strong>&#8220;work&#8221; </strong>method</li></ul>
+
+
+
+<p class="has-medium-font-size">The only problem with the above program is that it is possible to create a direct instantiation of <strong>alpha</strong> struct and by providing the definition of <strong>work</strong> method, an instance of type <strong>iAlpha </strong>is created. This violates point 3 of the above Abstract class requirement as without creating our own new type we are able to create a type of <strong>iAlpha. </strong>Let&#8217;s try to fix this problem. The below program additionally also solves the problem where it was not possible to call the undefined methods from default methods.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common(iAlpha)
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+}
+
+func (a *alpha) common(i iAlpha) {
+    fmt.Println("common called")
+    i.work()
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("Name is %s\n", b.name)
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.common(b)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">common called
+work called
+Name is test</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li> All the default methods will accept the first argument of interface type <strong>iAlpha. </strong>All the undefined methods of <strong>alpha </strong>struct will be called using this argument from default methods.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion:</strong> We can see in the above program that we are able to fulfill all three requirements of an abstract class. This is one of the ways to simulate abstract class in GO.</p>
+<p>The post <a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-abstract-class/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">203</post-id>	</item>
+	</channel>
+</rss>

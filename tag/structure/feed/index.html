@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>structure Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/structure/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/structure/</link>
+	<description></description>
+	<lastBuildDate>Mon, 09 Mar 2020 23:45:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>structure Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/structure/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Linked List in Golang</title>
+		<link>https://golangbyexamples.com/singly-linked-list-in-golang/</link>
+					<comments>https://golangbyexamples.com/singly-linked-list-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 12 Dec 2019 17:32:27 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[data]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[linked]]></category>
+		<category><![CDATA[single linked list]]></category>
+		<category><![CDATA[singly]]></category>
+		<category><![CDATA[structure]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=832</guid>
+
+					<description><![CDATA[<p>Singly-linked list is a simple kind of linked list that allows traversal in one direction i.e forward. Each node in the linked list contains the data part and the pointer to the...</p>
+<p>The post <a href="https://golangbyexamples.com/singly-linked-list-in-golang/">Linked List in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Singly-linked list is a simple kind of linked list that allows traversal in one direction i.e forward. Each node in the linked list contains the data part and the pointer to the next node in the linked list.</p>
+
+
+
+<p class="has-medium-font-size">The linked list implemented below supports the following operations</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>AddFront</li><li>AddBack</li><li>RemoveFront</li><li>RemoveBack</li><li>Traverse</li><li>Front</li><li>Size</li></ol>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type ele struct {
+    name string
+    next *ele
+}
+
+type singleList struct {
+    len  int
+    head *ele
+}
+
+func initList() *singleList {
+    return &singleList{}
+}
+
+func (s *singleList) AddFront(name string) {
+    ele := &ele{
+        name: name,
+    }
+    if s.head == nil {
+        s.head = ele
+    } else {
+        ele.next = s.head
+        s.head = ele
+    }
+    s.len++
+    return
+}
+
+func (s *singleList) AddBack(name string) {
+    ele := &ele{
+        name: name,
+    }
+    if s.head == nil {
+        s.head = ele
+    } else {
+        current := s.head
+        for current.next != nil {
+            current = current.next
+        }
+        current.next = ele
+    }
+    s.len++
+    return
+}
+
+func (s *singleList) RemoveFront() error {
+    if s.head == nil {
+        return fmt.Errorf("List is empty")
+    }
+    s.head = s.head.next
+    s.len--
+    return nil
+}
+
+func (s *singleList) RemoveBack() error {
+    if s.head == nil {
+        return fmt.Errorf("removeBack: List is empty")
+    }
+    var prev *ele
+    current := s.head
+    for current.next != nil {
+        prev = current
+        current = current.next
+    }
+    if prev != nil {
+        prev.next = nil
+    } else {
+        s.head = nil
+    }
+    s.len--
+    return nil
+}
+
+func (s *singleList) Front() (string, error) {
+    if s.head == nil {
+        return "", fmt.Errorf("Single List is empty")
+    }
+    return s.head.name, nil
+}
+
+func (s *singleList) Size() int {
+    return s.len
+}
+
+func (s *singleList) Traverse() error {
+    if s.head == nil {
+        return fmt.Errorf("TranverseError: List is empty")
+    }
+    current := s.head
+    for current != nil {
+        fmt.Println(current.name)
+        current = current.next
+    }
+    return nil
+}
+
+func main() {
+     singleList := initList()
+    fmt.Printf("AddFront: A\n")
+    singleList.AddFront("A")
+    fmt.Printf("AddFront: B\n")
+    singleList.AddFront("B")
+    fmt.Printf("AddBack: C\n")
+    singleList.AddBack("C")
+
+    fmt.Printf("Size: %d\n", singleList.Size())
+   
+    err := singleList.Traverse()
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    
+    fmt.Printf("RemoveFront\n")
+    err = singleList.RemoveFront()
+    if err != nil {
+        fmt.Printf("RemoveFront Error: %s\n", err.Error())
+    }
+    
+    fmt.Printf("RemoveBack\n")
+    err = singleList.RemoveBack()
+    if err != nil {
+        fmt.Printf("RemoveBack Error: %s\n", err.Error())
+    }
+    
+    fmt.Printf("RemoveBack\n")
+    err = singleList.RemoveBack()
+    if err != nil {
+        fmt.Printf("RemoveBack Error: %s\n", err.Error())
+    }
+    
+    fmt.Printf("RemoveBack\n")
+    err = singleList.RemoveBack()
+    if err != nil {
+        fmt.Printf("RemoveBack Error: %s\n", err.Error())
+    }
+    
+    err = singleList.Traverse()
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    
+   fmt.Printf("Size: %d\n", singleList.Size())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">AddFront: A
+AddFront: B
+AddBack: C
+Size: 3
+B
+A
+C
+RemoveFront
+RemoveBack
+RemoveBack
+RemoveBack
+RemoveBack Error: removeBack: List is empty
+TranverseError: List is empty
+Size: 0</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/singly-linked-list-in-golang/">Linked List in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/singly-linked-list-in-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">832</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>binary search tree in golang Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/binary-search-tree-in-golang/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/binary-search-tree-in-golang/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 15:07:10 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>binary search tree in golang Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/binary-search-tree-in-golang/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Binary Search Tree in Go (Golang)</title>
+		<link>https://golangbyexamples.com/binary-search-tree-in-go/</link>
+					<comments>https://golangbyexamples.com/binary-search-tree-in-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 27 Dec 2019 12:46:57 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[binary search tree in golang]]></category>
+		<category><![CDATA[bst]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1002</guid>
+
+					<description><![CDATA[<p>Introduction A binary search tree abbreviated as BST is a binary tree. For each node in a Binary Search Tree Value of each node in the left  subtree is less than the...</p>
+<p>The post <a href="https://golangbyexamples.com/binary-search-tree-in-go/">Binary Search Tree in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Introduction</strong></h1>
+
+
+
+<p class="has-medium-font-size">A binary search tree abbreviated as BST is a binary tree. For each node in a Binary Search Tree</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Value of each node in the left  subtree is less than the current node value</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Value of each node in the right subtree is greater than the current node value</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Both left and right subtree are themselves Binary Search Tree</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type bstnode struct {
+    value int
+    left  *bstnode
+    right *bstnode
+}
+
+type bst struct {
+    root *bstnode
+}
+
+func (b *bst) reset() {
+    b.root = nil
+}
+
+func (b *bst) insert(value int) {
+    b.insertRec(b.root, value)
+}
+
+func (b *bst) insertRec(node *bstnode, value int) *bstnode {
+    if b.root == nil {
+        b.root = &bstnode{
+            value: value,
+        }
+        return b.root
+    }
+    if node == nil {
+        return &bstnode{value: value}
+    }
+    if value <= node.value {
+        node.left = b.insertRec(node.left, value)
+    }
+    if value > node.value {
+        node.right = b.insertRec(node.right, value)
+    }
+    return node
+}
+
+func (b *bst) find(value int) error {
+    node := b.findRec(b.root, value)
+    if node == nil {
+        return fmt.Errorf("Value: %d not found in tree", value)
+    }
+    return nil
+}
+
+func (b *bst) findRec(node *bstnode, value int) *bstnode {
+    if node == nil {
+        return nil
+    }
+    if node.value == value {
+        return b.root
+    }
+    if value < node.value {
+        return b.findRec(node.left, value)
+    }
+    return b.findRec(node.right, value)
+}
+
+func (b *bst) inorder() {
+    b.inorderRec(b.root)
+}
+
+func (b *bst) inorderRec(node *bstnode) {
+    if node != nil {
+        b.inorderRec(node.left)
+        fmt.Println(node.value)
+        b.inorderRec(node.right)
+    }
+}
+
+func main() {
+    bst := &#038;bst{}
+    eg := []int{2, 5, 7, -1, -1, 5, 5}
+    for _, val := range eg {
+        bst.insert(val)
+    }
+    fmt.Printf("Printing Inorder:\n")
+    bst.inorder()
+    bst.reset()
+    eg = []int{4, 5, 7, 6, -1, 99, 5}
+    for _, val := range eg {
+        bst.insert(val)
+    }
+    fmt.Printf("\nPrinting Inorder:\n")
+    bst.inorder()
+    fmt.Printf("\nFinding Values:\n")
+    err := bst.find(2)
+    if err != nil {
+        fmt.Printf("Value %d Not Found\n", 2)
+    } else {
+        fmt.Printf("Value %d Found\n", 2)
+    }
+    err = bst.find(6)
+    if err != nil {
+        fmt.Printf("Value %d Not Found\n", 6)
+    } else {
+        fmt.Printf("Value %d Found\n", 6)
+    }
+    err = bst.find(5)
+    if err != nil {
+        fmt.Printf("Value %d Not Found\n", 5)
+    } else {
+        fmt.Printf("Value %d Found\n", 5)
+    }
+    err = bst.find(1)
+    if err != nil {
+        fmt.Printf("Value %d Not Found\n", 1)
+    } else {
+        fmt.Printf("Value %d Found\n", 1)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Printing Inorder:
+-1
+-1
+2
+5
+5
+5
+7
+
+Printing Inorder:
+-1
+4
+5
+5
+6
+7
+99
+
+Finding Values:
+Value 2 Not Found
+Value 6 Found
+Value 5 Found
+Value 1 Not Found</code></pre>
+<p>The post <a href="https://golangbyexamples.com/binary-search-tree-in-go/">Binary Search Tree in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/binary-search-tree-in-go/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1002</post-id>	</item>
+	</channel>
+</rss>

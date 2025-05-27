@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>random password Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/random-password/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/random-password/</link>
+	<description></description>
+	<lastBuildDate>Sun, 12 Apr 2020 18:58:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>random password Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/random-password/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Generate a random password in Go (Golang)</title>
+		<link>https://golangbyexamples.com/generate-random-password-golang/</link>
+					<comments>https://golangbyexamples.com/generate-random-password-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 30 Mar 2020 18:29:24 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[random password]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1908</guid>
+
+					<description><![CDATA[<p>Overview &#8216;math/rand&#8217; package of golang contains an Intn function that can be used to generate a pseudo-random number between [0,n). The bracket at the end means that n is exclusive. This function...</p>
+<p>The post <a href="https://golangbyexamples.com/generate-random-password-golang/">Generate a random password in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;math/rand&#8217; </strong>package of golang contains an Intn function that can be used to generate a pseudo-random number between [0,n). The bracket at the end means that n is exclusive. This function can be utilized to generate a random password from a character set.</p>
+
+
+
+<p class="has-medium-font-size"><br>To know more about what pseudo-random number means, check out this post &#8211; <a href="https://golangbyexamples.com/generate-random-number-golang">https://golangbyexamples.com/generate-random-number-golang</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of this method. It takes input a number n and will return a number x in range 0&lt;=x&lt;n.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Intn(n int) int</code></pre>
+
+
+
+<p class="has-medium-font-size">In the code below we have first defined the character set from which to generate the password</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">lowerCharSet   = "abcdedfghijklmnopqrst"
+upperCharSet   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+specialCharSet = "!@#$%&*"
+numberSet      = "0123456789"
+allCharSet     = lowerCharSet + upperCharSet + specialCharSet + numberSet</code></pre>
+
+
+
+<p class="has-medium-font-size">The below code also handles the case where the password can have minimum requirement of a specific number of special character, numeric or uppercase character.</p>
+
+
+
+<p class="has-medium-font-size">Also please note once the password is generated with required criteria we shuffle it at the end. For shuffling, we convert it to a rune array first.  Please refer to this article to understand why for shuffling a string &#8211; <a href="https://golangbyexamples.com/shuffle-string-golang/">https://golangbyexamples.com/shuffle-string-golang/</a></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "strings"
+    "time"
+)
+
+var (
+    lowerCharSet   = "abcdedfghijklmnopqrst"
+    upperCharSet   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    specialCharSet = "!@#$%&*"
+    numberSet      = "0123456789"
+    allCharSet     = lowerCharSet + upperCharSet + specialCharSet + numberSet
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+    minSpecialChar := 1
+    minNum := 1
+    minUpperCase := 1
+    passwordLength := 8
+    password := generatePassword(passwordLength, minSpecialChar, minNum, minUpperCase)
+    fmt.Println(password)
+
+    minSpecialChar = 2
+    minNum = 2
+    minUpperCase = 2
+    passwordLength = 20
+    password = generatePassword(passwordLength, minSpecialChar, minNum, minUpperCase)
+    fmt.Println(password)
+}
+
+func generatePassword(passwordLength, minSpecialChar, minNum, minUpperCase int) string {
+    var password strings.Builder
+
+    //Set special character
+    for i := 0; i < minSpecialChar; i++ {
+        random := rand.Intn(len(specialCharSet))
+        password.WriteString(string(specialCharSet[random]))
+    }
+
+    //Set numeric
+    for i := 0; i < minNum; i++ {
+        random := rand.Intn(len(numberSet))
+        password.WriteString(string(numberSet[random]))
+    }
+
+    //Set uppercase
+    for i := 0; i < minUpperCase; i++ {
+        random := rand.Intn(len(upperCharSet))
+        password.WriteString(string(upperCharSet[random]))
+    }
+
+    remainingLength := passwordLength - minSpecialChar - minNum - minUpperCase
+    for i := 0; i < remainingLength; i++ {
+        random := rand.Intn(len(allCharSet))
+        password.WriteString(string(allCharSet[random]))
+    }
+    inRune := []rune(password.String())
+	rand.Shuffle(len(inRune), func(i, j int) {
+		inRune[i], inRune[j] = inRune[j], inRune[i]
+	})
+	return string(inRune)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<p class="has-medium-font-size">Output will be different on your machine</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e$e&tD19
+4T$&Qmg2rA4DXD5a2OGs</code></pre>
+<p>The post <a href="https://golangbyexamples.com/generate-random-password-golang/">Generate a random password in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/generate-random-password-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1908</post-id>	</item>
+	</channel>
+</rss>

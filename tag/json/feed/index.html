@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>json Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/json/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/json/</link>
+	<description></description>
+	<lastBuildDate>Sat, 05 Dec 2020 07:20:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>json Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/json/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Get JSON request body from a HTTP request in Go (Golang)</title>
+		<link>https://golangbyexamples.com/json-request-body-golang-http/</link>
+					<comments>https://golangbyexamples.com/json-request-body-golang-http/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 05 Dec 2020 07:20:06 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[json]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=4628</guid>
+
+					<description><![CDATA[<p>Overview json/encoding package contains methods that can be used to convert a  request body of an incoming HTTP request into a golang struct. Before we start just a word about the request...</p>
+<p>The post <a href="https://golangbyexamples.com/json-request-body-golang-http/">Get JSON request body from a HTTP request in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>json/encoding</strong> package contains methods that can be used to convert a  request body of an incoming HTTP request into a golang struct. Before we start just a word about the request body. The request body of an HTTP request is a sequence of bytes. It is the content-type of the HTTP request which denotes the format in which those bytes are represented and meant to be read back.  For a JSON request body, the content-type is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">application/json</code></pre>
+
+
+
+<p class="has-medium-font-size">Also two things about golang struct that you need to know</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only exported fields of the struct are visible to the external library. Hence only exported fields of the struct can be parsed into from an incoming HTTP request. Also to note that capitalized fields of a struct are exported in go.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Struct fields have a meta section that contains additional information about that field. These meta fields are used while parsing an incoming JSON request body into a struct. For eg let&#8217;s say we have the below struct</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice meta tags associated with each of the fields annotated with name as &#8216;json&#8217;. These meta fields are used to map keys in the JSON to the fields of the struct. For eg if we have JSON as</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">{
+  "name" : "John",
+  "age"  : 21
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Then <strong>name </strong>key of the above JSON will map to the <strong>Name</strong> field of the <strong>employee</strong> struct and the <strong>age</strong> key in JSON will map to the <strong>Age</strong> field of the struct. Let&#8217;s say we have below struct and JSON</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+	Name string `json:"n"`
+	Age  int    `json:"ag"`
+}
+
+{
+  "n" : "John",
+  "age"  : 21
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Then <strong>&#8216;n&#8217;</strong> key of the JSON will map to the <strong>Name</strong> field of the struct and <strong>&#8216;ag&#8217; </strong>key of the JSON will map to the <strong>Age</strong> field of the struct.</p>
+
+
+
+<p class="has-medium-font-size">Below two methods of the <strong>json/encoding</strong> package can be used to get the JSON request body of an incoming request.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>json.Unmarshal([]bye)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>json.NewDecoder(io.Reader).Decode(interface{})</li></ul>
+
+
+
+<p class="has-medium-font-size">The second method is a preferred way to get the json request body for two reasons.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The request body of an incoming HTTP request is an io stream. <strong>json.Unmarshal</strong> will read the entire contents of the body first and then do an Unmarshal. It does no validation on the request body as it comes along. As compared Decode method will give an early parse error if the JSON is not valid. This comes in handy for a large invalid body being sent by the client. Unmarshal will detect that when the entire large body has been read while Decode will raise at the start only.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>json.Decode</strong> contains the <strong>DisallowUnknownFields</strong> method which raises an error if the incoming JSON contains keys which do not match any</li></ul>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Exported and</li><li>Non-ignored fields of the struct.</li></ol>
+
+
+
+<p class="has-medium-font-size">There might be several issues that need to be taken care of when parsing the incoming JSON request body.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The body might not be a valid JSON</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It is a valid JSON but contains extra fields or none of the fields expected in the struct.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The JSON request body is too large.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The field is expected but it contains a different type. For example for the Name field above the incoming HTTP request JSON body has a number while the expectation is a string.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The req body contains extra fields.</li></ul>
+
+
+
+<p class="has-medium-font-size">The <strong>Decode</strong> method can capture all of those issues and can return appropriate error messages as well except in one case when there is an unmarshaling error. Let&#8217;s see the error returned by the decode method in all cases</p>
+
+
+
+<p class="has-medium-font-size">Imaging the incoming JSON need to converted into the <strong>employee</strong> struct we mentioned above</p>
+
+
+
+<p class="has-medium-font-size">Issues</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>There is an extra field in the incoming JSON. For example, let&#8217;s say we have an additional <strong>Gender</strong> field present.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">'{"Name":"John", "Age": 21, "Gender": "M"}'</code></pre>
+
+
+
+<p class="has-medium-font-size">The error returned by decode function will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">unknown field "Gender"</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The body is not a valid JSON</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">'{"Name": "John", "Age":}'</code></pre>
+
+
+
+<p class="has-medium-font-size">The error returned by the decode function will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">invalid character '}' looking for beginning of value</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The body is empty</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">''</code></pre>
+
+
+
+<p class="has-medium-font-size">The error returned by decode function will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">EOF</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The type of one of the field is different than expected. For example, sending a string value of age where int is expected</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">'{"Name":"John", "Age": "21"}'</code></pre>
+
+
+
+<p class="has-medium-font-size">The error returned by decode function will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">json: cannot unmarshal string into Go struct field employee.age of type int</code></pre>
+
+
+
+<p class="has-medium-font-size">In this case, the error returned by the decode function is returning internal information which is not an appropriate error to be returned back to the client. It is also possible to catch such type of error and return an appropriate error to the client. And that is what we are doing in the below program as well. Just  checking if it is an unmarshaling and returning custom error message after that</p>
+
+
+
+<p class="has-medium-font-size">Also in the code below we are setting the disallow unknown fields option on the <strong>decoder</strong> so that any extra fields in the incoming JSON body results in an error.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">decore.DisallowUnknownFields()</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is full program for the same.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"encoding/json"
+	"errors"
+	"net/http"
+)
+
+type employee struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+}
+
+func main() {
+	createEmployeeHanlder := http.HandlerFunc(createEmployee)
+	http.Handle("/employee", createEmployeeHanlder)
+	http.ListenAndServe(":8080", nil)
+}
+
+func createEmployee(w http.ResponseWriter, r *http.Request) {
+	headerContentTtype := r.Header.Get("Content-Type")
+	if headerContentTtype != "application/json" {
+		errorResponse(w, "Content Type is not application/json", http.StatusUnsupportedMediaType)
+		return
+	}
+	var e employee
+	var unmarshalErr *json.UnmarshalTypeError
+
+	decoder := json.NewDecoder(r.Body)
+	decoder.DisallowUnknownFields()
+	err := decoder.Decode(&e)
+	if err != nil {
+		if errors.As(err, &unmarshalErr) {
+			errorResponse(w, "Bad Request. Wrong Type provided for field "+unmarshalErr.Field, http.StatusBadRequest)
+		} else {
+			errorResponse(w, "Bad Request "+err.Error(), http.StatusBadRequest)
+		}
+		return
+	}
+	errorResponse(w, "Success", http.StatusOK)
+	return
+}
+
+func errorResponse(w http.ResponseWriter, message string, httpStatusCode int) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(httpStatusCode)
+	resp := make(map[string]string)
+	resp["message"] = message
+	jsonResp, _ := json.Marshal(resp)
+	w.Write(jsonResp)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Run the above file. It will trigger a server that will listen to port 8080. After the server is running, let&#8217;s make the API calls for some of the scenarios we have discussed above.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Correct Request</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -X POST -H "content-type: application/json" http://localhost:8080/employee -d '{"Name":"John", "Age": 21}'</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Response Code: 200
+Response Body: {"message":"Success"}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>There is an extra field in the incoming JSON</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST -H "content-type: application/json" http://localhost:8080/employee -d '{"Name":"John", "Age": 21, "Gender": "M"}'</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Response Code: 400
+Response Body: {"message":"Bad Request json: unknown field \"Gender\""}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>The body is not a valid JSON</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST -H "content-type: application/json" http://localhost:8080/employee -d '{"Name": "John", "Age":}'</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Response Code: 400
+Response Body: {"message":"Bad Request invalid character '}' looking for beginning of value"}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>The body is empty</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST -H "content-type: application/json" http://localhost:8080/employee</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Response Code: 400
+Response Body: {"message":"Bad Request EOF"}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>The type of one of the field is different than expected. For example, sending a string value of age where int is expected</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST -H "content-type: application/json" http://localhost:8080/employee -d '{"Name":"John", "Age": "21"}'</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Response Code: 400
+Response Body: {"message":"Bad Request. Wrong Type provided for field age"}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Content-type is not provided or not application/json</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -X POST -H "content-type: application/json" http://localhost:8080/employee -d '{"Name":"John", "Age": 21}'</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Response Code: 415 Unsupported Media Type
+Response Body: {"message":"Content Type is not application/json"}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/json-request-body-golang-http/">Get JSON request body from a HTTP request in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/json-request-body-golang-http/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">4628</post-id>	</item>
+	</channel>
+</rss>

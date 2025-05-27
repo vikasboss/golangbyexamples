@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>golang Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/golang/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/golang/</link>
+	<description></description>
+	<lastBuildDate>Fri, 10 Feb 2023 14:56:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>golang Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/golang/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Check if a string contains single or multiple whitespaces in Go (Golang)</title>
+		<link>https://golangbyexamples.com/string-whitespace-golang/</link>
+					<comments>https://golangbyexamples.com/string-whitespace-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2023 14:55:10 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=10985</guid>
+
+					<description><![CDATA[<p>Overview A simple regex can be used to check if a string contains single or multiple white spaces in Go. Here is the program for the same Program Output Note: Check out...</p>
+<p>The post <a href="https://golangbyexamples.com/string-whitespace-golang/">Check if a string contains single or multiple whitespaces in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">A simple regex can be used to check if a string contains single or multiple white spaces in Go.</p>
+
+
+
+<p class="has-medium-font-size">Here is the program for the same</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"regexp"
+)
+
+func main() {
+	//Single whitespace
+	sampleWord := "Good morning"
+
+	isWhitespacePresent := regexp.MustCompile(`\s`).MatchString(sampleWord)
+	fmt.Println(isWhitespacePresent)
+
+	//Multiple Whitespace
+	sampleWord = "Good   morning"
+	isMultipleWhitespacePresent := regexp.MustCompile(`\s*`).MatchString(sampleWord)
+	fmt.Println(isMultipleWhitespacePresent)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+true</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211;</p>
+
+
+
+<p><a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our system design tutorial series <a href="https://techbyexample.com/system-design-questions/">System Design Questions</a></p>
+<p>The post <a href="https://golangbyexamples.com/string-whitespace-golang/">Check if a string contains single or multiple whitespaces in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/string-whitespace-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">10985</post-id>	</item>
+		<item>
+		<title>Repeat a string multiple times in Go (Golang)</title>
+		<link>https://golangbyexamples.com/repeat-string-golang/</link>
+					<comments>https://golangbyexamples.com/repeat-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 09 Oct 2022 17:12:09 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=9601</guid>
+
+					<description><![CDATA[<p>Overview strings.Repeat method can be used to repeat a string multiple times in Go (Golang) Here is the link to this function in the Go strings package https://pkg.go.dev/strings#Repeat Here is the signature...</p>
+<p>The post <a href="https://golangbyexamples.com/repeat-string-golang/">Repeat a string multiple times in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>strings.Repeat </strong>method can be used to repeat a string multiple times in Go (Golang)</p>
+
+
+
+<p class="has-medium-font-size">Here is the link to this function in the Go strings package</p>
+
+
+
+<p><a href="https://pkg.go.dev/strings#Repeat">https://pkg.go.dev/strings#Repeat</a></p>
+
+
+
+<p class="has-medium-font-size">Here is the signature of the method</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Repeat(s string, count int) string</code></pre>
+
+
+
+<p class="has-medium-font-size">The first argument is the original string and count is the number of times the strings needs to be repeated</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Here is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	copy := strings.Repeat("a", 2)
+	fmt.Println(copy)
+
+	copy = strings.Repeat("abc", 3)
+	fmt.Println(copy)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">aa
+abcabcabc</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211;<a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+<p>The post <a href="https://golangbyexamples.com/repeat-string-golang/">Repeat a string multiple times in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/repeat-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9601</post-id>	</item>
+		<item>
+		<title>Remove Linked List Elements Program in Go (Golang)</title>
+		<link>https://golangbyexamples.com/remove-linked-list-elements-golang/</link>
+					<comments>https://golangbyexamples.com/remove-linked-list-elements-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 15 Sep 2022 14:40:30 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=9016</guid>
+
+					<description><![CDATA[<p>Overview Given a linked list and a value, delete all nodes from the linked list whose value is equal to the given value. Example 1 Example 2 Program Below is the program...</p>
+<p>The post <a href="https://golangbyexamples.com/remove-linked-list-elements-golang/">Remove Linked List Elements Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Given a linked list and a value, delete all nodes from the linked list whose value is equal to the given value.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: [1, 2, 1, 3, 6], 1
+Output: [2, 3, 6]</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: [2, 2, 3], 2
+Output: [3]</code></pre>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+type SingleList struct {
+	Len  int
+	Head *ListNode
+}
+
+func (s *SingleList) AddFront(num int) *ListNode {
+	ele := &ListNode{
+		Val: num,
+	}
+	if s.Head == nil {
+		s.Head = ele
+	} else {
+		ele.Next = s.Head
+		s.Head = ele
+	}
+	s.Len++
+	return ele
+}
+func removeElements(head *ListNode, val int) *ListNode {
+	var prev *ListNode
+
+	curr := head
+
+	for curr != nil {
+		if curr.Val == val {
+			if prev == nil {
+				head = curr.Next
+			} else {
+				prev.Next = curr.Next
+			}
+		} else {
+			prev = curr
+		}
+		curr = curr.Next
+
+	}
+
+	return head
+}
+
+func main() {
+	first := initList()
+	first.AddFront(6)
+	first.AddFront(3)
+	first.AddFront(1)
+	first.AddFront(2)
+	first.AddFront(1)
+
+	result := removeElements(first.Head, 1)
+	fmt.Println("Resultant First List")
+	result.Traverse()
+
+	first = initList()
+	first.AddFront(3)
+	first.AddFront(2)
+	first.AddFront(2)
+
+	fmt.Println("\nResultant Second List")
+	result = removeElements(first.Head, 2)
+	result.Traverse()
+
+}
+
+func initList() *SingleList {
+	return &SingleList{}
+}
+
+func (l *ListNode) Traverse() {
+	for l != nil {
+		fmt.Println(l.Val)
+		l = l.Next
+	}
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Resultant First List
+2
+3
+6
+
+Resultant Second List
+3</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here &#8211; <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/remove-linked-list-elements-golang/">Remove Linked List Elements Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/remove-linked-list-elements-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9016</post-id>	</item>
+		<item>
+		<title>Recover Binary Search Tree Program in Go (Golang)</title>
+		<link>https://golangbyexamples.com/recover-binary-search-tree-golang/</link>
+					<comments>https://golangbyexamples.com/recover-binary-search-tree-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 19 Aug 2022 17:16:58 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8554</guid>
+
+					<description><![CDATA[<p>Overview The root of a binary search tree is given. Two nodes of the binary search tree have been swapped. We need to fix the binary tree and recover the original structure...</p>
+<p>The post <a href="https://golangbyexamples.com/recover-binary-search-tree-golang/">Recover Binary Search Tree Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">The root of a binary search tree is given. Two nodes of the binary search tree have been swapped. We need to fix the binary tree and recover the original structure</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func recoverTree(root *TreeNode) {
+	var prev *TreeNode
+	var first *TreeNode
+	var mid *TreeNode
+	var last *TreeNode
+
+	recoverTreeUtil(root, &prev, &first, &mid, &last)
+
+	if first != nil && last != nil {
+		first.Val, last.Val = last.Val, first.Val
+	} else if first != nil && mid != nil {
+		first.Val, mid.Val = mid.Val, first.Val
+	}
+}
+
+func recoverTreeUtil(root *TreeNode, prev, first, mid, last **TreeNode) {
+	if root == nil {
+		return
+	}
+
+	recoverTreeUtil(root.Left, prev, first, mid, last)
+
+	if *prev == nil {
+		*prev = root
+	} else if *first == nil && (*prev).Val > root.Val {
+		*first = *prev
+		*mid = root
+	} else if (*prev).Val > root.Val {
+		*last = root
+	}
+
+	*prev = root
+
+	recoverTreeUtil(root.Right, prev, first, mid, last)
+}
+
+func main() {
+	root := TreeNode{Val: 2}
+	root.Left = &TreeNode{Val: 3}
+	root.Right = &TreeNode{Val: 1}
+
+	recoverTree(&root)
+	fmt.Println(root.Val)
+	fmt.Println(root.Left.Val)
+	fmt.Println(root.Right.Val)
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+1
+3</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here &#8211; <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/recover-binary-search-tree-golang/">Recover Binary Search Tree Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/recover-binary-search-tree-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8554</post-id>	</item>
+		<item>
+		<title>Program for ugly number 2 in Go (Golang)</title>
+		<link>https://golangbyexamples.com/program-for-ugly-number-2-in-go-golang/</link>
+					<comments>https://golangbyexamples.com/program-for-ugly-number-2-in-go-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 13 Aug 2022 12:05:15 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8491</guid>
+
+					<description><![CDATA[<p>Overview An ugly number is a number whose prime factors are limited to 2,3 and 5. We have already seen a program where given a number n returns true if it is...</p>
+<p>The post <a href="https://golangbyexamples.com/program-for-ugly-number-2-in-go-golang/">Program for ugly number 2 in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">An ugly number is a number whose prime factors are limited to 2,3 and 5. We have already seen a program where given a number n returns true if it is an ugly number otherwise returns false. Below is the link to that program <a href="https://golangbyexamples.com/ugly-number-golang/">https://golangbyexamples.com/ugly-number-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">In this tutorial, we will write a program where given a number n, find the nth ugly number</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: 5
+Output: 5
+Reason: First five ugly numbers are 1, 2, 3, 4, 5 hence 5th ugly number is 5</code></pre>
+
+
+
+<p class="has-medium-font-size">  <strong>Example 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: 20
+Output: 36</code></pre>
+
+
+
+<p class="has-medium-font-size">The idea is to use dynamic programming here. We will keep track of multiple of 2, 3, and 5. The next ugly number will always be the minimum of these three.</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func nthUglyNumber(n int) int {
+	dpUgly := make([]int, n)
+
+	dpUgly[0] = 1
+
+	next_multiple_of_2 := 2
+	next_multiple_of_3 := 3
+	next_multiple_of_5 := 5
+
+	i2 := 0
+	i3 := 0
+	i5 := 0
+
+	for i := 1; i < n; i++ {
+		nextUglyNumber := minOfThree(next_multiple_of_2, next_multiple_of_3, next_multiple_of_5)
+		dpUgly[i] = nextUglyNumber
+
+		if nextUglyNumber == next_multiple_of_2 {
+			i2++
+			next_multiple_of_2 = 2 * dpUgly[i2]
+		}
+
+		if nextUglyNumber == next_multiple_of_3 {
+			i3++
+			next_multiple_of_3 = 3 * dpUgly[i3]
+		}
+
+		if nextUglyNumber == next_multiple_of_5 {
+			i5++
+			next_multiple_of_5 = 5 * dpUgly[i5]
+		}
+
+	}
+
+	return dpUgly[n-1]
+
+}
+
+func minOfThree(a, b, c int) int {
+	if a < b &#038;&#038; a < c {
+		return a
+	}
+
+	if b < c {
+		return b
+	}
+
+	return c
+}
+
+func main() {
+	output := nthUglyNumber(5)
+	fmt.Println(output)
+
+	output = nthUglyNumber(20)
+	fmt.Println(output)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">5
+36</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you - <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here - <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/program-for-ugly-number-2-in-go-golang/">Program for ugly number 2 in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/program-for-ugly-number-2-in-go-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8491</post-id>	</item>
+		<item>
+		<title>Binary Tree Maximum Path Sum Program in Go (Golang)</title>
+		<link>https://golangbyexamples.com/binary-tree-maximum-path-sum-golang/</link>
+					<comments>https://golangbyexamples.com/binary-tree-maximum-path-sum-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Jul 2022 04:04:26 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8286</guid>
+
+					<description><![CDATA[<p>Overview A  binary tree is given. The objective is to find the maximum Path Sum in that binary tree.  A path in a binary tree is a sequence of nodes that are connected...</p>
+<p>The post <a href="https://golangbyexamples.com/binary-tree-maximum-path-sum-golang/">Binary Tree Maximum Path Sum Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">A  binary tree is given. The objective is to find the maximum Path Sum in that binary tree.  A path in a binary tree is a sequence of nodes that are connected to each other. Each node only appears once in the Maximum Path Sum</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img fetchpriority="high" decoding="async" width="281" height="211" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/11/binary-tree-min.jpg?resize=281%2C211&#038;ssl=1" alt="" class="wp-image-6428" data-recalc-dims="1"/></figure>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Output: 16
+Maximum Sum Path is: 4->2->1->3->6</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example 2</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="281" height="211" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2022/07/Binary-Tree-2.drawio-min.png?resize=281%2C211&#038;ssl=1" alt="" class="wp-image-8287" data-recalc-dims="1"/></figure>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Output: 14
+Maximum Sum Path is: 5->3->6</code></pre>
+
+
+
+<p class="has-medium-font-size">The idea is to track below four&nbsp; values at every node</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>a = root.Val</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>b = root.Val + leftSubTreeMaxSum</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>c  = root.Val + rightSubTreeMaxSum</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>d =  root.Val + leftSubTreeMaxSum+  rightSubTreeMaxSum</li></ul>
+
+
+
+<p class="has-medium-font-size">Then</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Max sum at a given node is given max of <strong>(a,b,c,d)</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The return value in the recursive call would be a max of <strong>(a,b,c)</strong>.  Why? This is because only the path of a or b or c represents a path that can be taken into account at the parent node. d cannot be taken into account because it becomes an invalid path. To understand this with an example consider the binary tree in example two above. Path <strong>5->3->6</strong> cannot include parent node <strong>-5</strong> in its path because it becomes an invalid path.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"math"
+)
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func maxPathSum(root *TreeNode) int {
+	res := math.MinInt64
+
+	maxPathSumUtil(root, &res)
+	return res
+}
+
+func maxPathSumUtil(root *TreeNode, res *int) int {
+	if root == nil {
+		return 0
+	}
+
+	l := maxPathSumUtil(root.Left, res)
+	r := maxPathSumUtil(root.Right, res)
+
+	a := root.Val
+	b := root.Val + l
+	c := root.Val + r
+	d := root.Val + l + r
+
+	maxReturnSum := maxOfThree(a, b, c)
+
+	maxSumPath := maxOfTwo(maxReturnSum, d)
+	if maxSumPath > *res {
+		*res = maxSumPath
+	}
+
+	return maxReturnSum
+}
+
+func maxOfThree(a, b, c int) int {
+	if a > b && a > c {
+		return a
+	}
+
+	if b > c {
+		return b
+	}
+
+	return c
+}
+
+func maxOfTwo(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func main() {
+	root := &TreeNode{Val: 1}
+	root.Left = &TreeNode{Val: 2}
+	root.Left.Left = &TreeNode{Val: 4}
+	root.Right = &TreeNode{Val: 3}
+	root.Right.Left = &TreeNode{Val: 5}
+	root.Right.Right = &TreeNode{Val: 6}
+
+	output := maxPathSum(root)
+	fmt.Println(output)
+
+	root = &TreeNode{Val: -10}
+	root.Left = &TreeNode{Val: 2}
+	root.Left.Left = &TreeNode{Val: 4}
+	root.Right = &TreeNode{Val: 3}
+	root.Right.Left = &TreeNode{Val: 5}
+	root.Right.Right = &TreeNode{Val: 6}
+	output = maxPathSum(root)
+	fmt.Println(output)
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">16
+14</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here &#8211; <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/binary-tree-maximum-path-sum-golang/">Binary Tree Maximum Path Sum Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/binary-tree-maximum-path-sum-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8286</post-id>	</item>
+		<item>
+		<title>Sort characters by frequency in Go (Golang)</title>
+		<link>https://golangbyexamples.com/sort-characters-frequency-go/</link>
+					<comments>https://golangbyexamples.com/sort-characters-frequency-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 16:23:13 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8252</guid>
+
+					<description><![CDATA[<p>Overview An input string is given. The objective is to sort the string based on frequency. We have to sort based on decreasing order of the frequency of characters. Let&#8217;s understand it...</p>
+<p>The post <a href="https://golangbyexamples.com/sort-characters-frequency-go/">Sort characters by frequency in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-large-font-size wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">An input string is given. The objective is to sort the string based on frequency. We have to sort based on decreasing order of the frequency of characters. Let&#8217;s understand it with an example</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: "bcabcb"
+Output: "bbbcca"</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: "mniff"
+Output: "ffmni"</code></pre>
+
+
+
+<h1 class="has-large-font-size wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func frequencySort(s string) string {
+	stringMap := make(map[byte]int)
+	lenS := len(s)
+	for i := 0; i < lenS; i++ {
+		stringMap[s[i]]++
+	}
+
+	itemArray := make([]item, 0)
+
+	for key, value := range stringMap {
+		i := item{
+			char:      key,
+			frequency: value,
+		}
+		itemArray = append(itemArray, i)
+	}
+
+	sort.Slice(itemArray, func(i, j int) bool {
+		return itemArray[i].frequency > itemArray[j].frequency
+	})
+
+	output := ""
+
+	for i := 0; i < len(itemArray); i++ {
+		for j := 0; j < itemArray[i].frequency; j++ {
+			output = output + string(itemArray[i].char)
+		}
+	}
+
+	return output
+
+}
+
+type item struct {
+	char      byte
+	frequency int
+}
+
+func main() {
+	output := frequencySort("bcabcb")
+	fmt.Println(output)
+
+	output = frequencySort("mniff")
+	fmt.Println(output)
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">bbbcca
+ffmni</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you - <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here - <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/sort-characters-frequency-go/">Sort characters by frequency in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/sort-characters-frequency-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8252</post-id>	</item>
+		<item>
+		<title>Check If N and Its Double Exist in Go (Golang)</title>
+		<link>https://golangbyexamples.com/number-double-golang/</link>
+					<comments>https://golangbyexamples.com/number-double-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 25 Jul 2022 16:56:54 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8209</guid>
+
+					<description><![CDATA[<p>Overview An array is given. The objective is to find if there exists any number for which it&#8217;s double also exists. Example 1 Example 2 The idea is to use a map...</p>
+<p>The post <a href="https://golangbyexamples.com/number-double-golang/">Check If N and Its Double Exist in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">An array is given. The objective is to find if there exists any number for which it&#8217;s double also exists.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: [8,5,4,3]
+Output: true
+Explanation: 4 and 8</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: [1,3,7,9]
+Output: false
+Explanation: There exists no number for which its double exist</code></pre>
+
+
+
+<p class="has-medium-font-size">The idea is to use a map here. For every element, we will check&nbsp; and return true if</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If its double exists in the map</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the number is even then if its half exists in the map</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func checkIfExist(arr []int) bool {
+	numMap := make(map[int]bool)
+
+	for i := 0; i < len(arr); i++ {
+		if numMap[arr[i]*2] {
+			return true
+		}
+		if arr[i]%2 == 0 &#038;&#038; numMap[arr[i]/2] {
+			return true
+		}
+		numMap[arr[i]] = true
+	}
+	return false
+}
+
+func main() {
+	output := checkIfExist([]int{8, 5, 4, 3})
+	fmt.Println(output)
+
+	output = checkIfExist([]int{1, 3, 7, 9})
+	fmt.Println(output)
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+false</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you - <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here - <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/number-double-golang/">Check If N and Its Double Exist in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/number-double-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8209</post-id>	</item>
+		<item>
+		<title>Program for Pascal&#8217;s Triangle in Go (Golang)</title>
+		<link>https://golangbyexamples.com/program-pascal-triangle-golang/</link>
+					<comments>https://golangbyexamples.com/program-pascal-triangle-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 25 Jul 2022 11:40:31 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8206</guid>
+
+					<description><![CDATA[<p>Overview The objective is to find the print n number of rows of Pascal&#8217;s triangle. The number n is given as an input to the program Example 1 Example 2 Refer to...</p>
+<p>The post <a href="https://golangbyexamples.com/program-pascal-triangle-golang/">Program for Pascal&#8217;s Triangle in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">The objective is to find the print n number of rows of Pascal&#8217;s triangle. The number n is given as an input to the program</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: numRows = 4
+Output: [[1],[1,1],[1,2,1],[1,3,3,1]]</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</code></pre>
+
+
+
+<p class="has-medium-font-size">Refer to this link to know more about Pascal&#8217;s Triangle here &#8211; <a href="https://en.wikipedia.org/wiki/Pascal%27s_triangle">https://en.wikipedia.org/wiki/Pascal%27s_triangle</a></p>
+
+
+
+<p class="has-medium-font-size">The idea is to use dynamic programming here.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func generate(numRows int) [][]int {
+	firstRow := []int{1}
+
+	if numRows == 1 {
+		return [][]int{firstRow}
+	}
+
+	secondRow := []int{1, 1}
+
+	if numRows == 2 {
+		return [][]int{firstRow, secondRow}
+	}
+
+	output := [][]int{firstRow, secondRow}
+
+	for i := 2; i < numRows; i++ {
+		temp := make([]int, i+1)
+
+		lastRow := output[i-1]
+
+		temp[0] = 1
+		temp[i] = 1
+
+		for j := 1; j < i; j++ {
+			temp[j] = lastRow[j-1] + lastRow[j]
+		}
+
+		output = append(output, temp)
+
+	}
+
+	return output
+
+}
+
+func main() {
+	output := generate(4)
+	fmt.Println(output)
+
+	output = generate(5)
+	fmt.Println(output)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[1] [1 1] [1 2 1] [1 3 3 1]]
+[[1] [1 1] [1 2 1] [1 3 3 1] [1 4 6 4 1]]</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you - <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here - <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/program-pascal-triangle-golang/">Program for Pascal&#8217;s Triangle in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/program-pascal-triangle-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8206</post-id>	</item>
+		<item>
+		<title>Longest Consecutive Sequence Program in Go (Golang)</title>
+		<link>https://golangbyexamples.com/longest-consecutive-sequence-golang/</link>
+					<comments>https://golangbyexamples.com/longest-consecutive-sequence-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 21 Jul 2022 16:02:51 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=8152</guid>
+
+					<description><![CDATA[<p>Overview An integer array is given. Find the length of the longest consecutive sequence in it. Let&#8217;s see an example to understand it Example 1 Example 2 The naive idea is to...</p>
+<p>The post <a href="https://golangbyexamples.com/longest-consecutive-sequence-golang/">Longest Consecutive Sequence Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">An integer array is given. Find the length of the longest consecutive sequence in it. Let&#8217;s see an example to understand it</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: [4,7,3,8,2,1]
+Output: 4
+Reason: The longest consecutive sequence is [1,2,3,4]</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Input: [4,7,3,8,2,1,9,24,10,11]
+Output: 5
+Reason: The longest consecutive sequence is [7,8,9,10,11]</code></pre>
+
+
+
+<p class="has-medium-font-size">The naive idea is to sort the array and return the longest consecutive sequence. But we can do this in O(n) time. Idea is to use a hash here. Below is the idea</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Store each of the numbers in the hash.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Then starting with each number, find the length of the longest consecutive sequence beginning at that number. So if a number let&#8217;s say is n. We try to find n+1, n+2&#8230; in the hash and get the length of the longest consecutive sequence  starting from that number</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the length find in step 2 is greater than the previous longest consecutive sequence found, then update the longest consecutive sequence length</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Program</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func longestConsecutive(nums []int) int {
+	numsMap := make(map[int]int)
+
+	lenNums := len(nums)
+
+	for i := 0; i < lenNums; i++ {
+		numsMap[nums[i]] = 0
+	}
+
+	maxLCS := 0
+	for i := 0; i < lenNums; i++ {
+		currentLen := 1
+		counter := 1
+
+		for {
+			val, ok := numsMap[nums[i]+counter]
+			if ok {
+				if val != 0 {
+					currentLen += val
+					break
+				} else {
+					currentLen += 1
+					counter += 1
+				}
+			} else {
+				break
+			}
+		}
+
+		if currentLen > maxLCS {
+			maxLCS = currentLen
+		}
+		numsMap[nums[i]] = currentLen
+	}
+
+	return maxLCS
+}
+
+func main() {
+	output := longestConsecutive([]int{4, 7, 3, 8, 2, 1})
+	fmt.Println(output)
+
+	output = longestConsecutive([]int{4, 7, 3, 8, 2, 1, 9, 24, 10, 11})
+	fmt.Println(output)
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">4
+5</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note: </strong>Check out our Golang Advanced Tutorial. The tutorials in this series are elaborative and we have tried to cover all concepts with examples. This tutorial is for those who are looking to gain expertise and a solid understanding of golang &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+
+
+
+<p class="has-medium-font-size">Also if you are interested in understanding how all design patterns can be implemented in Golang. If yes, then this post is for you &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns Golang</a></p>
+
+
+
+<p class="has-medium-font-size">Also, check out our system design tutorial series here &#8211; <a href="https://techbyexample.com/system-design-questions/">System Design Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/longest-consecutive-sequence-golang/">Longest Consecutive Sequence Program in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/longest-consecutive-sequence-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8152</post-id>	</item>
+	</channel>
+</rss>

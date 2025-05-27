@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>maps Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/maps/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/maps/</link>
+	<description></description>
+	<lastBuildDate>Wed, 25 Nov 2020 19:29:48 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>maps Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/maps/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Maps in Go (Golang)</title>
+		<link>https://golangbyexamples.com/maps-in-golang/</link>
+					<comments>https://golangbyexamples.com/maps-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 21 May 2020 15:51:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[maps]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2198</guid>
+
+					<description><![CDATA[<p>This is the  chapter 19 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – Golang Comprehensive Tutorial Series Next Tutorial – MethodPrevious Tutorial – Slice Now let’s check...</p>
+<p>The post <a href="https://golangbyexamples.com/maps-in-golang/">Maps in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the  chapter 19 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/method-in-golang/">Method</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/slice-in-golang/">Slice</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Maps are golang builtin datatype similar to the hash table which maps a key to a value. Map is an unordered collection where each key is unique while values can be the same for two or more different keys. The advantages of using a map are that it provides fast retrieval, search, insert, and delete operations. </p>
+
+
+
+<p class="has-medium-font-size">Maps are referenced data types. When you assign one map to another both refer to the same underlying map. Below is the format for a map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[key_type]value_type</code></pre>
+
+
+
+<p class="has-medium-font-size">Both <strong>key_type</strong> and <strong>value_type</strong> can be of different type or same type. For below example the key type is <strong>string</strong> and value type is <strong>int</strong>.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[string]int</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Allowed Key types in a Map</strong></h1>
+
+
+
+<p class="has-medium-font-size">The map key can be any type that is comparable. Some of the comparable types as defined by go specification are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>boolean</li><li>numeric</li><li>string,</li><li>pointer</li><li>channel</li><li>interface types</li><li>structs &#8211; if all it&#8217;s field type is comparable</li><li>array &#8211; if the type of value of array element is comparable</li></ul>
+
+
+
+<p class="has-medium-font-size">Some of the types which are not comparable as per go specification and which cannot be used as a key in a map are.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Slice</li><li>Map</li><li>Function</li></ul>
+
+
+
+<p class="has-medium-font-size">Reference &#8211; <a href="https://golang.org/ref/spec#Comparison_operators">https://golang.org/ref/spec#Comparison_operators</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Allowed Value types in a Map</strong></h1>
+
+
+
+<p class="has-medium-font-size">Value can be of any type in a map.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Creating a Map</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the map[&lt;key_type&gt;]&lt;value_type&gt;{} format also called map literal</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using make</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s look at each of above method one by one.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the map[&lt;key_type&gt;]&lt;value_type&gt; format</strong></h2>
+
+
+
+<p class="has-medium-font-size">One of the most common way of creating a map is using the map literal:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[key_type]value_type{}</code></pre>
+
+
+
+<p class="has-medium-font-size">An example of above where key type is string and value type is integer</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">employeeSalary := map[string]int{}</code></pre>
+
+
+
+<p class="has-medium-font-size">A map can also be created with some key values initialized</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">employeeSalary := map[string]int{
+"John": 1000
+"Sam": 2000
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">A new key-value pair can also be added to the map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">employeeSalary["Tom"] = 2000</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := map[string]int{}
+    fmt.Println(employeeSalary)
+    
+    //Intialize using map lieteral
+    employeeSalary = map[string]int{
+        "John": 1000,
+        "Sam":  1200,
+    }
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    fmt.Println(employeeSalary)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[]
+map[John:1000 Sam:1200 Tom:2000]</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, we created a map literal intialized with some values. Then we added another key-value pair in it. Then we printed it using fmt.Println which prints all the key-value pairs in format <strong>map[key:value key:value]</strong></p>
+
+
+
+<p class="has-medium-font-size">A map can also be declared with var keyword, but it creates a nil map as default zero value of map is nil. Adding any key value pair to that map will cause a panic. Let&#8217;s see an example for this</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    var employeeSalary map[string]int
+    employeeSalary["Tom"] = 2000
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">panic: assignment to entry in nil map</code></pre>
+
+
+
+<p class="has-medium-font-size">Above program run into panic as the map is nil.</p>
+
+
+
+<p class="has-medium-font-size"> One use case of having a map declared with <strong>var </strong>keyword is when an already existing map needs to be assigned to it or when we want to assign the result of a function.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Using Make </strong></h2>
+
+
+
+<p class="has-medium-font-size">This<strong>&nbsp;</strong>is another way of creating the map. The builtin function <strong>make</strong> can be used to create a map. It returns an initialized map. Hence key-value pairs can be added to it.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    fmt.Println(employeeSalary)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[Tom:2000]</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program we created a map using make function. Then we added a key value pair in it. Then we printed it using <strong>fmt.Println</strong> which prints all the key value pairs.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Map Operations</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below operations are applicable for map</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Add a key-value pair</li><li>Update a key</li><li>Get the value corresponding to a key</li><li>Delete a key-value pair</li><li>Check if a key exists</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Add a key value pair</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format for adding a key value pair to a map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">mapName[key] = value</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    fmt.Pr</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[Tom:2000]</code></pre>
+
+
+
+<p class="has-medium-font-size">Also note that adding to a nil map will cause a panic.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Update a key-value pair</strong></h2>
+
+
+
+<p class="has-medium-font-size">When trying to add a key to the map which already exists, the new value will override the old value. This is analogous to updating a key in the map. Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    fmt.Println("Before update")
+    employeeSalary["Tom"] = 2000
+    fmt.Println(employeeSalary)
+
+    fmt.Println("After update")
+    employeeSalary["Tom"] = 3000
+    fmt.Println(employeeSalary)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Before update
+map[Tom:2000]
+After update
+map[Tom:3000]</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program after writing the same key <strong>&#8220;Tom&#8221; </strong>with a new value of <strong>3000 </strong>it overwrites the existing value of <strong>2000. </strong>When we print the map again the value printed is 3000</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Get the value corresponding to a key</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format for retrieving a value corresponding to a key</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">val := mapName[key]</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    
+    //Retrieve a value 
+    salary := employeeSalary["Tom"]
+    fmt.Printf("Salary: %d", salary)
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Delete a key value pair</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format for delete a value corresponding to a key</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">delete(map_name, key)</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    fmt.Println("Adding key")
+    employeeSalary["Tom"] = 2000
+    fmt.Println(employeeSalary)
+
+    fmt.Println("\nDeleting key")
+    delete(employeeSalary, "Tom")
+    fmt.Println(employeeSalary)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Adding key
+map[Tom:2000]
+
+Deleting key
+map[]</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program we delete the key and when we print the map again, the key is not there.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Check if a key exists</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format to check if a key exist in the map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">val, ok := mapName[key]</code></pre>
+
+
+
+<p class="has-medium-font-size">There are two cases</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the key exists <strong>val </strong>variable be the value of the key in the map and <strong>ok </strong>variable will be true</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the key doesn&#8217;t exist <strong>val</strong> variable will be default zero value of value type and <strong>ok </strong>variable will be false</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    fmt.Println("Key exists case")
+    val, ok := employeeSalary["Tom"]
+    fmt.Printf("Val: %d, ok: %t\n", val, ok)
+    fmt.Println("Key doesn't exists case")
+
+    val, ok = employeeSalary["Sam"]
+    fmt.Printf("Val: %d, ok: %t\n", val, ok)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Key exists case
+Val: 2000, ok: true
+Key doesn't exists case
+Val: 0, ok: false</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program when key exists then val variable is set to the actual value which is 2000 here and ok variable is true. When the <strong>key</strong> doesn&#8217;t exist, the <strong>val</strong> variable is set to 0 which is the default zero value of int and <strong>ok</strong> variable is false. This <strong>ok</strong> variable is the best way to check if the key exists in a map or not</p>
+
+
+
+<p class="has-medium-font-size">In case we only want to check if a key is present and val is not needed, then blank identifier i.e &#8220;_&#8221; can be used in place of val.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">_, ok = employeeSalary["Sam"]</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Functions on Maps</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the builtin function which can be used on a map</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>len() function</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>len() function</strong></p>
+
+
+
+<p class="has-medium-font-size">The <strong>len()</strong> function can be used to get the length of the map which is number of key value pair present in the map. Below is the format for using this function on map.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">len(mapName)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    employeeSalary["Sam"] = 1200
+
+    lenOfMap := len(employeeSalary)
+    fmt.Println(lenOfMap)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Zero Value</strong></h1>
+
+
+
+<p class="has-medium-font-size">zero value of a map is nil. This is also proved when we declare a map using the <strong>var</strong> keyword. See below program.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var employeeSalary map[string]int
+    if employeeSalary == nil {
+        fmt.Println("employeeSalary map is nil")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">employeeSalary map is nil</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Maps are referenced data types</strong></h1>
+
+
+
+<p class="has-medium-font-size">Map are reference data types. So on assigning one map to a new variable, then both variable refers to the same map. Any change in one of the map would reflect in other and vice versa.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    employeeSalary["Sam"] = 1200
+
+    eS := employeeSalary
+
+    //Change employeeSalary
+    employeeSalary["John"] = 3000
+    fmt.Println("Changing employeeSalary Map")
+    fmt.Printf("employeeSalary: %v\n", employeeSalary)
+    fmt.Printf("eS: %v\n", eS)
+
+    //Change eS
+    employeeSalary["John"] = 4000
+    fmt.Println("\nChanging eS Map")
+    fmt.Printf("employeeSalary: %v\n", employeeSalary)
+    fmt.Printf("eS: %v\n", eS)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">In<strong>&nbsp;the </strong>above program, eS is a new map variable to which we assign the existing <strong>employeeSalary</strong> map.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First, we add a new key in <strong>employeeSalary</strong> map. The change reflects both in <strong>employeeSalary</strong> and <strong>eS</strong> map</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Second, we updated an existing key in <strong>eS </strong>map. The change again reflects both in <strong>employeeSalary</strong> and <strong>eS</strong> map.</li></ul>
+
+
+
+<p class="has-medium-font-size">This shows that maps are referenced data type</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Iterate over a map</strong></h1>
+
+
+
+<p class="has-medium-font-size">Range operator can be used to iterate over a map in Go</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s define a map first</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := map[string]string{
+        "a": "x",
+        "b": "y",
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Iterating over all keys and values</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for k, v := range sample {
+   fmt.Printf("key :%s value: %s\n", k, v)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">key :a value: x
+key :b value: y</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Iterating over only keys</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for k := range sample {
+   fmt.Printf("key :%s\n", k)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">key :a
+key :b</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Iterating over only values</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for _, v := range sample {
+   fmt.Printf("value :%s\n", v)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">value :x
+value :y</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Get list of all keys</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">keys := getAllKeys(sample)
+fmt.Println(keys)
+
+func getAllKeys(sample map[string]string) []string {
+    var keys []string
+    for k := range sample {
+        keys = append(keys, k)
+    }
+    return keys
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[a b]</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Maps are not safe for concurrent use</strong></h1>
+
+
+
+<p class="has-medium-font-size">go maps are not safe for concurrent use.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Buggy code:</strong>&nbsp;Below is a buggy code. It might result in crash if concurrent read and write of map happens.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+var (
+   allData = make(map[string]string)
+)
+
+func get(key string) string {
+    return allData[key]
+}
+
+func set(key string, value string) {
+    allData[key] = value
+}
+
+func main() {
+    go set("a", "Some Data 1")
+    go set("b", "Some Data 2")
+    go get("a")
+    go get("b")
+    go get("a")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Possible Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fatal error: concurrent map read and map write</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Correct Code:</strong></p>
+
+
+
+<p class="has-medium-font-size">We can use a lock to allow concurrent access of the map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "sync"
+)
+
+var (
+    allData = make(map[string]string)
+    rwm     sync.RWMutex
+)
+
+func get(key string) string {
+    rwm.RLock()
+    defer rwm.RUnlock()
+    return allData[key]
+
+}
+
+func set(key string, value string) {
+    rwm.Lock()
+    defer rwm.Unlock()
+    allData[key] = value
+
+}
+
+func main() {
+    set("a", "Some Data")
+    result := get("a")
+    fmt.Println(result)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Some data</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about maps in golang. We learned how to create a map, operations on the map, some of the functions defined on a map such as Glen(), how we can iterate over the map, and last but not the least that maps are unsafe for concurrent use. Hope you have liked this article. Please share the feedback/improvements/mistakes in the comments.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/method-in-golang/">Method</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/slice-in-golang/">Slice</a></p>
+<p>The post <a href="https://golangbyexamples.com/maps-in-golang/">Maps in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/maps-in-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2198</post-id>	</item>
+	</channel>
+</rss>

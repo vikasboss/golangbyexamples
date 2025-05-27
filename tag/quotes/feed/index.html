@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>quotes Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/quotes/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/quotes/</link>
+	<description></description>
+	<lastBuildDate>Mon, 06 Jan 2020 17:06:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>quotes Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/quotes/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Double, Single and Back quotes in Go (Golang)</title>
+		<link>https://golangbyexamples.com/double-single-back-quotes-go/</link>
+					<comments>https://golangbyexamples.com/double-single-back-quotes-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 06 Jan 2020 16:59:08 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[quotes]]></category>
+		<category><![CDATA[single]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1110</guid>
+
+					<description><![CDATA[<p>Double quotes It is used to define a string. A string defined within double quotes will honor escaping characters. For, eg for when printing a string having \n there will be a...</p>
+<p>The post <a href="https://golangbyexamples.com/double-single-back-quotes-go/">Double, Single and Back quotes in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Double quotes</strong></h1>
+
+
+
+<p class="has-medium-font-size">It is used to define a string. A string defined within double quotes will honor escaping characters. For, eg for when printing a string having \n there will be a new line printed. Similarly, \t will have tab printed.</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Back Quotes</strong></h1>
+
+
+
+<p class="has-medium-font-size">It is also used to define a string. A string encoded in back quotes is a raw literal string and doesn&#8217;t honor any kind of escaping. </p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Single quotes</strong></h1>
+
+
+
+<p class="has-medium-font-size">To declare either a <strong>byte</strong> or a <strong>rune</strong> we use single quotes. While declaring <strong>byte</strong> we have to specify the type. If we don&#8217;t specify the type, then the default type is meant as a <strong>rune. </strong>A single quote will allow only one character. On declaring a byte or rune with two characters within a single quote, the compiler will raise an error as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">invalid character literal (more than one character)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of all things discussed above.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Notice in below output that string enclosed in back quotes doesn&#8217;t honor \n or \t</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Uncomment the below line to see the compiler error we discussed above.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">r = 'ab'</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Example:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //String in double quotes
+    x := "tit\nfor\ttat"
+    fmt.Println("Priting String in Double Quotes:")
+    fmt.Printf("x is: %s\n", x)
+    
+   //String in back quotes
+    y := `tit\nfor\ttat`
+    fmt.Println("\nPriting String in Back Quotes:")
+    fmt.Printf("y is: %s\n", y)
+   
+    //Declaring a byte with single quotes
+    var b byte = 'a'
+    fmt.Println("\nPriting Byte:")
+    //Print Size, Type and Character
+    fmt.Printf("Size: %d\nType: %s\nCharacter: %c\n", unsafe.Sizeof(b), reflect.TypeOf(b), b)
+    
+    //Declaring a rune with single quotes
+    r := '£'
+    fmt.Println("\nPriting Rune:")
+    //Print Size, Type, CodePoint and Character
+    fmt.Printf("Size: %d\nType: %s\nUnicode CodePoint: %U\nCharacter: %c\n", unsafe.Sizeof(r), reflect.TypeOf(r), r, r)
+    //Below will raise a compiler error - invalid character literal (more than one character)
+    //r = 'ab'
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p>Priting String in Double Quotes:<br>
+x is: tit<br>
+for     tat</p>
+
+
+
+<p>Priting String in Back Quotes:<br>
+y is: tit\nfor\ttat</p>
+
+
+
+<p>Priting Byte:<br>
+Size: 1<br>
+Type: uint8<br>
+Character: a</p>
+
+
+
+<p>Priting Rune:<br>
+Size: 4<br>
+Type: int32<br>
+Unicode CodePoint: U+00A3<br>
+Character: £</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"></code></pre>
+<p>The post <a href="https://golangbyexamples.com/double-single-back-quotes-go/">Double, Single and Back quotes in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/double-single-back-quotes-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1110</post-id>	</item>
+	</channel>
+</rss>

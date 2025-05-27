@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>lru Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/lru/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/lru/</link>
+	<description></description>
+	<lastBuildDate>Thu, 04 Nov 2021 05:59:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>lru Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/lru/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>LRU Cache Implementation in Go (Golang)</title>
+		<link>https://golangbyexamples.com/lru-cache-implementation-golang/</link>
+					<comments>https://golangbyexamples.com/lru-cache-implementation-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 04 Nov 2021 05:59:16 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[lru]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=6407</guid>
+
+					<description><![CDATA[<p>Overview The objective is to implement a cache that will It should support Set and Get Operation O(1) Time Complexity for both Set and Get Assume the maximum capacity of the cache...</p>
+<p>The post <a href="https://golangbyexamples.com/lru-cache-implementation-golang/">LRU Cache Implementation in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">The objective is to implement a cache that will</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It should support <strong>Set</strong> and <strong>Get</strong> Operation</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>O(1) Time Complexity for both <strong>Set</strong> and <strong>Get</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Assume the maximum capacity of the cache is 3. Once the cache is full and there is one more key to be inserted then one of the existing entries needs to be deleted from the cache</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Deletion should be based on eviction algorithm &#8211; <strong>LRU</strong></li></ul>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading" style="font-size:24px"><strong>Implementation Details</strong></h3>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We will use a <strong>Map</strong> and a <strong>Doubly-linked List</strong> for storing everything. Both map and doubly-linked list are used so that <strong>get</strong> and <strong>set</strong> operations are of  O(1) even with evictions</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The <strong>Map</strong> will have the key of type string and the value of the type pointer to a node in the <strong>Doubly-linked List</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each node of the <strong>Doubly Linked List</strong> will contain the key as well as value. Each node will also have a pointer to the previous node in the double linked list and a pointer to the next node in the <strong>doubly linked list</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see how Get and Set are going to work in O(1) time</p>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading" style="font-size:24px"><strong>Set(key int, value int)</strong></h3>
+
+
+
+<p class="has-medium-font-size">For any set operation, it will first create a doubly-linked list node with key and value supplied. Then an entry will be made into the map with key as the input key and value as the address of the node. Once the node is created, then there are two cases</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The cache is not full &#8211;  In this case, it will pass the control to the current Eviction Algorithm which is LRU. The LRU algorithm is going to do insert that node in a double-linked list at the end. The idea is that the front node in the doubly linked list is the least recently used node. Every operation is O(1) here</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The cache is full &#8211; In this case, it will pass the control to the current eviction Algorithm which is LRU. It will evict the least recently used node which is the front node. Once that node is evicted it will insert the new node at the end. Every operation is O(1) here</li></ul>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading" style="font-size:24px"><strong>Get(key int) </strong></h3>
+
+
+
+<p class="has-medium-font-size">For any Get operation, it will first check the map if the given key exists. If it exists then it will fetch the address of the node pointed to by key in the map. It will then fetch the value from the node. Then it will pass the control to the current Eviction Algorithm which is LRU. The LRU algorithm is going to move the current node in the doubly-linked list at the end. Again the idea is that the front node in the doubly linked list is the least recently used node and to maintain that current node is moved to the end. Every operation is O(1) here.</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<p class="has-medium-font-size">Here is the full working code in go programming language if anyone is interested.</p>
+
+
+
+<p class="has-medium-font-size"><strong>doublylinklist.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type node struct {
+	key   string
+	value string
+	prev  *node
+	next  *node
+}
+
+type doublyLinkedList struct {
+	len  int
+	tail *node
+	head *node
+}
+
+func initDoublyList() *doublyLinkedList {
+	return &doublyLinkedList{}
+}
+
+func (d *doublyLinkedList) AddToFront(key, value string) {
+	newNode := &node{
+		key:   key,
+		value: value,
+	}
+	if d.head == nil {
+		d.head = newNode
+		d.tail = newNode
+	} else {
+		newNode.next = d.head
+		d.head.prev = newNode
+		d.head = newNode
+	}
+	d.len++
+	return
+}
+
+func (d *doublyLinkedList) RemoveFromFront() {
+	if d.head == nil {
+		return
+	} else if d.head == d.tail {
+		d.head = nil
+		d.tail = nil
+	} else {
+		d.head = d.head.next
+	}
+	d.len--
+}
+
+func (d *doublyLinkedList) AddToEnd(node *node) {
+	newNode := node
+	if d.head == nil {
+		d.head = newNode
+		d.tail = newNode
+	} else {
+		currentNode := d.head
+		for currentNode.next != nil {
+			currentNode = currentNode.next
+		}
+		newNode.prev = currentNode
+		currentNode.next = newNode
+		d.tail = newNode
+	}
+	d.len++
+}
+func (d *doublyLinkedList) Front() *node {
+	return d.head
+}
+
+func (d *doublyLinkedList) MoveNodeToEnd(node *node) {
+	prev := node.prev
+	next := node.next
+
+	if prev != nil {
+		prev.next = next
+	}
+
+	if next != nil {
+		next.prev = prev
+	}
+	if d.tail == node {
+		d.tail = prev
+	}
+	if d.head == node {
+		d.head = next
+	}
+	node.next = nil
+	node.prev = nil
+	d.len--
+	d.AddToEnd(node)
+}
+
+func (d *doublyLinkedList) TraverseForward() error {
+	if d.head == nil {
+		return fmt.Errorf("TraverseError: List is empty")
+	}
+	temp := d.head
+	for temp != nil {
+		fmt.Printf("key = %v, value = %v, prev = %v, next = %v\n", temp.key, temp.value, temp.prev, temp.next)
+		temp = temp.next
+	}
+	fmt.Println()
+	return nil
+}
+
+func (d *doublyLinkedList) Size() int {
+	return d.len
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>evictionAlgorithm.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type evictionAlgo interface {
+	evict(c *Cache) string
+	get(node *node, c *Cache)
+	set(node *node, c *Cache)
+	set_overwrite(node *node, value string, c *Cache)
+}
+
+func createEvictioAlgo(algoType string) evictionAlgo {
+	if algoType == "fifo" {
+		return &fifo{}
+	} else if algoType == "lru" {
+		return &lru{}
+	}
+
+	return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>lru.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type lru struct {
+}
+
+func (l *lru) evict(c *Cache) string {
+	key := c.doublyLinkedList.Front().key
+	fmt.Printf("Evicting by lru strtegy. Evicted Node Key: %s: ", key)
+	c.doublyLinkedList.RemoveFromFront()
+	return key
+}
+
+func (l *lru) get(node *node, c *Cache) {
+	fmt.Println("Shuffling doubly linked list due to get operation")
+	c.doublyLinkedList.MoveNodeToEnd(node)
+}
+
+func (l *lru) set(node *node, c *Cache) {
+	fmt.Println("Shuffling doubly linked list due to set operation")
+	c.doublyLinkedList.AddToEnd(node)
+}
+
+func (l *lru) set_overwrite(node *node, value string, c *Cache) {
+	fmt.Println("Shuffling doubly linked list due to set_overwrite operation")
+	node.value = value
+	c.doublyLinkedList.MoveNodeToEnd(node)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>fifo.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type fifo struct {
+}
+
+func (l *fifo) evict(c *Cache) string {
+	fmt.Println("Evicting by fifo strtegy")
+	key := c.doublyLinkedList.Front().key
+	c.doublyLinkedList.RemoveFromFront()
+	return key
+}
+
+func (l *fifo) get(node *node, c *Cache) {
+	fmt.Println("Shuffling doubly linked list due to get operation")
+}
+
+func (l *fifo) set(node *node, c *Cache) {
+	fmt.Println("Shuffling doubly linked list due to set operation")
+	c.doublyLinkedList.AddToEnd(node)
+}
+
+func (l *fifo) set_overwrite(node *node, value string, c *Cache) {
+	fmt.Println("Shuffling doubly linked list due to set_overwrite operation")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>cache.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type Cache struct {
+	doublyLinkedList *doublyLinkedList
+	storage          map[string]*node
+	evictionAlgo     evictionAlgo
+	capacity         int
+	maxCapacity      int
+}
+
+func initCache(evictionAlgo evictionAlgo, maxCapacity int) Cache {
+	storage := make(map[string]*node)
+	return Cache{
+		doublyLinkedList: &doublyLinkedList{},
+		storage:          storage,
+		evictionAlgo:     evictionAlgo,
+		capacity:         0,
+		maxCapacity:      maxCapacity,
+	}
+}
+
+func (this *Cache) setEvictionAlgo(e evictionAlgo) {
+	this.evictionAlgo = e
+}
+
+func (this *Cache) set(key, value string) {
+	node_ptr, ok := this.storage[key]
+	if ok {
+		this.evictionAlgo.set_overwrite(node_ptr, value, this)
+		return
+	}
+	if this.capacity == this.maxCapacity {
+		evictedKey := this.evict()
+		delete(this.storage, evictedKey)
+	}
+	node := &node{key: key, value: value}
+	this.storage[key] = node
+	this.evictionAlgo.set(node, this)
+	this.capacity++
+}
+
+func (this *Cache) get(key string) string {
+	node_ptr, ok := this.storage[key]
+	if ok {
+		this.evictionAlgo.get(node_ptr, this)
+		return (*node_ptr).value
+	}
+	return ""
+}
+
+func (this *Cache) evict() string {
+	key := this.evictionAlgo.evict(this)
+	this.capacity--
+	return key
+}
+
+func (this *Cache) print() {
+	for k, v := range this.storage {
+		fmt.Printf("key :%s value: %s\n", k, (*v).value)
+	}
+	this.doublyLinkedList.TraverseForward()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	lru := createEvictioAlgo("lru")
+	cache := initCache(lru, 3)
+	cache.set("a", "1")
+	cache.print()
+
+	cache.set("b", "2")
+	cache.print()
+
+	cache.set("c", "3")
+	cache.print()
+
+	value := cache.get("a")
+	fmt.Printf("key: a, value: %s\n", value)
+	cache.print()
+
+	cache.set("d", "4")
+	cache.print()
+
+	cache.set("e", "5")
+	cache.print()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Shuffling doubly linked list due to set operation
+key :a value: 1
+key = a, value = 1, prev = <nil>, next = <nil>
+
+Shuffling doubly linked list due to set operation
+key :a value: 1
+key :b value: 2
+key = a, value = 1, prev = <nil>, next = &{b 2 0xc00007e1e0 <nil>}
+key = b, value = 2, prev = &{a 1 <nil> 0xc00007e210}, next = <nil>
+
+Shuffling doubly linked list due to set operation
+key :a value: 1
+key :b value: 2
+key :c value: 3
+key = a, value = 1, prev = <nil>, next = &{b 2 0xc00007e1e0 0xc00007e2a0}
+key = b, value = 2, prev = &{a 1 <nil> 0xc00007e210}, next = &{c 3 0xc00007e210 <nil>}
+key = c, value = 3, prev = &{b 2 0xc00007e1e0 0xc00007e2a0}, next = <nil>
+
+Shuffling doubly linked list due to get operation
+key: a, value: 1
+key :a value: 1
+key :b value: 2
+key :c value: 3
+key = b, value = 2, prev = <nil>, next = &{c 3 0xc00007e210 0xc00007e1e0}
+key = c, value = 3, prev = &{b 2 <nil> 0xc00007e2a0}, next = &{a 1 0xc00007e2a0 <nil>}
+key = a, value = 1, prev = &{c 3 0xc00007e210 0xc00007e1e0}, next = <nil>
+
+Evicting by lru strtegy. Evicted Node Key: %s:  b
+Shuffling doubly linked list due to set operation
+key :d value: 4
+key :c value: 3
+key :a value: 1
+key = c, value = 3, prev = &{b 2 <nil> 0xc00007e2a0}, next = &{a 1 0xc00007e2a0 0xc00007e450}
+key = a, value = 1, prev = &{c 3 0xc00007e210 0xc00007e1e0}, next = &{d 4 0xc00007e1e0 <nil>}
+key = d, value = 4, prev = &{a 1 0xc00007e2a0 0xc00007e450}, next = <nil>
+
+Evicting by lru strtegy. Evicted Node Key: %s:  c
+Shuffling doubly linked list due to set operation
+key :a value: 1
+key :d value: 4
+key :e value: 5
+key = a, value = 1, prev = &{c 3 0xc00007e210 0xc00007e1e0}, next = &{d 4 0xc00007e1e0 0xc00007e570}
+key = d, value = 4, prev = &{a 1 0xc00007e2a0 0xc00007e450}, next = &{e 5 0xc00007e450 <nil>}
+key = e, value = 5, prev = &{d 4 0xc00007e1e0 0xc00007e570}, next = <nil></code></pre>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong>Conclusion</strong></h2>
+
+
+
+<p class="has-medium-font-size">This is all about LRU cache implementation in Golang. Hope you have liked this article. Please share feedback in the comments</p>
+<p>The post <a href="https://golangbyexamples.com/lru-cache-implementation-golang/">LRU Cache Implementation in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/lru-cache-implementation-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6407</post-id>	</item>
+	</channel>
+</rss>

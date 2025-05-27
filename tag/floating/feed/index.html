@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>floating Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/floating/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/floating/</link>
+	<description></description>
+	<lastBuildDate>Wed, 07 Jul 2021 13:00:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>floating Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/floating/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Golang Regex: Match a floating-point number in Regular Expression</title>
+		<link>https://golangbyexamples.com/golang-regex-floating-point-number/</link>
+					<comments>https://golangbyexamples.com/golang-regex-floating-point-number/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 07 Jul 2021 12:56:41 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[floating]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[number]]></category>
+		<category><![CDATA[point]]></category>
+		<category><![CDATA[regex]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5864</guid>
+
+					<description><![CDATA[<p>Overview A floating-point number could have below properties It could have a negative and positive sign The integer part could be optional when the decimal part is present The dot and decimal...</p>
+<p>The post <a href="https://golangbyexamples.com/golang-regex-floating-point-number/">Golang Regex: Match a floating-point number in Regular Expression</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">A floating-point number could have below properties</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It could have a negative and positive sign</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The integer part could be optional when the decimal part is present</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The dot and decimal part could be optional if the integer part is present</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It could have an exponent or not</li></ul>
+
+
+
+<p class="has-medium-font-size">So below are valid floating-point numbers</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1.2
+.12
+12
+12.
++1.2
+-1.2
+1.2e3</code></pre>
+
+
+
+<p class="has-medium-font-size">Below are invalid floating points&nbsp;</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>An empty string</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>+ or &#8211; sign only</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A single dot</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A prefix of multiple 0. For eg 00.1 or 001</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Anything like +. or &#8211;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A dot just before exponent.  Eg 1.e2</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Any other char before or after the floating-point number. Eg a1.3 or a1.3b or 1.3b</li></ul>
+
+
+
+<p class="has-medium-font-size">Below are examples of invalid floats</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">""
+.
+00.1
+001
++
+-
++.
+-.
+1.e2
+a1.2
+1.2b
+a1.2b</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s first see a simple regex which only matches only the integer, dot, and decimal parts.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">^(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)$</code></pre>
+
+
+
+<p class="has-medium-font-size">On a high level, the entire regex has two parts which are in OR relation</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>(?:0|[1-9]\d*)(?:\.\d*)? &#8211; </strong>This captures the part where the integer part is always present and the decimal part is optional</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>\.\d+ &#8211; </strong>This captures the part where the integer part is not present and the decimal part is always present.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s dissect this regex</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img fetchpriority="high" decoding="async" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex-1024x495.png?resize=640%2C309&#038;ssl=1" alt="" class="wp-image-5865" width="640" height="309" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?resize=1024%2C495&amp;ssl=1 1024w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?resize=300%2C145&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?resize=768%2C372&amp;ssl=1 768w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?resize=1536%2C743&amp;ssl=1 1536w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?resize=850%2C411&amp;ssl=1 850w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?w=1968&amp;ssl=1 1968w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2021/07/floating_point_regex.png?w=1280&amp;ssl=1 1280w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s make it more complex by having it accept a negative or a positive sign. Note that negative or positive sign is optional</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)$</code></pre>
+
+
+
+<p class="has-medium-font-size">The regex is the same as the earlier regex. We just added the optional positive negative sign in front</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>[+\-] &#8211;</strong> Match either positive or negative sign.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>?</strong> &#8211; Matching either positive or negative sign is optional</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s also add an exponent part to the regex. Again note that the exponent part is optional. This regex is the same as the previous regex. We just added the exponent part at the end</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s dissect the exponent part</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>(?: &#8211;</strong> It means non-capturing group</li><li><strong>\d</strong> &#8211; Match one digit. This is to prevent numbers like 1.e2</li><li><strong>[eE]</strong> &#8211; Match either lowercase e or uppercase E</li><li><strong>[+\-] &#8211;</strong> Match either positive or negative sign. The matching either positive or negative sign is optional</li><li><strong>\d+ &#8211;</strong> Match zero or more digits</li><li><strong>)? &#8211;</strong> Entire regex  expression is optional</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<p class="has-medium-font-size">Now see an example of this regular expression in action</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"regexp"
+)
+
+func main() {
+	sampleRegex := regexp.MustCompile(`^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$`)
+
+	fmt.Println("Valid Inputs")
+	match := sampleRegex.MatchString("1.2")
+	fmt.Printf("For 1.2: %t\n", match)
+
+	match = sampleRegex.MatchString(".12")
+	fmt.Printf("For .12: %t\n", match)
+
+	match = sampleRegex.MatchString("12")
+	fmt.Printf("For 12: %t\n", match)
+
+	match = sampleRegex.MatchString("12.")
+	fmt.Printf("For 12.: %t\n", match)
+
+	match = sampleRegex.MatchString("+1.2")
+	fmt.Printf("For +1.2.: %t\n", match)
+
+	match = sampleRegex.MatchString("-1.2")
+	fmt.Printf("For -1.2.: %t\n", match)
+
+	match = sampleRegex.MatchString("1.2e3")
+	fmt.Printf("For 1.2e3.: %t\n", match)
+
+	fmt.Println("\nInValid Inputs")
+	match = sampleRegex.MatchString(".")
+	fmt.Printf("For .: %t\n", match)
+
+	match = sampleRegex.MatchString("")
+	fmt.Printf("For empty string: %t\n", match)
+
+	match = sampleRegex.MatchString("00.1")
+	fmt.Printf("For 00.1: %t\n", match)
+
+	match = sampleRegex.MatchString("001")
+	fmt.Printf("For 001 %t\n", match)
+
+	match = sampleRegex.MatchString("+")
+	fmt.Printf("For +: %t\n", match)
+
+	match = sampleRegex.MatchString("-")
+	fmt.Printf("For -: %t\n", match)
+
+	match = sampleRegex.MatchString("+.")
+	fmt.Printf("For +.: %t\n", match)
+
+	match = sampleRegex.MatchString("-.")
+	fmt.Printf("For -.: %t\n", match)
+
+	match = sampleRegex.MatchString("1.e2")
+	fmt.Printf("For 1.e2: %t\n", match)
+
+	match = sampleRegex.MatchString(".e2")
+	fmt.Printf("For .e2: %t\n", match)
+
+	match = sampleRegex.MatchString("a1.2")
+	fmt.Printf("For a1.2 %t\n", match)
+
+	match = sampleRegex.MatchString("1.2b")
+	fmt.Printf("For 1.2b %t\n", match)
+
+	match = sampleRegex.MatchString("a1.2b")
+	fmt.Printf("For a1.2b %t\n", match)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Valid Inputs
+For 1.2: true
+For .12: true
+For 12: true
+For 12.: true
+For +1.2.: true
+For -1.2.: true
+For 1.2e3.: true
+
+InValid Inputs
+For .: false
+For empty string: false
+For 00.1: false
+For 001 false
+For +: false
+For -: false
+For +.: false
+For -.: false
+For 1.e2: false
+For .e2: false
+For a1.2 false
+For 1.2b false
+For a1.2b false</code></pre>
+
+
+
+<p class="has-medium-font-size">For all the valid inputs discussed above the program prints true</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Valid Inputs
+For 1.2: true
+For .12: true
+For 12: true
+For 12.: true
+For +1.2.: true
+For -1.2.: true
+For 1.2e3.: true</code></pre>
+
+
+
+<p class="has-medium-font-size">And for all the invalid inputs discussed above it gives false</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">InValid Inputs
+For .: false
+For empty string: false
+For 00.1: false
+For 001 false
+For +: false
+For -: false
+For +.: false
+For -.: false
+For 1.e2: false
+For .e2: false
+For a1.2 false
+For 1.2b false
+For a1.2b false</code></pre>
+
+
+
+<p class="has-medium-font-size">Please try it out and post in the comments if in any case, this regex doesn&#8217;t work.</p>
+
+
+
+<p class="has-medium-font-size">The above regex is used to validate if a given string is a number. If you want to find if an input string contains a number as a substring then we need to remove the anchor characters at the start and the end which is removing the <strong>caret (^)</strong> at the start and the dollar <strong>($)</strong> character at the end</p>
+
+
+
+<p class="has-medium-font-size">So the regex will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?</code></pre>
+
+
+
+<p class="has-medium-font-size">This is all about matching floating point numbers through regex in golang. Hope you have liked this article. Please share feedback in the comments.</p>
+
+
+
+<p class="has-medium-font-size">Also, check out our Golang advance tutorial Series – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/"><u>Golang Advance Tutorial</u></a></p>
+<p>The post <a href="https://golangbyexamples.com/golang-regex-floating-point-number/">Golang Regex: Match a floating-point number in Regular Expression</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/golang-regex-floating-point-number/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5864</post-id>	</item>
+	</channel>
+</rss>

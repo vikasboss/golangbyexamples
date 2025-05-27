@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>strategy design pattern in golang Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/strategy-design-pattern-in-golang/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/strategy-design-pattern-in-golang/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:37:52 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>strategy design pattern in golang Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/strategy-design-pattern-in-golang/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Strategy Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/strategy-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/strategy-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 13 Nov 2019 19:57:19 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[strategy design pattern]]></category>
+		<category><![CDATA[strategy design pattern in golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=562</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition:&#160; Strategy design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/strategy-design-pattern-golang/">Strategy Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size">Strategy design pattern is a behavioral design pattern. This design pattern allows you to change the behavior of an object at run time without any change in the class of that object.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s understand the strategy pattern with an example. Suppose you are building an In-Memory-Cache. Since it is an In-Memory-Cache it is of limited size. Whenever it reaches its maximum size that some old entries from the cache need to be evicted. This eviction can happen via several algorithms. Some of the popular algorithms are</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>LRU</strong> &#8211; Least Recently Used: Remove the entry which has been used least recently.</li><li><strong>FIFO</strong> &#8211; First In First Out: Remove the entry, which was created first.</li><li><strong>LFU</strong> &#8211; Least Frequently Used: Remove the entry which was least frequently used.</li></ol>
+
+
+
+<p class="has-medium-font-size">Now the problem is how to decouple our Cache class with the algorithm such that we should be able to change the algorithm at run time. Also Cache class should not change when a new algorithm is being added. This is were Strategy Pattern comes into the picture. The strategy pattern suggests creating a family of the algorithm with each algorithm having its own class. Each of these classes follows the same interface and this makes the algorithm interchangeable within the family. Let&#8217;s say the common interface name is <strong>evictionAlgo</strong>.</p>
+
+
+
+<p class="has-medium-font-size">Now our main <strong>Cache </strong>class will embed <strong>evictionAlgo</strong> interface. Instead of implementing all types of eviction algorithms in itself, our Cache class will delegate all it to the <strong>evictionAlgo</strong> interface. Since evictionAlgo is an interface, we can run time change the algorithm to either be LRU, FIFO, LFU without any change in Cache class.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>When to Use</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When an object needs to support different behavior and you want to change the behavior at run time.</li><li>When you want to avoid a lot of conditionals of choosing the runtime behavior.</li><li>When you have different algorithms that are similar and they only differ in the way they execute some behavior.</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram</strong></h2>
+
+
+
+<p class="has-medium-font-size">Notice below UML diagram, Context (Cache) embeds the strategy (evictionAlgo) interface. </p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="640" height="372" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-1.jpg?resize=640%2C372&#038;ssl=1" alt="" data-id="635" data-full-url="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-1.jpg?fit=676%2C393&amp;ssl=1" data-link="https://golangbyexamples.com/strategy-design-pattern-golang/strategy-design-pattern-1/" class="wp-image-635" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-1.jpg?w=676&amp;ssl=1 676w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-1.jpg?resize=300%2C174&amp;ssl=1 300w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<p></p>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the example given above</p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-2 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img decoding="async" width="640" height="360" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-2.jpg?resize=640%2C360&#038;ssl=1" alt="" data-id="636" data-full-url="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-2.jpg?fit=716%2C403&amp;ssl=1" data-link="https://golangbyexamples.com/strategy-design-pattern-golang/strategy-design-pattern-2/" class="wp-image-636" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-2.jpg?w=716&amp;ssl=1 716w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Strategy-Design-Pattern-2.jpg?resize=300%2C169&amp;ssl=1 300w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in code.</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Context</td><td>cache.go</td></tr><tr><td>Strategy</td><td>evictionAlgo.go</td></tr><tr><td>Concrete Strategy Object 1</td><td>lfu.go</td></tr><tr><td>Concrete Strategy Object 2</td><td>lru.go</td></tr><tr><td>Concrete Strategy Object 3</td><td>fifo.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example </strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>evictionAlgo.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type evictionAlgo interface {
+    evict(c *cache)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>fifo.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type fifo struct {
+}
+
+func (l *fifo) evict(c *cache) {
+    fmt.Println("Evicting by fifo strtegy")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>lru.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type lru struct {
+}
+
+func (l *lru) evict(c *cache) {
+    fmt.Println("Evicting by lru strtegy")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>lfu.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type lfu struct {
+}
+
+func (l *lfu) evict(c *cache) {
+    fmt.Println("Evicting by lfu strtegy")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>cache.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type cache struct {
+    storage      map[string]string
+    evictionAlgo evictionAlgo
+    capacity     int
+    maxCapacity  int
+}
+
+func initCache(e evictionAlgo) *cache {
+    storage := make(map[string]string)
+    return &cache{
+        storage:      storage,
+        evictionAlgo: e,
+        capacity:     0,
+        maxCapacity:  2,
+    }
+}
+
+func (c *cache) setEvictionAlgo(e evictionAlgo) {
+    c.evictionAlgo = e
+}
+
+func (c *cache) add(key, value string) {
+    if c.capacity == c.maxCapacity {
+        c.evict()
+    }
+    c.capacity++
+    c.storage[key] = value
+}
+
+func (c *cache) get(key string) {
+    delete(c.storage, key)
+}
+
+func (c *cache) evict() {
+    c.evictionAlgo.evict(c)
+    c.capacity--
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    lfu := &lfu{}
+    cache := initCache(lfu)
+    cache.add("a", "1")
+    cache.add("b", "2")
+    cache.add("c", "3")
+    lru := &lru{}
+    cache.setEvictionAlgo(lru)
+    cache.add("d", "4")
+    fifo := &fifo{}
+    cache.setEvictionAlgo(fifo)
+    cache.add("e", "5")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Evicting by lfu strtegy
+Evicting by lru strtegy
+Evicting by fifo strtegy</code></pre>
+
+
+
+<p></p>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/strategy-design-pattern-golang/">Strategy Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/strategy-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">562</post-id>	</item>
+	</channel>
+</rss>

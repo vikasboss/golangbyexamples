@@ -1,0 +1,1348 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>guide Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/guide/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/guide/</link>
+	<description></description>
+	<lastBuildDate>Tue, 05 Jan 2021 17:37:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>guide Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/guide/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Understand If Else Statement in Go (Golang)</title>
+		<link>https://golangbyexamples.com/understand-if-else-statement-golang/</link>
+					<comments>https://golangbyexamples.com/understand-if-else-statement-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 02 May 2020 09:23:33 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[guide]]></category>
+		<category><![CDATA[understand]]></category>
+		<category><![CDATA[using]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2088</guid>
+
+					<description><![CDATA[<p>This is the  chapter 12 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – Golang Comprehensive Tutorial Series Next Tutorial – SwitchPrevious Tutorial – For Range loop Now...</p>
+<p>The post <a href="https://golangbyexamples.com/understand-if-else-statement-golang/">Understand If Else Statement in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the  chapter 12 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/switch-statement-golang/">Switch</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/understand-for-range-loop-golang/">For Range loop</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Go has if-else statement similar to any other programming language to perform the basic conditional logic. Below is the format for if-else statement in golang</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+   //Do something
+} else if condition {
+   //Do something
+} else {
+   //Do something</code></pre>
+
+
+
+<p class="has-medium-font-size">Before we move further let&#8217;s talk about the <strong>condition</strong> first. Only a statement or a combination of statements that result in a boolean are allowed for a condition in if. false boolean is treated as false in a condition in go and true boolean is treated as true. As mentioned above, the condition can be composed of multiple statements combined by operators in Go such as &amp;&amp;, ||, &gt;, &lt;, &gt;=, &lt;=, ! etc.</p>
+
+
+
+<p class="has-medium-font-size">Now let&#8217;s look into the if-else statement in detail to understand the small things. Go supports below formats for the if-else statement</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only if</li><li>If Else</li><li>If Else Ladder</li><li>Nested if-else</li><li>If with a short statement</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>If statement</strong></h2>
+
+
+
+<p class="has-medium-font-size">if statement alone has below format</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+   //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">If the condition is true then the statement inside the braces is executed.&nbsp; Some points to note about if statement</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Brackets can be omitted around the condition.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Opening and closing braces after condition are mandatory</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working example. Below program checks if a number is greater than 5.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 6
+    if a > 5 {
+        fmt.Println("a is greater than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is greater than 5</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see another example of multiple statement in a if condition. Below is a program to check if a number lies in a particular range. Notice that multiple statement in the condition are joined by the &amp;&amp; operator.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 4
+    if a > 3 && a < 6 {
+        fmt.Println("a is within range")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is within range</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>If Else Statement</strong></h2>
+
+
+
+<p class="has-medium-font-size">If Else statement has below format</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+   //Do something
+} else {
+   //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">If the condition is true then the statement inside the if block is executed otherwise the statement inside the else block is executed. Some points to note about if-else statement.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The else keyword should be on the same line as the closing brace for it. If not there will be below compiler error.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">syntax error: unexpected else, expecting }</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a small example of if else statement. In below program we use if else statement to figure out the max number of 2 numbers</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 1
+    b := 2
+
+    if a > b {
+        fmt.Println("a is greater than b")
+    } else {
+        fmt.Println("b is greater than a")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">b is greater than a</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>If Else Ladder</strong></h2>
+
+
+
+<p class="has-medium-font-size">If Else ladder has the below format</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition1 {
+   //Do something
+} else if condition2 {
+   //Do something
+} else {
+  //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to note about this if else ladder</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Any number of else if statement can be added in the middle</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>else if should lie on the same line as the previous closing brace</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is a working code example. The code given an age is using a if else ladder to find out weather a person is "Kid", "Young" or "Old".</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    age := 29
+    if age < 18 {
+        fmt.Println("Kid")
+    } else if age >= 18 && age < 40 {
+        fmt.Println("Young")
+    } else {
+        fmt.Println("Old")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Young</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Nested If Else</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below are some one of the possible format for nested if else.</p>
+
+
+
+<p class="has-medium-font-size">Only nested if</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+  //Do something
+  if condition2 { 
+    //Do something
+  }
+  //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Nested if else</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition1 {
+   //....
+   if condition2 {
+      //...
+   } else {
+      //...
+   }
+  //...
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Below combination is also possible for nested if else</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition1 {
+   //...
+} else {
+   //...
+   if condition2 {
+      //...
+   } else {
+     //....
+   }
+   //....
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a working example of nested if else. In below program we print the max of three numbers using nested if else.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 1
+    b := 2
+    c := 3
+    if a > b {
+        if a > c {
+            fmt.Println("Biggest is a")
+        } else if b > c {
+            fmt.Println("Biggest is b")
+        }
+    } else if b > c {
+        fmt.Println("Biggest is b")
+    } else {
+        fmt.Println("Biggest is c")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Biggest is c</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>If with short statement</strong></h2>
+
+
+
+<p class="has-medium-font-size">If statement also supports a statement before the condition. This statement will be executed before the condition. There can also be new initialized variable in the statement. Below is the format for that.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if statement; condition {
+   //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The initialization if present in the statement will be a short declaration. Notice that var keyword is not supported in the statement. Let's see a working example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    if a := 6; a > 5 {
+        fmt.Println("a is greater than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is greater than 5</code></pre>
+
+
+
+<p class="has-medium-font-size">The variable that is initialized in if statement is available inside all the branches. As in below example variable <strong>a</strong> is also available in the else block.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    if a := 1; a > 5 {
+        fmt.Println("a is greater than 5")
+    } else {
+        fmt.Println("a is less than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is less than 5</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>If Conditions</strong></h1>
+
+
+
+<p class="has-medium-font-size">We mentioned at the start that only boolean values or statement that result in boolean value are allowed in the if condition. Let's see a working code of the error that comes in case of using any else than boolean</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    if 1 {
+        fmt.Println("a is greater than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output: </strong>Below compiler error is raised</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">non-bool 1 (type int) used as if condition</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Ternary Operator</strong></h1>
+
+
+
+<p class="has-medium-font-size">There is no ternary operator in Go, hence you need to use if else statements in place of that.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">That is all about if else statement in go. Hope you have liked this article. Please share feedback/improvements/mistakes in comments</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/switch-statement-golang/">Switch</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/understand-for-range-loop-golang/">For Range loop</a></p>
+<p>The post <a href="https://golangbyexamples.com/understand-if-else-statement-golang/">Understand If Else Statement in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/understand-if-else-statement-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2088</post-id>	</item>
+		<item>
+		<title>Function in Go (Golang)</title>
+		<link>https://golangbyexamples.com/function-golang-complete-guide/</link>
+					<comments>https://golangbyexamples.com/function-golang-complete-guide/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2020 11:41:31 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete]]></category>
+		<category><![CDATA[function]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[guide]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1952</guid>
+
+					<description><![CDATA[<p>This is the&#160; chapter 8 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&#160;Golang Comprehensive Tutorial Series Next Tutorial&#160;–&#160;ConstantsPrevious Tutorial&#160;–All basic data types Now...</p>
+<p>The post <a href="https://golangbyexamples.com/function-golang-complete-guide/">Function in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the&nbsp; chapter 8 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/constant-golang/">Constants</a><br><strong>Previous Tutorial</strong>&nbsp;–<a href="https://golangbyexamples.com/all-basic-data-types-golang/">All basic data types</a><br></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><br>A function is a group of statements that perform a specific task. In GO functions are first-order variables. They can be passed around like any other variable.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size">Some point worth noting about a function name</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A function name cannot begin with a number</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The function name is case sensitive. Hence sum, Sum,&nbsp; SUM are different functions.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A function whose name starts with a capital letter will be exported outside its package and can be called from other packages. A function whose name starts with lowercase letters will not be exported and it&#8217;s only visible within its package.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Signature of a function</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func func_name(input_parameters) return_values{
+  //body
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">A function in golang</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declared using <strong>func</strong> keyword</li><li>It has a name</li><li>Comma-separated zero or more input parameters</li><li>Comma-separated zero or more return values</li><li>Function body</li><li>Can return multiple values</li></ul>
+
+
+
+<p class="has-medium-font-size">An example of a function. The below function is</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Has the name <strong>&#8220;sum&#8221;</strong></li><li>Accept two arguments of int type</li><li>Return a single value of type int</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func sum(a int, b int) int {
+  return a + b 
+}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Calling a function</strong></h1>
+
+
+
+<p class="has-medium-font-size">A function in Go can be called in go as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">results := sum(2, 3)</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to note about calling a function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the function of some other package is being called then it is necessary to prefix the package name. Also please note that across packages only those function can be called which are exported meaning whose name start with capital letter</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>With in the same package the function can directly be called using its name suffixed by ()</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Function Parameters</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>As mentioned above function can have zero or more arguments.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>type for the consecutive same types can be specified only once. For example above sum function can also be written as</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func sum(a, b int)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A copy of all the arguments is made while calling a function.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Return Values</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>As mentioned above a function can have one or more return values. Assume there is a function sum_avg that returns two values: Sum and Average. Example of multiple return values</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func sum_avg(a, b int) (int, int)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>As a convention error is returned as the last argument in a function. Example</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func sum(a, b int) (int, error)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Collecting multiple return values in the caller function. In below example</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">result, err := sum(2, 3) </code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Named Return Values</strong></h2>
+
+
+
+<p class="has-medium-font-size">A go function can have named return values. With named return values , the return values did not need to be initialised in the function<strong>. </strong>The named variables are specified in the signature itself. Without named values,&nbsp; only return type is specified. It is also ok to name some of the return values. For other return values only type can be specified.&nbsp;</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>See example below: <strong>result</strong> is the named return value</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func sum(a, b int) (result int)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>With named return values, type of the consecutive same types can be specified only once</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">func sum_avg(a, b int) (sum, avg int)</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Function Usages</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Generic usage</li><li>Function as Type</li><li>Function as Values</li></ul>
+
+
+
+<p class="has-medium-font-size">The difference between function as type and function as values is that in type we only use the function signature whereas in function as value signature along with the body is used.&nbsp; Let&#8217;s see each of this in detail so it is more clear</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Generic Usage</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is an example of the general usage of a function. We have a function sum in the below example which takes in two ints as input arguments and returns the sum.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    res := sum(2, 3)
+    fmt.Println(res)
+}
+
+func sum(a, b int) int {
+    return a + b
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">5</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Function as&nbsp; Type</strong></h2>
+
+
+
+<p class="has-medium-font-size">In go function is also a type.&nbsp;Two function will be of same type if</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>They have the same number of arguments with each argument is&nbsp;of the same type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>They have same number of return values and each return value is of same type.&nbsp;</li></ul>
+
+
+
+<p class="has-medium-font-size">Function type is useful in&nbsp;</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In the case of&nbsp;higher-order functions as&nbsp;we have seen in the above example. The argument and return type is specified using function type</li><li>In the case of defining interfaces in go as in the interface, only the function type is specified.&nbsp;Whatever implements this interface has to define a function of the same type</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of function type in the interface. Notice that the interface <strong>shape </strong>only defines the type of function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">area() int
+getType() string</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var shapes []shape
+    s := &square{side: 2}
+    shapes = append(shapes, s)
+    r := &rectangle{length: 2, breath: 3}
+    shapes = append(shapes, r)
+    for _, shape := range shapes {
+        fmt.Printf("Type: %s, Area %d\n", shape.getType(), shape.area())
+    }
+}
+type shape interface {
+    area() int
+    getType() string
+}
+type rectangle struct {
+    length int
+    breath int
+}
+func (r *rectangle) area() int {
+    return r.length * r.breath
+}
+func (r *rectangle) getType() string {
+    return "rectangle"
+}
+type square struct {
+    side int
+}
+func (s *square) area() int {
+    return s.side * s.side
+}
+func (s *square) getType() string {
+    return "square"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Type: square, Area 4
+Type: rectangle, Area 6</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Function as User Defined Type</strong></h3>
+
+
+
+<p class="has-medium-font-size">Function as user defined type can be declared using the type keyword</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    areaF := getAreaFunc()
+    print(3, 4, areaF)
+}
+
+type area func(int, int) int
+
+func print(x, y int, a area) {
+    fmt.Printf("Area is: %d\n", a(x, y))
+}
+
+func getAreaFunc() area {
+    return func(x, y int) int {
+        return x * y
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">12</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Function as values (or Anonymous functions)</strong></h2>
+
+
+
+<p class="has-medium-font-size">A function in Go is a first-order variable so it can be used as a value as well. It is also called as anonymous functions because a function is not named and can be assigned to a variable and passed around. </p>
+
+
+
+<p class="has-medium-font-size">They are generally created for short term use or for limited functionality. See the below example. In this example variable<strong> max </strong>assigned a function. Since <strong>max</strong> is created by a function that is not named, it is an anonymous function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+var max = func(a, b int) int {
+    if a >= b {
+        return a
+    }
+    return b
+}
+
+func main() {
+    res := max(2, 3)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">3</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Special Usages of Function</strong></h1>
+
+
+
+<h2 class="wp-block-heading"><strong>Function Closures</strong></h2>
+
+
+
+<p class="has-medium-font-size">Function closures are nothing but anonymous function which can access variables declared outside the function and also retain the current value between different function calls. Let&#8217;s see an example. In below case the <strong>count </strong>value is retained between different function calls of <strong>modulus</strong> function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    modulus := getModulus()
+    modulus(-1)
+    modulus(2)
+    modulus(-5)
+}
+
+func getModulus() func(int) int {
+    count := 0
+    return func(x int) int {
+        count = count + 1
+        fmt.Printf("modulus function called %d times\n", count)
+        if x < 0 {
+            x = x * -1
+        }
+        return x
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">modulus function called 1 times
+modulus function called 2 times
+modulus function called 3 times</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Higher Order Function</strong></h2>
+
+
+
+<p class="has-medium-font-size">Higher-order functions are those functions that either accept a function as a type or return function. Since the function is the first-order variable in Golang they can be passed around and also returned from some function and assigned to a variable. In below example</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>print</strong> function takes a function of type <strong>func(int, int) int </strong>as an argument</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>getAreafunc</strong> returns a function of type <strong>func(int, int) int</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    areaF := getAreaFunc()
+    print(3, 4, areaF)
+}
+
+func print(x, y int, area func(int, int) int) {
+    fmt.Printf("Area is: %d\n", area(x, y))
+}
+
+func getAreaFunc() func(int, int) int {
+    return func(x, y int) int {
+        return x * y
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">12</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>IIF or Immediately Invoked Function</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>IIF or </strong>Immediately Invoked Function are those function which can be defined and executed at the same time.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    squareOf2 := func() int {
+        return 2 * 2
+    }()
+    fmt.Println(squareOf2)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">4</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Use Cases of IIF functions</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you don't want to expose the logic of the function either within or outside the package. For eg let's say there is a function which is setting some value. You can encapsulate all the logic of setting in an IIF function. This function won't be available for calling either outside or within the package.</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Variadic Function</strong></h2>
+
+
+
+<p class="has-medium-font-size">In Go, a function that can accept a dynamic number of arguments is called a Variadic function. Below is the syntax for variadic function. Three dots are used as a prefix before type.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func add(numbers ...int)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println(add(1, 2))
+    fmt.Println(add(1, 2, 3))
+    fmt.Println(add(1, 2, 3, 4))
+}
+
+func add(numbers ...int) int {
+    sum := 0
+    for _, num := range numbers {
+        sum += num
+    }
+    return sum
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">3
+6
+10</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Methods</strong></h2>
+
+
+
+<p class="has-medium-font-size">Method has a receiver argument. When you attach a function to a type, then that function becomes a method for that type. A receiver can be a struct or any other type. The method will have access to the properties of the receiver and can call the receiver's other methods.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Function:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Method:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (receiver receiver_type) some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size">This is the only difference between function and method, but due to it they differ in terms of functionality they offer</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A function can be used as first-order objects and can be passed around while methods cannot.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Methods can be used for chaining on the receiver while function cannot be used for the same.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>There can exist different methods with the same name with a different receiver, but there cannot exist two different functions with the same name in the same package.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about function in golang. Hope you have liked this article. Please share feedback or mistakes/improvements in comments.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/constant-golang/">Constants</a><br><strong>Previous Tutorial</strong>&nbsp;–<a href="https://golangbyexamples.com/all-basic-data-types-golang/">All basic data types</a></p>
+<p>The post <a href="https://golangbyexamples.com/function-golang-complete-guide/">Function in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/function-golang-complete-guide/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1952</post-id>	</item>
+		<item>
+		<title>Abstract Class in GO: Complete Guide</title>
+		<link>https://golangbyexamples.com/go-abstract-class/</link>
+					<comments>https://golangbyexamples.com/go-abstract-class/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 18 Aug 2019 15:02:35 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[abstract]]></category>
+		<category><![CDATA[abstract class]]></category>
+		<category><![CDATA[class]]></category>
+		<category><![CDATA[complete]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[guide]]></category>
+		<category><![CDATA[oop]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=203</guid>
+
+					<description><![CDATA[<p>Go Interface doesn&#8217;t have fields and also it doesn&#8217;t allow the definition of methods inside it. Any type needs to implements all methods of interface to become of that interface type. There...</p>
+<p>The post <a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Go Interface doesn&#8217;t have fields and also it doesn&#8217;t allow the definition of methods inside it. Any type needs to implements all methods of interface to become of that interface type. There are use cases where it is useful to have a default implementation of a method and also default fields in GO. Before understanding how to do it lets first understand the requirements of an abstract class:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Abstract class should have default fields</li><li> Abstract class should have the default method</li><li>It should not be possible to create a direct instance of the abstract class</li></ol>
+
+
+
+<p class="has-medium-font-size">We will use a combination of a <strong>interface (abstract interface)</strong> and <strong>struct (abstract concrete type).</strong> Together they can provide the functionalities of an abstract class. See the below program:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common()
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+}
+
+func (a *alpha) common() {
+    fmt.Println("common called")
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("name is %s\n", b.name)
+    b.common()
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.work()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">work called
+name is test
+common called</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created an abstract interface <strong>iAlpha</strong>, an abstract concrete struct <strong>alpha, </strong>and an implementor struct <strong>beta</strong></li><li><strong>alpha </strong>struct is embedded in <strong>beta </strong>struct</li><li>The beta struct is able to access default field <strong>&#8220;name&#8221;</strong></li><li>The beta struct is able to access the default method <strong>&#8220;common&#8221;</strong></li><li>It is not able to create a direct instance of <strong>iAlpha </strong> as <strong>alpha</strong> struct only implement only one of the method of <strong>iAlpha.</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">So it fulfills all three requirements but there is also one limitation of the above method. It is not possible to call the &#8220;<strong>work</strong>&#8221; method from <strong>&#8220;common&#8221; </strong>method of alpha. Basically there is no way to call an undefined method of the abstract interface from default methods of an abstract concrete type. There is one way to fix it, though. See below program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common()
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+    work func()
+}
+
+func (a *alpha) common() {
+    fmt.Println("common called")
+    a.work()
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("name is %s\n", b.name)
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.alpha.work = b.work
+    b.common()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">common called
+work called
+name is test</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created a new field&nbsp;<strong>&#8220;work&#8221; </strong>of type func in alpha</li><li>We assigned alpha&#8217;s <strong>&#8220;work&#8221; </strong>method to beta <strong>&#8220;work&#8221; </strong>method</li></ul>
+
+
+
+<p class="has-medium-font-size">The only problem with the above program is that it is possible to create a direct instantiation of <strong>alpha</strong> struct and by providing the definition of <strong>work</strong> method, an instance of type <strong>iAlpha </strong>is created. This violates point 3 of the above Abstract class requirement as without creating our own new type we are able to create a type of <strong>iAlpha. </strong>Let&#8217;s try to fix this problem. The below program additionally also solves the problem where it was not possible to call the undefined methods from default methods.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Abstract Interface
+type iAlpha interface {
+    work()
+    common(iAlpha)
+}
+
+//Abstract Concrete Type
+type alpha struct {
+    name string
+}
+
+func (a *alpha) common(i iAlpha) {
+    fmt.Println("common called")
+    i.work()
+}
+
+//Implementing Type
+type beta struct {
+    alpha
+}
+
+func (b *beta) work() {
+    fmt.Println("work called")
+    fmt.Printf("Name is %s\n", b.name)
+}
+
+func main() {
+    a := alpha{
+        name: "test",
+    }
+    b := &beta{
+        alpha: a,
+    }
+    b.common(b)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">common called
+work called
+Name is test</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li> All the default methods will accept the first argument of interface type <strong>iAlpha. </strong>All the undefined methods of <strong>alpha </strong>struct will be called using this argument from default methods.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion:</strong> We can see in the above program that we are able to fulfill all three requirements of an abstract class. This is one of the ways to simulate abstract class in GO.</p>
+<p>The post <a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-abstract-class/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">203</post-id>	</item>
+	</channel>
+</rss>

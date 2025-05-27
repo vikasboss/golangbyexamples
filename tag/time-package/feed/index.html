@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>time package Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/time-package/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/time-package/</link>
+	<description></description>
+	<lastBuildDate>Fri, 31 Jan 2020 18:26:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>time package Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/time-package/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Convert time between different timezones in Go (Golang)</title>
+		<link>https://golangbyexamples.com/convert-time-timezones-go/</link>
+					<comments>https://golangbyexamples.com/convert-time-timezones-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 31 Jan 2020 18:24:50 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[time package]]></category>
+		<category><![CDATA[time.Time]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1266</guid>
+
+					<description><![CDATA[<p>Every time.Time object has an associated location value. When you change the location of any time.Time object to any other location, then that instant of time is not changed. Only the location...</p>
+<p>The post <a href="https://golangbyexamples.com/convert-time-timezones-go/">Convert time between different timezones in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Every <strong>time.Time</strong> object has an associated <strong>location</strong> value. When you change the location of any <strong>time.Time</strong> object to any other location,  then that instant of time is not changed. Only the <strong>location</strong> value associated with that time changes. The <strong>location</strong> associated with the time.Time object only has a presentation or display logic. </p>
+
+
+
+<p class="has-medium-font-size">The <strong>In</strong> function can be used to change the <strong>location</strong> associated with a particular <strong>time.Time</strong> object. Whenever the <strong>In</strong> function is called on any <strong>time.Time</strong> object (say t)  then, </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A copy of <strong>t</strong> is created representing the same time instant.</li><li><strong>t&#8217;s</strong> location is set to the location passed to In function for display purposes</li><li><strong>t</strong> is returned back</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see the below-working code which can be used to change the location value associated with a particular time.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    now := time.Now()
+
+    loc, _ := time.LoadLocation("UTC")
+    fmt.Printf("UTC Time: %s\n", now.In(loc))
+   
+    loc, _ = time.LoadLocation("Europe/Berlin")
+    fmt.Printf("Berlin Time: %s\n", now.In(loc))
+
+    loc, _ = time.LoadLocation("America/New_York")
+    fmt.Printf("New York Time: %s\n", now.In(loc))
+
+    loc, _ = time.LoadLocation("Asia/Dubai")
+    fmt.Printf("Dubai Time: %s\n", now.In(loc))
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">UTC Time: 2020-01-31 18:09:41.705858 +0000 UTC
+Berlin Time: 2020-01-31 19:09:41.705858 +0100 CET
+New York Time: 2020-01-31 13:09:41.705858 -0500 EST
+Dubai Time: 2020-01-31 22:09:41.705858 +0400 +04</code></pre>
+<p>The post <a href="https://golangbyexamples.com/convert-time-timezones-go/">Convert time between different timezones in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/convert-time-timezones-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1266</post-id>	</item>
+		<item>
+		<title>Time/Date Formatting in Go</title>
+		<link>https://golangbyexamples.com/time-date-formatting-in-go/</link>
+					<comments>https://golangbyexamples.com/time-date-formatting-in-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 25 Jan 2020 17:48:30 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[time package]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1225</guid>
+
+					<description><![CDATA[<p>If you have worked with time/date formatting in other languages you might have noticed that the other languages use special placeholders for time/date formatting. For eg ruby language uses %d for day...</p>
+<p>The post <a href="https://golangbyexamples.com/time-date-formatting-in-go/">Time/Date Formatting in Go</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">If you have worked with time/date formatting in other languages you might have noticed that the other languages use special placeholders for time/date formatting. For eg ruby language uses</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>%d for day</li><li>%Y for year</li></ul>
+
+
+
+<p class="has-medium-font-size">etc</p>
+
+
+
+<p class="has-medium-font-size">In Golang date and time format placeholders look like date and time only. Refer to below placeholder table</p>
+
+
+
+<figure class="wp-block-table is-style-regular"><table class=""><tbody><tr><td><strong>Type</strong></td><td><strong>Placeholder</strong></td></tr><tr><td>Day</td><td><strong>2</strong> or <strong>02</strong> or <strong>_2</strong></td></tr><tr><td>Day of Week</td><td><strong>Monday</strong> or <strong>Mon</strong></td></tr><tr><td>Month</td><td><strong>01</strong> or <strong>1</strong> or <strong>Jan</strong> or <strong>January</strong></td></tr><tr><td>Year</td><td><strong>2006</strong> or <strong>06</strong></td></tr><tr><td>Hour</td><td><strong>03</strong> or <strong>3 </strong>or <strong>15</strong></td></tr><tr><td>Minutes</td><td><strong>04</strong> or <strong>4</strong></td></tr><tr><td>Seconds</td><td><strong>05</strong> or <strong>5</strong></td></tr><tr><td>MilliSeconds  (ms)</td><td><strong>.000        </strong>//Trailing zero will be included<br>or<strong> .999 </strong>  //Trailing zero will be omitted</td></tr><tr><td>Micro Seconds (μs)</td><td><strong>.000000             </strong>//Trailing zero will be included<br>or <strong>.999999</strong>        //Trailing zero will be omitted</td></tr><tr><td>Nano Seconds (ns)</td><td><strong>.000000000        </strong>//Trailing zero will be included<br>or <strong>.999999999 </strong> //Trailing zero will be omitted</td></tr><tr><td>am/pm</td><td><strong>PM</strong> or <strong>pm</strong></td></tr><tr><td>Timezone</td><td><strong>MST</strong></td></tr><tr><td>Timezone offset</td><td><strong> Z0700 </strong>or<strong> Z070000</strong> or <strong>Z07</strong> or <strong>Z07:00</strong> or <strong>Z07:00:00</strong>&nbsp; or <strong>-0700</strong> or&nbsp; <strong>-070000</strong> or <strong>-07</strong> or <strong>-07:00</strong> or <strong>-07:00:00</strong></td></tr></tbody></table></figure>
+
+
+
+<p class="has-medium-font-size">It is easy to remember the above placeholders when represented in sequence. </p>
+
+
+
+<p class="has-medium-font-size"><strong>Weekday-Month-Day-Hour-Min-Seconds-Year-Timezone </strong>will be <strong>Mon-01-02-03-04-05-06&#8211;07</strong></p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see some time format code examples</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    now := time.Now()
+    
+    //Format YYYY-MM-DD
+    fmt.Printf("YYYY-MM-DD: %s\n", now.Format("2006-01-02"))
+
+    //Format YY-MM-DD
+    fmt.Printf("YY-MM-DD: %s\n", now.Format("06-01-02"))
+
+    //Format YYYY-#{MonthName}-DD
+    fmt.Printf("YYYY-#{MonthName}-DD: %s\n", now.Format("2006-Jan-02"))
+
+    //Format HH:MM:SS
+    fmt.Printf("HH:MM:SS: %s\n", now.Format("03:04:05"))
+
+    //Format HH:MM:SS Millisecond
+    fmt.Printf("HH:MM:SS Millisecond: %s\n", now.Format("03:04:05 .999"))
+
+    //Format YYYY-#{MonthName}-DD WeekDay HH:MM:SS
+    fmt.Printf("YYYY-#{MonthName}-DD WeekDay HH:MM:SS: %s\n", now.Format("2006-Jan-02 Monday 03:04:05"))
+
+    //Format YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset
+    fmt.Printf("YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset: %s\n", now.Format("2006-Jan-02 Monday 03:04:05 PM MST -07:00"))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">YYYY-MM-DD: 2020-01-25
+YY-MM-DD: 20-01-25
+YYYY-#{MonthName}-DD: 2020-Jan-25
+HH:MM:SS: 11:14:16
+HH:MM:SS Millisecond: 11:14:16 .213
+YYYY-#{MonthName}-DD WeekDay HH:MM:SS: 2020-Jan-25 Saturday 11:14:16
+YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset: 2020-Jan-25 Saturday 11:14:16 PM IST +05:30</code></pre>
+<p>The post <a href="https://golangbyexamples.com/time-date-formatting-in-go/">Time/Date Formatting in Go</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/time-date-formatting-in-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1225</post-id>	</item>
+	</channel>
+</rss>

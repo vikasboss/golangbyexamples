@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>package Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/package/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/package/</link>
+	<description></description>
+	<lastBuildDate>Wed, 22 Jan 2020 03:12:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>package Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/package/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Represent Date of Birth in Go (Golang)</title>
+		<link>https://golangbyexamples.com/dob-golang/</link>
+					<comments>https://golangbyexamples.com/dob-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 22 Jan 2020 03:12:27 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[date]]></category>
+		<category><![CDATA[dob]]></category>
+		<category><![CDATA[package]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1186</guid>
+
+					<description><![CDATA[<p>time.Date function of time package can be used to create a particular date that can represent a DOB. See below example getDOB is the function that takes in a year, month and...</p>
+<p>The post <a href="https://golangbyexamples.com/dob-golang/">Represent Date of Birth in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>time.Date</strong> function of <strong>time</strong> package can be used to create a particular date that can represent a DOB. <br></p>
+
+
+
+<p class="has-medium-font-size">See below example</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>getDOB is the function that takes in a year, month and day and returns a date.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+const (
+    //TimeFormat1 to format date into
+    TimeFormat1 = "2006-01-02"
+    //TimeFormat2 Other format to format date time
+    TimeFormat2 = "January 02, 2006"
+)
+
+func main() {
+    dob := getDOB(2011, 4, 2)
+    fmt.Println(dob.Format(TimeFormat1))
+    fmt.Println(dob.Format(TimeFormat2))
+}
+
+func getDOB(year, month, day int) time.Time {
+    dob := time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
+    return dob
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2011-04-02
+April 02, 2011</code></pre>
+<p>The post <a href="https://golangbyexamples.com/dob-golang/">Represent Date of Birth in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/dob-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1186</post-id>	</item>
+	</channel>
+</rss>

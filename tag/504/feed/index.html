@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>504 Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/504/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/504/</link>
+	<description></description>
+	<lastBuildDate>Sat, 08 Feb 2020 06:31:18 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>504 Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/504/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Server Error &#8211; 500 vs 502 vs 503 vs 504</title>
+		<link>https://golangbyexamples.com/server-error-5xx/</link>
+					<comments>https://golangbyexamples.com/server-error-5xx/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 08 Feb 2020 06:11:26 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[500]]></category>
+		<category><![CDATA[502]]></category>
+		<category><![CDATA[503]]></category>
+		<category><![CDATA[504]]></category>
+		<category><![CDATA[server error]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1384</guid>
+
+					<description><![CDATA[<p>Overview All 5XX errors are server errors. In this article, we will learn about the difference between all of them. In this article, we use the term proxy/gateway server. Some of the...</p>
+<p>The post <a href="https://golangbyexamples.com/server-error-5xx/">Server Error &#8211; 500 vs 502 vs 503 vs 504</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">All 5XX errors are server errors. In this article, we will learn about the difference between all of them.</p>
+
+
+
+<p class="has-medium-font-size">In this article, we use the term proxy/gateway server. Some of the examples of proxy/gateway server are:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>nginx</li><li>AWS ELB</li><li>Cloudflare &#8211; Security Tool</li><li>API Gateway such as kong</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>500 (Internal Server Error)</strong></h1>
+
+
+
+<p class="has-medium-font-size">500 means Internal Server Error.  A service can raise a 500 in the case in which it ran into an error that was unexpected. Since 500 is purely a server error, it is meant to be retried by the client</p>
+
+
+
+<p class="has-medium-font-size"><strong>Some of the cases:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>An unhandled exception was generated at the app layer which was sent as 500.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>App server got an invalid response from the database, due to which it was unable to complete the request and raised a 500.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>How to resolve:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Look at the stack trace of the failing 500 call</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>502 (Bad Gateway Error) </strong></h1>
+
+
+
+<p class="has-medium-font-size">502  means that the proxy/gateway server in between the origin server and the client got an unexpected response from the origin server.  Do notice that in this case proxy/gateway server did get a response but an expected one. An example of an unexpected response could be that proxy/gateway server was expecting a JSON but instead got an HTML. It can happen in the below case</p>
+
+
+
+<p class="has-medium-font-size"><strong>Some of the cases:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>This could in cases lets say a firewall is blocking the connection between  proxy/gateway server and the origin server.  The firewall is returning a response which proxy/gateway server is not able to understand</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Some network errors such as routing problems, DNS errors can also cause a 502.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Some bad programming can also cause a 502. Let&#8217;s origin server returned an invalid HTML body which proxy/gateway server is not able to understand and the proxy server returns a 502. </li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>How to resolve: </strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Go through the logs to find out what was the bad response that was sent upstream which caused 502.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Reload the page</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>503 (Service Unavailable )</strong></h1>
+
+
+
+<p class="has-medium-font-size">503 means that the server is at capacity and it is not able to handle more request or it could also mean that the server is unavailable right now because it is under maintenance. It is generally a temporary state. Some of the cases can be</p>
+
+
+
+<p class="has-medium-font-size"><strong>Some of the cases:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The server is at capacity and it refuses to accept any more connections. The traffic at the site is more than it can handle</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The server has crashed and not able to accept connections. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The server is in maintenance mode.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>How to resolve</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Scale your servers as they are at full capacity</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Check if your servers haven&#8217;t crashed</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>504(Gateway Timeout)</strong></h1>
+
+
+
+<p class="has-medium-font-size">504 means that the proxy server or gateway did not receive a response from the origin server within a specified timeout. Consider for example that an Elastic Load Balancer is sitting between your origin server, and the ELB timed out trying to receiving the response from your server. Some cases can be </p>
+
+
+
+<p class="has-medium-font-size"><strong>Some of the cases:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Too many concurrent requests on your origin server can cause some of the requests to not complete within the specified time resulting in a 504 error at the proxy server end. If you seeing 504 consistently then that would mean a network issue between the proxy server and the origin server.</li><li>A 504 can also come when there was an unhandled exception at the origin server and it was not able to correctly return 500 back, instead it did not return anything, resulting in timeout at the proxy server end. In this scenario, there might not be too many concurrent requests but still </li><li>Network error can also cause the 504. If you consistently getting the 504 and there is no anomaly observed at the server end of it the request is not even reaching the server, there are good chances that the upstream server is getting timeout because of a network error. </li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>How to resolve</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Increase the timeout at the proxy server end</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Scale your servers as there might be too many concurrent requests and the server is not able to handle that.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Check for any errors at your server end in which it is not returning any response.</li></ul>
+<p>The post <a href="https://golangbyexamples.com/server-error-5xx/">Server Error &#8211; 500 vs 502 vs 503 vs 504</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/server-error-5xx/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1384</post-id>	</item>
+	</channel>
+</rss>

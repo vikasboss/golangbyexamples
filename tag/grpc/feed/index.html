@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>grpc Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/grpc/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/grpc/</link>
+	<description></description>
+	<lastBuildDate>Mon, 22 Mar 2021 20:03:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>grpc Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/grpc/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Difference between GRPC and Rest</title>
+		<link>https://golangbyexamples.com/grpc-vs-rest/</link>
+					<comments>https://golangbyexamples.com/grpc-vs-rest/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 22 Mar 2021 19:53:57 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[grpc]]></category>
+		<category><![CDATA[rest]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5391</guid>
+
+					<description><![CDATA[<p>Overview REST is an architectural style built on top of HTTP/1. GRPC is not a style instead it is an RPC framework built on top of HTTP/2 and it uses protocol buffers...</p>
+<p>The post <a href="https://golangbyexamples.com/grpc-vs-rest/">Difference between GRPC and Rest</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="359" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest-1024x574.png?resize=640%2C359&#038;ssl=1" alt="grpc vs rest" class="wp-image-5397" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?resize=1024%2C574&amp;ssl=1 1024w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?resize=300%2C168&amp;ssl=1 300w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?resize=768%2C431&amp;ssl=1 768w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?resize=1536%2C861&amp;ssl=1 1536w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?resize=850%2C477&amp;ssl=1 850w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?w=2040&amp;ssl=1 2040w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?w=1280&amp;ssl=1 1280w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/03/grpc_vs_rest.png?w=1920&amp;ssl=1 1920w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">REST is an architectural style built on top of HTTP/1. GRPC is not a style instead it is an RPC framework built on top of HTTP/2 and it uses protocol buffers behind the scenes. So basically GRPC is an actual implementation or you can say it is a library whereas REST is just a set of rules and principles.</p>
+
+
+
+<p class="has-medium-font-size">Although we are comparing a GRPC (implemented framework) with REST -( architectural styles and principles), which might sound weird. Still, it is important to understand the difference in terms of high-level architecture which you will get if you follow one approach over the other</p>
+
+
+
+<p class="has-medium-font-size">Here are the major differences between the two. Also to mention that this article assumes that you already have some knowledge of GRPC, HTTP2, REST</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading">Links</h2>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>GRPC</strong></h3>
+
+
+
+<p class="has-medium-font-size">Here is the link to GRPC for further reading <a href="https://grpc.io/">https://grpc.io/</a></p>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>REST</strong></h3>
+
+
+
+<p class="has-medium-font-size">Here is the link to REST for further reading &#8211; <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">https://en.wikipedia.org/wiki/Representational_state_transfer</a></p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Protocol</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>GRPC is an RPC framework and is built on top of HTTP/2</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST architectural style is specified on top of HTTP/1. All the semantics of HTTP/1.1 has been retained in HTTP/2. So REST APIs should continue to work even one using HTTP/2</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Nature</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The way of thinking in GRPC is API-oriented or action-oriented. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST is resource-oriented.</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Mode of Data Transfer</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>GRPC supports only Protocol Buffers to transfer data between server and client.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST supports JSON,  XML, and other data formats.  REST can also be made to work with Protocol Buffers trivially.</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Model</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>GRPC provides four different ways of communication between client and server. The four different ways are unary, server streaming, client streaming, and bi-directional streaming. So effectively in GRPC both client and server can talk to each other.<ul><li>Unary &#8211; This is the simplest one. The clients send a request and the server sends the response</li><li>Client streaming &#8211; The client can send a stream of multiple messages while the server is expected to return only a single response to all client requests.</li><li>Server Streaming- The client will send only one message while the server can send a stream of messages back to it.</li><li>Bi-directional streaming &#8211; Both client and server can stream multiple messages. The streaming will be in parallel and with no order. Also, it will be nonblocking. Neither client nor server needs to wait for a response before sending the next message.</li></ul></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST works on the Request-Response model. Basically, you send the request and then you get the response. So REST only provides a unary way of communication. In REST only the client talks to the server.</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Performance</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Since GRPC inherently uses HTTP/2 so all the performance optimizations applied to HTTP/2 automatically are available in GRPC. HTTP/2 has introduced several performance optimizations over HTTP/1 such as<ul><li>Duplex Streaming</li><li>Multiplexing</li><li>Headers Compression</li><li>etc</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size">&nbsp; &nbsp; &nbsp; &nbsp; Plus GRPC uses protocol buffers internally and since protocol buffers are binary data and have less size, they are transferred over a network fast. GRPC can utilize each TCP connection very effectively.Due to these two reasons, GRPC is very fast.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST over HTTP/1 will be slower than GRPC. It uses JSON, XML which for representing the same data take more size than protocol buffers.</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Code Generation</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Since GRPC is built on top of protocol buffers it provides automatic code generation. In fact with protocol buffers code generation is a must thing to use GRPC.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST also provides code generation through Swagger, OPEN API but that is just an extra thing provided and it is not as effective as code generation by protocol buffers</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Type Safety</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Since protocol buffers are used for code generation in the case of GRPC.  So that in a way provides type safety to GRPC. GRPC will not allow you to send int for a field where a string is expected. The API contract is defined by the proto file and is strict.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST doesn&#8217;t have any such restriction. The API contract is mostly just a document using OPEN API or swagger and hence it is loose.</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>SetUP</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>GRPC would require you to set up a client locally to be able to make a GRPC call.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST call doesn&#8217;t need a client set up. You can make a call using a browser, postman, curl, etc</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>When To Use</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>GRPC is mostly suitable for internal microservices where low latency and high throughput might be needed. It will not be suitable to currently expose your service as a GRPC as there are no APIs available for external services to integrate. It could be possible in the near future when GRPC is fully evolved.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>REST is more suitable to expose your APIs to external services.</li></ul>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Conclusion</strong></h2>
+
+
+
+<p class="has-medium-font-size">These are some of the major differences between GRPC and REST. Hope you have liked this article. Please share feedback in the comments.</p>
+
+
+
+<p class="has-medium-font-size">Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+<p>The post <a href="https://golangbyexamples.com/grpc-vs-rest/">Difference between GRPC and Rest</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/grpc-vs-rest/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5391</post-id>	</item>
+		<item>
+		<title>Protocol Buffers and Go: Getting started</title>
+		<link>https://golangbyexamples.com/protocol-buffers-go/</link>
+					<comments>https://golangbyexamples.com/protocol-buffers-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 22 Aug 2019 12:46:37 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[buffer]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[grpc]]></category>
+		<category><![CDATA[protocol]]></category>
+		<category><![CDATA[protocolbuffer]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=225</guid>
+
+					<description><![CDATA[<p>In this tutorial, we will see how protocol buffers can be used in the context of GO Language. What is Protocol Buffer Protocol Buffers are data format which stores data in a...</p>
+<p>The post <a href="https://golangbyexamples.com/protocol-buffers-go/">Protocol Buffers and Go: Getting started</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In this tutorial, we will see how protocol buffers can be used in the context of GO Language.</p>
+
+
+
+<p class="has-medium-font-size"><strong>What is Protocol Buffer</strong></p>
+
+
+
+<p class="has-medium-font-size">Protocol Buffers are data format which stores data in a structured format. Data in the protocol buffer format can be serialized and deserialized by multiple languages.</p>
+
+
+
+<p class="has-medium-font-size">Sounds Confusing. You can think it on lines of JSON, XML but it has loads of advantages to offer. Still confusing? then don&#8217;t worry as we go along the tutorial we will understand why even a new data format is even needed.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see first with an example of the simplest protocol buffer file.</p>
+
+
+
+<p><strong>person.proto</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">syntax = "proto3";
+
+message Person {
+    string name = 1;
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">A couple of points to note about the above file.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>This file is just a blueprint of how our Protocol Buffer structure is. There is no data associated yet. This is different from JSON/XML , in which file also represents the actual data.</li><li>In the above file there is a <strong>person </strong>message with a field <strong>name </strong>of type <strong>string.  &#8220;proto3&#8221;</strong> means that the message written is incompatible with Protocol Buffer version three.  </li><li>From the above example, there is one difference you can notice from JSON i.e, it has type information. This type of information will be useful in the auto-generation of code in different languages. Let&#8217;s see an example of  auto-generation in Golang</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Auto Generation of GO Code:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We can generate a corresponding Golang code using the above person.proto file. But to do that we need to do some installations:</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Installations:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First install the C++ implementation of Protocol Buffers. Each platform has its own way of installation. See this link &#8211;&nbsp;<a href="https://github.com/protocolbuffers/protobuf/blob/master/src/README.md">https://github.com/protocolbuffers/protobuf/blob/master/src/README.md</a></li><li>Install Golang</li><li>Install protoc-gen-go&nbsp;&#8211;&nbsp;<strong>go get -u </strong><a href="http://github.com/golang/protobuf/protoc-gen-go">github.com/golang/protobuf/protoc-gen-go</a><strong>&nbsp;. </strong>This package will be used for auto generation of Go code</li></ul>
+
+
+
+<p class="has-medium-font-size">After the installation is done then cd to the directory which contains the <strong>person.proto </strong>file. Run this command:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-bash">protoc -I ./ --go_out=./ ./person.proto</code></pre>
+
+
+
+<p class="has-medium-font-size">It will generate a data access go file with name&nbsp;<strong>person.pb.go&nbsp;</strong>&nbsp;in the same directory.&nbsp;</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">// Code generated by protoc-gen-go. DO NOT EDIT.
+// source: person.proto
+
+
+package person
+
+
+import (
+    fmt "fmt"
+    proto "github.com/golang/protobuf/proto"
+    math "math"
+)
+
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ = proto.Marshal
+var _ = fmt.Errorf
+var _ = math.Inf
+
+
+
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+
+
+type Person struct {
+    Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+    XXX_NoUnkeyedLiteral struct{} `json:"-"`
+    XXX_unrecognized     []byte   `json:"-"`
+    XXX_sizecache        int32    `json:"-"`
+}
+
+
+
+
+func (m *Person) Reset()         { *m = Person{} }
+func (m *Person) String() string { return proto.CompactTextString(m) }
+func (*Person) ProtoMessage()    {}
+func (*Person) Descriptor() ([]byte, []int) {
+    return fileDescriptor_4c9e10cf24b1156d, []int{0}
+}
+
+
+func (m *Person) XXX_Unmarshal(b []byte) error {
+    return xxx_messageInfo_Person.Unmarshal(m, b)
+}
+func (m *Person) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+    return xxx_messageInfo_Person.Marshal(b, m, deterministic)
+}
+func (m *Person) XXX_Merge(src proto.Message) {
+    xxx_messageInfo_Person.Merge(m, src)
+}
+func (m *Person) XXX_Size() int {
+    return xxx_messageInfo_Person.Size(m)
+}
+func (m *Person) XXX_DiscardUnknown() {
+    xxx_messageInfo_Person.DiscardUnknown(m)
+}
+
+
+var xxx_messageInfo_Person proto.InternalMessageInfo
+
+
+func (m *Person) GetName() string {
+    if m != nil {
+        return m.Name
+    }
+    return ""
+}
+
+
+func init() {
+    proto.RegisterType((*Person)(nil), "Person")
+}
+
+
+func init() { proto.RegisterFile("person.proto", fileDescriptor_4c9e10cf24b1156d) }
+
+
+var fileDescriptor_4c9e10cf24b1156d = []byte{
+    // 67 bytes of a gzipped FileDescriptorProto
+    0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x29, 0x48, 0x2d, 0x2a,
+    0xce, 0xcf, 0xd3, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0x92, 0xe1, 0x62, 0x0b, 0x00, 0xf3, 0x85,
+    0x84, 0xb8, 0x58, 0xf2, 0x12, 0x73, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0xc0, 0xec,
+    0x24, 0x36, 0xb0, 0x22, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xa4, 0xaf, 0x53, 0x72, 0x34,
+    0x00, 0x00, 0x00,
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Now the biggest question is what is this person.pb.go file which has been auto-generated by protoc using person.proto . The first couple of points to notice</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Person </strong>struct like below. See how type information of person.proto file is used to know what type of field <strong>Name </strong>is a string</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Person struct {
+    Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+    XXX_NoUnkeyedLiteral struct{} `json:"-"`
+    XXX_unrecognized     []byte   `json:"-"`
+    XXX_sizecache        int32    `json:"-"`
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>  <b>Person </b>struct also implements a couple of methods that make if of interface type <strong>proto.Message.</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">So basically this autogenerated file generates data accessors for Person struct and it provides methods that allow marshaling/unmarshalling of Person struct type to/from actual bytes. Now let&#8217;s write a main.go program to actually create concrete objects of <strong>Person</strong> struct. Here we will see a couple of advantages which Protocol Buffer has to offer. The below program also shows the read and write of Person struct to file.</p>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    proto "github.com/golang/protobuf/proto"
+)
+
+
+func main() {
+    person := &Person{Name: "XXX"}
+    fmt.Printf("Person's name is %s\n", person.GetName())
+
+
+
+
+    //Now lets write this person object to file
+    out, err := proto.Marshal(person)
+    if err != nil {
+        log.Fatalf("Serialization error: %s", err.Error())
+    }
+    if err := ioutil.WriteFile("person.bin", out, 0644); err != nil {
+        log.Fatalf("Write File Error: %s ", err.Error())
+    }
+    fmt.Println("Write Success")
+
+
+
+
+    //Read from file
+    in, err := ioutil.ReadFile("person.bin")
+    if err != nil {
+        log.Fatalf("Read File Error: %s ", err.Error())
+    }
+    person2 := &Person{}
+    err2 := proto.Unmarshal(in, person2)
+    if err2 != nil {
+        log.Fatalf("DeSerialization error: %s", err.Error())
+    }
+
+
+    fmt.Println("Read Success")
+    fmt.Printf("Person2's name is %s\n", person2.GetName())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">To run this file first install protobuf/proto using &#8220;go get <a href="http://github.com/golang/protobuf/prot">github.com/golang/protobuf/prot</a>o&#8221; and then run this file using the command &#8220;go run *.go&#8221;<strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Person's name is XXX
+Write Success
+Read Success
+Person2's name is XXX</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice that in the above program we</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We write a concrete <strong>person </strong>struct to a file <strong>&#8220;person.bin&#8221;. </strong>It is a binary file and not human readable.</li><li>Also we read from the file. It is able to successfully read and print &#8220;<strong>Person2&#8217;s name is XXX&#8221;</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">The astonishing thing about the <strong>&#8220;person.bin&#8221; file</strong> is that it is of only 5 bytes as compared if you create a JSON file with the same data that will be of size more than 15 bytes.  Also Marshal and UnMarshal from bytes to concrete objects and vice versa are also very fast as compared to unmarshal and marshaling of JSON files. <br>Now we have provided the theory. Let&#8217;s write once again the advantages of using Protocol Buffers</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>More clear and less ambiguous than corresponding JSON and XML as there is also type information stored with them.</li><li>The data stored is relatively smaller in size of almost 2- 3 times smaller.</li><li>It is much faster. For example, serialization and deserialization is faster with protocol Buffers</li><li>Automated Code Generation &#8211; You write a protocol buffer file and you automatically get a corresponding GO file generated</li><li>A protocol buffer is used in GRPC which is next-generation replacement of REST protocol &#8211; Watch space for here, we will add an article on it soon.</li></ol>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion: </strong>Protocol Buffers have much to offer other than what we have discussed in the article. This provides a quick overview of what protocol buffers are and what are their advantages as compared to JSON/XML format.</p>
+<p>The post <a href="https://golangbyexamples.com/protocol-buffers-go/">Protocol Buffers and Go: Getting started</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/protocol-buffers-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">225</post-id>	</item>
+	</channel>
+</rss>

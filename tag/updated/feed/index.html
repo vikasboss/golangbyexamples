@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>updated Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/updated/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/updated/</link>
+	<description></description>
+	<lastBuildDate>Sun, 23 Feb 2020 18:47:27 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>updated Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/updated/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Change the modified/updated time and access time of a file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/change-updated-time-file-go/</link>
+					<comments>https://golangbyexamples.com/change-updated-time-file-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 23 Feb 2020 18:43:13 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[updated]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1479</guid>
+
+					<description><![CDATA[<p>os.Chtimes() function can be used to change the mtime(modified time) or atime(access time) of a file in Golang. Below is the signature of the function. Code: Output:</p>
+<p>The post <a href="https://golangbyexamples.com/change-updated-time-file-go/">Change the modified/updated time and access time of a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.Chtimes()</strong> function can be used to change the mtime(modified time) or atime(access time) of a file in Golang. Below is the signature of the function. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Chtimes(name string, atime time.Time, mtime time.Time)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "os"
+    "time"
+)
+
+func main() {
+    fileName := "sample.txt"
+    currentTime := time.Now().Local()
+
+    //Set both access time and modified time of the file to the current time
+    err := os.Chtimes(fileName, currentTime, currentTime)
+    if err != nil {
+        fmt.Println(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Changes the atime and mtime of the file.</code></pre>
+<p>The post <a href="https://golangbyexamples.com/change-updated-time-file-go/">Change the modified/updated time and access time of a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/change-updated-time-file-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1479</post-id>	</item>
+	</channel>
+</rss>

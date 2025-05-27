@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>shuffle Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/shuffle/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/shuffle/</link>
+	<description></description>
+	<lastBuildDate>Mon, 13 Apr 2020 18:51:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>shuffle Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/shuffle/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Shuffle a slice or array in Go (Golang)</title>
+		<link>https://golangbyexamples.com/shuffle-slice-or-array-go/</link>
+					<comments>https://golangbyexamples.com/shuffle-slice-or-array-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 02 Apr 2020 06:53:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[shuffle]]></category>
+		<category><![CDATA[slice]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1928</guid>
+
+					<description><![CDATA[<p>Overview math/rand package of go provides a Shuffle method that can be used shuffle an array or a slice. This method pseudo-randomizes the order of elements using the default source. pseudo-randomizes means...</p>
+<p>The post <a href="https://golangbyexamples.com/shuffle-slice-or-array-go/">Shuffle a slice or array in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math/rand</strong> package of go provides a <strong>Shuffle</strong> method that can be used shuffle an array or a slice. This method pseudo-randomizes the order of elements using the default source. pseudo-randomizes means that for a fixed input seed it will generate the same randomization. That is why in our program we will initialize the rand package with a different seed every time.<br></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Shuffle(n int, swap func(i, j int))</code></pre>
+
+
+
+<p class="has-medium-font-size">This function takes in arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First is the length of the array or slice.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The second is a swap function that will be called for different indexes <strong>i</strong> and <strong>j. </strong>You need to provide your own swap function that will swap your elements in the array.</li></ul>
+
+
+
+<p class="has-medium-font-size">Also note that this function will panic if n&lt;0. Let&#8217;s look at the code.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    in := []int{2, 3, 5, 8}
+    rand.Shuffle(len(in), func(i, j int) {
+        in[i], in[j] = in[j], in[i]
+    })
+    fmt.Println(in)
+
+    rand.Shuffle(len(in), func(i, j int) {
+        in[i], in[j] = in[j], in[i]
+    })
+    fmt.Println(in)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">It can produce a different output on your machine.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[5 3 2 8]
+[3 5 8 2]</code></pre>
+<p>The post <a href="https://golangbyexamples.com/shuffle-slice-or-array-go/">Shuffle a slice or array in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/shuffle-slice-or-array-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1928</post-id>	</item>
+		<item>
+		<title>Shuffle a string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/shuffle-string-golang/</link>
+					<comments>https://golangbyexamples.com/shuffle-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 02 Apr 2020 06:45:12 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[shuffle]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1921</guid>
+
+					<description><![CDATA[<p>Overview math/rand package of GO provides a Shuffle method that can be used to shuffle a string. This method pseudo-randomizes the order of elements using the default source. pseudo-randomizes means that for...</p>
+<p>The post <a href="https://golangbyexamples.com/shuffle-string-golang/">Shuffle a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math/rand</strong> package of GO provides a <strong>Shuffle</strong> method that can be used to shuffle a string. This method pseudo-randomizes the order of elements using the default source. pseudo-randomizes means that for a fixed input seed it will generate the same randomization. That is why in our program we will initialize the rand package with a different seed every time.<br></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Shuffle(n int, swap func(i, j int))</code></pre>
+
+
+
+<p class="has-medium-font-size">This function takes in below arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First is the total number of characters in the given string.</li><li>The second is a swap function that will be called for different indexes <strong>i</strong> and <strong>j. </strong>You need to provide your own swap function that will swap your elements in the string.</li></ul>
+
+
+
+<p class="has-medium-font-size">Also note that this function will panic if n&lt;0. In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&nbsp;All other characters are between 1 to 4 bytes. Due to this it is not possible to index a character in a string.&nbsp; In GO, rune data type represents a Unicode point.&nbsp; Once a string is converted to an array of rune then it is possible to index a character in that array of rune.</p>
+
+
+
+<p class="has-medium-font-size">You can learn more the above issue here &#8211; <a href="https://golangbyexamples.com/number-characters-string-golang/">https://golangbyexamples.com/number-characters-string-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">For this reason in the below program for shuffling a given string , we are first converting a string into a rune array so that we can index into the rune array and use that index to swap characters in that string to shuffle the string.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    in := "abcdedf£"
+
+    inRune := []rune(in)
+    rand.Shuffle(len(inRune), func(i, j int) {
+        inRune[i], inRune[j] = inRune[j], inRune[i]
+    })
+    fmt.Println(string(inRune))
+
+    rand.Shuffle(len(inRune), func(i, j int) {
+        inRune[i], inRune[j] = inRune[j], inRune[i]
+    })
+    fmt.Println(string(inRune))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">It will produce a different output on your machine.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">dd£cebaf
+feb£cadd</code></pre>
+<p>The post <a href="https://golangbyexamples.com/shuffle-string-golang/">Shuffle a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/shuffle-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1921</post-id>	</item>
+	</channel>
+</rss>

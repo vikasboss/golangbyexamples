@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>understand Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/understand/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/understand/</link>
+	<description></description>
+	<lastBuildDate>Tue, 24 Nov 2020 19:16:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>understand Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/understand/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Understand If Else Statement in Go (Golang)</title>
+		<link>https://golangbyexamples.com/understand-if-else-statement-golang/</link>
+					<comments>https://golangbyexamples.com/understand-if-else-statement-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 02 May 2020 09:23:33 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[guide]]></category>
+		<category><![CDATA[understand]]></category>
+		<category><![CDATA[using]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2088</guid>
+
+					<description><![CDATA[<p>This is the  chapter 12 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – Golang Comprehensive Tutorial Series Next Tutorial – SwitchPrevious Tutorial – For Range loop Now...</p>
+<p>The post <a href="https://golangbyexamples.com/understand-if-else-statement-golang/">Understand If Else Statement in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the  chapter 12 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/switch-statement-golang/">Switch</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/understand-for-range-loop-golang/">For Range loop</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Go has if-else statement similar to any other programming language to perform the basic conditional logic. Below is the format for if-else statement in golang</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+   //Do something
+} else if condition {
+   //Do something
+} else {
+   //Do something</code></pre>
+
+
+
+<p class="has-medium-font-size">Before we move further let&#8217;s talk about the <strong>condition</strong> first. Only a statement or a combination of statements that result in a boolean are allowed for a condition in if. false boolean is treated as false in a condition in go and true boolean is treated as true. As mentioned above, the condition can be composed of multiple statements combined by operators in Go such as &amp;&amp;, ||, &gt;, &lt;, &gt;=, &lt;=, ! etc.</p>
+
+
+
+<p class="has-medium-font-size">Now let&#8217;s look into the if-else statement in detail to understand the small things. Go supports below formats for the if-else statement</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only if</li><li>If Else</li><li>If Else Ladder</li><li>Nested if-else</li><li>If with a short statement</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>If statement</strong></h2>
+
+
+
+<p class="has-medium-font-size">if statement alone has below format</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+   //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">If the condition is true then the statement inside the braces is executed.&nbsp; Some points to note about if statement</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Brackets can be omitted around the condition.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Opening and closing braces after condition are mandatory</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working example. Below program checks if a number is greater than 5.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 6
+    if a > 5 {
+        fmt.Println("a is greater than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is greater than 5</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see another example of multiple statement in a if condition. Below is a program to check if a number lies in a particular range. Notice that multiple statement in the condition are joined by the &amp;&amp; operator.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 4
+    if a > 3 && a < 6 {
+        fmt.Println("a is within range")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is within range</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>If Else Statement</strong></h2>
+
+
+
+<p class="has-medium-font-size">If Else statement has below format</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+   //Do something
+} else {
+   //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">If the condition is true then the statement inside the if block is executed otherwise the statement inside the else block is executed. Some points to note about if-else statement.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The else keyword should be on the same line as the closing brace for it. If not there will be below compiler error.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">syntax error: unexpected else, expecting }</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a small example of if else statement. In below program we use if else statement to figure out the max number of 2 numbers</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 1
+    b := 2
+
+    if a > b {
+        fmt.Println("a is greater than b")
+    } else {
+        fmt.Println("b is greater than a")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">b is greater than a</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>If Else Ladder</strong></h2>
+
+
+
+<p class="has-medium-font-size">If Else ladder has the below format</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition1 {
+   //Do something
+} else if condition2 {
+   //Do something
+} else {
+  //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to note about this if else ladder</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Any number of else if statement can be added in the middle</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>else if should lie on the same line as the previous closing brace</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is a working code example. The code given an age is using a if else ladder to find out weather a person is "Kid", "Young" or "Old".</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    age := 29
+    if age < 18 {
+        fmt.Println("Kid")
+    } else if age >= 18 && age < 40 {
+        fmt.Println("Young")
+    } else {
+        fmt.Println("Old")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Young</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Nested If Else</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below are some one of the possible format for nested if else.</p>
+
+
+
+<p class="has-medium-font-size">Only nested if</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition {
+  //Do something
+  if condition2 { 
+    //Do something
+  }
+  //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Nested if else</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition1 {
+   //....
+   if condition2 {
+      //...
+   } else {
+      //...
+   }
+  //...
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Below combination is also possible for nested if else</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if condition1 {
+   //...
+} else {
+   //...
+   if condition2 {
+      //...
+   } else {
+     //....
+   }
+   //....
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a working example of nested if else. In below program we print the max of three numbers using nested if else.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a := 1
+    b := 2
+    c := 3
+    if a > b {
+        if a > c {
+            fmt.Println("Biggest is a")
+        } else if b > c {
+            fmt.Println("Biggest is b")
+        }
+    } else if b > c {
+        fmt.Println("Biggest is b")
+    } else {
+        fmt.Println("Biggest is c")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Biggest is c</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>If with short statement</strong></h2>
+
+
+
+<p class="has-medium-font-size">If statement also supports a statement before the condition. This statement will be executed before the condition. There can also be new initialized variable in the statement. Below is the format for that.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if statement; condition {
+   //Do something
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The initialization if present in the statement will be a short declaration. Notice that var keyword is not supported in the statement. Let's see a working example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    if a := 6; a > 5 {
+        fmt.Println("a is greater than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is greater than 5</code></pre>
+
+
+
+<p class="has-medium-font-size">The variable that is initialized in if statement is available inside all the branches. As in below example variable <strong>a</strong> is also available in the else block.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    if a := 1; a > 5 {
+        fmt.Println("a is greater than 5")
+    } else {
+        fmt.Println("a is less than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a is less than 5</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>If Conditions</strong></h1>
+
+
+
+<p class="has-medium-font-size">We mentioned at the start that only boolean values or statement that result in boolean value are allowed in the if condition. Let's see a working code of the error that comes in case of using any else than boolean</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    if 1 {
+        fmt.Println("a is greater than 5")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output: </strong>Below compiler error is raised</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">non-bool 1 (type int) used as if condition</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Ternary Operator</strong></h1>
+
+
+
+<p class="has-medium-font-size">There is no ternary operator in Go, hence you need to use if else statements in place of that.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">That is all about if else statement in go. Hope you have liked this article. Please share feedback/improvements/mistakes in comments</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/switch-statement-golang/">Switch</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/understand-for-range-loop-golang/">For Range loop</a></p>
+<p>The post <a href="https://golangbyexamples.com/understand-if-else-statement-golang/">Understand If Else Statement in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/understand-if-else-statement-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2088</post-id>	</item>
+	</channel>
+</rss>

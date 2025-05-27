@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>boolean Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/boolean/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/boolean/</link>
+	<description></description>
+	<lastBuildDate>Sun, 23 Feb 2020 08:19:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>boolean Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/boolean/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Parse a bool or Check if given string is a bool in Go (Golang)</title>
+		<link>https://golangbyexamples.com/check-string-bool-golang/</link>
+					<comments>https://golangbyexamples.com/check-string-bool-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 23 Feb 2020 08:19:00 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[boolean]]></category>
+		<category><![CDATA[go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1454</guid>
+
+					<description><![CDATA[<p>strconv.ParseBool() function can be used to parse a string representation of a bool. https://golang.org/pkg/strconv/#ParseBool Below is the signature of the function Let&#8217;s see a working code Output:</p>
+<p>The post <a href="https://golangbyexamples.com/check-string-bool-golang/">Parse a bool or Check if given string is a bool in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>strconv.ParseBool()</strong> function can be used to parse a string representation of a bool.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/strconv/#ParseBool">https://golang.org/pkg/strconv/#ParseBool</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func ParseBool(str string) (bool, error)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    input := "true"
+    if val, err := strconv.ParseBool(input); err == nil {
+        fmt.Printf("%T, %v\n", val, val)
+    }
+
+    input = "false"
+    if val, err := strconv.ParseBool(input); err == nil {
+        fmt.Printf("%T, %v\n", val, val)
+    }
+
+    input = "garbage"
+    if val, err := strconv.ParseBool(input); err == nil {
+        fmt.Printf("%T, %v\n", val, val)
+    } else {
+        fmt.Println("Given input is not a bool")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">bool, true
+bool, false
+Given input is not a bool</code></pre>
+<p>The post <a href="https://golangbyexamples.com/check-string-bool-golang/">Parse a bool or Check if given string is a bool in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/check-string-bool-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1454</post-id>	</item>
+	</channel>
+</rss>

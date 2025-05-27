@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>env Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/env/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/env/</link>
+	<description></description>
+	<lastBuildDate>Sun, 23 Feb 2020 06:41:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>env Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/env/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Check if a environment variable is set in Go (Golang)</title>
+		<link>https://golangbyexamples.com/check-environment-variable-set-go/</link>
+					<comments>https://golangbyexamples.com/check-environment-variable-set-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 23 Feb 2020 06:40:55 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[env]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1441</guid>
+
+					<description><![CDATA[<p>os.LookupEnv function can be used to check whether a particular environment variable is set or not. It returns a bool which is true if the given env variable set otherwise false. Let&#8217;s...</p>
+<p>The post <a href="https://golangbyexamples.com/check-environment-variable-set-go/">Check if a environment variable is set in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.LookupEnv</strong> function can be used to check whether a particular environment variable is set or not. It returns a bool which is true if the given env variable set otherwise false. Let&#8217;s see a working code:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    //Set env a to b
+    err := os.Setenv("a", "x")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    val, present := os.LookupEnv("a")
+    fmt.Printf("a env variable present: %t\n", present)
+    fmt.Println(val)
+
+    val, present = os.LookupEnv("b")
+    fmt.Printf("b env variable present: %t\n", present)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a env variable present: true
+x
+b env variable present: false</code></pre>
+<p>The post <a href="https://golangbyexamples.com/check-environment-variable-set-go/">Check if a environment variable is set in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/check-environment-variable-set-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1441</post-id>	</item>
+	</channel>
+</rss>

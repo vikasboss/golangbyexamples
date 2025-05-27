@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>terminal Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/terminal/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/terminal/</link>
+	<description></description>
+	<lastBuildDate>Fri, 08 Jan 2021 16:26:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>terminal Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/terminal/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Print/Output text in color in console</title>
+		<link>https://golangbyexamples.com/print-output-text-color-console/</link>
+					<comments>https://golangbyexamples.com/print-output-text-color-console/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 29 Mar 2020 19:24:16 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[ansi]]></category>
+		<category><![CDATA[color]]></category>
+		<category><![CDATA[console]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[output]]></category>
+		<category><![CDATA[print]]></category>
+		<category><![CDATA[terminal]]></category>
+		<category><![CDATA[text]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1902</guid>
+
+					<description><![CDATA[<p>Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&#160;Golang Comprehensive Tutorial Series. Now let&#8217;s see the current tutorial....</p>
+<p>The post <a href="https://golangbyexamples.com/print-output-text-color-console/">Print/Output text in color in console</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>Note:</strong> If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a>. Now let&#8217;s see the current tutorial. Below is the table of contents.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><a href="http://en.wikipedia.org/wiki/ANSI_escape_code">ANSI escape codes</a> can be used to output colored text in console. Please note that</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In MAC/Linux system terminal supports ANSI escape codes</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Windows Command Prompt doesn&#8217;t support it. On windows you can install Cygwin. ANSI escape codes work on that.</li></ul>
+
+
+
+<p class="has-medium-font-size">Also to mention in the below code we have used colorReset after printing. If we don&#8217;t use that then the color effect remains and it is not cleared. Remove the colorReset from  below code and it will show text &#8220;<strong>next&#8221;</strong> in cyan color<br>Below is code in golang to do the same.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    colorReset := "\033[0m"
+
+    colorRed := "\033[31m"
+    colorGreen := "\033[32m"
+    colorYellow := "\033[33m"
+    colorBlue := "\033[34m"
+    colorPurple := "\033[35m"
+    colorCyan := "\033[36m"
+    colorWhite := "\033[37m"
+    
+    fmt.Println(string(colorRed), "test")
+    fmt.Println(string(colorGreen), "test")
+    fmt.Println(string(colorYellow), "test")
+    fmt.Println(string(colorBlue), "test")
+    fmt.Println(string(colorPurple), "test")
+    fmt.Println(string(colorWhite), "test")
+    fmt.Println(string(colorCyan), "test", string(colorReset))
+    fmt.Println("next")
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">On my mac machine</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="298" height="222" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2020/03/Screenshot-2020-03-29-at-9.38.45-PM.png?resize=298%2C222&#038;ssl=1" alt="" class="wp-image-1904" data-recalc-dims="1"/></figure>
+<p>The post <a href="https://golangbyexamples.com/print-output-text-color-console/">Print/Output text in color in console</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/print-output-text-color-console/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1902</post-id>	</item>
+	</channel>
+</rss>

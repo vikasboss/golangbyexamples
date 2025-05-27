@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>redirect Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/redirect/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/redirect/</link>
+	<description></description>
+	<lastBuildDate>Wed, 03 Mar 2021 15:41:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>redirect Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/redirect/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>HTTP Client to not follow redirect in Go (Golang)</title>
+		<link>https://golangbyexamples.com/http-no-redirect-client-golang/</link>
+					<comments>https://golangbyexamples.com/http-no-redirect-client-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 03 Mar 2021 15:41:03 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[redirect]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5198</guid>
+
+					<description><![CDATA[<p>Overview http.Client struct is used to make HTTP requests in golang. https://golang.org/src/net/http/client.go http.Client lets you specify a policy of how redirects can be handled.&#160; Below is the structure of http.Client struct The...</p>
+<p>The post <a href="https://golangbyexamples.com/http-no-redirect-client-golang/">HTTP Client to not follow redirect in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>http.Client</strong> struct is used to make HTTP requests in golang. </p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/src/net/http/client.go">https://golang.org/src/net/http/client.go</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>http.Client</strong> lets you specify a policy of how redirects can be handled.&nbsp; Below is the structure of <strong>http.Client </strong>struct</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Client struct {
+	Transport RoundTripper
+	CheckRedirect func(req *Request, via []*Request) error
+	Jar CookieJar
+	Timeout time.Duration
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The <strong>CheckRedirect</strong> field is a function actually which lets you specify a way of how redirects can be handled. This function is called before following any future redirects. So basically whenever the server responds with a redirect the client will first call the <strong>CheckRedirect</strong> function to check if redirect should be followed or not. Below is the signature of the <strong>CheckRedirect</strong> function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func(req *Request, via []*Request) error</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The first parameter <strong>req</strong> is the upcoming request</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The second parameter <strong>via</strong> is the requests already made. That is why it is a slice. The first element is the oldest request.</li></ul>
+
+
+
+<p class="has-medium-font-size">There are two cases to consider</p>
+
+
+
+<h1 class="wp-block-heading"><strong>CheckDirect is nil</strong></h1>
+
+
+
+<p class="has-medium-font-size">You don&#8217;t specify the CheckRedirect field during the initialization of <strong>http.Client</strong> struct. In this case, default behavior kicks in, and the HTTP client will follow 10 redirects, and then it will return an error.&nbsp; Below is the <strong>defaultCheckRedirect</strong> function which quits after 10 retries.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func defaultCheckRedirect(req *Request, via []*Request) error {
+	if len(via) >= 10 {
+		return errors.New("stopped after 10 redirects")
+	}
+	return nil
+}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>CheckDirect is not-nil</strong></h1>
+
+
+
+<p class="has-medium-font-size">You specify your own <strong>CheckRedirect</strong> function during the initialization of the <strong>http.Client</strong> struct. When you specify this function, then this function will be called before following any future redirect.&nbsp; When you write your own CheckRedirect function you need to know the below things in mind<br>When the <strong>CheckRedirect</strong> function returns an error, then the HTTP client will return two things</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The previous response along with body closed</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The actual error (wrapped in a <strong>url.Error)</strong></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong></strong>There is also a special case when <strong>CheckRedirect</strong> function returns <strong>ErrUseLastResponse </strong>error. In this case, the client will return</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Most recent response along with body unclosed</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Non-nil error</li></ul>
+
+
+
+<p class="has-medium-font-size">So basically when you don&#8217;t want HTTP Client to follow the redirect, then please specify your own <strong>CheckRedirect</strong> function to control the behavior the way you want.&nbsp; For example below is one sample <strong>CheckRedirect </strong>function that will inform HTTP client to not follow any redirect and also not return any error, just return the last response along with body unclosed.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func MyCheckRedirect(req *Request, via []*Request) error {
+	return http.ErrUseLastResponse
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Here is the definition of <strong>ErrUseLastResponse </strong>in the http package</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var ErrUseLastResponse = errors.New("net/http: use last response")</code></pre>
+
+
+
+<p class="has-medium-font-size">Create <strong>http.Client</strong> as below specifying the <strong>CheckRedirect</strong> function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">client := &http.Client{
+    CheckRedirect: func(req *Request, via []*Request) error {
+	return http.ErrUseLastResponse
+    },
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Here is another sample <strong>CheckRedirect </strong>function which will only follow redirect two times and then return the error</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func MyCheckRedirect(req *Request, via []*Request) error {
+	if len(via) >= 2 {
+		return errors.New("stopped after 10 redirects")
+	}
+	return nil
+}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/http-no-redirect-client-golang/">HTTP Client to not follow redirect in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/http-no-redirect-client-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5198</post-id>	</item>
+	</channel>
+</rss>

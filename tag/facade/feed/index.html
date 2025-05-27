@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>facade Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/facade/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/facade/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:37:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>facade Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/facade/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Facade Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/facade-design-pattern-in-golang/</link>
+					<comments>https://golangbyexamples.com/facade-design-pattern-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 15 Nov 2019 18:48:23 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design pattern in go]]></category>
+		<category><![CDATA[design pattern in golang]]></category>
+		<category><![CDATA[facade]]></category>
+		<category><![CDATA[facade design pattern]]></category>
+		<category><![CDATA[facade design pattern in go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=576</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition:&#160; Facade Pattern is classified as...</p>
+<p>The post <a href="https://golangbyexamples.com/facade-design-pattern-in-golang/">Facade Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size">Facade Pattern is classified as a structural design pattern. This design pattern is meant to hide the complexities of the underlying system and provide a simple interface to the client. It provides a unified interface to underlying many interfaces in the system so that from the client perspective it is easier to use. Basically it provides a higher level abstraction over a complicated system.</p>
+
+
+
+<p class="has-medium-font-size"><br>The term <strong>Facade</strong> itself means</p>
+
+
+
+<p class="has-medium-font-size"><strong>the principal front of a building, that faces on to a street or open space</strong></p>
+
+
+
+<p class="has-medium-font-size"><br>Only the front face of the building is shown all the underlying complexity is hidden behind.</p>
+
+
+
+<p class="has-medium-font-size"><br>Let&#8217;s understand the Facade Design Pattern with a simple example. In this era of the digital wallet, when someone actually does a wallet debit/credit there are a lot of things that are happening in the background which the client may not be aware of. Below list illustrates some of the activities which happen during the credit/debit process</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Check Account</li><li>Check Security Pin</li><li>Credit/Debit Balance</li><li>Make Ledger Entry</li><li>Send Notification</li></ul>
+
+
+
+<p class="has-medium-font-size">As can be noticed, there are a lot of things that happen for a single debit/credit operation. This is where the Facade pattern comes into picture. As a client one only needs to enter the Wallet Number, Security Pin, Amount and specify the type of operation. The rest of the things are taken care of in the background. Here we create a <strong>WalletFacade</strong> which provides a simple interface to the client and which takes care of dealing with all underlying operations. </p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="640" height="200" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-Behind-Scenes.jpg?resize=640%2C200&#038;ssl=1" alt="" data-id="638" data-full-url="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-Behind-Scenes.jpg?fit=741%2C231&amp;ssl=1" data-link="https://golangbyexamples.com/facade-design-pattern-in-golang/facade-design-pattern-behind-scenes/" class="wp-image-638" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-Behind-Scenes.jpg?w=741&amp;ssl=1 741w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-Behind-Scenes.jpg?resize=300%2C94&amp;ssl=1 300w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Problem Statement:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In order to use the complex system, the client had to know the underlying details. Need to provide a simple interface to the client so that they can use a complex system without knowing any of its inner complex details.</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>When to Use:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you want to expose a complex system in a simplified way.</li></ul>
+
+
+
+<p class="has-medium-font-size">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8211; Like in the above example of credit/debit wallet they need to know only one interface and the rest of the things should be taken care of by that interface.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-2 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img decoding="async" width="640" height="284" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-1.jpg?resize=640%2C284&#038;ssl=1" alt="" data-id="639" data-full-url="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-1.jpg?fit=735%2C326&amp;ssl=1" data-link="https://golangbyexamples.com/facade-design-pattern-in-golang/facade-design-pattern-1/" class="wp-image-639" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-1.jpg?w=735&amp;ssl=1 735w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-1.jpg?resize=300%2C133&amp;ssl=1 300w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the practical example given below</p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-3 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img decoding="async" width="640" height="274" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-2.jpg?resize=640%2C274&#038;ssl=1" alt="" data-id="640" data-full-url="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-2.jpg?fit=801%2C343&amp;ssl=1" data-link="https://golangbyexamples.com/facade-design-pattern-in-golang/facade-design-pattern-2/" class="wp-image-640" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-2.jpg?w=801&amp;ssl=1 801w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-2.jpg?resize=300%2C128&amp;ssl=1 300w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Facade-Design-Pattern-2.jpg?resize=768%2C329&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in code.</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Wallet Facade</td><td>walletFacade.go</td></tr><tr><td>account</td><td>account.go</td></tr><tr><td>securityCode</td><td>securityCode.go</td></tr><tr><td>wallet</td><td>wallet.go</td></tr><tr><td>ledger</td><td>ledger.go</td></tr><tr><td>notification</td><td>notification.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example:</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>walletFacade.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type walletFacade struct {
+    account      *account
+    wallet       *wallet
+    securityCode *securityCode
+    notification *notification
+    ledger       *ledger
+}
+
+func newWalletFacade(accountID string, code int) *walletFacade {
+    fmt.Println("Starting create account")
+    walletFacacde := &walletFacade{
+        account:      newAccount(accountID),
+        securityCode: newSecurityCode(code),
+        wallet:       newWallet(),
+        notification: &notification{},
+        ledger:       &ledger{},
+    }
+    fmt.Println("Account created")
+    return walletFacacde
+}
+
+func (w *walletFacade) addMoneyToWallet(accountID string, securityCode int, amount int) error {
+    fmt.Println("Starting add money to wallet")
+    err := w.account.checkAccount(accountID)
+    if err != nil {
+        return err
+    }
+    err = w.securityCode.checkCode(securityCode)
+    if err != nil {
+        return err
+    }
+    w.wallet.creditBalance(amount)
+    w.notification.sendWalletCreditNotification()
+    w.ledger.makeEntry(accountID, "credit", amount)
+    return nil
+}
+
+func (w *walletFacade) deductMoneyFromWallet(accountID string, securityCode int, amount int) error {
+    fmt.Println("Starting debit money from wallet")
+    err := w.account.checkAccount(accountID)
+    if err != nil {
+        return err
+    }
+    err = w.securityCode.checkCode(securityCode)
+    if err != nil {
+        return err
+    }
+    err = w.wallet.debitBalance(amount)
+    if err != nil {
+        return err
+    }
+    w.notification.sendWalletDebitNotification()
+    w.ledger.makeEntry(accountID, "credit", amount)
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>account.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type account struct {
+    name string
+}
+
+func newAccount(accountName string) *account {
+    return &account{
+        name: accountName,
+    }
+}
+
+func (a *account) checkAccount(accountName string) error {
+    if a.name != accountName {
+        return fmt.Errorf("Account Name is incorrect")
+    }
+    fmt.Println("Account Verified")
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>securityCode.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type securityCode struct {
+    code int
+}
+
+func newSecurityCode(code int) *securityCode {
+    return &securityCode{
+        code: code,
+    }
+}
+
+func (s *securityCode) checkCode(incomingCode int) error {
+    if s.code != incomingCode {
+        return fmt.Errorf("Security Code is incorrect")
+    }
+    fmt.Println("SecurityCode Verified")
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>wallet.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type wallet struct {
+    balance int
+}
+
+func newWallet() *wallet {
+    return &wallet{
+        balance: 0,
+    }
+}
+
+func (w *wallet) creditBalance(amount int) {
+    w.balance += amount
+    fmt.Println("Wallet balance added successfully")
+    return
+}
+
+func (w *wallet) debitBalance(amount int) error {
+    if w.balance < amount {
+        return fmt.Errorf("Balance is not sufficient")
+    }
+    fmt.Println("Wallet balance is Sufficient")
+    w.balance = w.balance - amount
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>ledger.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type ledger struct {
+}
+
+func (s *ledger) makeEntry(accountID, txnType string, amount int) {
+    fmt.Printf("Make ledger entry for accountId %s with txnType %s for amount %d", accountID, txnType, amount)
+    return
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>notification.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type notification struct {
+}
+
+func (n *notification) sendWalletCreditNotification() {
+    fmt.Println("Sending wallet credit notification")
+}
+
+func (n *notification) sendWalletDebitNotification() {
+    fmt.Println("Sending wallet debit notification")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+)
+
+func main() {
+    fmt.Println()
+    walletFacade := newWalletFacade("abc", 1234)
+    fmt.Println()
+    err := walletFacade.addMoneyToWallet("abc", 1234, 10)
+    if err != nil {
+        log.Fatalf("Error: %s\n", err.Error())
+    }
+    fmt.Println()
+    err = walletFacade.deductMoneyFromWallet("ab", 1234, 5)
+    if err != nil {
+        log.Fatalf("Error: %s\n", err.Error())
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong><br></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Starting create account
+Account created
+
+Starting add money to wallet
+Account Verified
+SecurityCode Verified
+Wallet balance added successfully
+Sending wallet credit notification
+Make ledger entry for accountId abc with txnType credit for amount 10
+
+Starting debit money from wallet
+Account Verified
+SecurityCode Verified
+Wallet balance is Sufficient
+Sending wallet debit notification
+Make ledger entry for accountId abc with txnType debit for amount 5
+</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+)
+
+type walletFacade struct {
+    account      *account
+    wallet       *wallet
+    securityCode *securityCode
+    notification *notification
+    ledger       *ledger
+}
+
+func newWalletFacade(accountID string, code int) *walletFacade {
+    fmt.Println("Starting create account")
+    walletFacacde := &walletFacade{
+        account:      newAccount(accountID),
+        securityCode: newSecurityCode(code),
+        wallet:       newWallet(),
+        notification: &notification{},
+        ledger:       &ledger{},
+    }
+    fmt.Println("Account created")
+    return walletFacacde
+}
+
+func (w *walletFacade) addMoneyToWallet(accountID string, securityCode int, amount int) error {
+    fmt.Println("Starting add money to wallet")
+    err := w.account.checkAccount(accountID)
+    if err != nil {
+        return err
+    }
+    err = w.securityCode.checkCode(securityCode)
+    if err != nil {
+        return err
+    }
+    w.wallet.creditBalance(amount)
+    w.notification.sendWalletCreditNotification()
+    w.ledger.makeEntry(accountID, "credit", amount)
+    return nil
+}
+
+func (w *walletFacade) deductMoneyFromWallet(accountID string, securityCode int, amount int) error {
+    fmt.Println("Starting debit money from wallet")
+    err := w.account.checkAccount(accountID)
+    if err != nil {
+        return err
+    }
+    err = w.securityCode.checkCode(securityCode)
+    if err != nil {
+        return err
+    }
+    err = w.wallet.debitBalance(amount)
+    if err != nil {
+        return err
+    }
+    w.notification.sendWalletDebitNotification()
+    w.ledger.makeEntry(accountID, "credit", amount)
+    return nil
+}
+
+type account struct {
+    name string
+}
+
+func newAccount(accountName string) *account {
+    return &account{
+        name: accountName,
+    }
+}
+
+func (a *account) checkAccount(accountName string) error {
+    if a.name != accountName {
+        return fmt.Errorf("Account Name is incorrect")
+    }
+    fmt.Println("Account Verified")
+    return nil
+}
+
+type securityCode struct {
+    code int
+}
+
+func newSecurityCode(code int) *securityCode {
+    return &securityCode{
+        code: code,
+    }
+}
+
+func (s *securityCode) checkCode(incomingCode int) error {
+    if s.code != incomingCode {
+        return fmt.Errorf("Security Code is incorrect")
+    }
+    fmt.Println("SecurityCode Verified")
+    return nil
+}
+
+type wallet struct {
+    balance int
+}
+
+func newWallet() *wallet {
+    return &wallet{
+        balance: 0,
+    }
+}
+
+func (w *wallet) creditBalance(amount int) {
+    w.balance += amount
+    fmt.Println("Wallet balance added successfully")
+    return
+}
+
+func (w *wallet) debitBalance(amount int) error {
+    if w.balance < amount {
+        return fmt.Errorf("Balance is not sufficient")
+    }
+    fmt.Println("Wallet balance is Sufficient")
+    w.balance = w.balance - amount
+    return nil
+}
+
+type ledger struct {
+}
+
+func (s *ledger) makeEntry(accountID, txnType string, amount int) {
+    fmt.Printf("Make ledger entry for accountId %s with txnType %s for amount %d\n", accountID, txnType, amount)
+    return
+}
+
+type notification struct {
+}
+
+func (n *notification) sendWalletCreditNotification() {
+    fmt.Println("Sending wallet credit notification")
+}
+
+func (n *notification) sendWalletDebitNotification() {
+    fmt.Println("Sending wallet debit notification")
+}
+
+func main() {
+    fmt.Println()
+    walletFacade := newWalletFacade("abc", 1234)
+    fmt.Println()
+    err := walletFacade.addMoneyToWallet("abc", 1234, 10)
+    if err != nil {
+        log.Fatalf("Error: %s\n", err.Error())
+    }
+    fmt.Println()
+    err = walletFacade.deductMoneyFromWallet("abc", 1234, 5)
+    if err != nil {
+        log.Fatalf("Error: %s\n", err.Error())
+    }
+}
+
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Starting create account
+Account created
+
+Starting add money to wallet
+Account Verified
+SecurityCode Verified
+Wallet balance added successfully
+Sending wallet credit notification
+Make ledger entry for accountId abc with txnType credit for amount 10
+
+Starting debit money from wallet
+Account Verified
+SecurityCode Verified
+Wallet balance is Sufficient
+Sending wallet debit notification
+Make ledger entry for accountId abc with txnType debit for amount 5
+</code></pre>
+<p>The post <a href="https://golangbyexamples.com/facade-design-pattern-in-golang/">Facade Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/facade-design-pattern-in-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">576</post-id>	</item>
+	</channel>
+</rss>

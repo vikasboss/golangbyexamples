@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>errorf Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/errorf/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/errorf/</link>
+	<description></description>
+	<lastBuildDate>Thu, 29 Apr 2021 17:01:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>errorf Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/errorf/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Understanding Errorf function in Go (Golang)</title>
+		<link>https://golangbyexamples.com/errorf-function-golang/</link>
+					<comments>https://golangbyexamples.com/errorf-function-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 29 Apr 2021 17:00:56 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[errorf]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5537</guid>
+
+					<description><![CDATA[<p>Overview Errorf function is defined in the fmt package and is used to create a custom error with a formatted message as per the format specifier provided. https://golang.org/pkg/fmt/#Errorf Its main use is...</p>
+<p>The post <a href="https://golangbyexamples.com/errorf-function-golang/">Understanding Errorf function in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>Errorf</strong> function is defined in the <strong>fmt</strong> package and is used to create a custom error with a formatted message as per the format specifier provided.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/fmt/#Errorf">https://golang.org/pkg/fmt/#Errorf</a></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Its main use is to create a custom error in golang with a formatted message.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It is also used to create a custom error which can wrap another error provided to it. In golang, an error can wrap another error as well.  What does the wrapping of error mean? It means to create a hierarchy of errors in which a  particular instance of error wraps another error and that particular instance itself can be wrapped inside another error. We will see about this in detail later in this tutorial.</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is the function prototype of <strong>Errorf</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Errorf(format string, a ...interface{}) error</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can see it returns an instance of the error.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Errorf</strong> is also a variadic function meaning that it can have multiple arguments. There are two important points about its argument list</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Notice that the first argument is a <strong>format</strong> or <strong>template</strong> string.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The next is a variable number of arguments. Each of the arguments in this list could be string, int, struct, or anything. That is why it is an empty interface</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Errrof</strong> formats the string using custom specifiers. The first argument that is the <strong>format</strong> or <strong>template</strong> string contains the actual string that needs to be formatted plus some formating verbs. These formating verbs tell how the trailing arguments will be formatted in the final string.  So basically the format string argument contains certain symbols which are replaced by trailing arguments. </p>
+
+
+
+<p class="has-medium-font-size">Eg </p>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Formatting a string variable</strong></h3>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%s</strong> symbol is used</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Example </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">name := "J"
+fmt.Errorf("Name has less then 3 character. Name: %s\n", name)</code></pre>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Formatting an integer</strong></h3>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%d</strong> symbol is used</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Example </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">age := 0
+fmt.Errorf("Age is 0: Age:%d\n", age)</code></pre>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Formatting a struct</strong></h3>
+
+
+
+<p class="has-medium-font-size">For example, there are three format specifiers for printing a struct.&nbsp;</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%v</strong> – It will print only values. The field name will not be printed. This is the default way of printing a struct when using Println</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%+v – </strong>It will print both field and value. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%#v – </strong>It will print the struct, also both field name and value</li></ul>
+
+
+
+<p class="has-medium-font-size">That is why</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Errorf("Employee not found. Details: %v\n", e)
+fmt.Errorf("Employee not found. Details: %+v\n", e)
+fmt.Errorf("Employee not found. Details: %#v\n", e)</code></pre>
+
+
+
+<p class="has-medium-font-size">returns an error with below formatted message respectively</p>
+
+
+
+<p class="has-medium-font-size">Here is the working program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+type employee struct {
+	Name string
+	Age  int
+}
+
+func main() {
+	sampleErr := "database connection issue"
+
+	err := fmt.Errorf("Err is: %s", sampleErr)
+	fmt.Println(err)
+
+	port := 8080
+
+	err = fmt.Errorf("Err is: %s to port %d", sampleErr, port)
+	fmt.Println(err)
+
+	e := employee{
+		Name: "John",
+	}
+
+	err = fmt.Errorf("Employee not found. Details %v", e)
+	fmt.Println(err)
+	err = fmt.Errorf("Employee not found. Details %+v", e)
+	fmt.Println(err)
+	err = fmt.Errorf("Employee not found. Details %#v", e)
+	fmt.Println(err)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Err is: database connection issue
+Err is: database connection issue to port 8080
+Employee not found. Details {John 0}
+Employee not found. Details {Name:John Age:0}
+Employee not found. Details main.employee{Name:"John", Age:0}</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice that in below <strong>Errorf</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">err = fmt.Errorf("Err is: %s to port %d", sampleErr, port)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%s </strong>is replaced by <strong>sampleErr</strong>.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%d</strong> is replaced by <strong>port</strong>.</li></ul>
+
+
+
+<p class="has-medium-font-size">So basically the symbols or verbs in the format string argument are replaced by trailing arguments in order</p>
+
+
+
+<p class="has-medium-font-size">If the number of format specifiers in the format string does not match the number of next variable arguments then the format specifier will be printed as is. For example, in the below code, we have two format specifier</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>%s</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>%d</li></ul>
+
+
+
+<p class="has-medium-font-size">While the next variable number of arguments is only one. Hence when we format it then it returns the formatted error with second format specifier as is with MISSING as a warning</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	name := "John"
+
+	err := fmt.Errorf("Employee not found with name: %s and age %d", name)
+	fmt.Println(err)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Employee not found with name: John and age %!d(MISSING)</code></pre>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Wrapping of error</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the syntax for wrapping an error</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e := fmt.Errorf("... %w ...", ..., err, ...)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>%w</strong> directive Is used for wrapping the error.  The <strong>fmt.Errorf </strong>should be called with only one %w directive. Let’s see an example.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+type errorOne struct{}
+
+func (e errorOne) Error() string {
+	return "Error One happened"
+}
+
+func main() {
+
+	e1 := errorOne{}
+
+	e2 := fmt.Errorf("E2: %w", e1)
+
+	e3 := fmt.Errorf("E3: %w", e2)
+
+	fmt.Println(e2)
+
+	fmt.Println(e3)
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">E2: Error One happened
+E3: E2: Error One happened</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, we created a struct <strong>errorOne</strong> that has an <strong>Error</strong> method hence it implements the <strong>error</strong> interface. Then we created an instance of the <strong>errorOne</strong> struct named <strong>e1</strong>. Then we wrapped that instance <strong>e1</strong> into another error <strong>e2</strong> like this</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e2 := fmt.Errorf("E2: %w", e1)</code></pre>
+
+
+
+<p class="has-medium-font-size">Then we wrapped <strong>e2</strong> into <strong>e3</strong> like below. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e3 := fmt.Errorf("E3: %w", e2)</code></pre>
+
+
+
+<p class="has-medium-font-size">So so we created a hierarchy of errors in which <strong>e3</strong> wraps <strong>e2</strong> and <strong>e2</strong> wraps <strong>e1</strong>.  Thus <strong>e3</strong> also wraps <strong>e1</strong> transitively. When we print <strong>e2 </strong> it also prints the error from <strong>e1</strong> and gives the output.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">E2: Error One happened</code></pre>
+
+
+
+<p class="has-medium-font-size">When we print <strong>e3</strong> it prints the error from <strong>e2</strong> as well as <strong>e1</strong> and gives the output.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">E3: E2: Error One happened</code></pre>
+
+
+
+<p class="has-medium-font-size">You can read about wrapping and unwrapping of error in detail here </p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golangbyexamples.com/wrapping-and-unwrapping-error-golang/">https://golangbyexamples.com/wrapping-and-unwrapping-error-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">This is all about the Errorf function. Hope you have liked this article. Please share feedback in the comments. Also, check out our Golang advance tutorial Series &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+<p>The post <a href="https://golangbyexamples.com/errorf-function-golang/">Understanding Errorf function in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/errorf-function-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5537</post-id>	</item>
+	</channel>
+</rss>

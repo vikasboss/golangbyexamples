@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>file Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/file/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/file/</link>
+	<description></description>
+	<lastBuildDate>Fri, 17 Apr 2020 17:41:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>file Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/file/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Change file permissions in Go (Golang)</title>
+		<link>https://golangbyexamples.com/change-file-permissions-golang/</link>
+					<comments>https://golangbyexamples.com/change-file-permissions-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 17:41:09 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[permissions]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2031</guid>
+
+					<description><![CDATA[<p>os.Chmod() function can be used to change the permissions of an existing file. Below is the signature of the function Code Output:</p>
+<p>The post <a href="https://golangbyexamples.com/change-file-permissions-golang/">Change file permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">os.Chmod() function can be used to change the permissions of an existing file. Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Chmod(name string, mode FileMode) error</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    // Create new file
+    new, err := os.Create("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer new.Close()
+
+    stats, err := os.Stat("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission File Before: %s\n", stats.Mode())
+    err = os.Chmod("new.txt", 0700)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    stats, err = os.Stat("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission File After: %s\n", stats.Mode())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Permission File Before: -rw-r--r--
+Permission File After: -rwx------</code></pre>
+<p>The post <a href="https://golangbyexamples.com/change-file-permissions-golang/">Change file permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/change-file-permissions-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2031</post-id>	</item>
+		<item>
+		<title>Make a copy of a file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/copy-file-go/</link>
+					<comments>https://golangbyexamples.com/copy-file-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2020 20:34:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[copy]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2027</guid>
+
+					<description><![CDATA[<p>In this article we will see two methods of copying a file. First Method io.Copy() can be used to create a copy of the file from src to dest. A successful copy...</p>
+<p>The post <a href="https://golangbyexamples.com/copy-file-go/">Make a copy of a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In this article we will see two methods of copying a file.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>First Method</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>io.Copy() </strong>can be used to create a copy of the file from src to dest. A successful copy will return err != nil instead of err == EOF</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It returns the number of bytes written to the dest</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Copy(dst Writer, src Reader) (written int64, err error)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<p class="has-medium-font-size">First create a file named <strong>&#8220;original.txt&#8221;</strong> and write some content in it.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "io"
+    "log"
+    "os"
+)
+
+// Copy a file
+func main() {
+    // Open original file
+    original, err := os.Open("original.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer original.Close()
+
+    // Create new file
+    new, err := os.Create("new.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer new.Close()
+
+    //This will copy
+    bytesWritten, err := io.Copy(new, original)
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Bytes Written: %d\n", bytesWritten)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Bytes Written: <some_number_of_bytes></code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Second Method</strong></h2>
+
+
+
+<p class="has-medium-font-size">If the contents of the file is less then we can also read the contents of the file first and then write all the contents to the new file. See below code.</p>
+
+
+
+<p class="has-medium-font-size">Here also first create a file named <strong>&#8220;original.txt</strong>&#8221; and write some content in it</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "io/ioutil"
+    "log"
+)
+
+// Copy a file
+func main() {
+    //Read all the contents of the  original file
+    bytesRead, err := ioutil.ReadFile("original.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    //Copy all the contents to the desitination file
+    err = ioutil.WriteFile("new.txt", bytesRead, 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">new.txt file will have same content as original.txt</code></pre>
+<p>The post <a href="https://golangbyexamples.com/copy-file-go/">Make a copy of a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/copy-file-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2027</post-id>	</item>
+		<item>
+		<title>Rename file or folder in Go (Golang)</title>
+		<link>https://golangbyexamples.com/rename-file-folder-golang/</link>
+					<comments>https://golangbyexamples.com/rename-file-folder-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 15 Apr 2020 21:15:15 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[folder]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[rename]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2004</guid>
+
+					<description><![CDATA[<p>Overview os.Rename() function can be used to rename a file or folder. Below is the signature of the function. old and new can be fully qualified as well. If the old and...</p>
+<p>The post <a href="https://golangbyexamples.com/rename-file-folder-golang/">Rename file or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">os.Rename() function can be used to rename a file or folder. Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Rename(old, new string) error</code></pre>
+
+
+
+<p class="has-medium-font-size"><br><strong>old</strong> and <strong>new</strong> can be fully qualified as well. If the <strong>old</strong> and <strong>new</strong> path doesn&#8217;t lie in the same directory then <strong>os.Rename() </strong>function behaves the same as moving a file or folder.<br></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<h2 class="wp-block-heading"><strong>Renaming a file</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is code for renaming a file</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a file
+    file, err := os.Create("temp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+
+    //Change permission so that it can be moved
+    err = os.Chmod("temp.txt", 0777)
+    if err != nil {
+        log.Println(err)
+    }
+
+
+    err = os.Rename("temp.txt", "newTemp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<p class="has-medium-font-size">First, it will create a file named temp.txt in the current working directory. Then it will rename it to newTemp.txt</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Renaming a folder</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is code for renaming a folder<br></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a directory
+    err := os.Mkdir("temp", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+    err = os.Rename("temp", "newTemp")
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">First it will create a folder named temp in current working directory. Then it will rename it to newTemp</p>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/rename-file-folder-golang/">Rename file or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/rename-file-folder-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2004</post-id>	</item>
+		<item>
+		<title>Create an empty file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/create-empty-file-go/</link>
+					<comments>https://golangbyexamples.com/create-empty-file-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 21 Feb 2020 15:06:25 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[empty]]></category>
+		<category><![CDATA[file]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1415</guid>
+
+					<description><![CDATA[<p>Overview os.Create() can be used to create an empty file in go. The signature of the function is Basically this function Create a named file with mode 0666 It truncates the file...</p>
+<p>The post <a href="https://golangbyexamples.com/create-empty-file-go/">Create an empty file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>os.Create() </strong>can be used to create an empty file in go. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Create(name string) (*File, error) </code></pre>
+
+
+
+<p class="has-medium-font-size">Basically this function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Create a named file with mode 0666</li><li>It truncates the file if it already exits</li><li>In case of path issue, it returns a Path error</li><li>It returns a file descriptor which can be used for both reading and write</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    file, err := os.Create("emptyFile.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong>:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Check the contents of the file. It will be empty</code></pre>
+<p>The post <a href="https://golangbyexamples.com/create-empty-file-go/">Create an empty file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/create-empty-file-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1415</post-id>	</item>
+		<item>
+		<title>Append to an existing file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/append-file-golang/</link>
+					<comments>https://golangbyexamples.com/append-file-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Jan 2020 16:41:27 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1181</guid>
+
+					<description><![CDATA[<p>os.OpenFile() function of the os package can be used to open to a file in an append mode and then write to it Let&#8217;s see an example. In the below program: First,...</p>
+<p>The post <a href="https://golangbyexamples.com/append-file-golang/">Append to an existing file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.OpenFile()</strong> function of the os package can be used to open to a file in an append mode and then write to it</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example. In the below program:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First, write to a file using <strong>ioutil</strong> package</li><li>Open the file again in Append mode and write the second line to it</li><li>Read the file to verify the content.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    "os"
+)
+
+func main() {
+    //Write first line
+    err := ioutil.WriteFile("temp.txt", []byte("first line\n"), 0644)
+    if err != nil {
+        log.Fatal(err)
+    }
+    
+    //Append second line
+    file, err := os.OpenFile("temp.txt", os.O_APPEND|os.O_WRONLY, 0644)
+    if err != nil {
+        log.Println(err)
+    }
+    defer file.Close()
+    if _, err := file.WriteString("second line"); err != nil {
+        log.Fatal(err)
+    }
+    
+    //Print the contents of the file
+    data, err := ioutil.ReadFile("temp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println(string(data))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">first line
+second line</code></pre>
+<p>The post <a href="https://golangbyexamples.com/append-file-golang/">Append to an existing file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/append-file-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1181</post-id>	</item>
+		<item>
+		<title>Touch a file in Go (Golang)</title>
+		<link>https://golangbyexamples.com/touch-file-golang/</link>
+					<comments>https://golangbyexamples.com/touch-file-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Jan 2020 18:33:03 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[empty]]></category>
+		<category><![CDATA[file]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1176</guid>
+
+					<description><![CDATA[<p>Touching a file means Create an empty file if the file doesn&#8217;t already exist If the file already exists then update the modified time of the file. Output: When running the first...</p>
+<p>The post <a href="https://golangbyexamples.com/touch-file-golang/">Touch a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Touching a file means</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Create an empty file if the file doesn&#8217;t already exist</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the file already exists then update the modified time of the file.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+    "time"
+)
+
+func main() {
+    fileName := "temp.txt"
+    _, err := os.Stat(fileName)
+    if os.IsNotExist(err) {
+        file, err := os.Create("temp.txt")
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer file.Close()
+    } else {
+        currentTime := time.Now().Local()
+        err = os.Chtimes(fileName, currentTime, currentTime)
+        if err != nil {
+            fmt.Println(err)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">When running the first time it will create the file. After the first time, it will update the modified time of the file.</p>
+<p>The post <a href="https://golangbyexamples.com/touch-file-golang/">Touch a file in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/touch-file-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1176</post-id>	</item>
+		<item>
+		<title>Read a large file Line by Line in Go (Golang)</title>
+		<link>https://golangbyexamples.com/read-large-file-line-by-line-go/</link>
+					<comments>https://golangbyexamples.com/read-large-file-line-by-line-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 19 Oct 2019 03:56:42 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[largefile]]></category>
+		<category><![CDATA[line by line]]></category>
+		<category><![CDATA[linebyline]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=288</guid>
+
+					<description><![CDATA[<p>When it comes to reading large files, obviously we don&#8217;t want to load the entire file in memory. bufio package in golang comes to the rescue when reading large files. Let&#8217;s say...</p>
+<p>The post <a href="https://golangbyexamples.com/read-large-file-line-by-line-go/">Read a large file Line by Line in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">When it comes to reading large files, obviously we don&#8217;t want to load the entire file in memory. bufio package in golang comes to the rescue when reading large files. Let&#8217;s say we have a sample.txt file with below contents</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">This is an example
+to show how
+to read file 
+line by line.</code></pre>
+
+
+
+<p class="has-medium-font-size">Here is the program:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "bufio"
+    "fmt"
+    "log"
+    "os"
+)
+func main(){
+    LinebyLineScan()
+}
+func LinebyLineScan() {
+    file, err := os.Open("./sample.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+    scanner := bufio.NewScanner(file)
+    for scanner.Scan() {
+        fmt.Println(scanner.Text())
+    }
+    if err := scanner.Err(); err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">This is an example
+to show how 
+to read file 
+line by line.</code></pre>
+
+
+
+<p class="has-medium-font-size">Note however bufio.Scanner has max buffer size 64*1024 bytes which means in case you file has any line greater than the size of 64*1024, then it will give the error </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">bufio.Scanner: token too long</code></pre>
+<p>The post <a href="https://golangbyexamples.com/read-large-file-line-by-line-go/">Read a large file Line by Line in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/read-large-file-line-by-line-go/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">288</post-id>	</item>
+	</channel>
+</rss>

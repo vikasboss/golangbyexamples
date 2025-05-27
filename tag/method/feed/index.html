@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>method Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/method/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/method/</link>
+	<description></description>
+	<lastBuildDate>Fri, 19 Jun 2020 20:48:51 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>method Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/method/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Method on a non-struct type in Go (Golang)</title>
+		<link>https://golangbyexamples.com/method-non-struct-type-golang/</link>
+					<comments>https://golangbyexamples.com/method-non-struct-type-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 19 Jun 2020 20:48:38 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[method]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2283</guid>
+
+					<description><![CDATA[<p>Methods can also be defined on a non-struct custom type. Non-struct custom types can be created through type definition. Below is the format for creating a new custom type For example we...</p>
+<p>The post <a href="https://golangbyexamples.com/method-non-struct-type-golang/">Method on a non-struct type in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Methods can also be defined on a non-struct custom type. Non-struct custom types can be created through type definition. Below is the format for creating a new custom type</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type {type_name} {built_in_type}</code></pre>
+
+
+
+<p class="has-medium-font-size">For example we can a named custom type <strong>myFloat</strong> of type <strong>float64</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type myFloat float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Methods can be defined on the named custom type. See below example:</p>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+type myFloat float64
+
+func (m myFloat) ceil() float64 {
+    return math.Ceil(float64(m))
+}
+
+func main() {
+    num := myFloat(1.4)
+    fmt.Println(num.ceil())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">2</code></pre>
+<p>The post <a href="https://golangbyexamples.com/method-non-struct-type-golang/">Method on a non-struct type in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/method-non-struct-type-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2283</post-id>	</item>
+		<item>
+		<title>Function/Method Overloading in Golang (Alternatives/Workaround)</title>
+		<link>https://golangbyexamples.com/function-method-overloading-golang/</link>
+					<comments>https://golangbyexamples.com/function-method-overloading-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 01 Dec 2019 07:33:05 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[function]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[method]]></category>
+		<category><![CDATA[overloading]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=783</guid>
+
+					<description><![CDATA[<p>Function/Method Overloading means that that the same function/method name can be used with a different number and types of parameters See this post for difference between function and method in Go &#8211;...</p>
+<p>The post <a href="https://golangbyexamples.com/function-method-overloading-golang/">Function/Method Overloading in Golang (Alternatives/Workaround)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Function/Method Overloading means that that the same function/method name can be used with a different number and types of parameters</p>
+
+
+
+<p class="has-medium-font-size">See this post for difference between function and method in Go &#8211; <a href="https://golangbyexamples.com/difference-between-method-function-go">https://golangbyexamples.com/difference-between-method-function-go</a></p>
+
+
+
+<p>Eg. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func X()
+func X(name string)
+func X(name, address string)
+func X(name string, age int)</code></pre>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t support method/function overloading. See this faq for the reason <a href="https://golang.org/doc/faq#overloading">https://golang.org/doc/faq#overloading</a></p>
+
+
+
+<p class="has-medium-font-size">According to the above faq things are simpler without it.</p>
+
+
+
+<p class="has-medium-font-size">We can workaround Method/Function overloading in GO using</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Variadic Function</strong> &#8211; A Variadic Function is a function that accepts a variable number of arguments</li><li><strong>Empty Interface</strong> &#8211; It is an interface without any methods.</li></ul>
+
+
+
+<p class="has-medium-font-size">There are two cases for Method/Function Overloading</p>
+
+
+
+<p></p>
+
+
+
+<p style="font-size:24px">1.<strong>Different number of parameters but of the same type:</strong></p>
+
+
+
+<p class="has-medium-font-size">Above case can easily be handled using variadic functions. Notice in below code the parameters are of one type i.e. <strong>int.</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println(add(1, 2))
+    fmt.Println(add(1, 2, 3))
+    fmt.Println(add(1, 2, 3, 4))
+}
+
+func add(numbers ...int) int {
+    sum := 0
+    for _, num := range numbers {
+        sum += num
+    }
+    return sum</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">3
+6
+10</code></pre>
+
+
+
+<p></p>
+
+
+
+<p style="font-size:24px">2.<strong>Different number of parameters and of different types</strong></p>
+
+
+
+<p class="has-medium-font-size">This case can be handled using both variadic function and empty interface</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    handle(1, "abc")
+    handle("abc", "xyz", 3)
+    handle(1, 2, 3, 4)
+}
+
+func handle(params ...interface{}) {
+    fmt.Println("Handle func called with parameters:")
+    for _, param := range params {
+        fmt.Printf("%v\n", param)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Handle func called with parameters:
+1
+abc
+Handle func called with parameters:
+abc
+xyz
+3
+Handle func called with parameters:
+1
+2
+3
+4</code></pre>
+
+
+
+<p class="has-medium-font-size">We can also use a switch case to get the exact parameters and use them accordingly. See the below example.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type person struct {
+    name   string
+    gender string
+    age    int
+}
+
+func main() {
+    err := addPerson("Tina", "Female", 20)
+    if err != nil {
+        fmt.Println("PersonAdd Error: " + err.Error())
+    }
+    
+    err = addPerson("John", "Male")
+    if err != nil {
+        fmt.Println("PersonAdd Error: " + err.Error())
+    }
+     
+    err = addPerson("Wick", 2, 3)
+    if err != nil {
+        fmt.Println("PersonAdd Error: " + err.Error())
+    }
+}
+
+func addPerson(args ...interface{}) error {
+    if len(args) > 3 {
+        return fmt.Errorf("Wront number of arguments passed")
+    }
+    p := &person{}
+    //0 is name
+    //1 is gender
+    //2 is age
+    for i, arg := range args {
+        switch i {
+        case 0: // name
+            name, ok := arg.(string)
+            if !ok {
+                return fmt.Errorf("Name is not passed as string")
+            }
+            p.name = name
+        case 1:
+            gender, ok := arg.(string)
+            if !ok {
+                return fmt.Errorf("Gender is not passed as string")
+            }
+            p.gender = gender
+        case 2:
+            age, ok := arg.(int)
+            if !ok {
+                return fmt.Errorf("Age is not passed as int")
+            }
+            p.age = age
+        default:
+            return fmt.Errorf("Wrong parametes passed")
+        }
+    }
+    fmt.Printf("Person struct is %+v\n", p)
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Note:</strong> Wherever the arg is not passed it is substituted as default. </p>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Person struct is &{name:Tina gender:Female age:20}
+Person struct is &{name:John gender:Male age:0}
+PersonAdd Error: Gender is not passed as string</code></pre>
+<p>The post <a href="https://golangbyexamples.com/function-method-overloading-golang/">Function/Method Overloading in Golang (Alternatives/Workaround)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/function-method-overloading-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">783</post-id>	</item>
+		<item>
+		<title>Difference between method and function in GO</title>
+		<link>https://golangbyexamples.com/difference-between-method-function-go/</link>
+					<comments>https://golangbyexamples.com/difference-between-method-function-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 01 Dec 2019 07:02:54 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[function]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[method]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=777</guid>
+
+					<description><![CDATA[<p>There are some important differences between method and function. Let&#8217;s see the signature of both Function: Method: From the above signature, it is clear that method has a receiver argument. A receiver...</p>
+<p>The post <a href="https://golangbyexamples.com/difference-between-method-function-go/">Difference between method and function in GO</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">There are some important differences between method and function. Let&#8217;s see the signature of both</p>
+
+
+
+<p class="has-medium-font-size"><strong>Function:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Method:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (receiver receiver_type) some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size"><br>From the above signature, it is clear that method has a receiver argument. A receiver can be a struct or any other type. The method will have access to the properties of the receiver and can call the receiver&#8217;s other methods.<br>This is the only difference between function and method, but due to it they differ in terms of functionality they offer<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A function can be used as first-order objects and can be passed around while methods cannot.</li><li>Methods can be used for chaining on the receiver while function cannot be used for the same.</li><li>There can exist different methods with the same name with a different receiver, but there cannot exist two different functions with the same name in the same package.</li></ul>
+<p>The post <a href="https://golangbyexamples.com/difference-between-method-function-go/">Difference between method and function in GO</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/difference-between-method-function-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">777</post-id>	</item>
+		<item>
+		<title>Template Method Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/template-method-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/template-method-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 13:28:50 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[method]]></category>
+		<category><![CDATA[pattern]]></category>
+		<category><![CDATA[template]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=724</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Template Method Design Pattern is...</p>
+<p>The post <a href="https://golangbyexamples.com/template-method-design-pattern-golang/">Template Method Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Template Method Design Pattern is a behavioral design pattern that lets you define a template or algorithm for a particular operation.&nbsp;&nbsp;Let&#8217;s understand the template design pattern with an example.</p>
+
+
+
+<p class="has-medium-font-size">Consider the example of One Time Password or OTP. There are different types of OTP that can be triggered for eg. OTP can be <strong>SMS</strong> OTP or <strong>EMAIL</strong> OTP.&nbsp; But irrespective it is an <strong>SMS</strong> OTP or <strong>EMAIL</strong> OTP,&nbsp; the entire steps of the OTP process are the same.&nbsp; The steps are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Generate a random n digit number.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Save this number in the cache for later verification.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Prepare the content</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Send the notification</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Publish the metrics</li></ul>
+
+
+
+<p class="has-medium-font-size">Even in the future let&#8217;s say a push notification <strong>OTP</strong> is introduced but still it will go through the above steps.</p>
+
+
+
+<p class="has-medium-font-size">In such scenarios when the steps of a particular operation are the same but the steps of the operations can be implemented in a different way by different implementors , then that becomes a candidate for the Template Method Design Pattern. We define a template or algorithm which comprises of a fixed number of methods. The implementer of the operation overrides the methods of the template. </p>
+
+
+
+<p class="has-medium-font-size">Now check out the below code example. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>iOtp</strong> represents an interface that defines the set of methods that any otp type should implement</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>sms</strong> and <strong>email</strong> are the implementors of <strong>iOtp</strong> interface</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>otp</strong> is the struct which defines the template method <strong>genAndSendOTP(). otp</strong> embeds <strong>iOtp</strong> interface.&nbsp; </li></ul>
+
+
+
+<p class="has-medium-font-size">Important: The combination of iOtp interface and otp struct provides the capabilities of Abstract Class in go. For reference see </p>
+
+
+
+<figure class="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-welcome-to-golang-by-example"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="fqHnV3R5rZ"><a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted"  title="&#8220;Abstract Class in GO: Complete Guide&#8221; &#8212; Welcome To Golang By Example" src="https://golangbyexamples.com/go-abstract-class/embed/#?secret=IJrupn5jVu#?secret=fqHnV3R5rZ" data-secret="fqHnV3R5rZ" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>otp.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iOtp interface {
+    genRandomOTP(int) string
+    saveOTPCache(string)
+    getMessage(string) string
+    sendNotification(string) error
+    publishMetric()
+}
+
+type otp struct {
+    iOtp iOtp
+}
+
+func (o *otp) genAndSendOTP(otpLength int) error {
+    otp := o.iOtp.genRandomOTP(otpLength)
+    o.iOtp.saveOTPCache(otp)
+    message := o.iOtp.getMessage(otp)
+    err := o.iOtp.sendNotification(message)
+    if err != nil {
+        return err
+    }
+    o.iOtp.publishMetric()
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>sms.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type sms struct {
+    otp
+}
+
+func (s *sms) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("SMS: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *sms) saveOTPCache(otp string) {
+    fmt.Printf("SMS: saving otp: %s to cache\n", otp)
+}
+
+func (s *sms) getMessage(otp string) string {
+    return "SMS OTP for login is " + otp
+}
+
+func (s *sms) sendNotification(message string) error {
+    fmt.Printf("SMS: sending sms: %s\n", message)
+    return nil
+}
+
+func (s *sms) publishMetric() {
+    fmt.Printf("SMS: publishing metrics\n")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>email.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type email struct {
+    otp
+}
+
+func (s *email) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *email) saveOTPCache(otp string) {
+    fmt.Printf("EMAIL: saving otp: %s to cache\n", otp)
+}
+
+func (s *email) getMessage(otp string) string {
+    return "EMAIL OTP for login is " + otp
+}
+
+func (s *email) sendNotification(message string) error {
+    fmt.Printf("EMAIL: sending email: %s\n", message)
+    return nil
+}
+
+func (s *email) publishMetric() {
+    fmt.Printf("EMAIL: publishing metrics\n")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    smsOTP := &sms{}
+    o := otp{
+        iOtp: smsOTP,
+    }
+    o.genAndSendOTP(4)
+    fmt.Println("")
+    emailOTP := &email{}
+    o = otp{
+        iOtp: emailOTP,
+    }
+    o.genAndSendOTP(4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">SMS: generating random otp 1234
+SMS: saving otp: 1234 to cache
+SMS: sending sms: SMS OTP for login is 1234
+SMS: publishing metrics
+
+EMAIL: generating random otp 1234
+EMAIL: saving otp: 1234 to cache
+EMAIL: sending email: EMAIL OTP for login is 1234
+EMAIL: publishing metrics</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type iOtp interface {
+    genRandomOTP(int) string
+    saveOTPCache(string)
+    getMessage(string) string
+    sendNotification(string) error
+    publishMetric()
+}
+
+type otp struct {
+    iOtp iOtp
+}
+
+func (o *otp) genAndSendOTP(otpLength int) error {
+    otp := o.iOtp.genRandomOTP(otpLength)
+    o.iOtp.saveOTPCache(otp)
+    message := o.iOtp.getMessage(otp)
+    err := o.iOtp.sendNotification(message)
+    if err != nil {
+        return err
+    }
+    o.iOtp.publishMetric()
+    return nil
+}
+
+type sms struct {
+    otp
+}
+
+func (s *sms) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("SMS: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *sms) saveOTPCache(otp string) {
+    fmt.Printf("SMS: saving otp: %s to cache\n", otp)
+}
+
+func (s *sms) getMessage(otp string) string {
+    return "SMS OTP for login is " + otp
+}
+
+func (s *sms) sendNotification(message string) error {
+    fmt.Printf("SMS: sending sms: %s\n", message)
+    return nil
+}
+
+func (s *sms) publishMetric() {
+    fmt.Printf("SMS: publishing metrics\n")
+}
+
+type email struct {
+    otp
+}
+
+func (s *email) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *email) saveOTPCache(otp string) {
+    fmt.Printf("EMAIL: saving otp: %s to cache\n", otp)
+}
+
+func (s *email) getMessage(otp string) string {
+    return "EMAIL OTP for login is " + otp
+}
+
+func (s *email) sendNotification(message string) error {
+    fmt.Printf("EMAIL: sending email: %s\n", message)
+    return nil
+}
+
+func (s *email) publishMetric() {
+    fmt.Printf("EMAIL: publishing metrics\n")
+}
+
+func main() {
+    smsOTP := &sms{}
+    o := otp{
+        iOtp: smsOTP,
+    }
+    o.genAndSendOTP(4)
+    fmt.Println("")
+    emailOTP := &email{}
+    o = otp{
+        iOtp: emailOTP,
+    }
+    o.genAndSendOTP(4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">SMS: generating random otp 1234
+SMS: saving otp: 1234 to cache
+SMS: sending sms: SMS OTP for login is 1234
+SMS: publishing metrics
+
+EMAIL: generating random otp 1234
+EMAIL: saving otp: 1234 to cache
+EMAIL: sending email: EMAIL OTP for login is 1234
+EMAIL: publishing metrics</code></pre>
+<p>The post <a href="https://golangbyexamples.com/template-method-design-pattern-golang/">Template Method Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/template-method-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">724</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>random Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/random/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/random/</link>
+	<description></description>
+	<lastBuildDate>Wed, 08 Apr 2020 11:27:10 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>random Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/random/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Generate a random string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/generate-random-string-golang/</link>
+					<comments>https://golangbyexamples.com/generate-random-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2020 11:25:23 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[random]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1947</guid>
+
+					<description><![CDATA[<p>Overview &#8216;mat/rand&#8217; package of golang contains a Intn function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can...</p>
+<p>The post <a href="https://golangbyexamples.com/generate-random-string-golang/">Generate a random string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;mat/rand&#8217; </strong>package of golang contains a <strong>Intn</strong> function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can be utilized to generate a random string from a character set.</p>
+
+
+
+<p class="has-medium-font-size"><br>To know more about what pseudo-random number means, checkout this post &#8211; <a href="https://golangbyexamples.com/generate-random-number-golang">https://golangbyexamples.com/generate-random-number-golang</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of this method. It takes input a number n and will return a number x in range 0&lt;=x&lt;n.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Intn(n int) int</code></pre>
+
+
+
+<p class="has-medium-font-size">Above function can be used to generate a random string. Basically we first select a charSet. Then we use the above function to generate a random number and then use that random number to get a random character from the charSet. This random character is added to a string until we have a random string of desired length.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "strings"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    //Only lowercase
+    charSet := "abcdedfghijklmnopqrst"
+    var output strings.Builder
+    length := 10
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteString(string(randomChar))
+    }
+    fmt.Println(output.String())
+    output.Reset()
+
+    //Lowercase and Uppercase Both
+    charSet = "abcdedfghijklmnopqrstABCDEFGHIJKLMNOP"
+    length = 20
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteString(string(randomChar))
+    }
+    fmt.Println(output.String())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the output on my machine. On your's it might give a different output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">himsemkpkd
+nHaiEpccEdBfCFPtaBbi</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program we are using character set as</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">abcdedfghijklmnopqrst and abcdedfghijklmnopqrstABCDEFGHIJKLMNOP</code></pre>
+
+
+
+<p class="has-medium-font-size">All the above characters in charSet were ASCII characters hence we were able to index a character in <strong>charSet</strong> string. But this could be problem if the <strong>charSet</strong> contains non-ASCII character. </p>
+
+
+
+<p class="has-medium-font-size">In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&nbsp;All other characters are between 1 to 4 bytes. Due to this it is not possible to index a character in a string.&nbsp; In GO, rune data type represents a Unicode point.&nbsp; Once a string is converted to an array of rune then it is possible to index a character in that array of rune.<br></p>
+
+
+
+<p class="has-medium-font-size">So in case, the character set contains some characters that are not ASCII they might occupy more than 1 bytes. In that case, we cannot use the above code to generate a random string as we cannot index into the charSet. For this case, we have to first convert a string into a rune array so that we can index into the rune array to the character and then incrementally form the random string. </p>
+
+
+
+<p class="has-medium-font-size">As in the below example, our charSet contains a non-ASCII character <strong>'£'. </strong>This character occupies two bytes</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "strings"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+    //Only lowercase and £
+    charSet := []rune("abcdedfghijklmnopqrst£")
+    var output strings.Builder
+    length := 10
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteRune(randomChar)
+    }
+    fmt.Println(output.String())
+    output.Reset()
+ 
+   //Lowercase and Uppercase Both and £
+    charSet = []rune("abcdedfghijklmnopqrstABCDEFGHIJKLMNOP£")
+    length = 20
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteRune(randomChar)
+    }
+    fmt.Println(output.String())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong>:</p>
+
+
+
+<p class="has-medium-font-size">Below is the output on my machine. On yours it might give a different output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">aidqpbse£j
+rebhjblsePsLpGBPOhfB</code></pre>
+<p>The post <a href="https://golangbyexamples.com/generate-random-string-golang/">Generate a random string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/generate-random-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1947</post-id>	</item>
+		<item>
+		<title>Generate a number in a given range in Go (Golang)</title>
+		<link>https://golangbyexamples.com/random-number-range-golang/</link>
+					<comments>https://golangbyexamples.com/random-number-range-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2020 11:23:49 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[random]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1944</guid>
+
+					<description><![CDATA[<p>Overview &#8216;mat/rand&#8217; package of golang contains a Intn function that can be used to generate a random number between [0,n). Bracket at the end means that n is exclusive. To know more...</p>
+<p>The post <a href="https://golangbyexamples.com/random-number-range-golang/">Generate a number in a given range in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;mat/rand&#8217; </strong>package of golang contains a <strong>Intn</strong> function that can be used to generate a random number between [0,n). Bracket at the end means that n is exclusive.</p>
+
+
+
+<p class="has-medium-font-size">To know more about what pseudo-random number means, checkout this post &#8211; <a href="https://golangbyexamples.com/generate-random-number-golang">https://golangbyexamples.com/generate-random-number-golang</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of this method. It takes input a number n and will return a number x in range 0&lt;=x&lt;n.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Intn(n int) int</code></pre>
+
+
+
+<p class="has-medium-font-size"><br>Above function can also be used to generate a random number in range a to b too. See below program. It is used to generate a number between range a to b. We are also providing a seed value to the <strong>rand</strong> so that it generates different output everytime.<br></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    //Generate a random number x where x is in range 5<=x<=20
+    rangeLower := 5
+    rangeUpper := 20
+    randomNum := rangeLower + rand.Intn(rangeUpper-rangeLower+1)
+    fmt.Println(randomNum)
+
+    //Generate a random number x where x is in range 100<=x<=200
+    rangeLower = 100
+    rangeUpper = 200
+    randomNum = rangeLower + rand.Intn(rangeUpper-rangeLower+1)
+    fmt.Println(randomNum)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number between 5<=x<=20
+Number between 100<=x<=200</code></pre>
+<p>The post <a href="https://golangbyexamples.com/random-number-range-golang/">Generate a number in a given range in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/random-number-range-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1944</post-id>	</item>
+		<item>
+		<title>Generate a random array/slice of n integers in Go (Golang)</title>
+		<link>https://golangbyexamples.com/generate-random-array-slice-golang/</link>
+					<comments>https://golangbyexamples.com/generate-random-array-slice-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 02 Apr 2020 07:06:06 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[random]]></category>
+		<category><![CDATA[slice]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1940</guid>
+
+					<description><![CDATA[<p>Overview math/rand package of GO provides a Perm method that can be used generate the pseudo-random slice of n integers. The array will be pseudo-random permutation of the integers in the range...</p>
+<p>The post <a href="https://golangbyexamples.com/generate-random-array-slice-golang/">Generate a random array/slice of n integers in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math/rand</strong> package of GO provides a <strong>Perm</strong> method that can be used generate the pseudo-random slice of n integers. The array will be pseudo-random permutation of the integers in the range [0,n). </p>
+
+
+
+<p class="has-medium-font-size">To know more about what pseudo-random number means, checkout this post &#8211; <a href="https://golangbyexamples.com/generate-random-number-golang">https://golangbyexamples.com/generate-random-number-golang</a><br>Below is the signature of the function. It takes a number n as input and returns the permuted slice.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Perm(n int) []int</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    //Provide seed
+    rand.Seed(time.Now().Unix())
+
+    //Generate a random array of length n
+    fmt.Println(rand.Perm(10))
+    fmt.Println(rand.Perm(10))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[6 0 1 5 9 4 2 3 7 8]
+[9 8 5 0 3 4 6 7 2 1]</code></pre>
+<p>The post <a href="https://golangbyexamples.com/generate-random-array-slice-golang/">Generate a random array/slice of n integers in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/generate-random-array-slice-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1940</post-id>	</item>
+		<item>
+		<title>Generate a random character in Go (Golang)</title>
+		<link>https://golangbyexamples.com/generate-random-character-golang/</link>
+					<comments>https://golangbyexamples.com/generate-random-character-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 02 Apr 2020 07:02:14 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[character]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[random]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1933</guid>
+
+					<description><![CDATA[<p>Overview &#8216;mat/rand&#8217; package of golang contains an Intn function that can be used to generate a random number between [0,n). The bracket at the end means that n is exclusive. To know...</p>
+<p>The post <a href="https://golangbyexamples.com/generate-random-character-golang/">Generate a random character in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading">Overview</h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;mat/rand&#8217;</strong> package of golang contains an <strong>Intn</strong> function that can be used to generate a random number between [0,n). The bracket at the end means that n is exclusive.</p>
+
+
+
+<p class="has-medium-font-size"> To know more about what pseudo-random number means, check out this post &#8211; <a href="https://golangbyexamples.com/generate-random-number-golang">https://golangbyexamples.com/generate-random-number-golang</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of this method. It takes input a number n and will return a number x in range 0&lt;=x&lt;n.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Intn(n int) int</code></pre>
+
+
+
+<p class="has-medium-font-size">The above function can also be used to generate a random character too. See below program, it is used to generate a character. We are also providing a seed value to the rand so that it generates different output. It is used to generate:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Random character between lowercase a to z</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Random character between uppercase A and Z</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Random character between uppercase A and Z  and lowercase a to z</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    //Generate a random character between lowercase a to z
+    randomChar := 'a' + rune(rand.Intn(26))
+    fmt.Println(string(randomChar))
+
+    //Generate a random character between uppercase A and Z
+    randomChar = 'A' + rune(rand.Intn(26))
+    fmt.Println(string(randomChar))
+
+    //Generate a random character between uppercase A and Z  and lowercase a to z
+    randomInt := rand.Intn(2)
+    if randomInt == 1 {
+        randomChar = 'A' + rune(rand.Intn(26))
+    } else {
+        randomChar = 'a' + rune(rand.Intn(26))
+    }
+    fmt.Println(string(randomChar))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Will be lowercase between a to z
+Will be uppercase between A to Z
+Will be lowercase between a to z or uppsercase between A to Z</code></pre>
+<p>The post <a href="https://golangbyexamples.com/generate-random-character-golang/">Generate a random character in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/generate-random-character-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1933</post-id>	</item>
+		<item>
+		<title>Pick a random character in string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/pick-random-character-string-golang/</link>
+					<comments>https://golangbyexamples.com/pick-random-character-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 31 Mar 2020 15:59:17 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[character]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pick]]></category>
+		<category><![CDATA[random]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1918</guid>
+
+					<description><![CDATA[<p>Overview &#8216;mat/rand&#8217; package of golang contains a Intn function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can...</p>
+<p>The post <a href="https://golangbyexamples.com/pick-random-character-string-golang/">Pick a random character in string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;mat/rand&#8217; </strong>package of golang contains a <strong>Intn</strong> function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can be utilized to pick a random element in a string. We can generate a random between 0 and length-1 of string. Then we can use that random number to index into the string and get the result.</p>
+
+
+
+<p class="has-medium-font-size">But there is one problem in above approach. In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters. All other characters are between 1 -4 bytes. Due to this it is not possible to index a character in a string.  In GO, rune data type represents a Unicode point.  Once a string is converted to an array of rune then it is possible to index a character in that array of rune. </p>
+
+
+
+<p class="has-medium-font-size">You can learn more the above issue here &#8211; <a href="https://golangbyexamples.com/number-characters-string-golang/">https://golangbyexamples.com/number-characters-string-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">For this reason in below program for picking a random in a given string , we  are first converting a string into a rune array so that we can index into the rune array and then return the random character.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+)
+
+func main() {
+    in := "abcdedf£"
+    inRune := []rune(in)
+    randomIndex := rand.Intn(len(inRune))
+    pick := inRune[randomIndex]
+    fmt.Println(string(pick))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">One of a,b,c,d,e,f,£</code></pre>
+<p>The post <a href="https://golangbyexamples.com/pick-random-character-string-golang/">Pick a random character in string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/pick-random-character-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1918</post-id>	</item>
+		<item>
+		<title>Generate Random number in Go (Golang)</title>
+		<link>https://golangbyexamples.com/generate-random-number-golang/</link>
+					<comments>https://golangbyexamples.com/generate-random-number-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 20:54:59 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[generate]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[numbers]]></category>
+		<category><![CDATA[random]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1889</guid>
+
+					<description><![CDATA[<p>Overview Go provide a &#8216;math/rand&#8217; package which has inbuilt support for generating pseudo-random numbers. This package defines methods which can be used to generate A pseudo-random number within the range from 0...</p>
+<p>The post <a href="https://golangbyexamples.com/generate-random-number-golang/">Generate Random number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Go provide a <strong>&#8216;math/rand&#8217;</strong> package which has inbuilt support for generating pseudo-random numbers. This package defines methods which can be used to generate </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A pseudo-random number within the range from 0 to n</li><li>A pseudo-random number without range specified. The range will depend upon the type of int  i.e int64, int32, uint64, etc</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>What is a pseudo-random number </strong></h1>
+
+
+
+<p class="has-medium-font-size">Before proceeding let&#8217;s first understand what pseudo-random number means. Pseudo-random number is not truly random as its value is completed determined by the initial value known as seed.</p>
+
+
+
+<p class="has-medium-font-size"><br>To understand the role of seed, let&#8217;s first look at the very basic function which can generate a random number  in range [0, n). The below function in the <strong>rand</strong> package can be used to generate pseudo-random number  in range [0, n).  Bracket at the end in [0,n) means that n is exclusive.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Intn(n int) int</code></pre>
+
+
+
+<p class="has-medium-font-size">The above function returns an int value between 0 to n. Let&#8217;s write a program without seed value. We have passed 10, so below function will generate random numbers in range [0,10)</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+)
+
+func main() {
+    fmt.Println(rand.Intn(10))
+    fmt.Println(rand.Intn(10))
+    fmt.Println(rand.Intn(10))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Try running above the program multiple times. It will give the same output every time. On my system, it gives below output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">7
+7
+7</code></pre>
+
+
+
+<p class="has-medium-font-size">Now let&#8217;s try running the same program but first providing seed value. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+    
+    fmt.Println(rand.Intn(10))
+    fmt.Println(rand.Intn(10))
+    fmt.Println(rand.Intn(10))</code></pre>
+
+
+
+<p class="has-medium-font-size">We are giving seed value as number of seconds which has elapsed till January 1, 1970, UTC.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rand.Seed(time.Now().Unix())</code></pre>
+
+
+
+<p class="has-medium-font-size">It gives different output each time you execute this program as seed value is different. That is what is meant when we say that go generates pseudo-random numbers.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Random Generator Functions in rand package</strong></h1>
+
+
+
+<p class="has-medium-font-size">Now we have understood what pseudo-random number generation, let&#8217;s look at some of the function provided by the rand package for generation of random numbers. You can use any of these functions to generate a random number based on your requirements.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Pseudo-Random Number Generator Functions with range</strong>. </h2>
+
+
+
+<p class="has-medium-font-size">All functions take n as an argument and will panic if n&lt;=0.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Intn(n int) &#8211; It returns a non-negative pseudo-random number in [0,n)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Int31n(n int32) &#8211;  It returns a non-negative pseudo-random number in [0,n) but returns a int32</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Int63n(n int64)  &#8211; It returns a non-negative pseudo-random number in [0,n) but returns a int64</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Pseudo Random Number Generator Functions without range. </strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Int() &#8211; returns a non-negative pseudo-random int</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Int31() &#8211; returns a non-negative pseudo-random 31-bit integer as an int32</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Int63() &#8211; returns a non-negative pseudo-random 63-bit integer as an int64</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Uint32() &#8211; returns a pseudo-random 32-bit value as a uint32</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Uint64() &#8211; returns a pseudo-random 64-bit value as a uint64</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Pseudo Random Number Generator Functions with range for floats</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Float64() &#8211; returns, as a float64, a pseudo-random number in [0.0,1.0)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Float32() &#8211; returns, as a float32, a pseudo-random number in [0.0,1.0)</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+    //Pseudo Random Number Generator Functions with range
+
+    //1. Intn(n int)
+    fmt.Printf("Intn: %d\n", rand.Intn(10))
+
+    //2. Int31n(n int32)
+    fmt.Printf("Int31n: %d\n", rand.Int31n(10))
+
+    //3. Int64n(n int32)
+    fmt.Printf("Int64n: %d\n", rand.Int63n(10))
+
+    //Pseudo Random Number Generator Functions without range.
+
+    //1. Int()
+    fmt.Printf("Int: %d\n", rand.Int())
+
+    //2. Int31()
+    fmt.Printf("Int31: %d\n", rand.Int31())
+
+    //3. Int63()
+    fmt.Printf("Int63: %d\n", rand.Int63())
+ 
+    //4. Uint32()
+    fmt.Printf("Uint32: %d\n", rand.Uint32())
+
+    //4. Uint64()
+    fmt.Printf("Uint64: %d\n", rand.Uint64())
+
+    //Pseudo Random Number Generator Functions with range for floats
+
+    //1. Float64()
+    fmt.Printf("Float64: %f\n", rand.Float64())
+
+    //2. Float32()
+    fmt.Printf("Float32: %f\n", rand.Float32())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Intn: 9
+Int31n: 4
+Int64n: 4
+Int: 6567086139449890598
+Int31: 402632083
+Int63: 428924242891364663
+Uint32: 1991553101
+Uint64: 825780166485441015
+Float64: 0.683701
+Float32: 0.382141</code></pre>
+<p>The post <a href="https://golangbyexamples.com/generate-random-number-golang/">Generate Random number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/generate-random-number-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1889</post-id>	</item>
+	</channel>
+</rss>

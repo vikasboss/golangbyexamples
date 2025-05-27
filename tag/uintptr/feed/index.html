@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>uintptr Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/uintptr/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/uintptr/</link>
+	<description></description>
+	<lastBuildDate>Wed, 22 Jan 2020 17:18:51 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>uintptr Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/uintptr/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Understanding uintptr in Golang</title>
+		<link>https://golangbyexamples.com/understanding-uintptr-golang/</link>
+					<comments>https://golangbyexamples.com/understanding-uintptr-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 22 Jan 2020 17:18:22 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[data]]></category>
+		<category><![CDATA[uintptr]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1189</guid>
+
+					<description><![CDATA[<p>Overview This is an unsigned integer type which is large enough to hold any pointer address. Therefore its size is platform dependent. It is just an integer representation of an address. Properties...</p>
+<p>The post <a href="https://golangbyexamples.com/understanding-uintptr-golang/">Understanding uintptr in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is an unsigned integer type which is large enough to hold any pointer address. Therefore its size is platform dependent.  It is just an integer representation of an address.</p>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Properties</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A <strong>uintptr</strong> can be converted to <strong>unsafe.Pointer</strong> and viceversa. Later we will talk about where conversion of <strong>uintptr</strong> to <strong>unsafe.Pointer</strong> is useful.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Arithmetic can be performed on the <strong>uintptr</strong>. Do note here arithmetic cannot be performed in a <strong>pointer</strong> in Go or <strong>unsafe.Pointer</strong> in Go. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>uintptr</strong> even though it holds a pointer address, is just a value and does not reference any object. Therefore<ul><li>Its value will not be updated if the corresponding object moves. Eg When goroutine stack changes</li><li>The corresponding object can be garbage collected. The GC does not consider <strong>uintptr</strong> as live references and hence they can be garbage collected.</li></ul></li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Purpose</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>uintptr</strong> can be used for below purposes:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>One purpose of uintptr is to be used along with unsafe.Pointer  for unsafe memory access. Arithmetic operations cannot be performed on unsafe.Pointer. To perform such arithmetic <ul><li>unsafe. Pointer is converted to uintptr </li><li>arithmetic is then performed on uintptr</li><li>uintptr is converted back to unsafe.Pointer  to access the object now pointed by the address</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size">Be careful that the above steps should be atomic with respect to Garbage Collector, otherwise it could lead to issues. For eg after the first step 1, the referenced object is liable to be collection. If that happens then after step 3, the pointer will be an invalid Go pointer and can crash the program. Look at the unsafe package documentation.</p>
+
+
+
+<p><a href="https://golang.org/pkg/unsafe/#Pointer">https://golang.org/pkg/unsafe/#Pointer</a></p>
+
+
+
+<p class="has-medium-font-size"> It lists down when the above conversion can be safe. See the below code for the scenario mentioned above. </p>
+
+
+
+<p class="has-medium-font-size">In the below code we are doing arithmetic like below to get to address of field <strong>&#8220;b&#8221;</strong> in struct sample and then printing the value at that address. This below code is atomic with reference to the garbage collector. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">p := unsafe.Pointer(uintptr(unsafe.Pointer(s)) + unsafe.Offsetof(s.b))</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "unsafe"
+)
+type sample struct {
+    a int
+    b string
+}
+func main() {
+    s := &sample{a: 1, b: "test"}
+    
+   //Getting the address of field b in struct s
+    p := unsafe.Pointer(uintptr(unsafe.Pointer(s)) + unsafe.Offsetof(s.b))
+    
+    //Typecasting it to a string pointer and printing the value of it
+    fmt.Println(*(*string)(p))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">test</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Another purpose of uintptr is when you want to save the pointer address value for printing it or storing it. Since the address is just stored and does not reference anything, the corresponding object can be garbage collected.</li></ul>
+
+
+
+<p class="has-medium-font-size">See below code where we are converting an unsafe.Pointer to uintptr and printing it. Also, note as mentioned before too one the unsafe.Pointer is converted to uinptr, the reference is lost and the reference variable can be garbage collected.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "unsafe"
+)
+
+type sample struct {
+    a int
+    b string
+}
+
+func main() {
+    s := &sample{
+        a: 1,
+        b: "test",
+    }
+    //Get the address as a uintptr
+    startAddress := uintptr(unsafe.Pointer(s))
+    fmt.Printf("Start Address of s: %d\n", startAddress)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">The output will be dependent upon the machine as it is an address.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Start Address of s: 824634330992</code></pre>
+<p>The post <a href="https://golangbyexamples.com/understanding-uintptr-golang/">Understanding uintptr in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/understanding-uintptr-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1189</post-id>	</item>
+	</channel>
+</rss>

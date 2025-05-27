@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>single Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/single/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/single/</link>
+	<description></description>
+	<lastBuildDate>Sun, 02 May 2021 05:07:22 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>single Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/single/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Check if a linked list is circular in Go (Golang)</title>
+		<link>https://golangbyexamples.com/linked-list-is-circular-go/</link>
+					<comments>https://golangbyexamples.com/linked-list-is-circular-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 02 May 2021 05:07:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[circular]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[single]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5578</guid>
+
+					<description><![CDATA[<p>Overview Check if a linked list is circular. A linked list is circular is all nodes are connected in the form of a cylce. Program In the below program, we first create...</p>
+<p>The post <a href="https://golangbyexamples.com/linked-list-is-circular-go/">Check if a linked list is circular in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-image size-large"><img decoding="async" width="442" height="108" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/ll_is_circular.png?resize=442%2C108&#038;ssl=1" alt="Linked List - Is circular image" class="wp-image-5580" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/ll_is_circular.png?w=442&amp;ssl=1 442w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/ll_is_circular.png?resize=300%2C73&amp;ssl=1 300w" sizes="(max-width: 442px) 100vw, 442px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">Check if a linked list is circular. A linked list is circular is all nodes are connected in the form of a cylce.</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<p class="has-medium-font-size">In the below program, we first create a linked list. We then check if it is circular. It will print false first. After that, we convert the linked list into a circular linked list. We then again check if it is circular. It prints true now</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type node struct {
+    data string
+    next *node
+}
+type singlyLinkedList struct {
+    len  int
+    head *node
+}
+func initList() *singlyLinkedList {
+    return &singlyLinkedList{}
+}
+func (s *singlyLinkedList) AddFront(data string) {
+    node := &node{
+        data: data,
+    }
+    if s.head == nil {
+        s.head = node
+    } else {
+        node.next = s.head
+        s.head = node
+    }
+    s.len++
+    return
+}
+
+func (s *singlyLinkedList) Traverse() error {
+    if s.head == nil {
+        return fmt.Errorf("TraverseError: List is empty")
+    }
+    current := s.head
+    for current != nil {
+        fmt.Println(current.data)
+        current = current.next
+    }
+    return nil
+}
+
+//Function to convert singly linked list to circular linked list
+func (s *singlyLinkedList) ToCircular() {
+    current := s.head
+    for current.next != nil {
+        current = current.next
+    }
+    current.next = s.head
+}
+
+func (s *singlyLinkedList) IsCircular() bool {
+    if s.head == nil {
+        return true
+    }
+    current := s.head.next
+    for current.next != nil && current != s.head {
+        current = current.next
+    }
+    return current == s.head
+}
+
+func main() {
+    singleList := initList()
+    fmt.Printf("AddFront: D\n")
+    singleList.AddFront("D")
+    fmt.Printf("AddFront: C\n")
+    singleList.AddFront("C")
+    fmt.Printf("AddFront: B\n")
+    singleList.AddFront("B")
+    fmt.Printf("AddFront: A\n")
+    singleList.AddFront("A")
+    err := singleList.Traverse()
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    isCircular := singleList.IsCircular()
+    fmt.Printf("Before: Is Circular: %t\n", isCircular)
+
+    fmt.Printf("Size: %d\n", singleList.len)
+    singleList.ToCircular()
+
+    isCircular = singleList.IsCircular()
+    fmt.Printf("After: Is Circular: %t\n", isCircular)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">AddFront: D
+AddFront: C
+AddFront: B
+AddFront: A
+A
+B
+C
+D
+Before: Is Circular: false
+Size: 4
+After: Is Circular: true</code></pre>
+<p>The post <a href="https://golangbyexamples.com/linked-list-is-circular-go/">Check if a linked list is circular in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/linked-list-is-circular-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5578</post-id>	</item>
+		<item>
+		<title>Double, Single and Back quotes in Go (Golang)</title>
+		<link>https://golangbyexamples.com/double-single-back-quotes-go/</link>
+					<comments>https://golangbyexamples.com/double-single-back-quotes-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 06 Jan 2020 16:59:08 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[quotes]]></category>
+		<category><![CDATA[single]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1110</guid>
+
+					<description><![CDATA[<p>Double quotes It is used to define a string. A string defined within double quotes will honor escaping characters. For, eg for when printing a string having \n there will be a...</p>
+<p>The post <a href="https://golangbyexamples.com/double-single-back-quotes-go/">Double, Single and Back quotes in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Double quotes</strong></h1>
+
+
+
+<p class="has-medium-font-size">It is used to define a string. A string defined within double quotes will honor escaping characters. For, eg for when printing a string having \n there will be a new line printed. Similarly, \t will have tab printed.</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Back Quotes</strong></h1>
+
+
+
+<p class="has-medium-font-size">It is also used to define a string. A string encoded in back quotes is a raw literal string and doesn&#8217;t honor any kind of escaping. </p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Single quotes</strong></h1>
+
+
+
+<p class="has-medium-font-size">To declare either a <strong>byte</strong> or a <strong>rune</strong> we use single quotes. While declaring <strong>byte</strong> we have to specify the type. If we don&#8217;t specify the type, then the default type is meant as a <strong>rune. </strong>A single quote will allow only one character. On declaring a byte or rune with two characters within a single quote, the compiler will raise an error as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">invalid character literal (more than one character)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of all things discussed above.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Notice in below output that string enclosed in back quotes doesn&#8217;t honor \n or \t</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Uncomment the below line to see the compiler error we discussed above.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">r = 'ab'</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Example:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //String in double quotes
+    x := "tit\nfor\ttat"
+    fmt.Println("Priting String in Double Quotes:")
+    fmt.Printf("x is: %s\n", x)
+    
+   //String in back quotes
+    y := `tit\nfor\ttat`
+    fmt.Println("\nPriting String in Back Quotes:")
+    fmt.Printf("y is: %s\n", y)
+   
+    //Declaring a byte with single quotes
+    var b byte = 'a'
+    fmt.Println("\nPriting Byte:")
+    //Print Size, Type and Character
+    fmt.Printf("Size: %d\nType: %s\nCharacter: %c\n", unsafe.Sizeof(b), reflect.TypeOf(b), b)
+    
+    //Declaring a rune with single quotes
+    r := '£'
+    fmt.Println("\nPriting Rune:")
+    //Print Size, Type, CodePoint and Character
+    fmt.Printf("Size: %d\nType: %s\nUnicode CodePoint: %U\nCharacter: %c\n", unsafe.Sizeof(r), reflect.TypeOf(r), r, r)
+    //Below will raise a compiler error - invalid character literal (more than one character)
+    //r = 'ab'
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p>Priting String in Double Quotes:<br>
+x is: tit<br>
+for     tat</p>
+
+
+
+<p>Priting String in Back Quotes:<br>
+y is: tit\nfor\ttat</p>
+
+
+
+<p>Priting Byte:<br>
+Size: 1<br>
+Type: uint8<br>
+Character: a</p>
+
+
+
+<p>Priting Rune:<br>
+Size: 4<br>
+Type: int32<br>
+Unicode CodePoint: U+00A3<br>
+Character: £</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"></code></pre>
+<p>The post <a href="https://golangbyexamples.com/double-single-back-quotes-go/">Double, Single and Back quotes in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/double-single-back-quotes-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1110</post-id>	</item>
+	</channel>
+</rss>

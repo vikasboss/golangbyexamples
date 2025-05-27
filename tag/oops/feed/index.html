@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>oops Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/oops/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/oops/</link>
+	<description></description>
+	<lastBuildDate>Wed, 20 Nov 2019 17:46:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>oops Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/oops/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>OOP: Inheritance in GOLANG complete guide</title>
+		<link>https://golangbyexamples.com/oop-inheritance-golang-complete/</link>
+					<comments>https://golangbyexamples.com/oop-inheritance-golang-complete/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 29 Aug 2019 01:37:34 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[inheritance]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[oops]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=195</guid>
+
+					<description><![CDATA[<p>We will try to explain inheritance in GO using comparisons with inheritance in JAVA. The first thing we want to mention here is that GOLANG doesn&#8217;t have keywords such as &#8220;Extends&#8221; and...</p>
+<p>The post <a href="https://golangbyexamples.com/oop-inheritance-golang-complete/">OOP: Inheritance in GOLANG complete guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">We will try to explain inheritance in GO using comparisons with inheritance in JAVA. The first thing we want to mention here is that GOLANG doesn&#8217;t have keywords such as <strong>&#8220;Extends&#8221;</strong> and <strong>&#8220;Implements&#8221;</strong> keyword as in JAVA. Go does provide limited functionalities of &#8220;<strong>Extends</strong>&#8221; and &#8220;<strong>Implements</strong>&#8221; keyword in a different way which each having its own limitations. Before we proceed to understand inheritance in GO there are some points worth mentioning.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Go prefers composition over inheritance. It allows embedding of struct into other struct.</li><li>Go does not support type inheritance.</li></ul>
+
+
+
+<p class="has-medium-font-size">We will start with the simplest of an example of inheritance in GO. Then we will list down a limitation or missing feature. In further iterations, we will fix limitation or keep adding missing features until we have written a program which shows all properties of inheritance possible/impossible in Go. So let&#8217;s start</p>
+
+
+
+<p class="has-medium-font-size">The very basic use case of inheritance is child type should be able to access common data and methods of a parent type.&nbsp; This is done in GO via embedding. The&nbsp;base struct is embedded in child struct and base&#8217;s data and methods can directly be accessed by child struct. See below code:&nbsp; child struct is able to access the data&nbsp;<strong>&#8220;color&#8221;</strong> directly and also call the function <strong>&#8220;say()&#8221; </strong>directly.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type base struct {
+    color string
+}
+func (b *base) say() {
+    fmt.Println("Hi from say function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+    fmt.Println("The color is " + child.color)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Hi from say function
+The color is Red</code></pre>
+
+
+
+<p class="has-medium-font-size">One of the limitations of the above program is that you cannot pass the child type to a function that expects the base type as GO does not allow type inheritance. For example, the below code does not compile and gives an error &#8211; &#8220;<strong>cannot use child (type *child) as type base in argument to check&#8221;</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 2</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type base struct {
+    color string
+}
+func (b *base) say() {
+    fmt.Println("Hi from say function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func check(b base) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+    fmt.Println("The color is " + child.color)
+    check(child)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">cannot use child (type *child) as type base in argument to check</code></pre>
+
+
+
+<p class="has-medium-font-size">The above error tells basically that sub-typing is not possible in GO by just using embedding. Let&#8217;s try to fix this error. This is where GO interfaces come into the picture. See below version of the program which in addition to above functionalities also fixes this sub-typing error&nbsp;</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 3</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase interface {
+    say()
+}
+type base struct {
+    color string
+}
+func (b *base) say() {
+    fmt.Println("Hi from say function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func check(b iBase) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+    fmt.Println("The color is " + child.color)
+    check(child)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Hi from say function
+The color is Red
+Hi from say function</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, we:&nbsp;&nbsp; &nbsp;(a) Created an interface <strong>&#8220;iBase&#8221;</strong>&nbsp;which has <strong>&#8220;say&#8221;&nbsp;</strong>method&nbsp;&nbsp; &nbsp;(b) We changed the <strong>&#8220;check&#8221;&nbsp;</strong>method to accept the argument of type iBase</p>
+
+
+
+<p class="has-medium-font-size">Since base struct implements the <strong>&#8220;say&#8221;</strong> method and in turn, child struct embeds base. So the child method indirectly implements <strong>&#8220;say&#8221;</strong> method and becomes a type of <strong>&#8220;iBase&#8221;</strong>&nbsp;and that is why we can pass the child to the check function now. Great that we have fixed one limitation now using a combination of struct and interface.&nbsp;<br />But there is one more limitation. Let&#8217;s say child and base both have one more function <strong>&#8220;clear&#8221; .&nbsp;</strong>Now <strong>&#8220;say&#8221;</strong> method makes a call to&nbsp;<strong>&#8220;clear&#8221; </strong>method. Then when&nbsp;<strong>&#8220;say&#8221;</strong> method is called using child struct, in turn, <strong>&#8220;say&#8221; </strong>method&nbsp;will call <strong>&#8220;clear&#8221;</strong> method of base and not <strong>&#8220;clear&#8221;</strong> method of the child. See below example</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 4</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase interface {
+    say()
+}
+type base struct {
+    color string
+}
+func (b *base) say() {
+    b.clear()
+}
+func (b *base) clear() {
+    fmt.Println("Clear from base's function")
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func (b *child) clear() {
+    fmt.Println("Clear from child's function")
+}
+func check(b iBase) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red"}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Clear from base's function</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can see above <strong>&#8220;clear&#8221;</strong> function of the base is called instead of<strong>&#8220;clear&#8221;</strong> method of the child. This is unlike Java where<strong>&#8220;clear&#8221;</strong> method of <strong>&#8220;child&#8221;</strong>&nbsp;would have been called.</p>
+
+
+
+<p class="has-medium-font-size">One way to fix the above problem is to make <strong>&#8220;clear&#8221;</strong> as a property which is of type function in the base struct. This is possible in GO as functions are first-class variables in GO. See below solution</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 5</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase interface {
+    say()
+}
+type base struct {
+    color string
+    clear func()
+}
+func (b *base) say() {
+    b.clear()
+}
+type child struct {
+    base  //embedding
+    style string
+}
+func check(b iBase) {
+    b.say()
+}
+func main() {
+    base := base{color: "Red",
+        clear: func() {
+            fmt.Println("Clear from child's function")
+        }}
+    child := &child{
+        base:  base,
+        style: "somestyle",
+    }
+    child.say()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Clear from child's function</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s try to add one more feature to the above program which is &#8211;</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Multiple Inheritance &#8211; child struct should be able to access multiple properties and methods from two base struct and also sub-typing should be possible. Here is the code</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Program 6</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iBase1 interface {
+    say()
+}
+type iBase2 interface {
+    walk()
+}
+type base1 struct {
+    color string
+}
+func (b *base1) say() {
+    fmt.Println("Hi from say function")
+}
+type base2 struct {
+}
+func (b *base1) walk() {
+    fmt.Println("Hi from walk function")
+}
+type child struct {
+    base1 //embedding
+    base2 //embedding
+    style string
+}
+func (b *child) clear() {
+    fmt.Println("Clear from child's function")
+}
+func check1(b iBase1) {
+    b.say()
+}
+func check2(b iBase2) {
+    b.walk()
+}
+func main() {
+    base1 := base1{color: "Red"}
+    base2 := base2{}
+    child := &child{
+        base1: base1,
+        base2: base2,
+        style: "somestyle",
+    }
+    child.say()
+    child.walk()
+    check1(child)
+    check2(child)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Hi from say function
+Hi from walk function
+Hi from say function
+Hi from walk function</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, the child embeds both base1 and base2. It can also be passed as an instance of iBase1 and iBase2 interface to the check1 and check2 function respectively. This is how we achieve multiple inheritance.</p>
+
+
+
+<p class="has-medium-font-size">Now a big question is how do we implement <strong>&#8220;Type Hierarchy&#8221;</strong> in GO. As already mentioned type inheritance is not allowed to go and hence it does not have type hierarchy.GO intentionally doesn&#8217;t allow this feature<strong>&nbsp;so</strong> any change in the behavior of an interface is only propagated to its immediate structures which defines all methods of the interface.&nbsp;</p>
+
+
+
+<p class="has-medium-font-size">Although we can implement type hierarchy using interfaces and struct like below</p>
+
+
+
+<p class="has-medium-font-size"><strong>Program 7</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type iAnimal interface {
+    breathe()
+}
+type animal struct {
+}
+func (a *animal) breathe() {
+    fmt.Println("Animal breate")
+}
+type iAquatic interface {
+    iAnimal
+    swim()
+}
+type aquatic struct {
+    animal
+}
+func (a *aquatic) swim() {
+    fmt.Println("Aquatic swim")
+}
+type iNonAquatic interface {
+    iAnimal
+    walk()
+}
+type nonAquatic struct {
+    animal
+}
+func (a *nonAquatic) walk() {
+    fmt.Println("Non-Aquatic walk")
+}
+type shark struct {
+    aquatic
+}
+type lion struct {
+    nonAquatic
+}
+func main() {
+    shark := &shark{}
+    checkAquatic(shark)
+    checkAnimal(shark)
+    lion := &lion{}
+    checkNonAquatic(lion)
+    checkAnimal(lion)
+}
+func checkAquatic(a iAquatic) {}
+func checkNonAquatic(a iNonAquatic) {}
+func checkAnimal(a iAnimal) {}</code></pre>
+
+
+
+<p class="has-medium-font-size">See in above program how we are able to create a hierarchy (see below). This is the idiomatic way of go to create type hierarchy and we are able to achieve this by using&nbsp;embedding both on struct level and on the interface level. The point to be noted here is that if you want distinction in your type hierarchy where lets say a <strong>&#8220;shark&#8221;&nbsp;</strong>&nbsp;should not be both <strong>&#8220;iAquatic&#8221; </strong>and <strong>&#8220;iNonAquatic&#8221;&nbsp;</strong>&nbsp;, then there should be at least&nbsp;one method in the method sets of&nbsp;<strong>&#8220;iAquatic&#8221; </strong>and <strong>&#8220;iNonAquatic&#8221;&nbsp; </strong>which is not present in the other. In our example <strong>&#8220;swim&#8221;&nbsp;</strong>&nbsp;and <strong>&#8220;walk&#8221;&nbsp;</strong>&nbsp;are those methods.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">iAnimal
+--iAquatic
+----shark
+--iNonAquatic
+----lion</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Conclusion:</strong></p>
+
+
+
+<p class="has-medium-font-size">Go doesn&#8217;t have support for type inheritance but the same can be achieved using embedding buts one needs to be careful while creating such kind of type hierarchy. Also, go does not provide method overriding.</p>
+<p>The post <a href="https://golangbyexamples.com/oop-inheritance-golang-complete/">OOP: Inheritance in GOLANG complete guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/oop-inheritance-golang-complete/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">195</post-id>	</item>
+	</channel>
+</rss>

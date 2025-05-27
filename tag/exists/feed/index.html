@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>exists Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/exists/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/exists/</link>
+	<description></description>
+	<lastBuildDate>Tue, 09 Jun 2020 09:03:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>exists Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/exists/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>An efficient way to check if a key exists in a Map in Go (Golang)</title>
+		<link>https://golangbyexamples.com/check-key-exists-map-golang/</link>
+					<comments>https://golangbyexamples.com/check-key-exists-map-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 09 Jun 2020 09:03:46 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[exists]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2216</guid>
+
+					<description><![CDATA[<p>Below is the format to check if a key exist in the map There are two cases If the key exists val variable be the value of the key in the map...</p>
+<p>The post <a href="https://golangbyexamples.com/check-key-exists-map-golang/">An efficient way to check if a key exists in a Map in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Below is the format to check if a key exist in the map</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">val, ok := mapName[key]</code></pre>
+
+
+
+<p class="has-medium-font-size">There are two cases</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the key exists <strong>val </strong>variable be the value of the key in the map and <strong>ok </strong>variable will be true</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the key doesn&#8217;t exist <strong>val</strong> variable will be default zero value of value type and <strong>ok </strong>variable will be false</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    fmt.Println("Key exists case")
+    val, ok := employeeSalary["Tom"]
+    fmt.Printf("Val: %d, ok: %t\n", val, ok)
+    fmt.Println("Key doesn't exists case")
+
+    val, ok = employeeSalary["Sam"]
+    fmt.Printf("Val: %d, ok: %t\n", val, ok)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Key exists case
+Val: 2000, ok: true
+Key doesn't exists case
+Val: 0, ok: false</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program when key exists then <strong>val</strong> variable is set to the actual value which is 2000 here  and <strong>ok</strong> variable is true. When key doesn&#8217;t exist the <strong>val</strong> variable is set to 0 which is default zero value of int and <strong>ok</strong> variable is false. This <strong>ok</strong> variable is the best way to check if the key exists in a map or not</p>
+
+
+
+<p class="has-medium-font-size">In case we only want to check if a key is present and val is not needed, then blank identifier i.e &#8220;_&#8221; can be used in place of val.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">_, ok = employeeSalary["Sam"]</code></pre>
+<p>The post <a href="https://golangbyexamples.com/check-key-exists-map-golang/">An efficient way to check if a key exists in a Map in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/check-key-exists-map-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2216</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>set Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/set/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/set/</link>
+	<description></description>
+	<lastBuildDate>Wed, 28 Apr 2021 06:05:19 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>set Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/set/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Set cookie http in Go (Golang)</title>
+		<link>https://golangbyexamples.com/set-cookie-http-golang/</link>
+					<comments>https://golangbyexamples.com/set-cookie-http-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 28 Apr 2021 06:05:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[cookie]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[set]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5532</guid>
+
+					<description><![CDATA[<p>Overview A cookie in golang is represented as below in golang https://golang.org/src/net/http/cookie.go See https://tools.ietf.org/html/rfc6265 for details of each of the fields of the above cookie. When it comes to the setting of...</p>
+<p>The post <a href="https://golangbyexamples.com/set-cookie-http-golang/">Set cookie http in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">A cookie in golang is represented as below in golang</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/src/net/http/cookie.go">https://golang.org/src/net/http/cookie.go</a></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Cookie struct {
+	Name  string
+	Value string
+
+	Path       string    // optional
+	Domain     string    // optional
+	Expires    time.Time // optional
+	RawExpires string    // for reading cookies only
+
+	// MaxAge=0 means no 'Max-Age' attribute specified.
+	// MaxAge<0 means delete cookie now, equivalently 'Max-Age: 0'
+	// MaxAge>0 means Max-Age attribute present and given in seconds
+	MaxAge   int
+	Secure   bool
+	HttpOnly bool
+	SameSite SameSite
+	Raw      string
+	Unparsed []string // Raw text of unparsed attribute-value pairs
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">See <a href="https://tools.ietf.org/html/rfc6265">https://tools.ietf.org/html/rfc6265</a> for details of each of the fields of the above cookie.</p>
+
+
+
+<p class="has-medium-font-size">When it comes to the setting of cookies, there are two cases</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>You want to set cookie only for one of the requests for a particular domain</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>You want to set cookies and you want that cookie to be sent for all requests to that domain.</li></ul>
+
+
+
+<p class="has-medium-font-size">The second use case is needed when let&#8217;s say you generate an authentication token in the first call by entering username and password, and you want that token to be passed in each subsequent call in the cookie. We will use a cookie jar for this use case. </p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see both the use cases one by one. </p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong>Set cookie for one of the request</strong></h2>
+
+
+
+<p class="has-medium-font-size">This is the case where golang acts as an HTTP client. <strong>AddCookie</strong> method of <strong>net/http</strong> package can be used add a cookie. If we call this method for two different names and value,  then both that name and value will be added to the resultant cookie</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "log"
+    "net/http"
+    "net/http/cookiejar"
+)
+var client http.Client
+func init() {
+    jar, err := cookiejar.New(nil)
+    if err != nil {
+        log.Fatalf("Got error while creating cookie jar %s", err.Error())
+    }
+    client = http.Client{
+        Jar: jar,
+    }
+}
+func main() {
+    cookie := &http.Cookie{
+        Name:   "token",
+        Value:  "some_token",
+        MaxAge: 300,
+    }
+    cookie2 := &http.Cookie{
+        Name:   "clicked",
+        Value:  "true",
+        MaxAge: 300,
+    }
+    req, err := http.NewRequest("GET", "http://google.com", nil)
+    if err != nil {
+        log.Fatalf("Got error %s", err.Error())
+    }
+    req.AddCookie(cookie)
+    req.AddCookie(cookie2)
+    for _, c := range req.Cookies() {
+        fmt.Println(c)
+    }
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatalf("Error occured. Error is: %s", err.Error())
+    }
+    defer resp.Body.Close()
+    fmt.Printf("StatusCode: %d\n", resp.StatusCode)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">token=some_token
+clicked=true
+StatusCode: 200</code></pre>
+
+
+
+<p class="has-medium-font-size">We first need to create the instance of the cookie as below</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/src/net/http/cookie.go">https://golang.org/src/net/http/cookie.go</a></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">cookie := &http.Cookie{
+    Name:   "token",
+    Value:  "some_token",
+    MaxAge: 300,
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Once the cookie is created then use the <strong>AddCookie</strong> method to add it to the HTTP request object</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">req.AddCookie(cookie)</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, HTTP Client added two cookies with the below name-value pair.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>token=some_token</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>clicked=true</li></ul>
+
+
+
+<p class="has-medium-font-size">Both these cookies will be sent in the call to <a href="http://google.com">google.com</a>.</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color has-large-font-size wp-block-heading"><strong><strong>Set cookie and send that cookie for all requests to that domain</strong></strong></h2>
+
+
+
+<p class="has-medium-font-size">HTTP client in golang lets you specify a <strong>CookieJar</strong> that can be used for storing and sending the cookies while making external HTTP requests. As the name suggests, think of it as a jar that contains cookies.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/net/http/#Client">https://golang.org/pkg/net/http/#Client</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the structure of the net/http <strong>Client</strong> struct. It contains an instance variable named <strong>Jar</strong> of type <strong>CookieJar </strong>which is an interface</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Client struct {
+    Transport RoundTripper
+
+    CheckRedirect func(req *Request, via []*Request) error
+
+    Jar CookieJar
+
+    Timeout time.Duration
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Below is the <strong>CookieJar</strong> interface</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type CookieJar interface {
+    SetCookies(u *url.URL, cookies []*Cookie)
+    Cookies(u *url.URL) []*Cookie
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">net/http provides a default cookie jar implementation that implements the above <strong>CookieJar </strong>interface. We will use it while initializing our net/http Client</p>
+
+
+
+<p><a href="https://golang.org/pkg/net/http/cookiejar/#Jar">https://golang.org/pkg/net/http/cookiejar/#Jar</a></p>
+
+
+
+<p class="has-medium-font-size">You can also provide your custom cookie jar during the initialization of net/http Client struct which implements the above <strong>CookieJar</strong> interface.</p>
+
+
+
+<p class="has-medium-font-size">HTTP client uses this jar in two ways</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Adding cookies in this Jar. You can explicitly add cookies to this jar. The cookies will also be added to the jar if the server sends the Set-Cookies header in the response headers. All the cookies specified in the <strong>Set-Cookie</strong> header will be added. For more details around the Set-Cookie header please refer to this <a href="https://golangbyexamples.com/set-cookie-response-header/">link</a>. This link contains all the details to understand the <strong>Set-Cookie</strong> header in golang.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For consulting this jar while making any external HTTP requests. It checks this jar to know what all cookies it needs to send for a particular domain</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example where the client will add a cookie while making HTTP requests. This cookie will be sent in all subsequent requests to the same domain.</p>
+
+
+
+<p class="has-medium-font-size">In this example, we will see how the client can set the cookie in the cookie jar. For that let&#8217;s first create a client. Here is the program for the same</p>
+
+
+
+<p class="has-medium-font-size">Here is the client code</p>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Client</strong></h3>
+
+
+
+<p class="has-medium-font-size"><strong>go.mod</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">module sample.com/client
+go 1.16</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>client.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"net/http/cookiejar"
+	"net/url"
+)
+
+var client http.Client
+
+func init() {
+	jar, err := cookiejar.New(nil)
+	if err != nil {
+		log.Fatalf("Got error while creating cookie jar %s", err.Error())
+	}
+
+	client = http.Client{
+		Jar: jar,
+	}
+}
+
+func main() {
+	req, err := http.NewRequest("GET", "http://localhost:8080/doc", nil)
+	if err != nil {
+		log.Fatalf("Got error %s", err.Error())
+	}
+	cookie := &http.Cookie{
+		Name:   "token",
+		Value:  "some_token",
+		MaxAge: 300,
+	}
+	urlObj, _ := url.Parse("http://localhost:8080/")
+	client.Jar.SetCookies(urlObj, []*http.Cookie{cookie})
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatalf("Error occured. Error is: %s", err.Error())
+	}
+	defer resp.Body.Close()
+
+	fmt.Printf("StatusCode: %d\n", resp.StatusCode)
+
+	req, err = http.NewRequest("GET", "http://localhost:8080/doc/id", nil)
+	if err != nil {
+		log.Fatalf("Got error %s", err.Error())
+	}
+
+	resp, err = client.Do(req)
+	if err != nil {
+		log.Fatalf("Error occured. Error is: %s", err.Error())
+	}
+	defer resp.Body.Close()
+
+	fmt.Printf("StatusCode: %d\n", resp.StatusCode)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above client program, we are creating an HTTP client with a cookie Jar</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">jar, err := cookiejar.New(nil)
+if err != nil {
+     log.Fatalf("Got error while creating cookie jar %s", err.Error())
+}
+
+client = http.Client{
+     Jar: jar,
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">we are adding a cookie to the Cookie Jar</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">cookie := &http.Cookie{
+		Name:   "token",
+		Value:  "some_token",
+		MaxAge: 300,
+}
+urlObj, _ := url.Parse("http://localhost:8080/")
+client.Jar.SetCookies(urlObj, []*http.Cookie{cookie})</code></pre>
+
+
+
+<p class="has-medium-font-size">To test the above code and to illustrate that cookies added to the cookie jar in the first call are indeed sent in the subsequent call as well, we need to create the server as well which will print the incoming cookies.</p>
+
+
+
+<h3 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Server</strong></h3>
+
+
+
+<p class="has-medium-font-size">The server listens to port 8080 and has two APIs. These are the two APIs which is being hit by the client above.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>localhost:8080/doc</strong></li><li><strong>localhost:8080/doc/id</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">In both the APIs we are printing the cookies which it receives in the incoming header</p>
+
+
+
+<p class="has-medium-font-size"><strong>go.mod</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">module sample.com/server
+
+go 1.16</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>server.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	docHandler := http.HandlerFunc(docHandler)
+	http.Handle("/doc", docHandler)
+
+	docGetID := http.HandlerFunc(docGetID)
+	http.Handle("/doc/id", docGetID)
+
+	http.ListenAndServe(":8080", nil)
+}
+
+func docHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Cookie in First API Call")
+	for _, c := range r.Cookies() {
+		fmt.Println(c)
+	}
+	fmt.Println()
+	w.WriteHeader(200)
+	w.Write([]byte("Doc Get Successful"))
+	return
+}
+
+func docGetID(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Cookie in Second API Call")
+	for _, c := range r.Cookies() {
+		fmt.Println(c)
+	}
+	w.WriteHeader(200)
+	w.Write([]byte("Doc Get ID Successful"))
+	return
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Now run the server</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">go run server.go</code></pre>
+
+
+
+<p class="has-medium-font-size">and client</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">go run client.go</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice the output at the server end</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Cookie in First API Call
+token=some_token
+
+Cookie in Second API Call
+token=some_token</code></pre>
+
+
+
+<p class="has-medium-font-size">The same cookie is being sent automatically in both the first and second call which the client will make to the server. How does it work out of the box? This is because <strong>CookieJar</strong> comes into the picture. The golang HTTP client checks the Cookie Jar before making the HTTP call. It then sends this cookie.</p>
+
+
+
+<p class="has-medium-font-size">This is all about setting cookies in golang. Hope you have liked the tutorial. Please share feedback in the comments.</p>
+
+
+
+<p>Also, check out our Golang advance tutorial Series &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+<p>The post <a href="https://golangbyexamples.com/set-cookie-http-golang/">Set cookie http in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/set-cookie-http-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5532</post-id>	</item>
+		<item>
+		<title>Set implementation in Golang</title>
+		<link>https://golangbyexamples.com/set-implementation-in-golang/</link>
+					<comments>https://golangbyexamples.com/set-implementation-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 10 Dec 2019 19:05:14 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[data structure]]></category>
+		<category><![CDATA[set]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=822</guid>
+
+					<description><![CDATA[<p>A set is a data structure that holds elements without any particular order. An element only appears once in a set. Set can be implemented in GO using a map. We will...</p>
+<p>The post <a href="https://golangbyexamples.com/set-implementation-in-golang/">Set implementation in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">A set is a data structure that holds elements without any particular order. An element only appears once in a set.<br></p>
+
+
+
+<p class="has-medium-font-size">Set can be implemented in GO using a map. We will be using <strong>map[string]struct{}</strong> for the set as <strong>struct{}</strong> occupies no memory hence more efficient in terms of storage.<br>Below is the simple example of set having operations</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Add</li><li>Remove</li><li>Exists</li></ol>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+)
+
+//MakeSet initialize the set
+func makeSet() *customSet {
+    return &customSet{
+        container: make(map[string]struct{}),
+    }
+}
+
+type customSet struct {
+    container map[string]struct{}
+}
+
+func (c *customSet) Exists(key string) bool {
+    _, exists := c.container[key]
+    return exists
+}
+
+func (c *customSet) Add(key string) {
+    c.container[key] = struct{}{}
+}
+
+func (c *customSet) Remove(key string) error {
+    _, exists := c.container[key]
+    if !exists {
+        return fmt.Errorf("Remove Error: Item doesn't exist in set")
+    }
+    delete(c.container, key)
+    return nil
+}
+
+func (c *customSet) Size() int {
+    return len(c.container)
+}
+
+func main() {
+    customSet := makeSet()
+    fmt.Printf("Add: B\n")
+    customSet.Add("A")
+    fmt.Printf("Add: B\n")
+    customSet.Add("B")
+    fmt.Printf("Size: %d\n", customSet.Size())
+    fmt.Printf("A Exists?: %t\n", customSet.Exists("A"))
+    fmt.Printf("B Exists?: %t\n", customSet.Exists("B"))
+    fmt.Printf("C Exists?: %t\n", customSet.Exists("C"))
+    fmt.Printf("Remove: B\n")
+    customSet.Remove("B")
+    fmt.Printf("B Exists?: %t\n", customSet.Exists("B"))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Add: B
+Add: B
+Size: 2
+A Exists?: true
+B Exists?: true
+C Exists?: false
+Remove: B
+B Exists?: false</code></pre>
+<p>The post <a href="https://golangbyexamples.com/set-implementation-in-golang/">Set implementation in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/set-implementation-in-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">822</post-id>	</item>
+	</channel>
+</rss>

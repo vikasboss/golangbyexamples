@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>pdf Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/pdf/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/pdf/</link>
+	<description></description>
+	<lastBuildDate>Sat, 26 Sep 2020 05:38:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>pdf Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/pdf/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Download an image or file from a URL in Go (Golang)</title>
+		<link>https://golangbyexamples.com/download-image-file-url-golang/</link>
+					<comments>https://golangbyexamples.com/download-image-file-url-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 21 Feb 2020 14:15:16 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pdf]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1411</guid>
+
+					<description><![CDATA[<p>Overview Below are the steps to download an image or a file from a URL use http.Get(URL) function to get the bytes of the file from the URL. Create an empty file...</p>
+<p>The post <a href="https://golangbyexamples.com/download-image-file-url-golang/">Download an image or file from a URL in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading">Overview</h1>
+
+
+
+<p class="has-medium-font-size">Below are the steps to download an image or a file from a URL</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>use <strong>http.Get(URL)</strong> function to get the bytes of the file from the URL.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Create an empty file using <strong>os.Create()</strong> function</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use <strong>io.Copy()</strong> function to copy the downloaded bytes to the file created in step 2</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading">Code</h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"errors"
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+)
+
+func main() {
+	fileName := "sample.pdf"
+	URL := "http://www.africau.edu/images/default/sample.pdf"
+	err := downloadFile(URL, fileName)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("File %s downlaod in current working directory", fileName)
+}
+
+func downloadFile(URL, fileName string) error {
+	//Get the response bytes from the url
+	response, err := http.Get(URL)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != 200 {
+		return errors.New("Received non 200 response code")
+	}
+	//Create a empty file
+	file, err := os.Create(fileName)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	//Write the bytes to the fiel
+	_, err = io.Copy(file, response.Body)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">File sample.pdf downlaod in current working directory</code></pre>
+<p>The post <a href="https://golangbyexamples.com/download-image-file-url-golang/">Download an image or file from a URL in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/download-image-file-url-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1411</post-id>	</item>
+	</channel>
+</rss>

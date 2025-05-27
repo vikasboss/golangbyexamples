@@ -1,0 +1,4543 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>complete guide Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/complete-guide/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/complete-guide/</link>
+	<description></description>
+	<lastBuildDate>Thu, 14 Jul 2022 16:47:18 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>complete guide Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/complete-guide/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Method in Go (Golang)</title>
+		<link>https://golangbyexamples.com/method-in-golang/</link>
+					<comments>https://golangbyexamples.com/method-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 20 Jun 2020 06:08:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete guide]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2289</guid>
+
+					<description><![CDATA[<p>This is the  chapter 20 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – Golang Comprehensive Tutorial Series Next Tutorial – InterfacePrevious Tutorial – Maps Now let’s check...</p>
+<p>The post <a href="https://golangbyexamples.com/method-in-golang/">Method in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the  chapter 20 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series – <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/interface-in-golang/">Interface</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/maps-in-golang">Maps</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">A method in golang is nothing but a function with a receiver. A receiver is an instance of some specific type such as struct, but it can be an instance of any other custom type. So basically when you attach a function to a type, then that function becomes a method for that type. The method will have access to the properties of the receiver and can call the receiver&#8217;s other methods.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Why Method</strong></h1>
+
+
+
+<p class="has-medium-font-size">Since method lets you define a function on a type, it lets you write object-oriented code in Golang. There are also some other benefits such as two different methods can have the same name in the same package which is not possible with functions</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Format of a Method</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the format for a method</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (receiver receiver_type) some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size">The method receiver and receiver type appear between the <strong>func</strong> keyword and the function name. The return_values come at the last.</p>
+
+
+
+<p class="has-medium-font-size">Also, let&#8217;s understand more differences between a function and a method. There are some important differences between them. Below is the signature of a function</p>
+
+
+
+<p class="has-medium-font-size"><strong>Function:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size">We have already seen the signature of a method</p>
+
+
+
+<p class="has-medium-font-size"><strong>Method:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (receiver receiver_type) some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size">From the above signature, it is clear that the method has a receiver argument. This is the only difference between function and method, but due to it they differ in terms of functionality they offer</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A function can be used as first-order objects and can be passed around while methods cannot.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Methods can be used for chaining on the receiver while function cannot be used for the same.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>There can exist different methods with the same name with a different receiver, but there cannot exist two different functions with the same name in the same package.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Methods on Structs</strong></h1>
+
+
+
+<p class="has-medium-font-size">Golang is not an object-oriented language. It doesn&#8217;t support type inheritance, but it does allow us to define methods on any custom type including structs. Since struct is a named collection of fields and methods can also be defined on it. As such struct in golang can be compared to a class in Object-Oriented Languages.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of method on struct</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func (e employee) details() {
+    fmt.Printf("Name: %s\n", e.name)
+    fmt.Printf("Age: %d\n", e.age)
+}
+
+func (e employee) getSalary() int {
+    return e.salary
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    emp.details()
+    fmt.Printf("Salary %d\n", emp.getSalary())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Sam
+Age: 31
+Salary 2000</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice that the receiver is available inside the method and fields of the receiver can be accessed inside the method. </p>
+
+
+
+<p class="has-medium-font-size">Can field of the receiver also be changed inside the method?</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see that</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func (e employee) setNewName(newName string) {
+    e.name = newName
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    emp.setNewName("John")
+    fmt.Printf("Name: %s\n", emp.name)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Sam</code></pre>
+
+
+
+<p class="has-medium-font-size">A method setNewName is defined on the employee struct in the above code. In this method, we update the name of the employee like this</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e.name = newName</code></pre>
+
+
+
+<p class="has-medium-font-size">After setting the new name when we print the employee name again in the main function, we see that the old name &#8220;Sam&#8221; is printed instead of &#8220;John&#8221;. This happens because method is defined on a value receiver</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (e employee) setNewName(newName string)</code></pre>
+
+
+
+<p class="has-medium-font-size">Since the method is defined on a value receiver when the method is called a copy of the receiver is made and that copy of the receiver is available inside the method. Since it is a copy, any changes made to the value receiver is not visible to the caller. That is why it prints the old name &#8220;Sam&#8221; instead of &#8220;John&#8221;. Now the question which comes to the mind whether there is any way to fix this. And the answer is yes, and this is where pointer receivers come into the picture.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Method on a Pointer Receiver</strong></h1>
+
+
+
+<p class="has-medium-font-size">In the above example we saw a method on a value receiver. Any change made to a value receiver is not visible to the caller. Methods can also be defined on a pointer receiver. Any change made to the pointer receiver will be visible to the caller. Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func (e *employee) setNewName(newName string) {
+    e.name = newName
+}
+
+func main() {
+    emp := &employee{name: "Sam", age: 31, salary: 2000}
+    emp.setNewName("John")
+    fmt.Printf("Name: %s\n", emp.name)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: John</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program, we defined the method <strong>setNewName </strong>on a pointer receiver</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (e *employee) setNewName(newName string)</code></pre>
+
+
+
+<p class="has-medium-font-size">Then we created an employee pointer and called the <strong>setNewName </strong>method<strong>&nbsp;</strong>on it. We see that the changes made to the employee pointer inside the <strong>setNewName </strong>are visible to the caller and it prints the new name.</p>
+
+
+
+<p class="has-medium-font-size">Is it necessary to create the employee pointer to call a method with a pointer receiver? No, it is not. The method can be called on the employee instance and the language will take care of it to correctly pass it as a pointer to the method. This flexibility is provided by the language.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func (e *employee) setNewName(newName string) {
+    e.name = newName
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    emp.setNewName("John")
+
+    fmt.Printf("Name: %s\n", emp.name)
+
+    (&emp).setNewName("Mike")
+    fmt.Printf("Name: %s\n", emp.name)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: John
+Name: Mike</code></pre>
+
+
+
+<p class="has-medium-font-size">We see in the above program that even if a method is defined on a pointer receiver but we are calling the method with a non-pointer employee instance</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.setNewName("John")</code></pre>
+
+
+
+<p class="has-medium-font-size">But the language passes the receiver as a pointer and therefore the changes are visible to the caller.</p>
+
+
+
+<p class="has-medium-font-size">Even this way of calling is valid</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">(&emp).setNewName("Mike")</code></pre>
+
+
+
+<p class="has-medium-font-size">Now, how about the other way around. If a method is defined on a value receiver, can the method be called with a pointer of the receiver? </p>
+
+
+
+<p class="has-medium-font-size">Yes, even this is valid and the language takes care of passing the argument correctly as value receiver irrespective of whether the method was called on a pointer or normal struct. </p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func (e employee) setNewName(newName string) {
+    e.name = newName
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    emp.setNewName("John")
+
+    fmt.Printf("Name: %s\n", emp.name)
+    (&emp).setNewName("Mike")
+
+    fmt.Printf("Name: %s\n", emp.name)
+    emp2 := &employee{name: "Sam", age: 31, salary: 2000}
+    emp2.setNewName("John")
+    fmt.Printf("Name: %s\n", emp2.name)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Sam
+Name: Sam
+Name: Sam</code></pre>
+
+
+
+<p class="has-medium-font-size">Do note here since in all three cases, the <strong>setNewName</strong> method had a value receiver hence changes are not visible to the caller as the value is passed as a copy. It prints the old name in all three cases</p>
+
+
+
+<p class="has-medium-font-size">To summarize what we learnt above</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If a method has a value receiver it supports calling of that method with both value and pointer receiver</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If a method has a pointer receiver then also it supports calling of that method with both value and pointer receiver</li></ul>
+
+
+
+<p class="has-medium-font-size">This is unlike function where if</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If a function has a pointer argument then it will only accept a pointer as an argument</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If a function has a value argument then it will only accept a value as an argument</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>When to use pointer receiver</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When the changes to the receiver made inside the method have to be visible to the caller.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When the struct is big, then it is better to use a pointer receiver otherwise a copy of the struct will be made every time a method is called which will be expensive</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Some More Points to note about methods</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The receiver type has to be defined in the same package as the method definition. On defining a method on a receiver that exists in a different package, below error will be raised.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">ERROR: cannot define new methods on non-local types</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Till now we have seen a method invocation using a dot operator. There is one other way to call a method as well as shown in below example</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+	name   string
+	age    int
+	salary int
+}
+
+func (e employee) details() {
+	fmt.Printf("Name: %s\n", e.name)
+	fmt.Printf("Age: %d\n", e.age)
+}
+
+func (e *employee) setName(newName string) {
+	e.name = newName
+}
+
+func main() {
+	emp := employee{name: "Sam", age: 31, salary: 2000}
+	employee.details(emp)
+
+	(*employee).setName(&emp, "John")
+
+	fmt.Printf("Name: %s\n", emp.name)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Sam
+Age: 31
+Name: John</code></pre>
+
+
+
+<p>In above example we see a different method for calling a method. There are two cases</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When the method has a value receiver then it can be called as below which is struct name followed by method name. The first argument is the value receiver itself.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">employee.details(emp)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When the method has a pointer receiver then it can be called as below which is a pointer to struct name followed by method name. The first argument is the pointer receiver.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">(*employee).setName(&emp, "John")</code></pre>
+
+
+
+<p class="has-medium-font-size">Also note that arguments of the method starts from the second argument as for setName function above:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">(*employee).setName(&emp, "John")</code></pre>
+
+
+
+<p class="has-medium-font-size">You will rarely see this style being used and the dot notation style that we discussed earlier is the recommended as well as the most common way.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Methods on Anonymous nested struct fields</strong></h1>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+	name   string
+	age    int
+	salary int
+	address
+}
+
+type address struct {
+	city    string
+	country string
+}
+
+func (a address) details() {
+	fmt.Printf("City: %s\n", a.city)
+	fmt.Printf("Country: %s\n", a.country)
+}
+
+func main() {
+	address := address{city: "London", country: "UK"}
+
+	emp := employee{name: "Sam", age: 31, salary: 2000, address: address}
+
+	emp.details()
+
+	emp.address.details()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">City: London
+Country: UK
+City: London
+Country: UK</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in above program that details method of address struct can be accessed in two ways</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.details()
+emp.address.details()</code></pre>
+
+
+
+<p class="has-medium-font-size">So in case of an anonymous nested struct, methods of that struct can be directly accessed.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Exported Method</strong></h1>
+
+
+
+<p class="has-medium-font-size">Go doesn’t have any public,&nbsp; private or protected keyword. The only mechanism to control the visibility outside the package is using the capitalized and non-capitalized formats</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Capitalized Identifiers</strong>&nbsp;are exported. The capital letter indicates that this is an exported identifier and is available outside the package.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Non-capitalized identifiers&nbsp;</strong>are not exported.&nbsp;The lowercase indicates that the identifier is not exported and will only be accessed from within the same package.</li></ul>
+
+
+
+<p class="has-medium-font-size">So any struct which starts with a capital letter is exported to other packages.&nbsp; Similarly, any struct field which starts with capital is exported otherwise not. And also similarly any struct method which starts with a capital letter is exported. Let’s see an example that shows exporting and non-exporting of structs, struct fields, and methods.&nbsp; See&nbsp;<strong>model.go</strong>&nbsp;and <strong>test.go</strong> below. Both belong to the <strong>main</strong> package.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Structure<ul><li>Struct&nbsp;<strong>Person</strong>&nbsp;is exported</li><li>Struct&nbsp;<strong>company</strong>&nbsp;is non-exported</li></ul></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Structure’s Field<ul><li><strong>Person</strong>&nbsp;struct field&nbsp;<strong>Name</strong>&nbsp;is exported</li><li><strong>Person</strong>&nbsp;struct field&nbsp;<strong>age</strong>&nbsp;is not exported but <strong>Name</strong> is exported</li></ul></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Structure&#8217;s Method<ul><li><strong>Person</strong> Struct&#8217;s Method <strong>GetAge()</strong> is exported</li><li><strong>Person</strong> Struct&#8217;s Method <strong>getName()</strong> is not exported</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>model.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Person struct
+type Person struct {
+    Name string
+    age  int
+}
+
+//GetAge of person
+func (p *Person) GetAge() int {
+    return p.age
+}
+
+func (p *Person) getName() string {
+    return p.Name
+}
+
+type company struct {
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s write a file <strong>test.go</strong> in same <strong>main</strong> package. See below.</p>
+
+
+
+<p class="has-medium-font-size"><strong>test.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Test function
+func Test() {
+    //STRUCTURE IDENTIFIER
+    p := &Person{
+        Name: "test",
+        age:  21,
+    }
+    fmt.Println(p)
+    c := &company{}
+    fmt.Println(c)
+    
+    //STRUCTURE'S FIELDS
+    fmt.Println(p.Name)
+    fmt.Println(p.age)
+
+    
+    //STRUCTURE'S METHOD
+    fmt.Println(p.GetAge())
+    fmt.Println(p.getName())
+
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">On running this file, it is able to access all exported and un-exported fields in <strong>model.go</strong> as both lies in the same package <strong>main</strong>. There is no compilation error and it gives below output</p>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">&{test 21}
+&{}
+test
+21
+21
+test</code></pre>
+
+
+
+<p class="has-medium-font-size">If we move the file <strong>model.go</strong> to a different package named <strong>model. </strong>Now the output on running &#8216;go build&#8217; will give compilation errors. All the compilation errors are because <strong>test.go</strong> in <strong>main</strong> package to not able to refer to un-exported fields of <strong>model.go</strong> in <strong>model</strong> package.</p>
+
+
+
+<p class="has-medium-font-size">The compilation error will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">p.getName undefined (cannot refer to unexported field or method model.(*Person).getName)</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Method Chaining</strong></h1>
+
+
+
+<p class="has-medium-font-size">For method chaining to be possible the methods in the chain should return the receiver. Returning the receiver for the last method inn the chain is optional.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of method chaining.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+	name   string
+	age    int
+	salary int
+}
+
+func (e employee) printName() employee {
+	fmt.Printf("Name: %s\n", e.name)
+	return e
+}
+
+func (e employee) printAge() employee {
+	fmt.Printf("Age: %d\n", e.age)
+	return e
+}
+
+func (e employee) printSalary() {
+	fmt.Printf("Salary: %d\n", e.salary)
+}
+
+func main() {
+	emp := employee{name: "Sam", age: 31, salary: 2000}
+	emp.printName().printAge().printSalary()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Sam
+Age: 31
+Salary: 2000</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Methods on Non-Struct Types</strong></h1>
+
+
+
+<p class="has-medium-font-size">Methods can also be defined on a non-struct custom type. Non-struct custom types can be created through type definition. Below is the format for creating a new custom type</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type {type_name} {built_in_type}</code></pre>
+
+
+
+<p class="has-medium-font-size">For example we can a named custom type <strong>myFloat</strong> of type <strong>float64</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type myFloat float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Methods can be defined on the named custom type.&nbsp;See below example:</p>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+type myFloat float64
+
+func (m myFloat) ceil() float64 {
+    return math.Ceil(float64(m))
+}
+
+func main() {
+    num := myFloat(1.4)
+    fmt.Println(num.ceil())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about using method in Go. Hope you have liked this article. Please share feedback/mistakes/improvements in comments</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong> – <a href="https://golangbyexamples.com/interface-in-golang/">Interface</a><br><strong>Previous Tutorial</strong> – <a href="https://golangbyexamples.com/maps-in-golang">Maps</a></p>
+<p>The post <a href="https://golangbyexamples.com/method-in-golang/">Method in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/method-in-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2289</post-id>	</item>
+		<item>
+		<title>Struct in Go (Golang)</title>
+		<link>https://golangbyexamples.com/struct-in-golang-complete-guide/</link>
+					<comments>https://golangbyexamples.com/struct-in-golang-complete-guide/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 14 Jun 2020 09:01:20 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete guide]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2244</guid>
+
+					<description><![CDATA[<p>This is the&#160; chapter 16 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&#160;Golang Comprehensive Tutorial Series Next Tutorial&#160;–&#160;ArrayPrevious Tutorial&#160;– Pointer Now let’s check...</p>
+<p>The post <a href="https://golangbyexamples.com/struct-in-golang-complete-guide/">Struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the&nbsp; chapter 16 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/understanding-array-golang-complete-guid">Array</a><br><strong>Previous Tutorial</strong>&nbsp;– <a href="https://golangbyexamples.com/pointer-golang/">Pointer</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">GO struct is named collection of data fields which can be of different types. Struct acts as a container that has different heterogeneous data types which together represents an entity. For example, different attributes are used to represent an employee in an organization. Employee can have</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Name of string type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Age of int type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>DOB of time.Time type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Salary of int type</li></ul>
+
+
+
+<p class="has-medium-font-size">.. and so on. A struct can be used to represent an employee</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    name   string
+    age    int
+    salary int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">A struct in golang can be compared to a class in Object Oriented Languages</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Declaring a struct type</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the format for declaring a struct</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type struct_name struct {
+    field_name1 field_type1
+    field_name2 field_type2
+    ...
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above format, <strong>struct_name</strong> is the name of the struct. It has a field named <strong>field_name1</strong> of type <strong>field_type1</strong> and a field named <strong>field_name2</strong> of type <strong>field_type2</strong>. This declares a new named struct type which acts as a blueprint. The type keyword is used to introduce a new type</p>
+
+
+
+<p class="has-medium-font-size">Example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type point struct {
+    x float64
+    y float64
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The above declaration declares a new struct named <strong>point</strong> which has two field <strong>x</strong> and <strong>y</strong>. Both fields are of <strong>float64</strong> type.Once a new struct type is declared we can define new concrete struct variable from it as we will see in next section</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Creating a struct variable</strong></h1>
+
+
+
+<p class="has-medium-font-size">Declaring a struct just declares a named struct type. Creating a struct variable creates an instance of that struct with memory being initialized as well. We can create a empty struct variable without given any value to any of the field</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{}</code></pre>
+
+
+
+<p class="has-medium-font-size">In this case, all the fields in the struct are initialized with a default zero value of that field type.</p>
+
+
+
+<p class="has-medium-font-size">We can also initialize the value for each struct field while creating a struct variable. There are two variations</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each field on the same line</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{name: "Sam", age: 31, salary: 2000}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each field on different lines</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{
+   name:   "Sam",
+   age:    31,
+   salary: 2000,
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">It is also ok to initialize only some of the fields with value. The field which are not initialized with value will get the default zero value of their type</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{
+   name: "Sam",
+   age: 31,
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">In above case salary will get default value of zero since it is not initialized</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working code illustrating above points:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp1 := employee{}
+    fmt.Printf("Emp1: %+v\n", emp1)
+
+    emp2 := employee{name: "Sam", age: 31, salary: 2000}
+    fmt.Printf("Emp2: %+v\n", emp2)
+
+    emp3 := employee{
+        name:   "Sam",
+        age:    31,
+        salary: 2000,
+    }
+    fmt.Printf("Emp3: %+v\n", emp3)
+
+    emp4 := employee{
+        name: "Sam",
+        age:  31,
+    }
+    fmt.Printf("Emp4: %+v\n", emp4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp1: {name: age:0 salary:0}
+Emp2: {name:Sam age:31 salary:2000}
+Emp3: {name:Sam age:31 salary:2000}
+Emp4: {name:Sam age:31 salary:0}</code></pre>
+
+
+
+<p class="has-medium-font-size">For above program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We first declare an <strong>employee</strong> struct.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>emp1&#8217;s fields are all initialized with default zero value of its type i.e name with &#8220;&#8221;, age and salary with 0.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>emp2 has been initialized with all fields on the same line. Its fields are correctly printed with their value</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>emp3&#8217;s has been initialized with all fields on different lines. Its fields are correctly printed with their value</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>emp4&#8217;s salary field is initialized with default zero value of 0. While other other two fields are correctly printed with their value.</li></ul>
+
+
+
+<p class="has-medium-font-size">It is to be noted that in the initialization of a struct, every new line with in curly braces has to end with a comma. So below initialization will raise error as</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">"salary" : 2000</code></pre>
+
+
+
+<p class="has-medium-font-size">doesn&#8217;t end with a comma.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{
+  name:   "Sam",
+  age:    31,
+  salary: 2000
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">This will be fine</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{
+  name:   "Sam",
+  age:    31,
+  salary: 2000}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Without field names</strong></p>
+
+
+
+<p class="has-medium-font-size">struct can also be initialized without specifying the field names. But in this case, all values for each of the field has to be provided in sequence</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{"Sam", 31, 2000}</code></pre>
+
+
+
+<p class="has-medium-font-size">A compiler error will be raised if all values are not provided when field name is not used.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp := employee{"Sam", 31, 2000}
+    fmt.Printf("Emp: %+v\n", emp)
+
+    //emp = employee{"Sam", 31}
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp2: {name:Sam age:31 salary:2000}</code></pre>
+
+
+
+<p class="has-medium-font-size">Uncomment the line</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp = employee{"Sam", 31}</code></pre>
+
+
+
+<p class="has-medium-font-size">in&nbsp;the above program, and it will raise compiler error</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">too few values in employee literal</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Accessing and Setting Struct Fields</strong></h1>
+
+
+
+<p class="has-medium-font-size">Structs fields can be accessed using the dot operator. Below is the format for getting the value</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">n := emp.name</code></pre>
+
+
+
+<p class="has-medium-font-size">Similarly a value can be assigned to a struct field too.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.name = "some_new_name"</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+
+    //Accessing a struct field
+    n := emp.name
+    fmt.Printf("Current name is: %s\n", n)
+
+    //Assigning a new value
+    emp.name = "John"
+    fmt.Printf("New name is: %s\n", emp.name)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Current name is: Sam
+New name is: John</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Pointer to a struct</strong></h1>
+
+
+
+<p class="has-medium-font-size">There<strong> </strong>are two ways of creating a pointer to the struct</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the &amp; operator</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the new keyword</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s looks at each of above method one by one.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the &amp; operator</strong></h2>
+
+
+
+<p class="has-medium-font-size">The <strong>&amp;</strong> operator can be used to get the pointer to a struct variable.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{name: "Sam", age: 31, salary: 2000}
+empP := &emp</code></pre>
+
+
+
+<p class="has-medium-font-size">struct pointer can also be directly created as well</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">empP := &employee{name: "Sam", age: 31, salary: 2000}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s look at a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    empP := &emp
+    fmt.Printf("Emp: %+v\n", empP)
+    empP = &employee{name: "John", age: 30, salary: 3000}
+    fmt.Printf("Emp: %+v\n", empP)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp: &{name:Sam age:31 salary:2000}
+Emp: &{name:John age:30 salary:3000}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the new keyword</strong></h2>
+
+
+
+<p class="has-medium-font-size">Using the&nbsp; new() keyword will:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Create the struct</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Initialize all the field to the zero default value of their type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Return the pointer to the newly created struct</li></ul>
+
+
+
+<p class="has-medium-font-size">This will return a pointer</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">empP := new(employee)</code></pre>
+
+
+
+<p class="has-medium-font-size">Pointer address can be print using the <strong>%p</strong> format modifier</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Emp Pointer: %p\n", empP)</code></pre>
+
+
+
+<p class="has-medium-font-size">Deference operator &#8216;*&#8217; can be used to print the value at the pointer.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Emp Value: %+v\n", *empP)</code></pre>
+
+
+
+<p class="has-medium-font-size">It will print</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp Value: {name: age:0 salary:0}</code></pre>
+
+
+
+<p class="has-medium-font-size">When not using the dereference pointer but using the format identifier<strong>&nbsp; %+v, </strong>then ampersand will be appended before the struct indicating that is a pointer.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Emp Value: %+v\n", empP)</code></pre>
+
+
+
+<p class="has-medium-font-size">It will print</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp Value: &{name: age:0 salary:0}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see full program denoting above points</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    empP := new(employee)
+    fmt.Printf("Emp Pointer Address: %p\n", empP)
+    fmt.Printf("Emp Pointer: %+v\n", empP)
+    fmt.Printf("Emp Value: %+v\n", *empP)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp Pointer Address: 0xc000130000
+Emp Pointer: &{name: age:0 salary:0}
+Emp Value: {name: age:0 salary:0}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Print a Struct Variable</strong></h1>
+
+
+
+<p class="has-medium-font-size">There<strong>&nbsp;</strong>are two ways to print all struct variables including all its key and values.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the <strong>fmt</strong> package</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Printing the struct in JSON form using the <strong>json/encoding</strong> package. This also allows pretty print of a struct as well.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see the two ways in which we can print the instance of the employee struct.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the fmt package</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>fmt.Printf()</strong> function can be used to print a struct.&nbsp; Different format identifiers can be used to print a struct in different ways. Let&#8217;s see how different format identifiers can be used to print a struct in different formats.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s first create an instance of employee</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{name: "Sam", age: 31, salary: 2000}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%v</strong> &#8211; It will print only values. Field name will not be printed. This is the default way of printing a struct. Eg</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("%v", emp)  -  {Sam 31 2000}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%+v &#8211; </strong>It will print both field and value. Eg</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("%+v", emp) - {name:Sam age:31 salary:2000}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>fmt.Println()</strong> function can also be used to print a struct. Since %v is the default for <strong>fmt.Printlin()</strong> function, hence output will be same as using %v for <strong>fmt.Printf()</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Println(emp) - {Sam 31 2000}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working program too</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    fmt.Printf("Emp: %v\n", emp)
+    fmt.Printf("Emp: %+v\n", emp)
+    fmt.Printf("Emp: %#v\n", emp)
+    fmt.Println(emp)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp: {Sam 31 2000}
+Emp: {name:Sam age:31 salary:2000}
+Emp: main.employee{name:"Sam", age:31, salary:2000}
+{Sam 31 2000}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Printing the struct in JSON form</strong></h2>
+
+
+
+<p class="has-medium-font-size">Second method is to print the struct in the JSON format. <strong>Marshal</strong> and <strong>MarshalIndent</strong> function of <strong>encoding/json</strong> package can be used to print a struct in JSON format. Here is the difference</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Marshal</strong> &#8211; Below is the signature of the <strong>Marshal</strong> function. This function returns the JSON encoding of <strong>v </strong>by traversing the value recursively</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Marshal(v interface{}) ([]byte, error)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>MarshalIndent</strong>&#8211; Below is the signature of the <strong>MarshalIndent</strong> function. It is similar to <strong>Marshal </strong>function but applies Indent to format the output. So it can be used to pretty print a struct</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">MarshalIndent(v interface{}, prefix, indent string) ([]byte, error)</code></pre>
+
+
+
+<p class="has-medium-font-size">It is to be noted that both <strong>Marshal</strong> and <strong>MarshalIndent</strong> function can only access the exported fields of a struct, which means that only the capitalized fields can be accessed and encoded in JSON form.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+)
+
+type employee struct {
+    Name   string
+    Age    int
+    salary int
+}
+
+func main() {
+    emp := employee{Name: "Sam", Age: 31, salary: 2000}
+    //Marshal
+    empJSON, err := json.Marshal(emp)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Printf("Marshal funnction output %s\n", string(empJSON))
+
+    //MarshalIndent
+    empJSON, err = json.MarshalIndent(emp, "", "  ")
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Printf("MarshalIndent funnction output %s\n", string(empJSON))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Marshal funnction output {"Name":"Sam","Age":31}
+
+MarshalIndent funnction output {
+  "Name": "Sam",
+  "Age": 31
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The salary field is not printed in the output because it begins with a lowercase letter and is not exported. The <strong>Marshal</strong> function output is not formatted while the <strong>MarshalIndent</strong> function output is formatted.</p>
+
+
+
+<p class="has-medium-font-size"><strong>golang</strong> also allows the JSON encoded struct key name to be different by the use of struct meta fields as will see in the next section.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Struct Field Meta or Tags</strong></h1>
+
+
+
+<p class="has-medium-font-size">A struct in go also allows adding metadata to its fields. These meta fields can be used to encode decode into different forms, doing some forms of validations on struct fields, etc. So basically any meta information can be stored with fields of a struct and can be used by any package or library for different purposes.</p>
+
+
+
+<p class="has-medium-font-size">Below is the format for attaching a meta-data. Meta-data is a string literal i.e it is enclosed in backquotes</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type strutName struct{
+   fieldName type `key:value key2:value2`
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Now for our use case, we will add JSON tags to employee struct as below. Marshal function will use the key name specified in the tags</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    Name   string `json:"n"`
+    Age    int    `json:"a"`
+    Salary int    `json:"s"`
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see full program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+)
+
+type employee struct {
+    Name   string `json:"n"`
+    Age    int    `json:"a"`
+    Salary int    `json:"s"`
+}
+
+func main() {
+    emp := employee{Name: "Sam", Age: 31, Salary: 2000}
+    //Converting to jsonn
+    empJSON, err := json.MarshalIndent(emp, '', '  ')
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Println(string(empJSON))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">{
+  "n": "Sam",
+  "a": 31,
+  "s": 2000
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The key name in the output is same as specified in the json meta tags.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Anonymous Fields in a Struct</strong></h1>
+
+
+
+<p class="has-medium-font-size">A<strong>&nbsp;</strong>struct can have anonymous fields as well, meaning a field having no name. The type will become the field name. In below example, <strong>string</strong> will be the field name as well</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    string
+    age    int
+    salary int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The anonymous field can also be accessed and assigned a value</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    string
+    age    int
+    salary int
+}
+
+func main() {
+    emp := employee{string: "Sam", age: 31, salary: 2000}
+    //Accessing a struct field
+    n := emp.string
+    fmt.Printf("Current name is: %s\n", n)
+    //Assigning a new value
+    emp.string = "John"
+    fmt.Printf("New name is: %s\n", emp.string)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Current name is: Sam
+New name is: John</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Nested Struct</strong></h1>
+
+
+
+<p class="has-medium-font-size">A struct can have another struct nested in it. Let&#8217;s see an example of a nested struct. In below <strong>employee</strong> struct has <strong>address</strong> struct nested it in.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name    string
+    age     int
+    salary  int
+    address address
+}
+
+type address struct {
+    city    string
+    country string
+}
+
+func main() {
+    address := address{city: "London", country: "UK"}
+    emp := employee{name: "Sam", age: 31, salary: 2000, address: address}
+    fmt.Printf("City: %s\n", emp.address.city)
+    fmt.Printf("Country: %s\n", emp.address.country)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">City: London
+Country: UK</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice how nested struct fields are accessed.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.address.city
+emp.address.country</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Anonymous nested struct fields</strong></h1>
+
+
+
+<p class="has-medium-font-size">The nested struct field can also be anonymous. Also, in this case, nested struct&#8217;s fields are directly accessed. So below is valid</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.city
+emp.country</code></pre>
+
+
+
+<p class="has-medium-font-size">It is also to be noted that below is still valid in this case</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.address.city
+emp.address.country</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+	name   string
+	age    int
+	salary int
+	address
+}
+
+type address struct {
+	city    string
+	country string
+}
+
+func main() {
+	address := address{city: "London", country: "UK"}
+
+	emp := employee{name: "Sam", age: 31, salary: 2000, address: address}
+
+	fmt.Printf("City: %s\n", emp.address.city)
+	fmt.Printf("Country: %s\n", emp.address.country)
+
+	fmt.Printf("City: %s\n", emp.city)
+	fmt.Printf("Country: %s\n", emp.country)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">City: London
+Country: UK
+City: London
+Country: UK</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in above program that city field of address struct can be accessed in two ways</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp.city
+emp.address.city</code></pre>
+
+
+
+<p class="has-medium-font-size">Similar for the country field of the address struct.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Exported and UnExported fields of a struct</strong></h1>
+
+
+
+<p class="has-medium-font-size">Go doesn’t have any public,&nbsp; private or protected keyword. The only mechanism to control the visibility outside the package is using the capitalized and non-capitalized formats</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Capitalized Identifiers</strong>&nbsp;are exported. The capital letter indicates that this is an exported identifier and is available outside the package.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Non-capitalized identifiers&nbsp;</strong>are not exported.&nbsp;The lowercase indicates that the identifier is not exported and will only be accessed from within the same package.</li></ul>
+
+
+
+<p class="has-medium-font-size">So any struct which starts with a capital letter is exported to other packages.&nbsp; Similarly any struct field which starts with capital is exported otherwise not. Let’s see an example that shows exporting and non-exporting of structs and struct fields. See&nbsp;<strong>model.go</strong>&nbsp;and <strong>test.go</strong> below. Both belong to the <strong>main</strong> package.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Structure<ul><li>Struct&nbsp;<strong>Person</strong>&nbsp;is exported</li><li>Struct&nbsp;<strong>company</strong>&nbsp;is non-exported</li></ul></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Structure’s Field<ul><li><strong>Person</strong>&nbsp;struct field&nbsp;<strong>Name</strong>&nbsp;is exported</li><li><strong>Person</strong>&nbsp;struct field&nbsp;<strong>age</strong>&nbsp;is not exported but <strong>Name</strong> is exported</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>model.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Person struct
+type Person struct {
+    Name string
+    age  int
+}
+
+type company struct {
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s write a file <strong>test.go</strong> in same <strong>main</strong> package. See below.</p>
+
+
+
+<p class="has-medium-font-size"><strong>test.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+//Test function
+func Test() {
+    //STRUCTURE IDENTIFIER
+    p := &Person{
+        Name: "test",
+        age:  21,
+    }
+    fmt.Println(p)
+    c := &company{}
+    fmt.Println(c)
+    
+    //STRUCTURE'S FIELDS
+    fmt.Println(p.Name)
+    fmt.Println(p.age)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">On running this file, it is able to access all exported and un-exported fields in <strong>model.go</strong> as both lies in the same package <strong>main</strong>. There is no compilation error and it gives below output</p>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">&{test 21}
+&{}
+test
+21</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s move the above file <strong>model.go</strong> to a different package named <strong>model. </strong>Now notice the output on running &#8216;go build&#8217;. It gives compilation errors. All the compilation error are because <strong>test.go</strong> in <strong>main</strong> package to not able to refer to un-exported fields of <strong>model.go</strong> in <strong>model</strong> package</p>
+
+
+
+<p class="has-medium-font-size"><strong>model.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package model
+
+//Person struct
+type Person struct {
+	Name string
+	age  int
+}
+
+type company struct {
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>test.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+        //This will path of your model package
+	"<somepath>/model"
+)
+
+//Test function
+func main() {
+	//STRUCTURE IDENTIFIER
+	p := &model.Person{
+		Name: "test",
+		age:  21,
+	}
+	fmt.Println(p)
+	c := &model.company{}
+	fmt.Println(c)
+
+	//STRUCTURE'S FIELDS
+	fmt.Println(p.Name)
+	fmt.Println(p.age)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">cannot refer to unexported name model.company
+p.age undefined (cannot refer to unexported field or method age)</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Struct Equality</strong></h1>
+
+
+
+<p class="has-medium-font-size">The first thing to know before considering struct equality is weather if all struct fields types are comparable or not</p>
+
+
+
+<p class="has-medium-font-size">Some of the comparable types as defined by go specification are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>boolean</li><li>numeric</li><li>string,</li><li>pointer</li><li>channel</li><li>interface types</li><li>structs &#8211; if all it&#8217;s field type is comparable</li><li>array &#8211; if the type of value of array element is comparable</li></ul>
+
+
+
+<p class="has-medium-font-size">Some of the types which are not comparable as per go specification and which cannot be used as a key in a map are.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Slice</li><li>Map</li><li>Function</li></ul>
+
+
+
+<p class="has-medium-font-size">So two struct will be equal if first all their field types are comparable and all the corresponding field values are equal. Let&#8217;s see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp1 := employee{name: "Sam", age: 31, salary: 2000}
+    emp2 := employee{name: "Sam", age: 31, salary: 2000}
+    if emp1 == emp2 {
+        fmt.Println("emp1 annd emp2 are equal")
+    } else {
+        fmt.Println("emp1 annd emp2 are not equal")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">emp1 annd emp2 are equal</code></pre>
+
+
+
+<p class="has-medium-font-size">If the struct field type are not comparable then there will be compilation error on checking struct equality using the == operator.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+type employee struct {
+    name        string
+    age         int
+    salary      int
+    departments []string
+}
+func main() {
+    emp1 := employee{name: "Sam", age: 31, salary: 2000, departments: []string{"CS"}}
+    emp2 := employee{name: "Sam", age: 31, salary: 2000, departments: []string{"EC"}}
+    if emp1 == emp2 {
+        fmt.Println("emp1 annd emp2 are equal")
+    } else {
+        fmt.Println("emp1 annd emp2 are not equal")
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Above program will raise compilation error as <strong>employee</strong> struct contains a field <strong>deparments</strong> which is a <strong>slice</strong> of <strong>string</strong>. <strong>slice</strong> is not a comparable type and hence the compilation error.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">invalid operation: emp1 == emp2 (struct containing []string cannot be compared)</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Struct are value types</strong></h1>
+
+
+
+<p class="has-medium-font-size">A struct is value type in go. So a struct variable name is not a pointer to the struct in fact it denotes the entire struct. A new copy of the struct will be created when</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A struct variable is assigned to another struct variable.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A struct variable is passed as an argument to a function.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see above point with another example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp1 := employee{name: "Sam", age: 31, salary: 2000}
+    fmt.Printf("Emp1 Before: %v\n", emp1)
+
+    emp2 := emp1
+
+    emp2.name = "John"
+    fmt.Printf("Emp1 After assignment: %v\n", emp1)
+    fmt.Printf("Emp2: %v\n", emp2)
+
+    test(emp1)
+    fmt.Printf("Emp1 After Test Function Call: %v\n", emp1)
+}
+
+func test(emp employee) {
+    emp.name = "Mike"
+    fmt.Printf("Emp in Test function: %v\n", emp)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp1 Before: {Sam 31 2000}
+Emp1 After assignment: {Sam 31 2000}
+Emp2: {John 31 2000}
+Emp in Test function: {Mike 31 2000}
+Emp1 After Test Function Call: {Sam 31 2000}</code></pre>
+
+
+
+<p class="has-medium-font-size">In above example,</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>we assigned the <strong>emp1</strong> to <strong>emp2</strong> and we then changed name&nbsp; <strong>emp2</strong> to have a different value.&nbsp; After that when we print <strong>emp1</strong>, we see that it hasn&#8217;t changed. This is because when we assign <strong>emp1</strong> to <strong>emp2</strong>, a copy is created and changing <strong>emp2</strong> doesn&#8217;t have any effect on <strong>emp1</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We passed <strong>emp1</strong> to the test function and then again changed its <strong>name</strong> field in the test function.&nbsp; After that when we print <strong>emp1</strong>, we see that it hasn&#8217;t changed. The reason is same, when <strong>emp1</strong> is passed as an argument to test function a copy of <strong>emp1</strong> is created.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about struct in golang. In this article, we learned different ways of initializing a struct, pointer to struct, different ways of printing, about anonymous fields, etc. I hope you have liked this article. Please share the feedback/improvements/mistakes in the comments.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/understanding-array-golang-complete-guid">Array</a><br><strong>Previous Tutorial</strong>&nbsp;– <a href="https://golangbyexamples.com/pointer-golang/">Pointer</a></p>
+<p>The post <a href="https://golangbyexamples.com/struct-in-golang-complete-guide/">Struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/struct-in-golang-complete-guide/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2244</post-id>	</item>
+		<item>
+		<title>Slice in Go (Golang)</title>
+		<link>https://golangbyexamples.com/slice-in-golang/</link>
+					<comments>https://golangbyexamples.com/slice-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 18 May 2020 16:52:20 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete guide]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[slice]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2181</guid>
+
+					<description><![CDATA[<p>This is the&#160; chapter 18 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&#160;Golang Comprehensive Tutorial Series Next Tutorial&#160;–&#160;MapsPrevious Tutorial&#160;– Array Now let’s check...</p>
+<p>The post <a href="https://golangbyexamples.com/slice-in-golang/">Slice in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the&nbsp; chapter 18 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/maps-in-golang">Maps</a><br><strong>Previous Tutorial</strong>&nbsp;– <a href="https://golangbyexamples.com/understanding-array-golang-complete-guid">Array</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">The size of the array being part of it limits the expressiveness and power of array in go. This is where slice comes into the picture. Slice is more powerful and convenient to use than an array.&nbsp; Slice, in fact, is more analogous to arrays in another programming language.</p>
+
+
+
+<p class="has-medium-font-size">A slice points to an underlying array and is internally represented by a slice header.&nbsp; Unlike array, the size of a slice is flexible and can be changed. </p>
+
+
+
+<p class="has-medium-font-size"><strong>Internal representation of a slice</strong></p>
+
+
+
+<p class="has-medium-font-size">Internally a slice is represented by three things.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Pointer to the underlying array</li><li>Current length of the underlying array</li><li>Total Capacity which is the maximum capacity to which the underlying array can expand.</li></ul>
+
+
+
+<p class="has-medium-font-size">Above internal representation is described by <strong>SliceHeader</strong> struct which looks like&nbsp;this:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type SliceHeader struct {
+        Pointer uintptr
+        Len  int
+        Cap  int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The<strong> Pointer</strong> field in the slice header is a pointer to the underlying array.&nbsp; Len is the current length of the slice and Cap is the capacity of the slice. Similar to array a slice index starts from <strong>zero</strong> till<strong> length_of_slice-1</strong>. So a slice of 3 lengths and 5 capacity will look like below</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="391" height="251" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2020/05/slice.jpg?resize=391%2C251&#038;ssl=1" alt="" class="wp-image-2183" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2020/05/slice.jpg?w=391&amp;ssl=1 391w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2020/05/slice.jpg?resize=300%2C193&amp;ssl=1 300w" sizes="(max-width: 391px) 100vw, 391px" data-recalc-dims="1" /></figure>
+
+
+
+<h1 class="wp-block-heading"><strong><strong>Creating</strong> a slice</strong></h1>
+
+
+
+<p class="has-medium-font-size">There are four ways of creating a slice</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the []&lt;type&gt;{} format</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Creating a slice from another slice or array</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using make</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using new</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s look at each of above method one by one.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the []&lt;type&gt;{} format</strong></h2>
+
+
+
+<p class="has-medium-font-size">The most common way of declaring a slice is this</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">s := []int</code></pre>
+
+
+
+<p class="has-medium-font-size">It declares an empty of slice of 0 length and 0 capacity. We can also initialise the slice during declaration.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">s := []int{1,2}</code></pre>
+
+
+
+<p class="has-medium-font-size">It declares a slice of integers of length 2 and also the capacity of 2. The capacity will be equal to the actual slice elements specified. We also have two library functions provided by go which can be used to know the <strong>length</strong> and <strong>capacity</strong> of a slice.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>len()</strong> function &#8211; for&nbsp; length of the slice</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>cap()</strong> function &#8211; for capacity of the slice</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a small program which shows the above points</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := []int{}
+    fmt.Println(len(sample))
+    fmt.Println(cap(sample))
+    fmt.Println(sample)
+
+    letters := []string{"a", "b", "c"}
+    fmt.Println(len(letters))
+    fmt.Println(cap(letters))
+    fmt.Println(letters)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+0
+[]
+
+3
+3
+[a b c]</code></pre>
+
+
+
+<p class="has-medium-font-size">When the actual elements are not specified, then both length and capacity of the slice is zero. When actual elements are specified , both length and capacity is equal to the number of actual elements specified.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Creating a slice from another slice or array</strong></h2>
+
+
+
+<p class="has-medium-font-size">A slice can be created by re-slicing an exiting slice or array.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Create a slice from Array</strong></h3>
+
+
+
+<p class="has-medium-font-size">The format for creating a new slice by re-slicing an existing array is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[n]sample[start:end]</code></pre>
+
+
+
+<p class="has-medium-font-size">The above operation will return a new slice from the array<strong>&nbsp;</strong>starting from index <strong>start</strong> to index <strong>end-1. </strong>So the element at index <strong>end </strong>is not included in the newly created slice. While re-slicing , both start and end index is optional.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The default value of the start index is zero</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The default value of the end index is the length of the array</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := [5]int{1, 2, 3, 4, 5}
+
+    //Both start and end
+    num1 := numbers[2:4]
+    fmt.Println("Both start and end")
+    fmt.Printf("num1=%v\n", num1)
+    fmt.Printf("length=%d\n", len(num1))
+    fmt.Printf("capacity=%d\n", cap(num1))
+
+    //Only start
+    num2 := numbers[2:]
+    fmt.Println("\nOnly start")
+    fmt.Printf("num1=%v\n", num2)
+    fmt.Printf("length=%d\n", len(num2))
+    fmt.Printf("capacity=%d\n", cap(num2))
+
+    //Only end
+    num3 := numbers[:3]
+    fmt.Println("\nOnly end")
+    fmt.Printf("num1=%v\n", num3)
+    fmt.Printf("length=%d\n", len(num3))
+    fmt.Printf("capacity=%d\n", cap(num3))
+
+    //None
+    num4 := numbers[:]
+    fmt.Println("\nOnly end")
+    fmt.Printf("num1=%v\n", num4)
+    fmt.Printf("length=%d\n", len(num4))
+    fmt.Printf("capacity=%d\n", cap(num4))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Both start and end
+num1=[3 4]
+length=2
+capacity=3
+
+Only start
+num1=[3 4 5]
+length=3
+capacity=3
+
+Only end
+num1=[1 2 3]
+length=3
+capacity=5
+
+Only end
+num1=[1 2 3 4 5]
+length=5
+capacity=5</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in above example that</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>length of newly created slice = (<strong>end</strong>&#8211;<strong>start</strong>)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>capacity of newly created slice = (<strong>length_of_array</strong>&#8211;<strong>start</strong>)</li></ul>
+
+
+
+<p class="has-medium-font-size">The <strong>num1</strong> slice would look like</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="391" height="251" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2020/05/slice2.jpg?resize=391%2C251&#038;ssl=1" alt="" class="wp-image-2185" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2020/05/slice2.jpg?w=391&amp;ssl=1 391w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2020/05/slice2.jpg?resize=300%2C193&amp;ssl=1 300w" sizes="(max-width: 391px) 100vw, 391px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">The newly created slices still refer the original array. To check this change element at any one of the index of the array and then reprint the slice</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers[3] = 8
+fmt.Printf("num1=%v\n", num2)
+fmt.Printf("num3=%v\n", num3)
+fmt.Printf("num4=%v\n", num4)</code></pre>
+
+
+
+<p class="has-medium-font-size">Here is the output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">num1=[3 8 5]
+num3=[1 2 3 8]
+num4=[1 2 3 8 5]</code></pre>
+
+
+
+<p class="has-medium-font-size">This proves that each of the new slice is still referring to the original array.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Create a slice from slice</strong></h3>
+
+
+
+<p class="has-medium-font-size">Whatever we discussed about re-slicing from an array also applies here as well. See below example which illustrates same thing</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := []int{1, 2, 3, 4, 5}
+
+    //Both start and end
+    num1 := numbers[2:4]
+    fmt.Println("Both start and end")
+    fmt.Printf("num1=%v\n", num1)
+    fmt.Printf("length=%d\n", len(num1))
+    fmt.Printf("capacity=%d\n", cap(num1))
+
+    //Only start
+    num2 := numbers[2:]
+    fmt.Println("\nOnly start")
+    fmt.Printf("num1=%v\n", num2)
+    fmt.Printf("length=%d\n", len(num2))
+    fmt.Printf("capacity=%d\n", cap(num2))
+
+    //Only end
+    num3 := numbers[:3]
+    fmt.Println("\nOnly end")
+    fmt.Printf("num1=%v\n", num3)
+    fmt.Printf("length=%d\n", len(num3))
+    fmt.Printf("capacity=%d\n", cap(num3))
+
+    //None
+    num4 := numbers[:]
+    fmt.Println("\nOnly end")
+    fmt.Printf("num1=%v\n", num4)
+    fmt.Printf("length=%d\n", len(num4))
+    fmt.Printf("capacity=%d\n", cap(num4))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Both start and end
+num1=[3 4]
+length=2
+capacity=3
+
+Only start
+num1=[3 4 5]
+length=3
+capacity=3
+
+Only end
+num1=[1 2 3]
+length=3
+capacity=5
+
+Only end
+num1=[1 2 3 4 5]
+length=5
+capacity=5</code></pre>
+
+
+
+<p class="has-medium-font-size">Here also the newly created slices refer to the same underlying array that was being referred to by the original slice.&nbsp; To check this change element at any one of the index of the original slice and then reprint all the newly created slices</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers[3] = 8
+fmt.Printf("num1=%v\n", num2)
+fmt.Printf("num3=%v\n", num3)
+fmt.Printf("num4=%v\n", num4)</code></pre>
+
+
+
+<p class="has-medium-font-size">Here is the output:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">num1=[3 8 5]
+num3=[1 2 3 8]
+num4=[1 2 3 8 5]</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the&nbsp;make function</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>make</strong> is a builtin function provided by go that can also be used to create a slice. Below is the signature of make function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func make([]{type}, length, capacity int) []{type}</code></pre>
+
+
+
+<p class="has-medium-font-size">Capacity is an optional parameter while creating slice using the make function. When capacity is omitted, the capacity of the slice is equal length specified for the slice. When using make function, behind the scenes go allocates an array equal to the capacity. All the elements of the allocated array are initialized with default zero value of the type. Let&#8217;s see a program illustrating this point.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := make([]int, 3, 5)
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+
+    //With capacity ommited
+    numbers = make([]int, 3)
+    fmt.Println("\nCapacity Ommited")
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[0 0 0]
+length=3
+capacity=5
+
+Capacity Ommited
+numbers=[0 0 0]
+length=3
+capacity=3</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the new function</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>new</strong> is a builtin function provided by go that can also be used to create a slice. It is not a very popular way of creating a slice as <strong>make</strong> is much more flexible in terms of functionalities . It is not generally used and also using <strong>new </strong>function returns a pointer to nil slice. Let&#8217;s see an example. In below example we are using the dereferencing operator <strong>&#8216;*&#8217;</strong> as <strong>new </strong>function returns a pointer to the nil slice.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := new([]int)
+    fmt.Printf("numbers=%v\n", *numbers)
+    fmt.Printf("length=%d\n", len(*numbers))
+    fmt.Printf("capacity=%d\n", cap(*numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[]
+length=0
+capacity=0</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Length vs Capacity</strong></h1>
+
+
+
+<p class="has-medium-font-size">Before moving further, let&#8217;s emphasis on understanding the caveats of length and capacity. Let&#8217;s create a simple slice with capacity greater than length.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers := make([]int, 3, 5)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Accessing the slice behind its length will result in a run time error &#8220;Index out of range&#8221;. It doesn&#8217;t matter if the accessed index is within the capacity. So the below line will cause the run time error.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers[4] = 5</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The length of the slice can be increased up to its capacity by re-slicing. So below re-slice will increase the length from 3 to 5.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers = numbers[0:5]</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The length of the slice can also be decreased using re-slicing. So below re-slice will decrease the length from 3 to 2</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers = numbers[0:2]</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The advantage of having capacity is that array of size capacity can be pre-allocated during the initialization.&nbsp; This is a performance boost as if more elements are needed to include in this array then space is already allocated for them.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see the program illustrating above points</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := make([]int, 3, 5)
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+
+    //This line will cause a runtime error index out of range [4] with length 3
+    //numbers[4] = 5
+   
+    //Increasing the length from 3 to 5
+    numbers = numbers[0:5]
+    fmt.Println("\nIncreasing length from 3 to 5")
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+
+    //Decresing the length from 3 to 2
+    numbers = numbers[0:2]
+    fmt.Println("\nDecreasing length from 3 to 2")
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[0 0 0]
+length=3
+capacity=5
+
+Increasing length from 3 to 5
+numbers=[0 0 0 0 0]
+length=5
+capacity=5
+
+Decreasing length from 3 to 2
+numbers=[0 0]
+length=2
+capacity=5</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Accessing and Modifying Slice Elements</strong></h1>
+
+
+
+<p class="has-medium-font-size">A slice element can be accessed by specifying the index. Slice element can also be allotted a new value using the index. Also, note that any changes in the underlying array will reflect back in the slice as we have also seen above. Let&#8217;s see a small example of accessing and modifying</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    array := [5]int{1, 2, 3, 4, 5}
+    slice := array[:]
+
+    //Modifying the slice
+    slice[1] = 7
+    fmt.Println("Modifying Slice")
+    fmt.Printf("Array=%v\n", array)
+    fmt.Printf("Slice=%v\n", slice)
+
+    //Modifying the array. Would reflect back in slice too
+    array[1] = 2
+    fmt.Println("\nModifying Underlying Array")
+    fmt.Printf("Array=%v\n", array)
+    fmt.Printf("Slice=%v\n", slice)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Modifying Slice
+Array=[1 7 3 4 5]
+Slice=[1 7 3 4 5]
+
+Modifying Underlying Array
+Array=[1 2 3 4 5]
+Slice=[1 2 3 4 5]</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Different ways of iterating a slice</strong></h1>
+
+
+
+<p class="has-medium-font-size">An array can be iterated using:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using for loop</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using for-range loop</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a code example for both</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    letters := []string{"a", "b", "c"}
+    //Using for loop
+    fmt.Println("Using for loop")
+    len := len(letters)
+    for i := 0; i < len; i++ {
+        fmt.Println(letters[i])
+    }
+
+    //Using for-range operator
+    fmt.Println("\nUsing for-range loop")
+    for i, letter := range letters {
+        fmt.Printf("%d %s\n", i, letter)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Using for loop
+a
+b
+c
+
+Using for-range loop
+0 a
+1 b
+2 c</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Appending to a slice</strong></h1>
+
+
+
+<p class="has-medium-font-size">go <strong>builtin</strong> package provides an <strong>append</strong> function that can be used to append to a slice at the end. Below is the signature of this function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func append(slice []Type, elems ...Type) []Type</code></pre>
+
+
+
+<p class="has-medium-font-size">The first argument is the slice itself. The second is the variable number of arguments which is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">elems ...Type</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>'...'</strong> operator is the variadic syntax. So basically <strong>...Type</strong> means It means that the append function can accept variable number of arguments of type <strong>Type</strong>. Below is the way for using this function. In below code we are appending 4 to a slice which has two elements. It appends at the end and returns the original slice. That is why we are collecting result again in <strong>numbers</strong> variable. It is also ok to assign the result to some other variable.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers := []int{1,2}
+numbers = append(numbers, 4) //Slice will become [1, 2, 4]</code></pre>
+
+
+
+<p class="has-medium-font-size">It is also ok to append many number of elements because the second argument is the variadic argument.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers := []int{1,2}
+numbers = append(numbers, 3, 4, 5) //Slice will become [1, 2, 3, 4, 5]</code></pre>
+
+
+
+<p class="has-medium-font-size">This function in the background increases the length and capacity of the slice. There are two cases</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When slice length is less than capacity.</li></ul>
+
+
+
+<p class="has-medium-font-size">In this case, on using the append function,&nbsp; the length of the slice will be increased&nbsp; by one without any change in its capacity. Let's see a example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := make([]int, 3, 5)
+    numbers[0] = 1
+    numbers[1] = 2
+    numbers[2] = 3
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+
+    //Append number 4
+    numbers = append(numbers, 4)
+    fmt.Println("\nAppend Number 4")
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+
+    //Append number 5
+    numbers = append(numbers, 4)
+    fmt.Println("\nAppend Number 5")
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[1 2 3]
+length=3
+capacity=5
+
+Append Number 4
+numbers=[1 2 3 4]
+length=4
+capacity=5
+
+Append Number 5
+numbers=[1 2 3 4 4]
+length=5
+capacity=5</code></pre>
+
+
+
+<p class="has-medium-font-size">Capacity in all cases doesn't changes and it is 5 while length increases by 1.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When slice length is greater than capacity.</li></ul>
+
+
+
+<p class="has-medium-font-size">In this case since there is no more capacity, so no new elements can be accommodated.&nbsp; So in this case under the hood an array of double the capacity will be allocated. The current array pointed by the&nbsp; slice will be copied to that new array. Now the slice will starting pointing to this new array. Hence the capacity will be doubled and length will be increased by 1. Let's see a example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers := make([]int, 3, 3)
+    numbers[0] = 1
+    numbers[1] = 2
+    numbers[2] = 3
+
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+
+    //Append number 4
+    numbers = append(numbers, 4)
+    fmt.Println("\nAppend Number 4")
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[1 2 3]
+length=3
+capacity=3
+
+Append Number 4
+numbers=[1 2 3 4]
+length=4
+capacity=6</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in above example that the capacity is doubled.</p>
+
+
+
+<p class="has-medium-font-size">It is also possible to append one slice to another slice. Below is the format for that.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">res := append(slice1, slice2...)</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice <strong>'...'</strong> after the second slice.<strong> '...' </strong>is the operator which means that the argument is a variadic parameter. Meaning that during run time slice2&nbsp;will be expanded to its individual elements which are passed as multiple arguments to the append function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    numbers1 := []int{1, 2}
+    numbers2 := []int{3, 4}
+    numbers := append(numbers1, numbers2...)
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[1 2 3 4]
+length=4
+capacity=4</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Copy a slice</strong></h1>
+
+
+
+<p class="has-medium-font-size">go <strong>builtin</strong> package provides <strong>copy</strong> function that can be used to copy a slice. Below is the signature of this function. It takes in two slices <strong>dst</strong> and <strong>src</strong>, and copies data from <strong>src</strong> to <strong>dst</strong>. It returns the number of elements copied.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func copy(dst, src []Type) int</code></pre>
+
+
+
+<p class="has-medium-font-size">There are two cases to be considered while using the copy function:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the length of <strong>src</strong> is greater than the length of dst, then the number of elements copied is the length of <strong>dst</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the length of <strong>dst</strong> is greater than the length of src, then the number of elements copied is the length of <strong>src</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Basically the number of elements copied is minimum of length of <strong>(src, dst).&nbsp;</strong></p>
+
+
+
+<p class="has-medium-font-size">Also to note then once the copy is done then any change in <strong>dst</strong> will not reflect in <strong>src</strong> and vice versaLet's see an example of it.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    src := []int{1, 2, 3, 4, 5}
+    dst := make([]int, 5)
+
+    numberOfElementsCopied := copy(dst, src)
+    fmt.Printf("Number Of Elements Copied: %d\n", numberOfElementsCopied)
+    fmt.Printf("dst: %v\n", dst)
+    fmt.Printf("src: %v\n", src)
+
+    //After changing numbers2
+    dst[0] = 10
+    fmt.Println("\nAfter changing dst")
+    fmt.Printf("dst: %v\n", dst)
+    fmt.Printf("src: %v\n", src)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number Of Elements Copied: 5
+dst: [1 2 3 4 5]
+src: [1 2 3 4 5]
+
+After changing dst
+dst: [10 2 3 4 5]
+src: [1 2 3 4 5]</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Nil Slice</strong></h1>
+
+
+
+<p class="has-medium-font-size">The default zero value of a slice is nil. The length and capacity both of a nil slice is zero. Though it is possible to append to a nil slice as well. Let's see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var numbers []int
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+    numbers = append(numbers, 1)
+    fmt.Printf("numbers=%v\n", numbers)
+    fmt.Printf("length=%d\n", len(numbers))
+    fmt.Printf("capacity=%d\n", cap(numbers))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">numbers=[]
+length=0
+capacity=0
+numbers=[1]
+length=1
+capacity=1</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Multidimensional Slices</strong></h1>
+
+
+
+<p class="has-medium-font-size">As the multi-dimensional array is an array of arrays, similarly multi-dimensional slice is a slice of slices. To understand this, let's first look at the definition of a slice.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Data</strong> field in the slice header is a pointer to the underlying array. For a one dimensional slice, we have below declaration</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">oneDSlice := make([]int, 2)</code></pre>
+
+
+
+<p class="has-medium-font-size">To declare a two dimensional slice the declaration would be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">twoDSlice = make([][]int, 2)</code></pre>
+
+
+
+<p class="has-medium-font-size">Above declaration means that we want to create a <strong>slice</strong> of 2 slices. Carefully understand this point. But wait a second here, we haven't specified the second dimension here, meaning what is the length of each of the inner 2 slices. In case of slice, each of the inner slice has to be explicitly intialized like below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for i := range twoDSlice {
+    twoDSlice[i] = make([]int, 3)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">So using range on the original slice, we specify the length each of 2 slices using make.&nbsp; Below is one other way of doing the same but with slice elements specified</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var twoDSlice = make([][]int, 2)
+twoDSlice[0] = []int{1, 2, 3}
+twoDSlice[1] = []int{4, 5, 6}</code></pre>
+
+
+
+<p class="has-medium-font-size">Basically, with the above declaration, we create a slice of 2*3 dimensions which is a two-dimensional slice. The same idea can be extended to two-dimension, three-dimension, and so on.</p>
+
+
+
+<p class="has-medium-font-size">A complete working example of above two points</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    twoDSlice1 := make([][]int, 3)
+    for i := range twoDSlice1 {
+        twoDSlice1[i] = make([]int, 3)
+    }
+    fmt.Printf("Number of rows in slice: %d\n", len(twoDSlice1))
+    fmt.Printf("Number of columns in arsliceray: %d\n", len(twoDSlice1[0]))
+    fmt.Printf("Total number of elements in slice: %d\n", len(twoDSlice1)*len(twoDSlice1[0]))
+    fmt.Println("First Slice")
+    for _, row := range twoDSlice1 {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+    twoDSlice2 := make([][]int, 2)
+    twoDSlice2[0] = []int{1, 2, 3}
+    twoDSlice2[1] = []int{4, 5, 6}
+    fmt.Println()
+    fmt.Printf("Number of rows in slice: %d\n", len(twoDSlice2))
+    fmt.Printf("Number of columns in arsliceray: %d\n", len(twoDSlice2[0]))
+    fmt.Printf("Total number of elements in slice: %d\n", len(twoDSlice2)*len(twoDSlice2[0]))
+    fmt.Println("Second Slice")
+    for _, row := range twoDSlice2 {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number of rows in slice: 2
+Number of columns in arsliceray: 3
+Total number of elements in slice: 6
+First Slice
+0
+0
+0
+0
+0
+0
+
+Number of rows in slice: 2
+Number of columns in arsliceray: 3
+Total number of elements in slice: 6
+Second Slice
+1
+2
+3
+4
+5
+6</code></pre>
+
+
+
+<p class="has-medium-font-size">We mentioned above that we&nbsp;are creating a two-dimensional slice of 2*3 dimensions.&nbsp; With that said the thought that might be coming to your mind is whether it is possible to have different lengths for inner slices. Yes, it is possible. Unlike arrays which have inner arrays of the same length, in case of slice since we initialize each of the inner slices individually, it is possible to have different length for inner slices</p>
+
+
+
+<p class="has-medium-font-size">Let's see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    twoDSlice := make([][]int, 2)
+    twoDSlice[0] = []int{1, 2, 3}
+    twoDSlice[1] = []int{4, 5}
+  
+    fmt.Printf("Number of rows in slice: %d\n", len(twoDSlice))
+    fmt.Printf("Len of first row: %d\n", len(twoDSlice[0]))
+    fmt.Printf("Len of second row: %d\n", len(twoDSlice[1]))
+    fmt.Println("Traversing slice")
+    for _, row := range twoDSlice {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number of rows in slice: 2
+Len of first row: 3
+Len of second row: 2
+Traversing slice
+1
+2
+3
+4
+5</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a small example of a three-dimensional slice as well. In the below program, we are creating a slice of 2*2*3 dimensions.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := make([][][]int, 2)
+    for i := range sample {
+        sample[i] = make([][]int, 2)
+        for j := range sample[i] {
+            sample[i][j] = make([]int, 3)
+        }
+    }
+    
+    fmt.Printf("Length of first dimension: %d\n", len(sample))
+    fmt.Printf("Length of second dimension: %d\n", len(sample[0]))
+    fmt.Printf("Length of third dimension: %d\n", len(sample[0][0]))
+    fmt.Printf("Overall Dimension of the slice: %d*%d*%d\n", len(sample), len(sample[0]), len(sample[0][0]))
+    fmt.Printf("Total number of elements in slice: %d\n", len(sample)*len(sample[0])*len(sample[0][0]))
+    for _, first := range sample {
+        for _, second := range first {
+            for _, value := range second {
+                fmt.Println(value)
+            }
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of first dimension: 2
+Length of second dimension: 2
+Length of third dimension: 3
+Overall Dimension of the slice: 2*2*3
+Total number of elements in slice: 12
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about slice in golang. Hope you have liked this article. Please share feedback/improvements/mistakes in comments</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/maps-in-golang">Maps</a><br><strong>Previous Tutorial</strong>&nbsp;– <a href="https://golangbyexamples.com/understanding-array-golang-complete-guid">Array</a></p>
+<p>The post <a href="https://golangbyexamples.com/slice-in-golang/">Slice in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/slice-in-golang/feed/</wfw:commentRss>
+			<slash:comments>8</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2181</post-id>	</item>
+		<item>
+		<title>Understanding Array in Go (Golang) &#8211; Complete Guide</title>
+		<link>https://golangbyexamples.com/understanding-array-golang-complete-guide/</link>
+					<comments>https://golangbyexamples.com/understanding-array-golang-complete-guide/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 13 May 2020 19:52:44 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[complete guide]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2137</guid>
+
+					<description><![CDATA[<p>This is the&#160; chapter 17 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&#160;Golang Comprehensive Tutorial Series Next Tutorial&#160;–&#160;SlicePrevious Tutorial&#160;– Struct Now let’s check...</p>
+<p>The post <a href="https://golangbyexamples.com/understanding-array-golang-complete-guide/">Understanding Array in Go (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the&nbsp; chapter 17 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/slice-in-golang/">Slice</a><br><strong>Previous Tutorial</strong>&nbsp;– <a href="https://golangbyexamples.com/struct-in-golang-complete-guide/">Struct</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Similar to any other programming language, golang also has <strong>array</strong> data structure. But in go, <strong>arrays</strong> behave little differently than other languages and also we have something called slice in golang which is like a reference to an array. In this article, we will study only array.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition</strong></h2>
+
+
+
+<p class="has-medium-font-size">An array is a contiguous collection of elements of the same type. It is an ordered sequence of elements stored contiguously in memory</p>
+
+
+
+<p class="has-medium-font-size">Here is the format for the declaration of an array</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := [size_of_array]{type}{a1, a2... an}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>size_of_array &#8211; number of elements in the array</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>&lt;type&gt; is type of each element in the array</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>a1, a2 &#8230; an are the actual elements.</li></ul>
+
+
+
+<p class="has-medium-font-size">In golang, the size of the array is part of its type. So &nbsp;This means that two arrays that have a different number of elements are of two different types and one cannot be assigned to another.  Below error will be raised in case we try to assign two arrays of different length</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">cannot use sample1 (type [1]int) as type [2]int in assignment</code></pre>
+
+
+
+<p class="has-medium-font-size">The code is:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample1 := [1]int{1}
+sample2 := [2]int{1,2}
+
+sample2 = sample1</code></pre>
+
+
+
+<p class="has-medium-font-size">For the same reason the length of array is fixed during create and cannot be changed later.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Declaration of an array</strong></h1>
+
+
+
+<p class="has-medium-font-size">Both number of elements and actual elements are optional in the array declaration.</p>
+
+
+
+<p class="has-medium-font-size">In below example, we see 4 ways of declaring of an array</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Specifying both the length of the array and actual elements. Eg.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[2]int{1, 2}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only length &#8211; In this case all the actual elements are filled up with default value zero of that type. Eg</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[2]int{}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only actual elements &#8211; In this case, the length of array will be equal to the number of actual elements. The symbol<strong> &#8216;&#8230;&#8217; </strong>needs to be used within square brackets like this <strong>[&#8230;]</strong> when not specifying the length. The symbol is an instruction to the compiler to calculate the length.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[...]int{2, 3}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Without length and actual elements &#8211; an empty array will be created in this case. Similar to above the symbol <strong>&#8216;&#8230;&#8217; </strong>also needs to be used in this case as well.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[...]int{}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a code example illustrating above points. Also please keep in mind that the builtin function <strong>len() </strong>can be used to calculate the length of an array. In below program we are using <strong>len()</strong> function to calculate the length of the array.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Both number of elements and actual elements
+    sample1 := [2]int{1, 2}
+    fmt.Printf("Sample1: Len: %d, %v\n", len(sample1), sample1)
+
+    //Only actual elements
+    sample2 := [...]int{2, 3}
+    fmt.Printf("Sample2: Len: %d, %v\n", len(sample2), sample2)
+
+    //Only number of elements
+    sample3 := [2]int{}
+    fmt.Printf("Sample3: Len: %d, %v\n", len(sample3), sample3)
+
+    //Without both number of elements and actual elements
+    sample4 := [...]int{}
+    fmt.Printf("Sample4: Len: %d, %v\n", len(sample4), sample4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Sample1: Len: 2, [1 2]
+Sample2: Len: 2, [2 3]
+Sample3: Len: 2, [0 0]
+Sample4: Len: 0, []</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in the above example that for <strong>sample3 </strong>variable the actual elements are filled up with the default value of int which is 0.</p>
+
+
+
+<p class="has-medium-font-size">It is also ok if the actual elements specified are less than the length of the array. The rest of the elements are filled up with the default value of the type specified. See the below example. The length of the array specified is 4 while only 2 actual elements are declared. Hence the remaining two elements are assigned value 0 which is the default zero value of an <strong>int</strong>.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [4]int{5, 8}
+    fmt.Printf("Sample: Len: %d, %v\n", len(sample), sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Sample: Len: 4, [5 8 0 0]</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Accessing array elements</strong></h1>
+
+
+
+<p class="has-medium-font-size">Since array element are stored in contiguous manner, we can access an array element using an index. Similarly individual array elements can also be assigned a value using index. Accessing out of bound index will cause a compilation error. See below examples illustrating these points. The first index position will be <strong>zero</strong> and last will <strong>(length_of_array-1)</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [2]string{"aa", "bb"}
+
+    fmt.Println(sample[0])
+    fmt.Println(sample[1])
+
+    sample[0] = "xx"
+    fmt.Println(sample)
+    //sample[3] = "yy"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">aa
+bb
+[xx bb]</code></pre>
+
+
+
+<p class="has-medium-font-size">On uncommenting the below line</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample[3] = "yy"</code></pre>
+
+
+
+<p class="has-medium-font-size">, it will give compilation error</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">invalid array index 3 (out of bounds for 2-element array)</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Arrays are value in go</strong></h1>
+
+
+
+<p class="has-medium-font-size">Array are value type in go. So an array variable name is not a pointer to the first element in fact it denotes the entire array. A copy of the array will be created when</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>An array variable is assigned to another array variable.</li><li>An array variable is passed as an argument to a function.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see above point with another example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample1 := [2]string{"a", "b"}
+    fmt.Printf("Sample1 Before: %v\n", sample1)
+    sample2 := sample1
+    sample2[0] = "c"
+    fmt.Printf("Sample1 After assignment: %v\n", sample1)
+    fmt.Printf("Sample2: %v\n", sample2)
+    test(sample1)
+    fmt.Printf("Sample1 After Test Function Call: %v\n", sample1)
+}
+func test(sample [2]string) {
+    sample[0] = "d"
+    fmt.Printf("Sample in Test function: %v\n", sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Sample1 Before: [a b]
+Sample1 After assignment: [a b]
+Sample2: 
+Sample in Test function: [d b]
+Sample1 After Test Function Call: [a b]</code></pre>
+
+
+
+<p class="has-medium-font-size">In above example,</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>we assigned the <strong>sample1</strong> to <strong>sample2</strong> and we then changed 0th index at <strong>sample2</strong> to have a different value.&nbsp; After that when we print <strong>sample1</strong>, we see that it hasn&#8217;t changed. This is because when we assign <strong>sample1</strong> to <strong>sample2</strong>, a copy is created and changing <strong>sample2</strong> doesn&#8217;t have any effect on <strong>sample1</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We passed <strong>sample1</strong> to the test function and then again changed its value in the test function at 0th index.&nbsp; After that when we print <strong>sample1</strong>, we see that it hasn&#8217;t changed. The reason is same, when <strong>sample1</strong> is passed as an argument to test function a copy of <strong>sample1</strong> is created.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Different ways of iterating an array</strong></h1>
+
+
+
+<p class="has-medium-font-size">An array can be iterated using:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using for loop</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using for-range loop</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a code example for both</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    letters := [3]string{"a", "b", "c"}
+    //Using for loop
+    fmt.Println("Using for loop")
+    len := len(letters)
+    for i := 0; i < len; i++ {
+        fmt.Println(letters[i])
+    }
+    //Using for-range operator
+    fmt.Println("\nUsing for-range loop")
+    for i, letter := range letters {
+        fmt.Printf("%d %s\n", i, letter)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Using for loop
+a
+b
+c
+
+Using for-range loop
+0 a
+1 b
+2 c</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>MultiDimensional Arrays</strong></h1>
+
+
+
+<p class="has-medium-font-size">Below is the format for declaring a two dimensional array</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := [x][y]{type}{{a11, a12 .. a1y},
+                       {a21, a22 .. a2y},
+                       {.. },
+                       {ax1, ax2 .. axy}}     </code></pre>
+
+
+
+<p class="has-medium-font-size">where</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>x denotes the number of rows</li><li>y denotes the number of columns</li><li>aij denotes an element present at i row and j column</li></ul>
+
+
+
+<p class="has-medium-font-size">The same idea can be extended to three dimensions, four dimensions, and so on. All the rules we discussed above also apply to multidimensional arrays too.</p>
+
+
+
+<p class="has-medium-font-size">Let's see a code example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+    fmt.Println("First Run")
+    for _, row := range sample {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+
+    sample[0][0] = 6
+    sample[1][2] = 1
+    fmt.Println("\nSecond Run")
+    for _, row := range sample {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">First Run
+1
+2
+3
+4
+5
+6
+
+Second Run
+6
+2
+3
+4
+5
+1</code></pre>
+
+
+
+<p class="has-medium-font-size">In above example we access the element of two dimensional array using index for both first and second dimension</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample[0][0] = 6</code></pre>
+
+
+
+<p class="has-medium-font-size">Also notice how we are traversing the two dimensional array. We need to use nested range . The first range traverses the arrays of array. The second range traverses the individual array after that.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about array in Golang. Hope you have liked this article. Please share feedback/improvements/mistakes in comments.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/slice-in-golang/">Slice</a><br><strong>Previous Tutorial</strong>&nbsp;– <a href="https://golangbyexamples.com/struct-in-golang-complete-guide/">Struct</a></p>
+<p>The post <a href="https://golangbyexamples.com/understanding-array-golang-complete-guide/">Understanding Array in Go (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/understanding-array-golang-complete-guide/feed/</wfw:commentRss>
+			<slash:comments>8</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2137</post-id>	</item>
+		<item>
+		<title>Understanding time and date in Go (Golang) &#8211; Complete Guide</title>
+		<link>https://golangbyexamples.com/all-about-time-and-date-golang/</link>
+					<comments>https://golangbyexamples.com/all-about-time-and-date-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 01 Feb 2020 08:08:05 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[complete guide]]></category>
+		<category><![CDATA[format]]></category>
+		<category><![CDATA[parse]]></category>
+		<category><![CDATA[timezone]]></category>
+		<category><![CDATA[using]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1292</guid>
+
+					<description><![CDATA[<p>Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&#160;Golang Comprehensive Tutorial Series. Now let&#8217;s see the current tutorial....</p>
+<p>The post <a href="https://golangbyexamples.com/all-about-time-and-date-golang/">Understanding time and date in Go (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>Note:</strong> If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a>. Now let&#8217;s see the current tutorial. Below is the table of contents.</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>Time</strong> or <strong>Date</strong> is represented in Go using <strong>time.Time</strong> struct. time can be also be represented as a</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unix Time (Also known as Epoch Time)</strong> &#8211; It is the number of seconds elapsed since 00:00:00 UTC&nbsp;on 1 January 1970. This time is also known as the Unix epoch.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Structure</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>time.Time</strong> object is used to represent a specific point in time. The <strong>time.Time</strong> struct is as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Time struct {
+    // wall and ext encode the wall time seconds, wall time nanoseconds,
+    // and optional monotonic clock reading in nanoseconds.
+    wall uint64
+    ext  int64
+    //Location to represent timeZone
+    // The nil location means UTC
+    loc *Location
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can notice that every <strong>time.Time</strong> object has an associated <strong>location</strong> value which is used to determine the minute, hour, month, day and year corresponding to that time.</p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Create a new time</strong></h1>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Using time.Now()</strong></h2>
+
+
+
+<p class="has-medium-font-size">This function can be used to get the current local timestamp. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Now() Time</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Using time.Date()</strong></h2>
+
+
+
+<p class="has-medium-font-size">This function returns the time which is <strong>yyyy-mm-dd hh:mm:ss + nsec</strong> nanoseconds with the appropriate time zone corresponding to the given location. The signature of the function is:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Understanding Duration</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>duration</strong> is the time that has elapsed between two instants of time. It is represented as <strong>int64nanosecond</strong> count. So duration is nothing in Go but just a number representing time in nanoseconds. So if duration value is&nbsp; equal to <strong>1000000000 </strong>then it represents <strong>1 sec</strong> or <strong>1000 milliseconds</strong> or <strong>10000000000 nanoseconds</strong><br></p>
+
+
+
+<p class="has-medium-font-size">As an example duration between two time values 1 hour apart will be below value which is equal number of nanoseconds in 1 hour. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1 *60*60*1000*1000*1000</code></pre>
+
+
+
+<p class="has-medium-font-size">It is represented as below in the <strong>time</strong> package. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Duration int64</code></pre>
+
+
+
+<p class="has-medium-font-size">Below are some common duration which are defined in <strong>time</strong> package</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">const (
+    Nanosecond  Duration = 1
+    Microsecond          = 1000 * Nanosecond
+    Millisecond          = 1000 * Microsecond
+    Second               = 1000 * Millisecond
+    Minute               = 60 * Second
+    Hour                 = 60 * Minute
+)</code></pre>
+
+
+
+<p class="has-medium-font-size">Some of the function defined on<strong> time.Time</strong> object that returns the <strong>Duration</strong> are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>func (t Time) Sub(u Time) Duration</strong> &#8211; It returns the duration t-u </li><li><strong>func Since(t Time) Duration &#8211; </strong>It returns the duration which has elapsed since t</li><li><strong>func Until(t Time) Duration</strong> &#8211; It returns the duration until t</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Add or Subtract to a time</strong></h1>
+
+
+
+<p class="has-medium-font-size">Now that you have understood what duration , let&#8217;s see how we can add or subtract to a time instance</p>
+
+
+
+<p class="has-medium-font-size"><strong>time</strong> package in golang defines two ways of adding or subtracting to a time.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Add </strong>function &#8211; It is used to add/subtract a duration to time t. Since duration can be represented in hours, minutes, seconds, milliseconds, microseconds and nanoseconds, therefore Add function can be used to add/subtract hours, minutes, seconds, milliseconds, microseconds and nanoseconds from a time . Its signature is</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) Add(d Duration) Time</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>AddDate </strong>function &#8211; It is used to add/subtract years, months and days to time t. Its signature is </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) AddDate(years int, months int, days int) Time</code></pre>
+
+
+
+<p class="has-medium-font-size">Note: Positive values are used to add to time and negative values are used to subtract. Let&#8217;s see a working example of Add and Subtract to time.</p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Add to time </strong></h2>
+
+
+
+<p class="has-medium-font-size">Below code can be used to add to time</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    t := time.Now()
+
+    //Add 1 hours
+    newT := t.Add(time.Hour * 1)
+    fmt.Printf("Adding 1 hour\n: %s\n", newT)
+
+    //Add 15 min
+    newT = t.Add(time.Minute * 15)
+    fmt.Printf("Adding 15 minute\n: %s\n", newT)
+
+    //Add 10 sec
+    newT = t.Add(time.Second * 10)
+    fmt.Printf("Adding 10 sec\n: %s\n", newT)
+
+    //Add 100 millisecond
+    newT = t.Add(time.Millisecond * 10)
+    fmt.Printf("Adding 100 millisecond\n: %s\n", newT)
+
+    //Add 1000 microsecond
+    newT = t.Add(time.Millisecond * 10)
+    fmt.Printf("Adding 1000 microsecond\n: %s\n", newT)
+
+    //Add 10000 nanosecond
+    newT = t.Add(time.Nanosecond * 10000)
+    fmt.Printf("Adding 1000 nanosecond\n: %s\n", newT)
+
+    //Add 1 year 2 month 4 day
+    newT = t.AddDate(1, 2, 4)
+    fmt.Printf("Adding 1 year 2 month 4 day\n: %s\n", newT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Adding 1 hour:
+ 2020-02-01 02:16:35.893847 +0530 IST m=+3600.000239893
+
+Adding 15 minute:
+ 2020-02-01 01:31:35.893847 +0530 IST m=+900.000239893
+
+Adding 10 sec:
+ 2020-02-01 01:16:45.893847 +0530 IST m=+10.000239893
+
+Adding 100 millisecond:
+ 2020-02-01 01:16:35.903847 +0530 IST m=+0.010239893
+
+Adding 1000 microsecond:
+ 2020-02-01 01:16:35.903847 +0530 IST m=+0.010239893
+
+Adding 1000 nanosecond:
+ 2020-02-01 01:16:35.893857 +0530 IST m=+0.000249893
+
+Adding 1 year 2 month 4 day:
+ 2021-04-05 01:16:35.893847 +0530 IST</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Subtract to time </strong></h2>
+
+
+
+<p class="has-medium-font-size">Below code can be used to subtract to time</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    t := time.Now()
+
+    //Add 1 hours
+    newT := t.Add(-time.Hour * 1)
+    fmt.Printf("Subtracting 1 hour:\n %s\n", newT)
+
+    //Add 15 min
+    newT = t.Add(-time.Minute * 15)
+    fmt.Printf("Subtracting 15 minute:\n %s\n", newT)
+
+    //Add 10 sec
+    newT = t.Add(-time.Second * 10)
+    fmt.Printf("Subtracting 10 sec:\n %s\n", newT)
+
+    //Add 100 millisecond
+    newT = t.Add(-time.Millisecond * 10)
+    fmt.Printf("Subtracting 100 millisecond:\n %s\n", newT)
+
+    //Add 1000 microsecond
+    newT = t.Add(-time.Millisecond * 10)
+    fmt.Printf("Subtracting 1000 microsecond:\n %s\n", newT)
+
+    //Add 10000 nanosecond
+    newT = t.Add(-time.Nanosecond * 10000)
+    fmt.Printf("Subtracting 1000 nanosecond:\n %s\n", newT)
+
+    //Add 1 year 2 month 4 day
+    newT = t.AddDate(-1, -2, -4)
+    fmt.Printf("Subtracting 1 year 2 month 4 day:\n %s\n", newT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Subtracting 1 hour:
+ 2020-02-01 00:18:29.772673 +0530 IST m=-3599.999784391
+
+Subtracting 15 minute:
+ 2020-02-01 01:03:29.772673 +0530 IST m=-899.999784391
+
+Subtracting 10 sec:
+ 2020-02-01 01:18:19.772673 +0530 IST m=-9.999784391
+
+Subtracting 100 millisecond:
+ 2020-02-01 01:18:29.762673 +0530 IST m=-0.009784391
+
+Subtracting 1000 microsecond:
+ 2020-02-01 01:18:29.762673 +0530 IST m=-0.009784391
+
+Subtracting 1000 nanosecond:
+ 2020-02-01 01:18:29.772663 +0530 IST m=+0.000205609
+
+Subtracting 1 year 2 month 4 day:
+ 2018-11-27 01:18:29.772673 +0530 IST</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Time Parsing/Formatting</strong></h1>
+
+
+
+<p class="has-medium-font-size"> If you have worked with time/date formatting/parsing in other languages you might have noticed that the other languages use special placeholders for time/date formatting. For eg ruby language uses</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>%d for day</li><li>%Y for year</li></ul>
+
+
+
+<p class="has-medium-font-size">etc</p>
+
+
+
+<p class="has-medium-font-size">Golang, instead of using codes such as above, uses date and time format placeholders that look like date and time only. Go uses standard time, which is:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Mon Jan 2 15:04:05 MST 2006  (MST is GMT-0700)
+or 
+01/02 03:04:05PM '06 -0700</code></pre>
+
+
+
+<p class="has-medium-font-size"><br>So if you notice go uses </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>01 for day of the month , </li><li>02 for the month </li><li>03 for hours , </li><li>04 for minutes </li><li>05 for second </li><li>and so on </li></ul>
+
+
+
+<p class="has-medium-font-size">Below placeholder table describes the exact mapping. Go takes a more pragmatic approach where you don&#8217;t need to remember or lookup for the traditional formatting codes as in other languages</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td><strong>Type</strong></td><td><strong>Placeholder</strong></td></tr><tr><td>Day</td><td><strong>2</strong> or <strong>02</strong> or <strong>_2</strong></td></tr><tr><td>Day of Week</td><td><strong>Monday</strong> or <strong>Mon</strong></td></tr><tr><td>Month</td><td><strong>01</strong> or <strong>1</strong> or <strong>Jan</strong> or <strong>January</strong></td></tr><tr><td>Year</td><td><strong>2006</strong> or <strong>06</strong></td></tr><tr><td>Hour</td><td><strong>03</strong> or <strong>3 </strong>or <strong>15</strong></td></tr><tr><td>Minutes</td><td><strong>04</strong> or <strong>4</strong></td></tr><tr><td>Seconds</td><td><strong>05</strong> or <strong>5</strong></td></tr><tr><td>Milli Seconds&nbsp; (ms)</td><td><strong>.000&nbsp; &nbsp; &nbsp; &nbsp; </strong>//Trailing zero will be includedor<strong> .999 </strong>&nbsp; //Trailing zero will be omitted</td></tr><tr><td>Micro Seconds (μs)</td><td><strong>.000000&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </strong>//Trailing zero will be includedor <strong>.999999</strong>&nbsp; &nbsp; &nbsp; &nbsp; //Trailing zero will be omitted</td></tr><tr><td>Nano Seconds (ns)</td><td><strong>.000000000&nbsp; &nbsp; &nbsp; &nbsp; </strong>//Trailing zero will be includedor <strong>.999999999 </strong> //Trailing zero will be omitted</td></tr><tr><td>am/pm</td><td><strong>PM</strong> or <strong>pm</strong></td></tr><tr><td>Timezone</td><td><strong>MST</strong></td></tr><tr><td>Timezone offset</td><td><strong> Z0700 </strong>or<strong> Z070000</strong> or <strong>Z07</strong> or <strong>Z07:00</strong> or <strong>Z07:00:00</strong>&nbsp; or <strong>-0700</strong> or&nbsp; <strong>-070000</strong> or <strong>-07</strong> or <strong>-07:00</strong> or <strong>-07:00:00</strong></td></tr></tbody></table></figure>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Time Parse Example</strong></h2>
+
+
+
+<p class="has-medium-font-size">Now coming back to <strong>time.Parse</strong>. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">func Parse(layout, value string) (Time, error)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>time.Parse</strong> function takes in two arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First argument is the layout consisting of time format placeholder</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Second argument is the actual formatted string representing a time.</li></ul>
+
+
+
+<p class="has-medium-font-size">The way you have to go about this is to make sure that the layout string (first argument ) matches the string representation (second argument) of the time you want to parse into time.Time. For parsing</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For parsing <strong>2020-01-29</strong>, layout string should be <strong>06-01-02 </strong>or<strong> 2006-01-02</strong> or something which maps correctly based on above placeholder table.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Similarly for parsing <strong>&#8220;2020-Jan-29 Wednesday 12:19:25&#8221;</strong> the layout string can be <strong>&#8220;2006-Jan-02 Monday 03:04:05&#8221;</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Below are the working Code Examples of <strong>time.Parse(). </strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    //Parse YYYY-MM-DD
+    timeT, _ := time.Parse("2006-01-02", "2020-01-29")
+    fmt.Println(timeT)
+
+    //Parse YY-MM-DD
+    timeT, _ = time.Parse("06-01-02", "20-01-29")
+    fmt.Println(timeT)
+
+    //Parse YYYY-#{MonthName}-DD
+    timeT, _ = time.Parse("2006-Jan-02", "2020-Jan-29")
+    fmt.Println(timeT)
+
+    //Parse YYYY-#{MonthName}-DD WeekDay HH:MM:SS
+    timeT, _ = time.Parse("2006-Jan-02 Monday 03:04:05", "2020-Jan-29 Wednesday 12:19:25")
+    fmt.Println(timeT)
+
+    //Parse YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset
+    timeT, _ = time.Parse("2006-Jan-02 Monday 03:04:05 PM MST -07:00", "2020-Jan-29 Wednesday 12:19:25 AM IST +05:30")
+    fmt.Println(timeT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2020-01-29 00:00:00 +0000 UTC
+2020-01-29 00:00:00 +0000 UTC
+2020-01-29 00:00:00 +0000 UTC
+2020-01-29 12:19:25 +0000 UTC
+2020-01-29 00:19:25 +0530 IST</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Time Formatting Example</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>time.Format </strong>function can be used to format time to a string representation. The signature of the function is </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) Format(layout string)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see some time format code examples</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    now := time.Now()
+    
+    //Format YYYY-MM-DD
+    fmt.Printf("YYYY-MM-DD: %s\n", now.Format("2006-01-02"))
+
+    //Format YY-MM-DD
+    fmt.Printf("YY-MM-DD: %s\n", now.Format("06-01-02"))
+
+    //Format YYYY-#{MonthName}-DD
+    fmt.Printf("YYYY-#{MonthName}-DD: %s\n", now.Format("2006-Jan-02"))
+
+    //Format HH:MM:SS
+    fmt.Printf("HH:MM:SS: %s\n", now.Format("03:04:05"))
+
+    //Format HH:MM:SS Millisecond
+    fmt.Printf("HH:MM:SS Millisecond: %s\n", now.Format("03:04:05 .999"))
+
+    //Format YYYY-#{MonthName}-DD WeekDay HH:MM:SS
+    fmt.Printf("YYYY-#{MonthName}-DD WeekDay HH:MM:SS: %s\n", now.Format("2006-Jan-02 Monday 03:04:05"))
+
+    //Format YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset
+    fmt.Printf("YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset: %s\n", now.Format("2006-Jan-02 Monday 03:04:05 PM MST -07:00"))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">YYYY-MM-DD: 2020-01-25
+YY-MM-DD: 20-01-25
+YYYY-#{MonthName}-DD: 2020-Jan-25
+HH:MM:SS: 11:14:16
+HH:MM:SS Millisecond: 11:14:16 .213
+YYYY-#{MonthName}-DD WeekDay HH:MM:SS: 2020-Jan-25 Saturday 11:14:16
+YYYY-#{MonthName}-DD WeekDay HH:MM:SS PM Timezone TimezoneOffset: 2020-Jan-25 Saturday 11:14:16 PM IST +05:30</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Time Diff</strong></h1>
+
+
+
+<p class="has-medium-font-size"> <strong>time</strong> package has a method <strong>Sub</strong> which can be used to get the difference between two different time values. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (t Time) Sub(u Time) Duration</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">currentTime := time.Now()
+oldTime := time.Date(2020, 1, 2, 0, 0, 0, 0, time.UTC)
+diff := currentTime.Sub(oldTime)</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Time Conversion </strong></h1>
+
+
+
+<p class="has-medium-font-size">Below code shows conversion of </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>time.Time to Unix Timestamp</li><li>Unix Timestamp to time.Time</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    tNow := time.Now()
+
+    //time.Time to Unix Timestamp
+    tUnix := tNow.Unix()
+    fmt.Printf("timeUnix %d\n", tUnix)
+
+    //Unix Timestamp to time.Time
+    timeT := time.Unix(tUnix, 0)
+    fmt.Printf("time.Time: %s\n", timeT)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">timeUnix 1257894000
+time.Time: 2009-11-10 23:00:00 +0000 UTC</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Convert time between different timezones</strong></h2>
+
+
+
+<p class="has-medium-font-size">The <strong>In</strong> function can be used to change the <strong>location</strong> associated with a particular <strong>time.Time</strong> object. Whenever the <strong>In</strong> function is called on any <strong>time.Time</strong> object (say t)&nbsp; then, </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A copy of <strong>t</strong> is created representing the same time instant.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>t&#8217;s location is set to the location passed to In function for display purposes</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>t</strong> is returned back</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see the below working code which can be used to change the location value associated with a particular time.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    now := time.Now()
+
+    loc, _ := time.LoadLocation("UTC")
+    fmt.Printf("UTC Time: %s\n", now.In(loc))
+   
+    loc, _ = time.LoadLocation("Europe/Berlin")
+    fmt.Printf("Berlin Time: %s\n", now.In(loc))
+
+    loc, _ = time.LoadLocation("America/New_York")
+    fmt.Printf("New York Time: %s\n", now.In(loc))
+
+    loc, _ = time.LoadLocation("Asia/Dubai")
+    fmt.Printf("Dubai Time: %s\n", now.In(loc))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">UTC Time: 2020-01-31 18:09:41.705858 +0000 UTC
+Berlin Time: 2020-01-31 19:09:41.705858 +0100 CET
+New York Time: 2020-01-31 13:09:41.705858 -0500 EST
+Dubai Time: 2020-01-31 22:09:41.705858 +0400 +04</code></pre>
+<p>The post <a href="https://golangbyexamples.com/all-about-time-and-date-golang/">Understanding time and date in Go (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/all-about-time-and-date-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1292</post-id>	</item>
+	</channel>
+</rss>

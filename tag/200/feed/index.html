@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>200 Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/200/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/200/</link>
+	<description></description>
+	<lastBuildDate>Sat, 10 Jul 2021 11:20:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>200 Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/200/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Return 200 (StatusOK) Status Code in HTTP response in Go (Golang) -P</title>
+		<link>https://golangbyexamples.com/200-http-status-response-golang/</link>
+					<comments>https://golangbyexamples.com/200-http-status-response-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 10 Jul 2021 09:48:24 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[200]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5899</guid>
+
+					<description><![CDATA[<p>Overview net/http package of golang provides the status code constants which could be used to return different status codes- https://golang.org/src/net/http/status.go The same can also be used to return the 200 (StatusOK) HTTP...</p>
+<p>The post <a href="https://golangbyexamples.com/200-http-status-response-golang/">Return 200 (StatusOK) Status Code in HTTP response in Go (Golang) -P</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>net/http</strong> package of golang provides the status code constants which could be used to return different status codes- <a href="https://golang.org/src/net/http/status.go">https://golang.org/src/net/http/status.go</a></p>
+
+
+
+<p class="has-medium-font-size">The same can also be used to return the 200 (StatusOK) HTTP status code.&nbsp; The HTTP 200 status code is defined by the below constant</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">http.StatusOK</code></pre>
+
+
+
+<p class="has-medium-font-size">In this article, we will also see how to return a JSON body along with the 200 (StatusOK) Status Code</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+)
+
+func main() {
+	handler := http.HandlerFunc(handleRequest)
+	http.Handle("/example", handler)
+	http.ListenAndServe(":8080", nil)
+}
+
+func handleRequest(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+	resp := make(map[string]string)
+	resp["message"] = "Status OK"
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
+	w.Write(jsonResp)
+	return
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Here we are using the <strong>WriteHeader</strong> function to specify the 200 http status code and uses the <strong>Write</strong> function to also return the response bodyThe above code returns the below JSON request body back in response</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">{"message":"Status OK"}</code></pre>
+
+
+
+<p class="has-medium-font-size">Run the above program. It will start a server on 8080 port on your local machine. Now make the below curl call to the server</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v -X POST http://localhost:8080/example</code></pre>
+
+
+
+<p class="has-medium-font-size">Below will be the output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">* Connected to localhost (::1) port 8080 (#0)
+> POST /example HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.54.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Date: Sat, 10 Jul 2021 09:42:59 GMT
+< Content-Length: 23
+< Content-Type: text/plain; charset=utf-8
+< 
+* Connection #0 to host localhost left intact
+{"message":"Status OK"}</code></pre>
+
+
+
+<p class="has-medium-font-size">As you can see from the output, it will correctly return the 200 status code along with the body.</p>
+
+
+
+<p class="has-medium-font-size">You can also directly pass 200 to the WriteHeader function to send the 200 response.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">w.WriteHeader(200)</code></pre>
+
+
+
+<p class="has-medium-font-size">This also works correctly. Try it out.</p>
+
+
+
+<p class="has-medium-font-size">Also, check out our Golang advance tutorial Series - <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+<p>The post <a href="https://golangbyexamples.com/200-http-status-response-golang/">Return 200 (StatusOK) Status Code in HTTP response in Go (Golang) -P</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/200-http-status-response-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5899</post-id>	</item>
+	</channel>
+</rss>

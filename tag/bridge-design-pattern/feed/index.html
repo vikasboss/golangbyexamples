@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>bridge design pattern Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/bridge-design-pattern/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/bridge-design-pattern/</link>
+	<description></description>
+	<lastBuildDate>Sat, 01 Feb 2020 16:44:46 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>bridge design pattern Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/bridge-design-pattern/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Bridge Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/bridge-design-pattern-in-go/</link>
+					<comments>https://golangbyexamples.com/bridge-design-pattern-in-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 16 Nov 2019 17:42:45 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[bridge design pattern]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=603</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Bridge design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/bridge-design-pattern-in-go/">Bridge Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Introduction:</strong></h2>
+
+
+
+<p class="has-medium-font-size">Bridge design pattern is a structural design pattern that allows the separation of abstraction from its implementation. Sounds confusing?  Don&#8217;t worry, it will be more clear as we go along.</p>
+
+
+
+<p class="has-medium-font-size">This pattern suggests dividing a large class into two separate hierarchy</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Abstraction &#8211; It is an interface and children of the <strong>Abstraction</strong> are referred to as <strong>Refined Abstraction. </strong>The abstraction contains a reference to the implementation.</li><li>Implementation &#8211; It is also an interface and children&#8217;s of the <strong>Implementation</strong> are referred to as <strong>Concrete Implementation</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Abstraction hierarchy is being referred to by clients without worrying about the implementation. Let&#8217;s take an example. Assume you have two types of computer <strong>mac</strong> and <strong>windows. </strong>Also, let&#8217;s say two types of printer <strong>epson</strong> and <strong>hp</strong> . Both computers and printers needs to work with each other in any combination.&nbsp; The client will only access the computer without worrying about how print is happening. Instead of creating four structs for the 2*2 combination, we create two hierarchies</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Abstraction Hierarchy</li><li>Implementation Hierarchy</li></ul>
+
+
+
+<p class="has-medium-font-size">See the below figure. These two hierarchies communicate with each other via a bridge where <strong>Abstraction</strong> (computer here) contains a reference to the <strong>Implementation</strong>(printer here). Both the abstraction and implementation can continue to develop independently without affecting each other.&nbsp; Notice how <strong>win</strong> and <strong>mac</strong> embed the reference to <strong>printer</strong>. We can change the <strong>Abstraction&#8217;sImplementation</strong> (i.e., computer&#8217;s printer) at run time as abstraction refers to implementation via the interface. On calling <strong>mac.print() or windows.print()</strong> it dispatches the request to <strong>printer.printFile()</strong>. This acts as a bridge and provides a loose coupling between the two.</p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="640" height="344" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-2.jpg?resize=640%2C344&#038;ssl=1" alt="" data-id="625" data-full-url="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-2.jpg?fit=821%2C441&amp;ssl=1" data-link="https://golangbyexamples.com/bridge-design-pattern-in-go/bridge-design-pattern-2/" class="wp-image-625" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-2.jpg?w=821&amp;ssl=1 821w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-2.jpg?resize=300%2C161&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-2.jpg?resize=768%2C413&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-2 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img decoding="async" width="640" height="407" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-1.jpg?resize=640%2C407&#038;ssl=1" alt="" data-id="624" data-full-url="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-1.jpg?fit=803%2C511&amp;ssl=1" data-link="https://golangbyexamples.com/bridge-design-pattern-in-go/bridge-design-pattern-1/" class="wp-image-624" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-1.jpg?w=803&amp;ssl=1 803w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-1.jpg?resize=300%2C191&amp;ssl=1 300w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Bridge-Design-Pattern-1.jpg?resize=768%2C489&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Practical Example&#8221;</strong> below<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Abstraction</td><td>computer.go</td></tr><tr><td>Refined Abstraction 1</td><td>win.go</td></tr><tr><td>Refined Abstraction 2</td><td>mac.go</td></tr><tr><td>Implementation</td><td>printer.go</td></tr><tr><td>Concrete Implementation 1</td><td>epson.go</td></tr><tr><td>Concrete Implementation 2</td><td>hp.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>computer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type computer interface {
+    print()
+    setPrinter(printer)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>mac.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type mac struct {
+    printer printer
+}
+
+func (m *mac) print() {
+    fmt.Println("Print request for mac")
+    m.printer.printFile()
+}
+
+func (m *mac) setPrinter(p printer) {
+    m.printer = p
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>windows.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type windows struct {
+    printer printer
+}
+
+func (w *windows) print() {
+    fmt.Println("Print request for windows")
+    w.printer.printFile()
+}
+
+func (w *windows) setPrinter(p printer) {
+    w.printer = p
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>printer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type printer interface {
+    printFile()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>epson.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type epson struct {
+}
+
+func (p *epson) printFile() {
+    fmt.Println("Printing by a EPSON Printer")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>hp.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type hp struct {
+}
+
+func (p *hp) printFile() {
+    fmt.Println("Printing by a HP Printer")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    hpPrinter := &hp{}
+    epsonPrinter := &epson{}
+    macComputer := &mac{}
+    macComputer.setPrinter(hpPrinter)
+    macComputer.print()
+    fmt.Println()
+    macComputer.setPrinter(epsonPrinter)
+    macComputer.print()
+    fmt.Println()
+    winComputer := &windows{}
+    winComputer.setPrinter(hpPrinter)
+    winComputer.print()
+    fmt.Println()
+    winComputer.setPrinter(epsonPrinter)
+    winComputer.print()
+    fmt.Println()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Print request for mac
+Printing by a HP Printer
+
+Print request for mac
+Printing by a EPSON Printer
+
+Print request for windows
+Printing by a HP Printer
+
+Print request for windows</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type computer interface {
+    print()
+    setPrinter(printer)
+}
+
+type mac struct {
+    printer printer
+}
+
+func (m *mac) print() {
+    fmt.Println("Print request for mac")
+    m.printer.printFile()
+}
+
+func (m *mac) setPrinter(p printer) {
+    m.printer = p
+}
+
+type windows struct {
+    printer printer
+}
+
+func (w *windows) print() {
+    fmt.Println("Print request for windows")
+    w.printer.printFile()
+}
+
+func (w *windows) setPrinter(p printer) {
+    w.printer = p
+}
+
+type printer interface {
+    printFile()
+}
+
+type epson struct {
+}
+
+func (p *epson) printFile() {
+    fmt.Println("Printing by a EPSON Printer")
+}
+
+type hp struct {
+}
+
+func (p *hp) printFile() {
+    fmt.Println("Printing by a HP Printer")
+}
+
+func main() {
+    hpPrinter := &hp{}
+    epsonPrinter := &epson{}
+    macComputer := &mac{}
+    macComputer.setPrinter(hpPrinter)
+    macComputer.print()
+    fmt.Println()
+    macComputer.setPrinter(epsonPrinter)
+    macComputer.print()
+    fmt.Println()
+    winComputer := &windows{}
+    winComputer.setPrinter(hpPrinter)
+    winComputer.print()
+    fmt.Println()
+    winComputer.setPrinter(epsonPrinter)
+    winComputer.print()
+    fmt.Println()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Print request for mac
+Printing by a HP Printer
+
+Print request for mac
+Printing by a EPSON Printer
+
+Print request for windows
+Printing by a HP Printer
+
+Print request for windows</code></pre>
+<p>The post <a href="https://golangbyexamples.com/bridge-design-pattern-in-go/">Bridge Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/bridge-design-pattern-in-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">603</post-id>	</item>
+	</channel>
+</rss>

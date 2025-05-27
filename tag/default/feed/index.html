@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>default Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/default/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/default/</link>
+	<description></description>
+	<lastBuildDate>Sat, 04 Jan 2020 17:24:41 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>default Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/default/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Default Zero Value of all Types in Go (Golang) With Examples</title>
+		<link>https://golangbyexamples.com/go-default-zero-value-all-types/</link>
+					<comments>https://golangbyexamples.com/go-default-zero-value-all-types/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 04 Jan 2020 15:06:55 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[datatype]]></category>
+		<category><![CDATA[default]]></category>
+		<category><![CDATA[examples]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[sidetoc]]></category>
+		<category><![CDATA[type]]></category>
+		<category><![CDATA[zero]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1080</guid>
+
+					<description><![CDATA[<p>Default Value Table Type Default Value Integer 0 Float 0 Complex Number 0 Real and 0 Imaginary Part Byte 0 Rune 0 String &#8220;&#8221; Bool false Array Every array value to its...</p>
+<p>The post <a href="https://golangbyexamples.com/go-default-zero-value-all-types/">Default Zero Value of all Types in Go (Golang) With Examples</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-large-font-size"><strong>Default Value Table</strong></p>
+
+
+
+<figure class="wp-block-table is-style-regular"><table class="has-subtle-light-gray-background-color has-background"><tbody><tr><td><strong>Type</strong></td><td><strong>Default Value</strong></td></tr><tr><td>Integer</td><td>0</td></tr><tr><td>Float</td><td>0</td></tr><tr><td>Complex Number</td><td>0 Real and 0 Imaginary Part</td></tr><tr><td>Byte</td><td>0</td></tr><tr><td>Rune</td><td>0</td></tr><tr><td>String</td><td>&#8220;&#8221;</td></tr><tr><td>Bool</td><td>false</td></tr><tr><td>Array</td><td>Every array value to its default</td></tr><tr><td>Struct</td><td>Every field to its default</td></tr><tr><td>Map</td><td>nil</td></tr><tr><td>Channel</td><td>nil</td></tr><tr><td>Interface</td><td>nil</td></tr><tr><td>Slices</td><td>nil</td></tr><tr><td>Pointer</td><td>nil</td></tr><tr><td>Function</td><td>nil</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Examples:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of each. Use the menu on the side to navigate.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Integer</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var a int
+    fmt.Print("Default zero value of int: ")
+    fmt.Println(a)
+    
+    var b uint
+    fmt.Print("Default zero value of uint: ")
+    fmt.Println(b)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of int: 0
+Default zero value of uint: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Float</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a float32
+    fmt.Print("Default zero value of float: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of float: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Complex Number</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a complex64
+    fmt.Print("Default zero value of complex: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of complex: (0+0i)</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Byte</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a byte
+    fmt.Print("Default zero value of byte: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of byte: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Rune</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a rune
+    fmt.Print("Default zero value of rune: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of rune: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>String</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a string
+    fmt.Print("Default zero value of string: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of string:    //An emtpy string. Hence nothing is printed</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Bool</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a bool
+    fmt.Print("Default zero value of bool: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of bool: false</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Array</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of an array is the default value of its values. For eg in the below code, there is an array of two lengths of type bool. When we print the output is <strong>[false false]</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a [2]bool
+    fmt.Print("Default Zero Value of an array: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default Zero Value of a array: [false false]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Struct</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of a <strong>struct</strong> is the default value of its field. For eg in the below code, there is a struct sample with two field. One is of int type and the other is of the bool type. We create an instance of this struct and when we print it, the output is <strong>{0 false} </strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    type sample struct {
+        a int
+        b bool
+    }
+    a := sample{}
+    fmt.Print("Default Zero Value of an struct: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default Zero Value of a struct: {0 false} </code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Map</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of a <strong>map</strong> is <strong>nil. </strong>That is why the output of <strong>fmt.Println(a==nil)</strong> is true. When a map is passed to <strong>fmt.Println </strong>, it tries to print values in the map. That is why the output is map[]</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a map[bool]bool
+    fmt.Println(a == nil)
+    fmt.Print("Printing map: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+Printing map: map[]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Channel</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a chan int
+    fmt.Print("Default zero value of channel: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default zero value of channel: &lt;nil></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Interface</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a chan interface{}
+    fmt.Print("Default zero value of interface: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default zero value of interface: &lt; nil></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Slice</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of a slice is <strong>nil. </strong>That is why the output of <strong>fmt.Println(a==nil)</strong> is true. When a slice is passed to <strong>fmt.Println </strong>, it tries to print values in the slice. That is why the output is []</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a []int
+    fmt.Println(a == nil)
+    fmt.Print("Printing slice: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+Printing slice: []</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Function</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a func()
+    fmt.Print("Default Zero Value of a func: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default Zero Value of a func: &lt;nil></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Pointer</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a *int
+    fmt.Print("Default Zero Value of a pointer: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default Zero Value of a pointer: &lt;nil></p>
+<p>The post <a href="https://golangbyexamples.com/go-default-zero-value-all-types/">Default Zero Value of all Types in Go (Golang) With Examples</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-default-zero-value-all-types/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1080</post-id>	</item>
+	</channel>
+</rss>

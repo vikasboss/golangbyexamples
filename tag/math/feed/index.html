@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>math Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/math/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/math/</link>
+	<description></description>
+	<lastBuildDate>Sat, 28 Mar 2020 13:46:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>math Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/math/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Max of two numbers in Go (Golang)</title>
+		<link>https://golangbyexamples.com/max-of-two-numbers-go/</link>
+					<comments>https://golangbyexamples.com/max-of-two-numbers-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 13:46:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[max]]></category>
+		<category><![CDATA[maximum]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1882</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Max method that can be used to get the maximum of two numbers. Below is the signature of the function. It takes input two float...</p>
+<p>The post <a href="https://golangbyexamples.com/max-of-two-numbers-go/">Max of two numbers in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Max</strong> method that can be used to get the maximum of two numbers.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input two float numbers and returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Max(x, y float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Max</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Max(x, +Inf) = Max(+Inf, x) = +Inf</li><li>Max(x, NaN) = Max(NaN, x) = NaN</li><li>Max(+0, ±0) = Max(±0, +0) = +0</li><li>Max(-0, -0) = -0</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    max := math.Max(2, 3)
+    fmt.Println(max)
+
+    max = math.Max(-2.1, -3.3)
+    fmt.Println(max)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">3
+-2.1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/max-of-two-numbers-go/">Max of two numbers in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/max-of-two-numbers-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1882</post-id>	</item>
+		<item>
+		<title>Min of two numbers in Go (Golang)</title>
+		<link>https://golangbyexamples.com/min-of-two-numbers-golang/</link>
+					<comments>https://golangbyexamples.com/min-of-two-numbers-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 13:41:22 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[min]]></category>
+		<category><![CDATA[minimum]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1877</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Min method that can be used to get the minimum of two numbers. The Below is the signature of the function. It takes input two...</p>
+<p>The post <a href="https://golangbyexamples.com/min-of-two-numbers-golang/">Min of two numbers in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Min</strong> method that can be used to get the minimum of two numbers. The </p>
+
+
+
+<p class="has-medium-font-size"><br>Below is the signature of the function. It takes input two float numbers and returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Min(x, y float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Min</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Min(x, +Inf) = Min(+Inf, x) = +Inf</li><li>Min(x, NaN) = Min(NaN, x) = NaN</li><li>Min(+0, ±0) = Min(±0, +0) = +0</li><li>Min(-0, -0) = -0</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    min := math.Min(2, 3)
+    fmt.Println(min)
+
+    min = math.Min(-2.1, -3.3)
+    fmt.Println(min)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">2
+-3.3</code></pre>
+<p>The post <a href="https://golangbyexamples.com/min-of-two-numbers-golang/">Min of two numbers in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/min-of-two-numbers-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1877</post-id>	</item>
+		<item>
+		<title>Check if a number is negative or positive in Go (Golang)</title>
+		<link>https://golangbyexamples.com/num-positive-negative-go/</link>
+					<comments>https://golangbyexamples.com/num-positive-negative-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 10:27:10 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[number]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1873</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Signbit method that can be used to check whether a given number is negative or positive. It returns true for a negative number It returns...</p>
+<p>The post <a href="https://golangbyexamples.com/num-positive-negative-go/">Check if a number is negative or positive in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Signbit</strong> method that can be used to check whether a given number is negative or positive. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It returns true for a negative number</li><li>It returns false for a positive number</li></ul>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input a float and returns a bool</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Signbit(x float64) bool </code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    //Will return false for positive
+    res := math.Signbit(4)
+    fmt.Println(res)
+
+    //Will return true for negative
+    res = math.Signbit(-4)
+    fmt.Println(res)
+
+    //Will return false for zerp
+    res = math.Signbit(0)
+    fmt.Println(res)
+
+    //Will return false for positive float
+    res = math.Signbit(-0)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">false
+true
+false
+false</code></pre>
+<p>The post <a href="https://golangbyexamples.com/num-positive-negative-go/">Check if a number is negative or positive in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/num-positive-negative-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1873</post-id>	</item>
+		<item>
+		<title>Break number into integer and fraction parts in Go (Golang)</title>
+		<link>https://golangbyexamples.com/break-integer-fraction-part-go/</link>
+					<comments>https://golangbyexamples.com/break-integer-fraction-part-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 10:17:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[integer]]></category>
+		<category><![CDATA[math]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1864</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Modf method that can be used to break a floating-point number into integer and floating part. Please note that the integer part is also returned...</p>
+<p>The post <a href="https://golangbyexamples.com/break-integer-fraction-part-go/">Break number into integer and fraction parts in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Modf</strong> method that can be used to break a floating-point number into integer and floating part. Please note that the integer part is also returned as a float by this function.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.  It takes input as a float number and returns two float64. The first one is the integer part and second is the fractional part.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Modf(f float64) (int float64, frac float64)</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to note about above function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The return values <strong>int</strong> and <strong>frac</strong> add up to input <strong>f</strong></li><li><strong>int </strong>and <strong>frac</strong> has same sign a input <strong>f</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Also some special cases of <strong>Modf</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Modf(±Inf) = ±Inf, NaN</li><li>Modf(NaN) = NaN, NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    //Contain both integer and fraction
+    integer, fraction := math.Modf(2.5)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+
+    //Contain only integer part
+    integer, fraction = math.Modf(2)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+
+    //Negative floating point number
+    integer, fraction = math.Modf(-2.5)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+
+    //Contains only fraction part
+    integer, fraction = math.Modf(0.5)
+    fmt.Printf("Integer: %f. Fraction: %f\n", integer, fraction)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Integer: 2.000000. Fraction: 0.500000
+Integer: 2.000000. Fraction: 0.000000
+Integer: -2.000000. Fraction: -0.500000
+Integer: 0.000000. Fraction: 0.500000</code></pre>
+<p>The post <a href="https://golangbyexamples.com/break-integer-fraction-part-go/">Break number into integer and fraction parts in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/break-integer-fraction-part-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1864</post-id>	</item>
+		<item>
+		<title>Remainder or Modulus in Go (Golang)</title>
+		<link>https://golangbyexamples.com/remainder-modulus-go-golang/</link>
+					<comments>https://golangbyexamples.com/remainder-modulus-go-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Mar 2020 10:12:07 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[mod]]></category>
+		<category><![CDATA[modulus]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1859</guid>
+
+					<description><![CDATA[<p>Overview In this tutorial we will study about % Operator &#8211; applicable to get remainder for integers Mod function &#8211; can be used to get remainder in case of floats also Remainder...</p>
+<p>The post <a href="https://golangbyexamples.com/remainder-modulus-go-golang/">Remainder or Modulus in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">In this tutorial we will study about</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>% Operator</strong> &#8211; applicable to get remainder for integers</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Mod function</strong> &#8211; can be used to get remainder in case of floats also</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Remainder function</strong> &#8211; can be used to get IEEE 754 remainder</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>% Operator</strong></h1>
+
+
+
+<p class="has-medium-font-size">Golang has a modulus operator <strong>(&#8216; %&#8217;), </strong>that can be used to get the remainder on dividing two integer numbers. Let&#8217;s see a working program illustrating this</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Code</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    res := 4 % 2
+    fmt.Println(res)
+
+    res = 5 % 2
+    fmt.Println(res)
+
+    res = 8 % 3
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+1
+2</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Mod function for floats</strong></h1>
+
+
+
+<p class="has-medium-font-size">% function doesn&#8217;t work for floats. For getting remainder when dividing two floats we can use the <strong>Mod</strong> function provided by the <strong>math </strong>package itself. Below is the signature of the function. It takes in two floats and returns a float. It will return floating point remainder of x/y. The output will take the sign on x</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Mod(x, y float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Some special cases of <strong>Mod</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Mod(±Inf, y) = NaN</li><li>Mod(NaN, y) = NaN</li><li>Mod(x, 0) = NaN</li><li>Mod(x, ±Inf) = x</li><li>Mod(x, NaN) = NaN</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Code</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Mod(4, 2)
+    fmt.Println(res)
+
+    res = math.Mod(4.2, 2)
+    fmt.Println(res)
+
+    res = math.Mod(5, 2)
+    fmt.Println(res)
+
+    res = math.Mod(-5, 2)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+0.20000000000000018
+1
+-1</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>IEEE 754 Remainder</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong> math</strong> package of GO provides a <strong>Remainder</strong> method that can be used to get<strong> IEEE 754 Remainder</strong> of two numbers, one acting as a Numerator and the acting as a denominator. </p>
+
+
+
+<p class="has-medium-font-size">You can read more about why do we need <strong>IEEE 754 Remainder </strong>here &#8211; <a href="https://stackoverflow.com/questions/26671975/why-do-we-need-ieee-754-remainder">https://stackoverflow.com/questions/26671975/why-do-we-need-ieee-754-remainder</a><br></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input two numbers as float64 and returns a remainder which is also an  <strong>IEEE 754 float64 Remainder</strong>.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Remainder(x, y float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Some special cases of Remainder function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Remainder(±Inf, y) = NaN</li><li>Remainder(NaN, y) = NaN</li><li>Remainder(x, 0) = NaN</li><li>Remainder(x, ±Inf) = x</li><li>Remainder(x, NaN) = NaN</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Code</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Remainder(4, 2)
+    fmt.Println(res)
+
+    res = math.Remainder(5, 2)
+    fmt.Println(res)
+
+    res = math.Remainder(5.5, 2)
+    fmt.Println(res)
+
+    res = math.Remainder(5.5, 1.5)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+1
+-0.5
+-0.5</code></pre>
+<p>The post <a href="https://golangbyexamples.com/remainder-modulus-go-golang/">Remainder or Modulus in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/remainder-modulus-go-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1859</post-id>	</item>
+		<item>
+		<title>Square Root of a number in Go (Golang)</title>
+		<link>https://golangbyexamples.com/square-root-number-golang/</link>
+					<comments>https://golangbyexamples.com/square-root-number-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 26 Mar 2020 05:40:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[square root]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1846</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Sqrt method that can be used to get the cube root of that number. Below is the signature of the function. It takes input a...</p>
+<p>The post <a href="https://golangbyexamples.com/square-root-number-golang/">Square Root of a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Sqrt</strong> method that can be used to get the cube root of that number.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input a float and also returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Sqrt(x float64) float64</code></pre>
+
+
+
+<p>Some special cases of Sqrt function are</p>
+
+
+
+<ul class="wp-block-list"><li>Sqrt(±0) = ±0</li><li>Sqrt(±Inf) = ±Inf</li><li>Sqrt(x &lt; 0) = NaN</li><li>Sqrt(NaN) = NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	//Square root of a integer
+	res := math.Sqrt(4)
+	fmt.Println(res)
+
+	//Square root of a integer
+	res = math.Sqrt(9)
+	fmt.Println(res)
+
+	//Square Root of a float
+	res = math.Sqrt(30.33)
+	fmt.Println(res)
+
+	//Square Root of a negative number
+	res = math.Sqrt(-9)
+	fmt.Println(res)
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+3
+5.5072679252057455</code></pre>
+<p>The post <a href="https://golangbyexamples.com/square-root-number-golang/">Square Root of a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/square-root-number-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1846</post-id>	</item>
+		<item>
+		<title>Pi value in Go (Golang)</title>
+		<link>https://golangbyexamples.com/pi-value-golang/</link>
+					<comments>https://golangbyexamples.com/pi-value-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 26 Mar 2020 05:12:58 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[pi]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1839</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Pi constant. This is how it is defined in the constant.go file of math package. It is a float64 value Code: Output:</p>
+<p>The post <a href="https://golangbyexamples.com/pi-value-golang/">Pi value in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Pi</strong> constant.</p>
+
+
+
+<p class="has-medium-font-size"><br>This is how it is defined in the constant.go file of math package. It is a float64 value</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Pi  = 3.14159265358979323846264338327950288419716939937510582097494459</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	pi := math.Pi
+	fmt.Println(pi)
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">3.141592653589793</code></pre>
+<p>The post <a href="https://golangbyexamples.com/pi-value-golang/">Pi value in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/pi-value-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1839</post-id>	</item>
+		<item>
+		<title>Get absolute value of a number in Go (Golang)</title>
+		<link>https://golangbyexamples.com/absolute-value-number-golang/</link>
+					<comments>https://golangbyexamples.com/absolute-value-number-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 26 Mar 2020 05:02:27 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[number]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1836</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides an Abs method that can be used to get the absolute value of a number. Below is the signature of the function. It takes input a...</p>
+<p>The post <a href="https://golangbyexamples.com/absolute-value-number-golang/">Get absolute value of a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides an <strong>Abs</strong> method that can be used to get the absolute value of a number.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input a float and also returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Abs(x float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Some special cases of Abs function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Abs(±0) = ±0</li><li>Abs(±Inf) = ±Inf</li><li>Abs(NaN) = NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Abs(-2)
+    fmt.Println(res)
+
+    res = math.Abs(2)
+    fmt.Println(res)
+
+    res = math.Abs(3.5)
+    fmt.Println(res)
+
+    res = math.Abs(-3.5)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2
+2
+3.5
+3.5</code></pre>
+<p>The post <a href="https://golangbyexamples.com/absolute-value-number-golang/">Get absolute value of a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/absolute-value-number-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1836</post-id>	</item>
+		<item>
+		<title>Remove decimal points from a float in Go (Golang)</title>
+		<link>https://golangbyexamples.com/remove-decimal-float-go/</link>
+					<comments>https://golangbyexamples.com/remove-decimal-float-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 25 Mar 2020 18:14:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[math]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1828</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Trunc method that can be used to remove decimal points of a float and convert it to an integer Below is the signature of the...</p>
+<p>The post <a href="https://golangbyexamples.com/remove-decimal-float-go/">Remove decimal points from a float in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Trunc</strong> method that can be used to remove decimal points of a float and convert it to an integer</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input a float and also returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Trunc(x float64) float64\</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Trunc(1.6)
+    fmt.Println(res)
+
+    res = math.Trunc(-1.6)
+    fmt.Println(res)
+
+    res = math.Trunc(1)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1
+-1
+1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/remove-decimal-float-go/">Remove decimal points from a float in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/remove-decimal-float-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1828</post-id>	</item>
+		<item>
+		<title>Round Even a number in Go (Golang)</title>
+		<link>https://golangbyexamples.com/round-even-number-golang/</link>
+					<comments>https://golangbyexamples.com/round-even-number-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 25 Mar 2020 18:03:54 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[round even]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1825</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a RoundToEven method that can be used to round to even a number. It returns the nearest integer rounding ties to even. Here you can read...</p>
+<p>The post <a href="https://golangbyexamples.com/round-even-number-golang/">Round Even a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>RoundToEven</strong> method that can be used to round to even a number. It returns the nearest integer rounding ties to even.</p>
+
+
+
+<p class="has-medium-font-size">Here you can read about use case of RoundToEven &#8211; <a href="https://mathematica.stackexchange.com/questions/2116/why-round-to-even-integers/2120">https://mathematica.stackexchange.com/questions/2116/why-round-to-even-integers/2120</a></p>
+
+
+
+<p class="has-medium-font-size"><br>Below is the signature of the function. It takes input a float and also returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func RoundToEven(x float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size"><br>Some special cases of RoundToEven function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>RoundToEven(±0) = ±0</li><li>RoundToEven(±Inf) = ±Inf</li><li>RoundToEven(NaN) = NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.RoundToEven(0.5)
+    fmt.Println(res)
+
+    res = math.RoundToEven(1.5)
+    fmt.Println(res)
+
+    res = math.RoundToEven(2.5)
+    fmt.Println(res)
+
+    res = math.RoundToEven(3.5)
+    fmt.Println(res)
+
+    res = math.RoundToEven(4.5)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+2
+2
+4
+4</code></pre>
+<p>The post <a href="https://golangbyexamples.com/round-even-number-golang/">Round Even a number in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/round-even-number-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1825</post-id>	</item>
+	</channel>
+</rss>

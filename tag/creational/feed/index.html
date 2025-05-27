@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>creational Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/creational/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/creational/</link>
+	<description></description>
+	<lastBuildDate>Sat, 30 Nov 2019 15:19:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>creational Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/creational/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Builder Pattern in GoLang</title>
+		<link>https://golangbyexamples.com/builder-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/builder-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 04 Sep 2019 17:58:52 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[builder]]></category>
+		<category><![CDATA[creational]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[designpatter]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=243</guid>
+
+					<description><![CDATA[<p>Definition: Builder Pattern is a creational design pattern used for constructing complex objects. Below is the UML diagram. Note: Interested in understanding how all other design patterns can be implemented in GO....</p>
+<p>The post <a href="https://golangbyexamples.com/builder-pattern-golang/">Builder Pattern in GoLang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Definition:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Builder Pattern is a creational design pattern used for constructing complex objects. Below is the UML diagram.</p>
+
+
+
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram</strong></h1>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="511" height="278" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?resize=511%2C278&#038;ssl=1" alt="" data-id="244" data-link="https://golangbyexamples.com/?attachment_id=244" class="wp-image-244" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?w=511&amp;ssl=1 511w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?resize=300%2C163&amp;ssl=1 300w" sizes="(max-width: 511px) 100vw, 511px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping (Also Refer 5th point &#8211; Example)</strong></h1>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Director</td><td>director.go</td></tr><tr><td>Builder Interface</td><td>iBuilder.go</td></tr><tr><td>Concrete Builder 1</td><td>normalBuilder.go</td></tr><tr><td>Concrete Builder 2</td><td>iglooBuilder.go</td></tr><tr><td>Product</td><td>house.go</td></tr></tbody></table></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>When To Use</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use Builder pattern when the object constructed is big and requires multiple steps. It helps in less size of the constructor.  The construction of the house becomes simple and it does not require a large constructor</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When a different version of the same product needs to be created. For example, in the below code we see a different version of house ie. igloo and the normal house being constructed by <strong>iglooBuilder </strong>and <strong>normalBuilder</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When half constructed final object should not exist. Again referring to below code the house created will either be created fully or not created at all. The Concrete Builder struct holds the temporary state of house object being created</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>iBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iBuilder interface {
+    setWindowType()
+    setDoorType()
+    setNumFloor()
+    getHouse() house
+}
+
+func getBuilder(builderType string) iBuilder {
+    if builderType == "normal" {
+        return &normalBuilder{}
+    }
+    if builderType == "igloo" {
+        return &iglooBuilder{}
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>normalBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type normalBuilder struct {
+    windowType string
+    doorType   string
+    floor      int
+}
+
+func newNormalBuilder() *normalBuilder {
+    return &normalBuilder{}
+}
+
+func (b *normalBuilder) setWindowType() {
+    b.windowType = "Wooden Window"
+}
+
+func (b *normalBuilder) setDoorType() {
+    b.doorType = "Wooden Door"
+}
+
+func (b *normalBuilder) setNumFloor() {
+    b.floor = 2
+}
+
+func (b *normalBuilder) getHouse() house {
+    return house{
+        doorType:   b.doorType,
+        windowType: b.windowType,
+        floor:      b.floor,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>iglooBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iglooBuilder struct {
+    windowType string
+    doorType   string
+    floor      int
+}
+
+func newIglooBuilder() *iglooBuilder {
+    return &iglooBuilder{}
+}
+
+func (b *iglooBuilder) setWindowType() {
+    b.windowType = "Snow Window"
+}
+
+func (b *iglooBuilder) setDoorType() {
+    b.doorType = "Snow Door"
+}
+
+func (b *iglooBuilder) setNumFloor() {
+    b.floor = 1
+}
+
+func (b *iglooBuilder) getHouse() house {
+    return house{
+        doorType:   b.doorType,
+        windowType: b.windowType,
+        floor:      b.floor,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>house.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type house struct {
+    windowType string
+    doorType   string
+    floor      int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>director.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type director struct {
+    builder iBuilder
+}
+
+func newDirector(b iBuilder) *director {
+    return &director{
+        builder: b,
+    }
+}
+
+func (d *director) setBuilder(b iBuilder) {
+    d.builder = b
+}
+
+func (d *director) buildHouse() house {
+    d.builder.setDoorType()
+    d.builder.setWindowType()
+    d.builder.setNumFloor()
+    return d.builder.getHouse()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    normalBuilder := getBuilder("normal")
+    iglooBuilder := getBuilder("igloo")
+
+    director := newDirector(normalBuilder)
+    normalHouse := director.buildHouse()
+
+    fmt.Printf("Normal House Door Type: %s\n", normalHouse.doorType)
+    fmt.Printf("Normal House Window Type: %s\n", normalHouse.windowType)
+    fmt.Printf("Normal House Num Floor: %d\n", normalHouse.floor)
+
+    director.setBuilder(iglooBuilder)
+    iglooHouse := director.buildHouse()
+
+    fmt.Printf("\nIgloo House Door Type: %s\n", iglooHouse.doorType)
+    fmt.Printf("Igloo House Window Type: %s\n", iglooHouse.windowType)
+    fmt.Printf("Igloo House Num Floor: %d\n", iglooHouse.floor)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Normal House Door Type: Wooden Door
+Normal House Window Type: Wooden Window
+Normal House Num Floor: 2
+
+Igloo House Door Type: Snow Door
+Igloo House Window Type: Snow Window
+Igloo House Num Floor: 1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/builder-pattern-golang/">Builder Pattern in GoLang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/builder-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">243</post-id>	</item>
+	</channel>
+</rss>

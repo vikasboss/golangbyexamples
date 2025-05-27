@@ -1,0 +1,4072 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>sidetoc Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/sidetoc/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/sidetoc/</link>
+	<description></description>
+	<lastBuildDate>Thu, 14 Jul 2022 16:50:11 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>sidetoc Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/sidetoc/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>All data types in Golang with examples</title>
+		<link>https://golangbyexamples.com/all-data-types-in-golang-with-examples/</link>
+					<comments>https://golangbyexamples.com/all-data-types-in-golang-with-examples/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 01 Feb 2020 18:56:56 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[sidetoc]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1311</guid>
+
+					<description><![CDATA[<p>Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&#160;Golang Comprehensive Tutorial Series. Now let&#8217;s see the current tutorial....</p>
+<p>The post <a href="https://golangbyexamples.com/all-data-types-in-golang-with-examples/">All data types in Golang with examples</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>Note:</strong> If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a>. Now let&#8217;s see the current tutorial. Below is the table of contents.</p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading">Overview</h1>
+
+
+
+<p class="has-medium-font-size">Golang is statically typed programming language meaning that each variable has a type. Go has several built in types that we will look into in this article. Data types in Go can be categorized into two types</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Basic Types</li><li>Composite Types</li></ol>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Basic Types<ul><li>Integers<ul><li>Signed<ul><li>int</li><li>int8 </li><li>int16&nbsp; </li><li>int32&nbsp; </li><li>int64</li></ul></li><li>Unsigned<ul><li>uint </li><li>uint8 </li><li>uint16 </li><li>uint32 </li><li>uint64 </li><li>uintptr</li></ul></li></ul></li><li>Floats<ul><li>float32</li><li>float64</li></ul></li><li>Complex Numbers<ul><li>complex64</li><li> complex128</li></ul></li><li>Byte</li><li>Rune</li><li>String</li><li>Boolean</li></ul></li><li>Composite Types<ul><li>Collection/Aggregation or Non-Reference Types<ul><li>Arrays</li><li>Structs</li></ul></li><li>Reference Types<ul><li>Slices</li><li>Maps</li><li>Channels</li><li>Pointers</li><li>Function/Methods</li></ul></li><li>Interface<ul><li>Special case of empty Interface</li></ul></li></ul></li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Basic Types</strong></h1>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s first discuss the basic types in GO.</p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Integers</strong> (Signed and UnSigned)</h2>
+
+
+
+<p class="has-medium-font-size">Integers can be signed or unsigned. </p>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color" style="font-size:22px"><strong>Signed</strong></p>
+
+
+
+<p class="has-medium-font-size">Signed integers are of 5 types as below</p>
+
+
+
+<figure class="wp-block-table"><table class="has-background" style="background-color:#e7f5fe"><tbody><tr><td><strong>Type</strong></td><td><strong>Size</strong></td></tr><tr><td>int</td><td>Platform Dependent</td></tr><tr><td>int8</td><td>8 bits/1 byte</td></tr><tr><td>int16</td><td>16 bits/2 byte</td></tr><tr><td>int32</td><td>32 bits/4 byte</td></tr><tr><td>int64</td><td>64 bits/8 byte</td></tr></tbody></table></figure>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>int</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>Platform Dependent. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 32 bit machines, the size of an int will be 32 bits or 4 bytes. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 64 bit machines, the size of an int will be 64 bits or 8 bytes</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: Again Platform dependent</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 32 bit machines, the range of int will be -2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 64 bit machines, the range of int will be -2<sup>63</sup>&nbsp;to 2<sup>63</sup>&nbsp;-1</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It is a good idea to use int&nbsp;whenever using signed Integer other than the cases mentioned below<ul><li> When the machine is a 32 bit and range needed is greater than -2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1, then use <strong>int64</strong> instead <strong>int</strong>. Note that in this case for int64,&nbsp; 2 32-bit memory addresses to form a 64-bit number together.</li></ul><ul><li>When the range is less then use appropriate integer type.</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Properties:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare an int </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"> var a int</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li> int is default type for <strong>integer. </strong>When you don&#8217;t specify a type the default will be int</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">b := 2 //The default is also int
+fmt.Println(reflect.TypeOf(b)) => int</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>bits </strong>package of golang can help know the size of an <strong>int </strong>on your system</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">//This is computed as const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64
+sizeOfIntInBits := bits.UintSize
+fmt.Println(sizeOfIntInBits) => 32 0r 34</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>unsafe.Sizeof() </strong>function can also be used to see the size of int in bytes</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Full Working Code </strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the full working code of the above properties</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/bits"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //This is computed as const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64
+    sizeOfIntInBits := bits.UintSize
+    fmt.Printf("%d bits\n", sizeOfIntInBits)
+    
+    var a int
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+    
+    b := 2
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(b))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">64 bits
+8 bytes
+a's type is int
+b's typs is int</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>int8</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>8 bits or 1 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: -2<sup>7</sup>&nbsp;to 2<sup>7</sup>&nbsp;-1.</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use int8 when there it is known that the int range will be between -2<sup>7</sup>&nbsp;to 2<sup>7</sup>&nbsp;-1.&nbsp; For temporary values such as loop invariants, it is still advisable to use int even though it might take more space because it is likely to be promoted to int in some operations or library calls.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For array values which lies between -27&nbsp;to 27&nbsp;-1, is a good use case for using int8. For eg if you are storing ASCII index for lowercase letters then int8 can be used</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It is a good idea to use int8 for data values.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare an int8</li><li>Print size of int8 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a int 8
+    var a int8 = 2
+    
+    //Size of int8 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1 bytes
+a's type is int8</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>int16</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>16 bits or 2 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: -2<sup>15</sup>&nbsp;to 2<sup>15</sup>&nbsp;-1.</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use int16 when there it is known that the int range will be between -2<sup>15</sup>&nbsp;to 2<sup>15</sup>&nbsp;-1.&nbsp; For temporary values such as loop invariants, it is still advisable to use int even though it might take more space because it is likely to be promoted to int in some operations or library calls.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For array values which lies between -215&nbsp;to 215&nbsp;-1, is a good use case for using int8. For eg if you are storing ASCII index for lowercase letters than int16 can be used.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare an int16</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of int16 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a int16
+    var a int16 = 2
+    
+    //Size of int8 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2 bytes
+a's type is int16</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-red-color has-text-color"><strong>int32</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>32 bits or 4 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: -2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare an int32</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of int8 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a int32
+    var a int32 = 2
+    
+    //Size of int32 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">4 bytes
+a's type is int32</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>int64</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>64 bits or 8 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: -2<sup>63</sup>&nbsp;to 2<sup>63</sup>&nbsp;-1</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>int64</strong> is used when the range is higher. For eg <strong>time.Duration</strong> is of type <strong>int64</strong></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare an int64</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of int64 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a int64
+    var a int64 = 2
+
+    //Size of int64 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8 bytes
+a's type is int64</code></pre>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color" style="font-size:22px"><strong>UnSigned</strong></p>
+
+
+
+<p class="has-medium-font-size">UnSigned integers are of 5 types as below</p>
+
+
+
+<figure class="wp-block-table"><table class="has-background" style="background-color:#e7f5fe"><tbody><tr><td><strong>Type</strong></td><td><strong>Size</strong></td></tr><tr><td>uint</td><td>Platform Dependent</td></tr><tr><td>uint8</td><td>8 bits/1 byte</td></tr><tr><td>uint16</td><td>16 bits/2 byte</td></tr><tr><td>uint32</td><td>32 bits/4 byte</td></tr><tr><td>uint64</td><td>64 bits/8 byte</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>uint</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>Platform Dependent. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 32 bit machines, the size of an int will be 32 bits or 4 byte. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 64 bit machines, the size of an int will be 64 bits or 8 byte</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: Again Platform dependent</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 32 bit machines, the range of int will be -2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 64 bit machines, the range of int will be -2<sup>63</sup>&nbsp;to 2<sup>63</sup>&nbsp;-1</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It is a good idea to use uint&nbsp; whenever using signed Integer other than the cases mention below<ul><li> When the machine is a 32 bit and range needed is greater than -231&nbsp;to 231&nbsp;-1, then use int64 instead int. Note that in this case for int64,&nbsp; 2 32-bit memory addresses to form a 64-bit number together.</li><li>When the range is less than use the appropriate int type</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Properties:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a uint </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"> var a uint</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>bits </strong>package of golang can help know the size of an <strong>uint </strong>on your system</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">//This is computed as const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64
+sizeOfUintInBits := bits.UintSize
+fmt.Println(sizeOfIntInBits) => 32 or 64</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>unsafe.Sizeof() </strong>function can also be used to see the size of uint in bytes</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Full Working Code </strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the full working code of above properties</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/bits"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //This is computed as const uintSize = 32 << (^uuint(0) >> 32 & 1) // 32 or 64
+    sizeOfuintInBits := bits.UintSize
+    fmt.Printf("%d bits\n", sizeOfuintInBits)
+
+    var a uint
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">64 bits
+8 bytes
+a's type is uint</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>uintptr</strong></p>
+
+
+
+<p class="has-medium-font-size">This is an unsigned integer type that is large enough to hold any pointer address. Therefore is size and range are platform dependent.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>Platform Dependent. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 32 bit machines, the size of int will be 32 bits or 4 byte. </li><li>On 64 bit machines, the size of int will be 64 bits or 8 byte</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: Again Platform dependent</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>On 32 bit machines, the range of int will be -2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1.</li><li>On 64 bit machines, the range of int will be -2<sup>63</sup>&nbsp;to 2<sup>63</sup>&nbsp;-1</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Properties:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A uintptr can be converted to <strong>unsafe.Pointer</strong> and viceversa</li><li>Arithmetic can be performed on the uintptr</li><li>uintptr even though it holds a pointer address, is just a value and does not references any object. Therefore<ul><li>Its value will not be updated if the corresponding object moves. Eg When goroutine stack changes</li><li>The corresponding object can be garbage collected.</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size"><strong></strong><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Its purpose is to be used along with unsafe.Pointer mainly used for unsafe memory access.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you want to save the pointer address value for printing it or storing it. Since the address is just stored and does not reference anything, the corresponding object can be garbage collected.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "unsafe"
+)
+type sample struct {
+    a int
+    b string
+}
+func main() {
+    s := &sample{a: 1, b: "test"}
+    
+   //Getting the address of field b in struct s
+    p := unsafe.Pointer(uintptr(unsafe.Pointer(s)) + unsafe.Offsetof(s.b))
+    
+    //Typecasting it to a string pointer and printing the value of it
+    fmt.Println(*(*string)(p))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">test</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>uint8</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>8 bits or 1 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>:&nbsp; 0 to 255 or 0&nbsp;to 2<sup>8</sup>&nbsp;-1.</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use uint8 when there it is known that the int range will be between  2<sup>8</sup>&nbsp;-1.&nbsp; For temporary values such as loop invariants, it is still advisable to use int even though it might take more space because it is likely to be promoted to int in some operations or library calls.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For array values which lies between&nbsp; 2<sup>8</sup>&nbsp;-1. is a good use case for using uint8. For eg if you are storing ASCII index in an array then <strong>uint8</strong> can be used.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a uint8</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of uint8 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a uint8
+
+    var a uint8 = 2
+    
+    //Size of uint8 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1 bytes
+a's type is uint8</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>uint16</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>16 bits or 2 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: 0 to 2<sup>16</sup>&nbsp;-1</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use int16 when there it is known that the int range will be between 0 to 2<sup>16</sup>&nbsp;-1.&nbsp; For temporary values such as loop invariants, it is still advisable to use int even though it might take more space because it is likely to be promoted to int in some operations or library calls.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>For array values which lies between -0 to 2<sup>16</sup>&nbsp;-1, is a good use case for using int8. </li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a uint16</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of uint16 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+func main() {
+    //Declare a uint16
+    var a uint16 = 2
+
+    //Size of uint16 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2 bytes
+a's type is uint16</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>uint32</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>32 bits or 4 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: 0 to 2<sup>32</sup>&nbsp;-1</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a uint32</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of uint32 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a uint32
+    var a uint32 = 2
+
+    //Size of uint32 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1 bytes
+a's type is uint32</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>uint64</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size: </strong>64 bits or 8 byte</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: 0 to 2<sup>64</sup>&nbsp;-1</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>uint64 is used when the range is higher.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a uint64</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of uint64 in bytes</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a uint64
+    var a uint64 = 2
+    
+//Size of uint64 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8 bytes
+a's type is uint64</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Floats</strong></h2>
+
+
+
+<p class="has-medium-font-size">Floats are numbers with decimals. It is of two types</p>
+
+
+
+<figure class="wp-block-table"><table class="has-background" style="background-color:#f3f4f5"><tbody><tr><td><strong>Type</strong></td><td><strong>Size</strong></td></tr><tr><td>float32</td><td>32 bits or 4 bytes</td></tr><tr><td>float64</td><td>64 bits or 8 bytes</td></tr></tbody></table></figure>
+
+
+
+<p class="has-medium-font-size"><strong>float64</strong> is the default float type. When you initialize a variable with a decimal value and don&#8217;t specify the float type, the default type inferred will be <strong>float64</strong>.</p>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>float32</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>float32</strong> uses single-precision floating point format to store values. Basically it is the set of all IEEE-754 32-bit floating-point numbers. The 32 bits are divided into &#8211; 1 bit sign, 8 bits exponent, and 23 bits mantissa. float 32 take half much size as float 64 and are comparatively faster on some machine architectures.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Size</strong>: 32 bits or 4 bytes</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: 1.2E-38 to 3.4E+38&#8242;</p>
+
+
+
+<p class="has-medium-font-size"><strong>DefaultValue</strong>: 0.0</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If in your system memory is a bottleneck and range is less, then <strong>float32</strong> can be used.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a float32</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Print size of float32 in bytes</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a float32
+    var a float32 = 2
+    
+    //Size of float32 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">4 bytes
+a's type is float32</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>float64</strong></p>
+
+
+
+<p class="has-medium-font-size">float64 uses a double-precision floating-point format to store values. Basically it is the set of all IEEE-754 64-bit floating-point numbers. The 64 bits are divided into &#8211; 1-bit sign, 11 bits exponent, 52 bits mantissa.  float64 takes twice as much size compared to float32 but can represent numbers more accurately than float32.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Size</strong>: 32 bits or 4 bytes</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: 1.2E-38 to 3.4E+38</p>
+
+
+
+<p class="has-medium-font-size"><strong>DefaultValue</strong>: 0.0</p>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When the precision needed is high</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example illustrates below points</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a float64</li><li>Print size of float64 in bytes</li><li>Default is float64 when you don&#8217;t specify a type</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //Declare a float64
+    var a float64 = 2
+    
+    //Size of float64 in bytes
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+    
+    //Default is float64 when you don't specify a type
+    b := 2.3
+    fmt.Printf("b's type is %s\n", reflect.TypeOf(b))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8 bytes
+a's type is float64
+b's type is float64</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Complex Numbers</strong></h2>
+
+
+
+<p class="has-medium-font-size">Complex Numbers are of two types</p>
+
+
+
+<figure class="wp-block-table"><table class="has-background" style="background-color:#f3f4f5"><tbody><tr><td><strong>Type</strong></td><td><strong>Property</strong></td></tr><tr><td>complex64</td><td>Both real and imaginary part are float32</td></tr><tr><td> complex128</td><td>Both real and imaginary part are float64</td></tr></tbody></table></figure>
+
+
+
+<p class="has-medium-font-size">The default complex type is complex128</p>
+
+
+
+<p class="has-medium-font-size"><strong>Initialization</strong></p>
+
+
+
+<p class="has-medium-font-size">Complex Numbers can be initialized in two ways</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using complex function. It has below signature.  Do make sure that both a and b should be of same type , meaning either they both should be float32 or both should be float64</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">complext(a, b)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the shorthand syntax. This is used when creating a complex number with direct numbers. The complex type created using below method will be of type <strong>complex128 </strong>if type is not specified</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a := 5 + 6i</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>complex64</strong></p>
+
+
+
+<p class="has-medium-font-size">For complex 64 both real and imaginary part are float32</p>
+
+
+
+<p class="has-medium-font-size"><strong>Size</strong>: Both real and imaginary part are of same size as float32. It is of size 32 bits or 4 bytes</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: Both real and imaginary part range is same as float32 i.e 1.2E-38 to 3.4E+38</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is a sample code that shows</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>How to create a complex64 number using the above two method</li><li>Print size of a complex64 number. Size will be&nbsp; 8 bytes(4 +4) which is equivalent to two float32 numbers</li><li>Print type of a complex64 number</li><li>+ operation on complex number</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+func main() {
+    var a float32 = 3
+    var b float32 = 5
+    
+    //Initialize-1
+    c := complex(a, b)
+    
+    //Initialize-2
+    var d complex64
+    d = 4 + 5i
+    
+    //Print Size
+    fmt.Printf("c's size is %d bytes\n", unsafe.Sizeof(c))
+    fmt.Printf("d's size is %d bytes\n", unsafe.Sizeof(d))
+    
+    //Print type
+    fmt.Printf("c's type is %s\n", reflect.TypeOf(c))
+    fmt.Printf("d's type is %s\n", reflect.TypeOf(d))
+    
+    //Operations on complex number
+    fmt.Println(c+d, c-d, c*d, c/d)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">c's size is 8 bytes
+d's size is 8 bytes
+c's type is complex64
+d's type is complex64
+(7+10i) (-1+0i) (-13+35i) (0.902439+0.12195122i)</code></pre>
+
+
+
+<p class="has-vivid-red-color has-text-color" style="font-size:22px"><strong>complex128</strong></p>
+
+
+
+<p class="has-medium-font-size">For complex128 both <strong>real</strong> and <strong>imaginary</strong> part are <strong>float64</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Size</strong>: Both <strong>real</strong> and <strong>imaginary</strong> part are of same size as float64. It is of size 64 bits or 8 bytes</p>
+
+
+
+<p class="has-medium-font-size"><strong>Range</strong>: Both <strong>real</strong> and <strong>imaginary</strong> part range is same as <strong>float64</strong> i.e -1.7E+308 to +1.7E+308</p>
+
+
+
+<p class="has-medium-font-size"><strong>Example</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is a sample code that shows</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>How to create a complex128 number using above two method. It also shows when type is not specified, the default type will be <strong>complex128</strong></li><li>Print size of a complex128 number. Size will be&nbsp; 16 bytes(8 +8) which is equivalent to two float64 numbers</li><li>Print type of a complex128 number</li><li>Different operations on complex number</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    var a float64 = 3
+    var b float64 = 5
+    
+    //Initialize-1
+    c := complex(a, b)
+    
+    //Initialize-2. When don't specify a type , the default type will be complex128
+    d := 4 + 5i
+    
+    //Print Size
+    fmt.Printf("c's size is %d bytes\n", unsafe.Sizeof(c))
+    fmt.Printf("d's size is %d bytes\n", unsafe.Sizeof(d))
+    
+    //Print type
+    fmt.Printf("c's type is %s\n", reflect.TypeOf(c))
+    fmt.Printf("d's type is %s\n", reflect.TypeOf(d))
+    
+    //Operations on complex number
+    fmt.Println(c+d, c-d, c*d, c/d)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">c's size is 16 bytes
+d's size is 16 bytes
+c's type is complex128
+d's type is complex128
+(7+10i) (-1+0i) (-13+35i) (0.902439024390244+0.12195121951219513i)</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Byte</strong></h2>
+
+
+
+<p class="has-medium-font-size">byte in Go is an alias for <strong>uint8 </strong>meaning it is an integer value. This integer value is of 8 bits and it represents one byte i.e number between 0-255). A single byte therefore can represent ASCII characters. Golang does not have any data type of &#8216;char&#8217;. Therefore </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>byte is used to represent the ASCII character</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>rune is used to represent all UNICODE characters which include every character that exists. We will study about rune later in this tutorial.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Define Byte</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var rbyte byte := 'a'</code></pre>
+
+
+
+<p class="has-medium-font-size">While declaring byte we have specify the type, as we have in the program above. If we don&#8217;t specify the type, then the default type is meant as a <strong>rune. </strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>Example</strong></p>
+
+
+
+<p class="has-medium-font-size">In below code example:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>How to define a byte</li><li>Print the byte type</li><li>Print size of byte</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+func main() {
+    var r byte = 'a'
+    
+    //Print Size
+    fmt.Printf("Size: %d\n", unsafe.Sizeof(r))
+    
+    //Print Type
+    fmt.Printf("Type: %s\n", reflect.TypeOf(r))
+    
+    //Print Character
+    fmt.Printf("Character: %c\n", r)
+    s := "abc"
+    
+    //This will the decimal value of byte
+    fmt.Println([]byte(s))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Size: 1
+Type: uint8
+Character: a
+[97 98 99]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Rune</strong></h2>
+
+
+
+<p class="has-medium-font-size">rune in Go is&nbsp; an alias for <strong>int32 </strong>meaning it is an integer value. This integer value is meant to represent a Unicode Code Point. To understand rune you have to know what Unicode is. Below is short description but you can refer to famous blog post about it &#8211; <a href="http://www.joelonsoftware.com/articles/Unicode.html">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a></p>
+
+
+
+<p class="has-medium-font-size"><strong>What is UniCode</strong></p>
+
+
+
+<p class="has-medium-font-size">Unicode is a superset of ASCII characters which assigns a unique number to every character that exists. This unique number is called Unicode Code Point.</p>
+
+
+
+<p class="has-medium-font-size">For eg </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Digit <strong>0</strong> is represented as Unicode Point <strong>U+0030 (Decimal Value &#8211; 48)</strong></li><li>Small Case <strong>b</strong> is represented as Unicode Point&nbsp; <strong>U+0062 (Decimal Value &#8211; 98)</strong></li><li>A pound symbol <strong>£&nbsp;</strong>is represented as Unicode Point <strong>U+00A3 (Decimal Value &#8211; 163)</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Visit <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">https://en.wikipedia.org/wiki/List_of_Unicode_characters</a> to know about Unicode Point of other characters. But Unicode doesn&#8217;t talk about how these code points will be saved in memory. This is where <strong>utf-8</strong> comes into picture</p>
+
+
+
+<p class="has-medium-font-size"><strong>UTF-8</strong></p>
+
+
+
+<p class="has-medium-font-size">utf-8 saves every Unicode Point either using 1, 2, 3 or 4 bytes. ASCII points are stored using 1 byte. That is why rune is an alias for int32 because a Unicode Point can be of max 4 bytes in Go as in GO every string is encoded using utf-8.</p>
+
+
+
+<p class="has-medium-font-size">Every rune is intended to refer to one Unicode Point.&nbsp; For eg if you print a string after typecasting it to a rune array then it will print the Unicode Point for each of character. For for below string <strong>&#8220;0b£&#8221;</strong> output will be &#8211; <strong>[U+0030 U+0062 U+00A3]</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("%U\n", []rune("0b£"))</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Declare Rune</strong></p>
+
+
+
+<p class="has-medium-font-size">A rune is declared using a character between single quotes like below declaring a variable named <strong>&#8216;rPound&#8217;</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rPound := '£'</code></pre>
+
+
+
+<p class="has-medium-font-size">After declaring Rune you can perform below things as well</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Print Type &#8211; </strong>Output will be <strong>int32</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Type: %s\n", reflect.TypeOf(rPound))</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Print Unicode Code Point &#8211; </strong>Output will be <strong>U+00A3</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Unicode CodePoint: %U\n", rPound)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Print Character &#8211; </strong>Output will be <strong>£</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Character: %c\n", r)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>When to Use</strong></p>
+
+
+
+<p class="has-medium-font-size">You should use a rune when you intend to save Unicode Code Point in the value. A rune array should be used when all values in the array are meant to be a Unicode Code Point.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the code illustrating each point we discussed</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+func main() {
+    r := 'a'
+    
+    //Print Size
+    fmt.Printf("Size: %d\n", unsafe.Sizeof(r))
+    
+    //Print Type
+    fmt.Printf("Type: %s\n", reflect.TypeOf(r))
+    
+    //Print Code Point
+    fmt.Printf("Unicode CodePoint: %U\n", r)
+    
+    //Print Character
+    fmt.Printf("Character: %c\n", r)
+    s := "0b£"
+    
+    //This will print the Unicode Points
+    fmt.Printf("%U\n", []rune(s))
+    
+    //This will the decimal value of Unicode Code Point
+    fmt.Println([]rune(s))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Size: 4
+Type: int32
+Unicode CodePoint: U+0061
+Character: a
+[U+0030 U+0062 U+00A3]
+[48 98 163]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>String</strong></h2>
+
+
+
+<p class="has-medium-font-size">string is a read only slice of bytes in golang. String can be initialized in two ways</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>using double quotes &#8220;&#8221; eg &#8220;this&#8221;</li></ul>
+
+
+
+<p class="has-medium-font-size">string in double quotes honors the escape sequences. For eg if the string contains a \n then while printing there will be a new line</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>using back quotes ` eg&nbsp; \`this`</li></ul>
+
+
+
+<p class="has-medium-font-size">String in back quotes is just a raw string and it does not honor any kind of escape sequences.</p>
+
+
+
+<p class="has-medium-font-size">Each character in a string will occupy some bytes depending upon encoding used. For eg in utf-8 encoded string, each character will occupy between 1-4 bytes. You can read about utf-8 in this must read famous blog-<a href="http://www.joelonsoftware.com/articles/Unicode.html">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a>. &nbsp; In utf-8 , the characters <strong>a</strong> or <strong>b </strong>are encoded using 1&nbsp; byte while the character pound sign <strong>£ </strong> is encoded using two bytes . Therefore the string &#8220;ab£&#8221; will output 4 bytes when you will convert the string to byte array and print it like below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">s := "ab£"
+fmt.Println([]byte(s))</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[48 98 194 163]</code></pre>
+
+
+
+<p class="has-medium-font-size">Also when you try to print the length of the above string using <strong>len(&#8220;ab£&#8221;),</strong> it will output 4 and not 3 because it contains 4 bytes.</p>
+
+
+
+<p class="has-medium-font-size">Also note that <strong>range</strong> loops over sequences of byte which form each character, therefore for the below range loop </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for _, c := range s {
+   fmt.Println(string(c))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Output will be </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a
+b
+£</code></pre>
+
+
+
+<p class="has-medium-font-size">There are many operations that can be performed on a string. One such operation is concatenation which combines two string. The sign &#8216;+&#8217; is used for concatenation.  Let&#8217;s see full working&nbsp; code for all above things that we discussed</p>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+)
+func main() {
+    //String in double quotes
+    x := "this\nthat"
+    fmt.Printf("x is: %s\n", x)
+    
+    //String in back quotes
+    y := `this\nthat`
+    fmt.Printf("y is: %s\n", y)
+    s := "ab£"
+    
+    //This will print the byte sequence. 
+    //Since character a and b occupies 1 byte each and £ character occupies 2 bytes. 
+    //The final output will 4 bytes
+    fmt.Println([]byte(s))
+    
+    //The output will be 4 for same reason as above
+    fmt.Println(len(s))
+    
+    //range loops over sequences of byte which form each character
+    for _, c := range s {
+        fmt.Println(string(c))
+    }
+    
+    //Concatenation
+    fmt.Println("c" + "d")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">x is: this
+that
+y is: this\nthat
+[97 98 194 163]
+4
+a
+b
+£
+cd</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Booleans</strong></h2>
+
+
+
+<p class="has-medium-font-size">The data type is <strong>bool </strong>and has two possible values true or false. </p>
+
+
+
+<p class="has-medium-font-size">Default Value: false</p>
+
+
+
+<p class="has-medium-font-size">Operations: </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>AND &#8211; &amp;&amp;</li><li>OR&nbsp; &#8211; ||</li><li>Negation &#8211; !</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Example</strong></p>
+
+
+
+<p class="has-medium-font-size">The below code example shows </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If not initialized the default value is <strong>false</strong></li><li>All the above operations on the bool </li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Default value will be false it not initialized
+    var a bool
+    fmt.Printf("a's value is %t\n", a)
+    
+    //And operation on one true and other false
+    andOperation := 1 < 2 &#038;&#038; 1 > 3
+    fmt.Printf("Ouput of AND operation on one true and other false %t\n", andOperation)
+    
+    //OR operation on one true and other false
+    orOperation := 1 < 2 || 1 > 3
+    fmt.Printf("Ouput of OR operation on one true and other false: %t\n", orOperation)
+    
+    //Negation Operation on a false value
+    negationOperation := !(1 > 2)
+    fmt.Printf("Ouput of NEGATION operation on false value: %t\n", negationOperation)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a's value is false
+Ouput of AND operation on one true and other false false
+Ouput of OR operation on one true and other false: true
+Ouput of NEGATION operation on false value: true</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Composite Types</strong></h1>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Non-Reference Types</strong></h2>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Arrays</strong></h3>
+
+
+
+<p class="has-medium-font-size">Arrays<strong>&nbsp;</strong>in go are values. They are fixed-length sequences of the same type. Since arrays in Go are values, that is why</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you assign an array to another variable, it copies the entire array </li><li>When you pass an array as an argument to a function, it makes an entire copy of the array instead of passing just the address</li></ul>
+
+
+
+<p class="has-medium-font-size">An array is declared as below. Assume N is the size of the array</p>
+
+
+
+<ul class="wp-block-list"><li>Specifying size&nbsp; and values both</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">newArray := [n]Type{val1, val2, val3}</code></pre>
+
+
+
+<ul class="wp-block-list"><li>Specifying size&nbsp; &#8211; No values. Values are set to default zero value of that type</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">newArray := [len]Type{}</code></pre>
+
+
+
+<p class="has-medium-font-size">As we said arrays have fixed length. Therefore</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We cannot assign an array to a different array of the same type but different length</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you pass an array as a function argument, then size is also part of it.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of array. Below example</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Illustrates how to declare an array</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Pass array as a function argument</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare a array
+    sample := [3]string{"a", "b", "c"}
+    print(sample)
+}
+
+func print(sample [3]string) {
+    fmt.Println(sample)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[a b c]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Structs</strong></h3>
+
+
+
+<p class="has-medium-font-size">In GO struct is named collection of fields. These fields can be of different types. Struct acts as a container of related data of heterogeneous data type. For example, different attributes are used to represent and employee in an organization. Employee can have</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Name of string type</li><li>Age of int type</li><li>DOB of time.Time type </li></ul>
+
+
+
+<p class="has-medium-font-size">.. and so on. A struct can be used to represent an employee </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    name string
+    age  int
+    dob  time.Time
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The below program depicts</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a struct</li><li>Initializing a struct in different ways</li><li>Size of a struct is the sum of the size of its fields</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+)
+//Declare a struct
+type employee struct {
+    name   string
+    age    int
+    salary float64
+}
+func main() {
+    //Initialize a struct without named fields
+    employee1 := employee{"John", 21, 1000}
+    fmt.Println(employee1)
+    
+    //Initialize a struct with named fields
+    employee2 := employee{
+        name:   "Sam",
+        age:    22,
+        salary: 1100,
+    }
+    fmt.Println(employee2)
+    
+    //Initializing only some fields. Other values are initialized to default zero value of that type
+    employee3 := employee{name: "Tina", age: 24}
+    fmt.Println(employee3)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">{John 21 1000}
+{Sam 22 1100}
+{Tina 24 0}</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Reference Types</strong></h2>
+
+
+
+<h3 class="has-vivid-purple-color has-text-color wp-block-heading"><strong>Slices</strong></h3>
+
+
+
+<p class="has-medium-font-size">Slices are dynamically sized, reference into the elements of an array. As mentioned above arrays are of fixed size, so slices give a more flexible interface to arrays. A slice is a reference type as it internally references an array. It is internally represented by three fields</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Address to the underlying array</li><li>Length of the slice</li><li>Capacity of the slice</li></ul>
+
+
+
+<p class="has-medium-font-size">Slices are typed by the type of the underlying array element, not by its length or capacity. Thus two slices will be of the same type if the type of the underlying array is same irrespective of its length and capacity. The built in <strong>append</strong> function can be used to add more values to the underlying array. If on using <strong>append </strong>function the length of the slice increases by current capacity, then a new slice is allocated of double the capacity and elements of the current slice are copied to that. </p>
+
+
+
+<p class="has-medium-font-size">The built in function <strong>len</strong> can you used to get the current length of the sliceInitialising a slice</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using make &#8211; it helps you create a slice specifying the type of array, its length and capacity. Specifying length and capacity is optional. If length is specified and capacity is not, then capacity will be equal to length</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">make([]TYPE, length, capacity)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Direct initialization. The below example creates a slice of string.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">p := []string{"a", "b", "c"}</code></pre>
+
+
+
+<p class="has-medium-font-size">Slices can be also be created from an array or from a different slice.</p>
+
+
+
+<p>Below is a program showing an example of a slice showing</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declare a slice using the above ways</li><li>Showing append function</li><li>How to iterate over a slice</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare a slice using make
+    s := make([]string, 2, 3)
+    fmt.Println(s)
+    
+    //Direct intialization
+    p := []string{"a", "b", "c"}
+    fmt.Println(p)
+    
+    //Append function
+    p = append(p, "d")
+    fmt.Println(p)
+    
+    //Iterate over a slcie
+    for _, val := range p {
+        fmt.Println(val)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[ ]
+[a b c]
+[a b c d]
+a
+b
+c
+d</code></pre>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Channels</strong></h3>
+
+
+
+<p class="has-medium-font-size">Channels provide synchronization and communication between goroutines. You can think of it as a pipe through which goroutines can send values and receive values. The operation &lt;- is used to send or receive, with direction of arrow specifying the direction of flow of data</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">ch <- val    //Sending a value present in var variable to channel
+val := <-cha  //Receive a value from  the channel and assign it to val variable</code></pre>
+
+
+
+<p class="has-medium-font-size">Channel are of two types</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unbuffered Channel</strong>- It doesn't have any capacity to hold and values and thus <ul><li>Send on a channel is block unless there is another goroutine to receive.</li><li>Receive is block until there is another goroutine on the other side to send.</li></ul></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Buffered Channel- </strong>You can specify the size of buffer here and for them<ul><li>Send on a buffer channel only blocks if the buffer is full</li><li>Receive is the only block is buffer of the channel is empty</li></ul></li></ul>
+
+
+
+<p class="has-medium-font-size">A&nbsp; channel holds data of a particular type at a time. While creating a channel, the type of data l has to be specified while initializing a new channel. Channel can be created using make. In the below example, we are creating a channel which holds data of type string. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">events := make(chan string)  //Unbuffered channel
+events2 := make(chan string, 2)  //Buffered channel of length 2</code></pre>
+
+
+
+<p class="has-medium-font-size">Closing a channel</p>
+
+
+
+<p class="has-medium-font-size">The <strong>close() </strong>function can be used to close a channel. Closing a channel means that no more values can be sent to the channel</p>
+
+
+
+<p class="has-medium-font-size">Let's see a working code example of both buffered and unbuffered channel</p>
+
+
+
+<p class="has-medium-font-size"><strong>Buffered Channel Example:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Creating a buffered channel of length 3
+    eventsChan := make(chan string, 3)
+    eventsChan <- "a"
+    eventsChan <- "b"
+    eventsChan <- "c"
+    //Closing the channel
+    close(eventsChan)
+    for event := range eventsChan {
+        fmt.Println(event)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a
+b
+c</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>UnBuffered Channel Example:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    eventsChan := make(chan string)
+    go sendEvents(eventsChan)
+    for event := range eventsChan {
+        fmt.Println(event)
+    }
+}
+
+func sendEvents(eventsChan chan<- string) {
+    eventsChan <- "a"
+    eventsChan <- "b"
+    eventsChan <- "c"
+    close(eventsChan)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a
+b
+c</code></pre>
+
+
+
+<p></p>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Maps</strong></h3>
+
+
+
+<p class="has-medium-font-size">maps are golang builtin datatype similar to a hash which map key to a value. maps are referenced data types. When you assign one map to another both refer to the same underlying map.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Zero Value</strong></p>
+
+
+
+<p class="has-medium-font-size">zero value of a map is nil</p>
+
+
+
+<p class="has-medium-font-size"><strong>Declare</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A map can be declared using the var keyword specifying the type of both it's key and value. For eg below map declares a map with the name </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var employeeSalary map[string]int</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Initialize</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using make</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var employeeSalary make(map[string]int)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using curly braces. You can specify map literal value in the map or can also leave empty curly braces</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">//Empty braces
+employeeSalary := map[string]int{}
+
+//Specify values
+employeeSalary := map[string]int{
+"John": 1000
+"Sam": 2000
+} </code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Operations</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Add to a map </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">employeeSalary["John"] = 1000</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Get from a map</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">salary := employeeSalary["John"]</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Delete a key from the map</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">delete(employeeSalary, "John")</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Example</strong></p>
+
+
+
+<p class="has-medium-font-size">The below example shows all the points we discussed above</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    var employeeSalary map[string]int
+    fmt.Println(employeeSalary)
+    
+    //Intialize using make
+    employeeSalary2 := make(map[string]int)
+    fmt.Println(employeeSalary2)
+    
+    //Intialize using map lieteral
+    employeeSalary3 := map[string]int{
+        "John": 1000,
+        "Sam":  1200,
+    }
+    fmt.Println(employeeSalary3)
+    
+    //Operations
+    //Add
+    employeeSalary3["Carl"] = 1500
+    
+    //Get
+    fmt.Printf("John salary is %d\n", employeeSalary3["John"])
+    
+    //Delete
+    delete(employeeSalary3, "Carl")
+    
+    //Print map
+    fmt.Println("\nPrinting employeeSalary3 map")
+    fmt.Println(employeeSalary3)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">map[]
+map[]
+map[John:1000 Sam:1200]
+John salary is 1000
+
+Printing employeeSalary3 map
+map[John:1000 Sam:1200]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Pointers</strong></h3>
+
+
+
+<p class="has-medium-font-size">Pointer is a variable that holds a memory address of another variable. The zero value of a pointer is nil.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Declare a pointer </strong></p>
+
+
+
+<p class="has-medium-font-size">In the below example ex is int pointer.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var ex *int</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Initialize</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>&amp;&nbsp; </strong>used to get the address of a variable</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a := 2
+b := &b</code></pre>
+
+
+
+<p class="has-medium-font-size">* operator can be used to dereference a pointer which means getting the value at address stored in the pointer.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Println(*b) //Print the value stored at address b </code></pre>
+
+
+
+<p class="has-medium-font-size">Pointers can also be initialized using <strong>new </strong>operator</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a := new(int)
+*a = 10
+fmt.Println(*a) //Output will be 10</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a working code covering all the above points</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    var b *int
+    a := 2
+    b = &a
+    
+    //Will print a address. Output will be different everytime.
+    fmt.Println(b)
+    fmt.Println(*b)
+    b = new(int)
+    *b = 10
+    fmt.Println(*b) 
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0xc000018080
+2
+10</code></pre>
+
+
+
+<p></p>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Functions</strong></h3>
+
+
+
+<p class="has-medium-font-size">In Go function are values and can be passed around like a value. Basically, function can be used as first-order objects and can be passed around.&nbsp; The signature of a function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size">A function has a name, arguments and returns values. Also, note that there are some important differences between method and function in Go. Let's see the signature of a method</p>
+
+
+
+<p class="has-medium-font-size"><strong>Method:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (receiver receiver_type) some_func_name(arguments) return_values</code></pre>
+
+
+
+<p class="has-medium-font-size">From the above signature, it is clear that the method has a receiver argument. A receiver can be a struct or any other type. The method will have access to the properties of the receiver and can call the receiver's other methods.</p>
+
+
+
+<p class="has-medium-font-size">Below is a working example of function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    add := func(x, y int) int {
+        return x + y
+    }
+    fmt.Println(add(1, 2))
+}
+
+func doOperation(fn func(int, int) int, x, y int) int {
+    return fn(x, y)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">3</code></pre>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Interface</strong></h2>
+
+
+
+<p class="has-medium-font-size">Interface is a type in Go which is a collection of method signatures. Any type which implements all methods of the interface is of that interface type. Zero value of an interface is nil.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Signature of Interface</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type name_of_interface interface{
+//Method signature 1
+//Method signature 2
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Interface are implemented implicitly</strong></p>
+
+
+
+<p class="has-medium-font-size">There is no explicit declaration that a type implements an interface. In fact, in Go there doesn't exist any <strong>"implements" </strong>keyword similar to Java.&nbsp; A type implements an interface if it implements all the methods of the interface.</p>
+
+
+
+<p class="has-medium-font-size">It is correct to define a variable of an interface type and we can assign any concrete type value to this variable if the concrete type implements all the methods of the interface. Let's see a working example of interface. In the below program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We declare an interface of name shape with one method <strong>area</strong></li><li>square struct implements the area method, hence it implicitly implements the shape interface</li><li>we declare the variable of name "s" of type shape. </li><li>s is assigned a concrete value of type square. This works because square struct implements all methods of shape interface </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type shape interface {
+    area() int
+}
+
+type square struct {
+    side int
+}
+
+func (s *square) area() int {
+    return s.side * s.side
+}
+
+func main() {
+    var s shape
+    s = &square{side: 4}
+    fmt.Println(s.area())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">16</code></pre>
+
+
+
+<h3 class="has-vivid-cyan-blue-color has-text-color wp-block-heading"><strong>Special case of empty interface</strong></h3>
+
+
+
+<p class="has-medium-font-size">An empty interface has no methods, hence by default all concrete types implement the empty interface. If you write a function that accepts an empty interface then you can pass any type to that function. See working code below:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    test("thisisstring")
+    test("10")
+    test(true)
+}
+
+func test(a interface{}) {
+    fmt.Printf("(%v, %T)\n", a, a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">(thisisstring, string)
+(10, string)
+(true, bool)</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about the builtin data types that exist in Go. Hopefully by going through this article you will have better undertstanding of data types in Go.</p>
+<p>The post <a href="https://golangbyexamples.com/all-data-types-in-golang-with-examples/">All data types in Golang with examples</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/all-data-types-in-golang-with-examples/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1311</post-id>	</item>
+		<item>
+		<title>Default Zero Value of all Types in Go (Golang) With Examples</title>
+		<link>https://golangbyexamples.com/go-default-zero-value-all-types/</link>
+					<comments>https://golangbyexamples.com/go-default-zero-value-all-types/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 04 Jan 2020 15:06:55 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[datatype]]></category>
+		<category><![CDATA[default]]></category>
+		<category><![CDATA[examples]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[sidetoc]]></category>
+		<category><![CDATA[type]]></category>
+		<category><![CDATA[zero]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1080</guid>
+
+					<description><![CDATA[<p>Default Value Table Type Default Value Integer 0 Float 0 Complex Number 0 Real and 0 Imaginary Part Byte 0 Rune 0 String &#8220;&#8221; Bool false Array Every array value to its...</p>
+<p>The post <a href="https://golangbyexamples.com/go-default-zero-value-all-types/">Default Zero Value of all Types in Go (Golang) With Examples</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-large-font-size"><strong>Default Value Table</strong></p>
+
+
+
+<figure class="wp-block-table is-style-regular"><table class="has-subtle-light-gray-background-color has-background"><tbody><tr><td><strong>Type</strong></td><td><strong>Default Value</strong></td></tr><tr><td>Integer</td><td>0</td></tr><tr><td>Float</td><td>0</td></tr><tr><td>Complex Number</td><td>0 Real and 0 Imaginary Part</td></tr><tr><td>Byte</td><td>0</td></tr><tr><td>Rune</td><td>0</td></tr><tr><td>String</td><td>&#8220;&#8221;</td></tr><tr><td>Bool</td><td>false</td></tr><tr><td>Array</td><td>Every array value to its default</td></tr><tr><td>Struct</td><td>Every field to its default</td></tr><tr><td>Map</td><td>nil</td></tr><tr><td>Channel</td><td>nil</td></tr><tr><td>Interface</td><td>nil</td></tr><tr><td>Slices</td><td>nil</td></tr><tr><td>Pointer</td><td>nil</td></tr><tr><td>Function</td><td>nil</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Examples:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example of each. Use the menu on the side to navigate.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Integer</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var a int
+    fmt.Print("Default zero value of int: ")
+    fmt.Println(a)
+    
+    var b uint
+    fmt.Print("Default zero value of uint: ")
+    fmt.Println(b)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of int: 0
+Default zero value of uint: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Float</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a float32
+    fmt.Print("Default zero value of float: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of float: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Complex Number</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a complex64
+    fmt.Print("Default zero value of complex: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of complex: (0+0i)</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Byte</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a byte
+    fmt.Print("Default zero value of byte: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of byte: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Rune</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a rune
+    fmt.Print("Default zero value of rune: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of rune: 0</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>String</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a string
+    fmt.Print("Default zero value of string: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of string:    //An emtpy string. Hence nothing is printed</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Bool</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a bool
+    fmt.Print("Default zero value of bool: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default zero value of bool: false</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Array</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of an array is the default value of its values. For eg in the below code, there is an array of two lengths of type bool. When we print the output is <strong>[false false]</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a [2]bool
+    fmt.Print("Default Zero Value of an array: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default Zero Value of a array: [false false]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Struct</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of a <strong>struct</strong> is the default value of its field. For eg in the below code, there is a struct sample with two field. One is of int type and the other is of the bool type. We create an instance of this struct and when we print it, the output is <strong>{0 false} </strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    type sample struct {
+        a int
+        b bool
+    }
+    a := sample{}
+    fmt.Print("Default Zero Value of an struct: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Default Zero Value of a struct: {0 false} </code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Map</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of a <strong>map</strong> is <strong>nil. </strong>That is why the output of <strong>fmt.Println(a==nil)</strong> is true. When a map is passed to <strong>fmt.Println </strong>, it tries to print values in the map. That is why the output is map[]</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a map[bool]bool
+    fmt.Println(a == nil)
+    fmt.Print("Printing map: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+Printing map: map[]</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Channel</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a chan int
+    fmt.Print("Default zero value of channel: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default zero value of channel: &lt;nil></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Interface</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a chan interface{}
+    fmt.Print("Default zero value of interface: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default zero value of interface: &lt; nil></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Slice</strong></h2>
+
+
+
+<p class="has-medium-font-size">Default value of a slice is <strong>nil. </strong>That is why the output of <strong>fmt.Println(a==nil)</strong> is true. When a slice is passed to <strong>fmt.Println </strong>, it tries to print values in the slice. That is why the output is []</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a []int
+    fmt.Println(a == nil)
+    fmt.Print("Printing slice: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">true
+Printing slice: []</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Function</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a func()
+    fmt.Print("Default Zero Value of a func: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default Zero Value of a func: &lt;nil></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Pointer</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import "fmt"
+func main() {
+    var a *int
+    fmt.Print("Default Zero Value of a pointer: ")
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Default Zero Value of a pointer: &lt;nil></p>
+<p>The post <a href="https://golangbyexamples.com/go-default-zero-value-all-types/">Default Zero Value of all Types in Go (Golang) With Examples</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-default-zero-value-all-types/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1080</post-id>	</item>
+		<item>
+		<title>Using Context Package in GO (Golang) &#8211; Complete Guide</title>
+		<link>https://golangbyexamples.com/using-context-in-golang-complete-guide/</link>
+					<comments>https://golangbyexamples.com/using-context-in-golang-complete-guide/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 23 Dec 2019 17:44:28 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[context in golang]]></category>
+		<category><![CDATA[explained]]></category>
+		<category><![CDATA[golang context explained]]></category>
+		<category><![CDATA[sidetoc]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=868</guid>
+
+					<description><![CDATA[<p>Introduction: Definition: Context is a package provided by GO. Let&#8217;s first understand some problems that existed already, and which context package tries to solve. Problem Statement: Let&#8217;s say that you started a...</p>
+<p>The post <a href="https://golangbyexamples.com/using-context-in-golang-complete-guide/">Using Context Package in GO (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Introduction</strong>:</h1>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Definition:</strong></h2>
+
+
+
+<p class="has-medium-font-size">Context is a package provided by GO. Let&#8217;s first understand some problems that existed already, and which context package tries to solve.</p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Problem Statement:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Let&#8217;s say that you started a function and you need to pass some common parameters to the downstream functions. You cannot pass these common parameters each as an argument to all the downstream functions.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>You started a goroutine which in turn start more goroutines and so on. Suppose the task that you were doing is no longer needed. Then how to inform all child goroutines to gracefully exit so that resources can be freed up</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A task should be finished within a specified timeout of say 2 seconds. If not it should gracefully exit or return.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A task should be finished within a deadline eg it should end before 5 pm . If not finished then it should gracefully exit and return</li></ul>
+
+
+
+<p class="has-medium-font-size">If you notice all the above problems are quite applicable to HTTP requests and but none the less these problems are also applicable to many different areas too.</p>
+
+
+
+<p class="has-medium-font-size"> For a web HTTP request, it needs to be canceled when the client has disconnected, or the request has to be finished within a specified timeout and also requests scope values such as request_id needs to be available to all downstream functions.</p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>When to Use (Some Use Cases):</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>To pass data to the downstream. Eg.&nbsp; a HTTP request creates a <strong>request_id, request_user </strong>which needs to be passed around to all downstream functions for distributed tracing.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you want to halt the operation in the midway &#8211; A HTTP request should be stopped because the client disconnected</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you want to halt the operation within a specified time from start i.e with timeout &#8211; Eg- a HTTP request should be completed in 2 sec or else should be aborted.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you want to halt an operation before a certain time &#8211; Eg. A cron is running that needs to be aborted in 5 mins if not completed.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Context Interface</strong></h1>
+
+
+
+<p class="has-medium-font-size">The core of the understanding context is knowing the <strong>Context</strong> interface</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Context interface {
+    //It retures a channel when a context is cancelled, timesout (either when deadline is reached or timeout time has finished)
+    Done() <-chan struct{}
+
+    //Err will tell why this context was cancelled. A context is cancelled in three scenarios.
+    // 1. With explicit cancellation signal
+    // 2. Timeout is reached
+    // 3. Deadline is reached
+    Err() error
+
+    //Used for handling deallines and timeouts
+    Deadline() (deadline time.Time, ok bool)
+
+    //Used for passing request scope values
+    Value(key interface{}) interface{}
+}</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Creating New Context</strong></h1>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>context.Background():</strong></h2>
+
+
+
+<p class="has-medium-font-size">context package function Background() returns a empty&nbsp;Context which implements the <strong>Context</strong> interface</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>It has no values</li><li>It is never canceled</li><li>It has no deadline</li></ol>
+
+
+
+<p class="has-medium-font-size">Then what is the use context.Background(). context.Background() serves as the root of all context which will be derived from it. It will be more clear as we go along</p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>context.ToDo():</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>context package ToDo function returns an empty Context. This context is used when the surrounding function has not been passed a context and one wants to use the context as a placeholder in the current function and plans to add actual context in the near future. One use of adding it as a placeholder is that it helps in validation in the Static Code Analysis tool. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It is also an empty Context same as context.Background()</li></ul>
+
+
+
+<p class="has-medium-font-size">The above two methods describe a way of creating new contexts. More context can be derived from these contexts. This is where context tree comes into the picture</p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Context Tree</strong></h1>
+
+
+
+<p class="has-medium-font-size">Before understanding Context Tree please make sure that it is implicitly created in the background when using <strong>context</strong>. You will find no mention of in go context package itself.</p>
+
+
+
+<p class="has-medium-font-size"> Whenever you use context, then the empty Context got from context.Background() is the root of all context. context.ToDo() also acts like root context but as mentioned above it is more like a context placeholder for future use. This empty context has no functionality at all and we can add functionality by deriving a new context from this. Basically a new context is created by wrapping an already existing immutable context and adding additional information. Let's see some example of a context tree which gets created</p>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Two level tree</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rootCtx := context.Background()
+childCtx := context.WithValue(rootCtx, "msgId", "someMsgId")</code></pre>
+
+
+
+<p class="has-medium-font-size">In above </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>rootCtx</strong> is the empty Context with no functionality</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>childCtx</strong> is derived from rootCtx and has the functionality of storing request-scoped values. In above example it is storing key-value pair of&nbsp; {"msgId" : "someMsgId"}</li></ul>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Three level tree</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rootCtx := context.Background()
+childCtx := context.WithValue(rootCtx, "msgId", "someMsgId")
+childOfChildCtx, cancelFunc := context.WithCancel(childCtx)</code></pre>
+
+
+
+<p class="has-medium-font-size">In above </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>rootCtx</strong> is the empty Context with no functionality</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>childCtx</strong> is derived from rootCtx and has the functionality of storing request-scoped values. In above example it is storing key-value pair of&nbsp; {"msgId" : "someMsgId"}</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>childOfChildCtx</strong> is derived from childCtx . It has the functionality of storing request-scoped values and also it has the functionality of triggering cancellation signals. cancelFunc can be used to trigger cancellation signals</li></ul>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Multi-level tree</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rootCtx := context.Background()
+childCtx1 := context.WithValue(rootCtx, "msgId", "someMsgId")
+childCtx2, cancelFunc := context.WithCancel(childCtx1)
+childCtx3 := context.WithValue(rootCtx, "user_id", "some_user_id)</code></pre>
+
+
+
+<p class="has-medium-font-size">In above:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>rootCtx</strong> is the empty Context with no functionality</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>childCtx1</strong> is derived from <strong>rootCtx</strong> and has the functionality of storing request-scoped values. In above example it is storing key-value pair of&nbsp; {"msgId" : "someMsgId"}</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>childCtx2</strong> is derived from <strong>childCtx1</strong> . It has the functionality of triggering cancellation signals. cancelFunc can be used to trigger cancellation signals</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>childCtx3</strong> is derived from <strong>rootCtx</strong> . It has the functionality of storing the current user</li></ul>
+
+
+
+<p class="has-medium-font-size">Above three-level tree would look like below</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="261" height="206" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2020/09/Context-Tree.jpg?resize=261%2C206&#038;ssl=1" alt="" class="wp-image-4117" data-recalc-dims="1"/></figure>
+
+
+
+<p class="has-medium-font-size">As since it is a tree, it is also possible to create more childs for a particular node. For eg we can derive a new context <strong>childCtx4</strong> from <strong>childCtx1</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">childCtx4 := context.WithValue(childCtx1, "current_time", "some_time)</code></pre>
+
+
+
+<p class="has-medium-font-size">Tree with above node added would like below:</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="231" height="206" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2020/09/Context-Tree-2-1.jpg?resize=231%2C206&#038;ssl=1" alt="" class="wp-image-4120" data-recalc-dims="1"/></figure>
+
+
+
+<p class="has-medium-font-size">At this very moment, it might not be clear how WithValue() or WithCancel() function is used. Right now just understand that whenever using context, a context tree is created with root as the <strong>emptyCtx </strong>. These functions will get clear as we move on</p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Deriving From Context</strong></h1>
+
+
+
+<p class="has-medium-font-size">A derived context is can be created in 4 ways<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Passing request-scoped values&nbsp; -&nbsp; using <strong>WithValue() </strong>function of context package</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>With cancellation signals - using <strong>WithCancel() </strong>function of context package</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>With deadlines - using <strong>WithDeadine() </strong>function of context package</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>With timeouts - using <strong>WithTimeout() </strong>function of context package</li></ul>
+
+
+
+<p class="has-medium-font-size">Let's understand each of the above in details</p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>context.WithValue() </strong></h2>
+
+
+
+<p class="has-very-dark-gray-color has-text-color" style="font-size:22px">Used for passing request-scoped values. The complete signature of the function is </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">withValue(parent Context, key, val interface{}) (ctx Context)</code></pre>
+
+
+
+<p class="has-medium-font-size">It takes in a parent context, key, value and returns a derived context&nbsp; This derived context has <strong>key</strong> associated with the <strong>value</strong>. Here the parent context can be either context.Background() or any other context. Further, any context which is derived from this context will have this value.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">#Root Context
+ctxRoot := context.Background() - #Root context 
+
+#Below ctxChild has acess to only one pair {"a":"x"}
+ctxChild := context.WithValue(ctxRoot, "a", "x") 
+
+#Below ctxChildofChild has access to both pairs {"a":"x", "b":"y"} as it is derived from ctxChild
+ctxChildofChild := context.WithValue(ctxChild, "b", "y") 
+</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Example:</strong></p>
+
+
+
+<p class="has-medium-font-size">Complete Working example of <strong>withValue(). </strong>In the below example, we are injecting a msgId for each incoming request. If you notice in below program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>inejctMsgID is a net HTTP middleware function that populates the <strong>"msgID"</strong> field in context</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>HelloWorld is the handler function for api "localhost:8080/welcome" which gets this msgID from context and sends it back as response headers</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "context"
+    "net/http"
+    "github.com/google/uuid"
+)
+
+func main() {
+    helloWorldHandler := http.HandlerFunc(HelloWorld)
+    http.Handle("/welcome", inejctMsgID(helloWorldHandler))
+    http.ListenAndServe(":8080", nil)
+}
+
+//HelloWorld hellow world handler
+func HelloWorld(w http.ResponseWriter, r *http.Request) {
+    msgID := ""
+    if m := r.Context().Value("msgId"); m != nil {
+        if value, ok := m.(string); ok {
+            msgID = value
+        }
+    }
+    w.Header().Add("msgId", msgID)
+    w.Write([]byte("Hello, world"))
+}
+
+func inejctMsgID(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        msgID := uuid.New().String()
+        ctx := context.WithValue(r.Context(), "msgId", msgID)
+        req := r.WithContext(ctx)
+        next.ServeHTTP(w, req)
+        
+    })
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Simply do a curl call to the above request after running the above program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">curl -v http://localhost/welcome</code></pre>
+
+
+
+<p class="has-medium-font-size">Here will be the response. Notice the <strong>MsgId </strong>that gets populated in the response headers. The injectMsgId function acts as middleware and injects a unique msgId to the request context.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">curl -v http://localhost:8080/welcome
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /do HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.54.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Msgid: a03ff1d4-1464-42e5-a0a8-743c5af29837
+< Date: Mon, 23 Dec 2019 16:51:01 GMT
+< Content-Length: 12
+< Content-Type: text/plain; charset=utf-8
+< 
+* Connection #0 to host localhost left intact</code></pre>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>context.WithCancel() </strong></h2>
+
+
+
+<p class="has-very-dark-gray-color has-text-color has-medium-font-size">Used for cancellation signals. Below is the signature of <strong>WithCancel() </strong>function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func WithCancel(parent Context) (ctx Context, cancel CancelFunc)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>context.WithCancel()</strong> function returns two things</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Copy of the parentContext with the new done channel.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A cancel function which when called closes this done channel</li></ul>
+
+
+
+<p class="has-medium-font-size">Only the creator of this context should call the cancel function. It is highly not recommended to pass around the <strong>cancel </strong>function. Lets understand <strong>withCancel </strong>with an example.</p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Example:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "context"
+    "fmt"
+    "time"
+)
+
+func main() {
+    ctx := context.Background()
+    cancelCtx, cancelFunc := context.WithCancel(ctx)
+    go task(cancelCtx)
+    time.Sleep(time.Second * 3)
+    cancelFunc()
+    time.Sleep(time.Second * 1)
+}
+
+func task(ctx context.Context) {
+    i := 1
+    for {
+        select {
+        case <-ctx.Done():
+            fmt.Println("Gracefully exit")
+            fmt.Println(ctx.Err())
+            return
+        default:
+            fmt.Println(i)
+            time.Sleep(time.Second * 1)
+            i++
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1
+2
+3
+Gracefully exit
+context canceled</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>task function will gracefully exit once the <strong>cancelFunc </strong>is called. Once the cancelFunc is called, the error string is set to <strong>"context cancelled" </strong>by the context package. That is why the output of <strong>ctx.Err()</strong> is <strong>"context cancelled"</strong></li></ul>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>context.WithTimeout() </strong></h2>
+
+
+
+<p class="has-medium-font-size">Used for time-based cancellation. The signature of the function is</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>context.WithTimeout()</strong> function&nbsp; will</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Will return a copy of the parentContext with the new done channel.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Accept a timeout duration after which this done channel will be closed and context will be canceled</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A cancel function which can be called in case the context needs to be canceled before timeout. &nbsp; </li></ul>
+
+
+
+<p class="has-medium-font-size">Lets see an example</p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Example:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "context"
+    "fmt"
+    "time"
+)
+
+func main() {
+    ctx := context.Background()
+    cancelCtx, cancel := context.WithTimeout(ctx, time.Second*3)
+    defer cancel()
+    go task1(cancelCtx)
+    time.Sleep(time.Second * 4)
+}
+
+func task1(ctx context.Context) {
+    i := 1
+    for {
+        select {
+        case <-ctx.Done():
+            fmt.Println("Gracefully exit")
+            fmt.Println(ctx.Err())
+            return
+        default:
+            fmt.Println(i)
+            time.Sleep(time.Second * 1)
+            i++
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1
+2
+3
+Gracefully exit
+context deadline exceeded</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>task function will gracefully exit once the timeout of 3 seconds is completed. The error string is set to "context deadline exceeded" by the context package. That is why the output of ctx.Err() is "context deadline exceeded"</li></ul>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>context.WithDeadline() </strong></h2>
+
+
+
+<p class="has-very-dark-gray-color has-text-color has-medium-font-size">Used for deadline-based cancellation. The signature of the function is </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func WithDeadline(parent Context, d time.Time) (Context, CancelFunc)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>context.WithDeadline()</strong> function </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Will return a copy of the parentContext with the new done channel.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Accept a deadline after which this done channel will be closed and context will be canceled</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A cancel function which can be called in case the context needs to be canceled before the deadline is reached.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let's see an example</p>
+
+
+
+<p class="has-vivid-purple-color has-text-color" style="font-size:26px"><strong>Example:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "context"
+    "fmt"
+    "time"
+)
+
+func main() {
+    ctx := context.Background()
+    cancelCtx, cancel := context.WithDeadline(ctx, time.Now().Add(time.Second*5))
+    defer cancel()
+    go task(cancelCtx)
+    time.Sleep(time.Second * 6)
+}
+
+func task(ctx context.Context) {
+    i := 1
+    for {
+        select {
+        case <-ctx.Done():
+            fmt.Println("Gracefully exit")
+            fmt.Println(ctx.Err())
+            return
+        default:
+            fmt.Println(i)
+            time.Sleep(time.Second * 1)
+            i++
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1
+2
+3
+4
+5
+Gracefully exit
+context deadline exceeded</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>task function will gracefully exit once the timeout of 5 seconds is completed as we gave the deadline of Time.now() + 5 seconds. The error string is set to "context deadline exceeded" by the context package. That is why the output of ctx.Err() is "context deadline exceeded"</li></ul>
+
+
+
+<p><br></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>What We Learned</strong></h1>
+
+
+
+<p class="has-vivid-purple-color has-text-color has-medium-font-size"><strong>How to create the context</strong>:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using context.Backgroun()</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using context.Todo()</li></ul>
+
+
+
+<p class="has-vivid-purple-color has-text-color has-medium-font-size"><strong>Context Tree</strong></p>
+
+
+
+<p class="has-vivid-purple-color has-text-color has-medium-font-size"><strong>Deriving a new context</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>context.WithValue()</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>context.WithCancel()</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>context.WithTimeout()</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>contxt.WithDeadline()</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>BestPractices and Caveats</strong></h1>
+
+
+
+<p class="has-medium-font-size">Following is a list of best practices that you can follow while using a context.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Do not store a context within a struct type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Context should flow through your program. For example, in case of an HTTP request, a new context can be created for each incoming request which can be used to hold a request_id or put some common information in the context like currently logged in user which might be useful for that particular request.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Always pass context as the first argument to a function.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Whenever you are not sure whether to use the context or not, it is better to use the context.ToDo() as a placeholder.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only the parent goroutine or function should the cancel context. Therefore do not pass the <strong>cancelFunc </strong>to downstream goroutines or functions. Golang will allow you to pass the <strong>cancelFunc</strong> around to child goroutines but it is not a recommended practice</li></ul>
+<p>The post <a href="https://golangbyexamples.com/using-context-in-golang-complete-guide/">Using Context Package in GO (Golang) &#8211; Complete Guide</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/using-context-in-golang-complete-guide/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">868</post-id>	</item>
+		<item>
+		<title>Inner working of Channels in Golang</title>
+		<link>https://golangbyexamples.com/inner-working-of-channels-in-golang/</link>
+					<comments>https://golangbyexamples.com/inner-working-of-channels-in-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 09 Dec 2019 17:17:19 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[sidetoc]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=802</guid>
+
+					<description><![CDATA[<p>Introduction The purpose of this article is to give an idea of the inner working of channels. Golang has two&#160; concurrency primitives: Goroutine&#160;&#8211; lightweight independent execution to achieve concurrency/parallelism. Channels &#8211;&#160;provides synchronization...</p>
+<p>The post <a href="https://golangbyexamples.com/inner-working-of-channels-in-golang/">Inner working of Channels in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Introduction</strong></h1>
+
+
+
+<p class="has-medium-font-size">The purpose of this article is to give an idea of the inner working of channels. Golang has two&nbsp; concurrency primitives:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>Goroutine</strong>&nbsp;&#8211; lightweight independent execution to achieve concurrency/parallelism.</li><li><strong>Channels</strong> &#8211;&nbsp;provides synchronization and communication between goroutines.</li></ol>
+
+
+
+<p class="has-medium-font-size">Channels are goroutine safe and manage communication between goroutine in a FIFO way. A goroutine can block on a channel while doing send or receive of some data and it is the responsibility of the channel to wake up blocked goroutine </p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Types of Channels</strong></h1>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Buffered Channel</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Send on a buffer channel only blocks if the buffer is full.</li><li>Receive is blocked if the channel is empty.</li></ul>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>Unbuffered Channel</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Send on a channel is block unless there is another goroutine to receive.</li><li>Receive is block until there is another goroutine on the other side to send.</li></ul>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>HCHAN struct</strong></h1>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s understand what happens internally when you make channels. A channel is internally represented by a <strong>hchan</strong> struct whose main elements are:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type hchan struct {
+    qcount   uint           // total data in the queue
+    dataqsiz uint           // size of the circular queue
+    buf      unsafe.Pointer // points to an array of dataqsiz elements
+    elemsize uint16
+    closed   uint32         // denotes weather channel is closed or not
+    elemtype *_type         // element type
+    sendx    uint           // send index
+    recvx    uint           // receive index
+    recvq    waitq          // list of recv waiters
+    sendq    waitq          // list of send waiters
+    lock     mutex
+}
+     
+type waitq struct {
+   first *sudog
+   last  *sudog
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The struct <strong>sudog</strong> main elements are represented as below:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type sudog struct {
+   g     *g             //goroutine
+   elem  unsafe.Pointer // data element 
+   ...
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s understand what happens during send and receive of a channel</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Send on a channel</strong></h1>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>No receiver/receivers waitin</strong>g: Unbuffered Channel or the Buffer is Full in case of Buffered Channel.</li><li><strong>Receiver/receivers waiting</strong>: Unbuffered Channel or the Buffer is empty in case of Buffered Channel</li><li><strong>Buffer empty</strong>: In case of buffered channel</li><li><strong>Channel closed </strong></li></ol>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>1. No Receiver/Receivers Waiting:</strong></h2>
+
+
+
+<p class="has-medium-font-size">For below two scenarios the behavior will be the same when there are no receivers waiting.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Buffered Channel: Buffer is Full</li><li>Unbuffered Channel</li></ul>
+
+
+
+<p class="has-medium-font-size">The goroutine <strong>G1</strong> which is trying to send to the channel, its execution is paused and is resumed only after a receive. Let&#8217;s see how that happens. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It creates a <strong>sudog</strong> object with <strong>g</strong> i.e, goroutine as itself and <strong>elem</strong> pointing to the data it wants to put into the buffer</li><li>It then adds that sudog struct to the sending queue sendq .</li><li>The goroutine calls &#8220;GOPARK&#8221; to the Go RunTime. In response, the Go RunTime changes the status of that G1 to WAITING.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>2. Receivers waiting </strong></h2>
+
+
+
+<p class="has-medium-font-size">For below two scenarios the behavior will be the same when there are receivers waiting</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Buffered Channel: Buffer is Empty</li><li>Unbuffered Channel</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see how that happens. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The goroutine G1 dequeues from the <strong>receq</strong> and then pass the data directly to the receiver goroutine.</li><li>Set the status of the receiver goroutine to <strong>RUNNABLE</strong></li></ul>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>3. Buffer not full: </strong></h2>
+
+
+
+<p class="has-medium-font-size">Only applicable for buffered channels: Buffer has at least one empty space</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Writes the data to the buffer</li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>4. Channel closed: </strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Panics</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Receive From a channel</strong></h1>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>No sender/senders waiting:</strong> Unbuffered Channel or buffer is empty in case of Buffered Channel </li><li><strong>Sender/senders waiting:</strong> Unbuffered Channel or the Buffer is empty in case of Buffered Channel.</li><li><strong>Non-empty Buffer:</strong> In case of buffered channel. Channel has at least 1 item.</li><li><strong>Channel closed</strong></li></ol>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>1. No sender/senders waiting: </strong></h2>
+
+
+
+<p class="has-medium-font-size">For below two scenarios, the behavior will be the same when there are no receivers waiting.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Buffered Channel: Buffer is Empty</li><li>Unbuffered Channel</li></ul>
+
+
+
+<p class="has-medium-font-size">The goroutine G1 which is trying to receive, its execution is paused and is resumed only after a send. Let&#8217;s see how that happens.<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The goroutine creates a <strong>sudog</strong> object with goroutine as itself and element being empty</li><li>It then adds that <strong>sudog</strong> struct to the waiting sending queue recvq<strong> .</strong></li><li>The gorutine calls &#8220;GOPARK&#8221; to the Go RunTime. In response, the Go RunTime changes the status of that Goroutine to <strong>WAITING</strong>.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>2. Sender/Senders waiting:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It dequeues the element from the buffer and copies to it to itself</li><li>Dequeues from the <strong>sendq</strong> and then copy the data directly to the buffer.</li><li>Set the status of the sender goroutine to <strong>RUNNABLE</strong></li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>3. Non-Empty Buffer:</strong></h2>
+
+
+
+<p class="has-medium-font-size">Only applicable for buffered channels:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The goroutine reads the data from the buffer</li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>4. Channel closed: </strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Receives the default value of data type from the channel</li></ul>
+<p>The post <a href="https://golangbyexamples.com/inner-working-of-channels-in-golang/">Inner working of Channels in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/inner-working-of-channels-in-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">802</post-id>	</item>
+	</channel>
+</rss>

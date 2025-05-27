@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>prototype Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/prototype/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/prototype/</link>
+	<description></description>
+	<lastBuildDate>Thu, 29 Apr 2021 17:21:51 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>prototype Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/prototype/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Prototype Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/prototype-pattern-go/</link>
+					<comments>https://golangbyexamples.com/prototype-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 20 Oct 2019 04:45:36 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[prototype]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=305</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition: It is a creational design...</p>
+<p>The post <a href="https://golangbyexamples.com/prototype-pattern-go/">Prototype Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:</strong></h2>
+
+
+
+<p class="has-medium-font-size">It is a creational design pattern that lets you create copies of objects. In this pattern, the responsibility of creating the clone objects is delegated to the actual object to clone.</p>
+
+
+
+<p class="has-medium-font-size"> The object to be cloned exposes a clone method which returns a clone copy of the object</p>
+
+
+
+<h2 class="wp-block-heading"><strong>When to Use</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We use prototype pattern when the object to be cloned creation process is complex i.e the cloning may involve vases of handling deep copies, hierarchical copies, etc. Moreover, there may be some private members too which cannot be directly accessed.</li><li>A copy of the object is created instead of creating a new instance from scratch. This prevents costly operations involved while creating a new object such as database operation.</li><li>When you want to create a copy of a new object, but it is only available to you as an interface. Hence you cannot directly create copies of that object.</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram</strong></h2>
+
+
+
+<figure class="wp-block-image"><img fetchpriority="high" decoding="async" width="639" height="271" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/10/Prototype-Pattern.jpg?resize=639%2C271&#038;ssl=1" alt="" class="wp-image-309" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/10/Prototype-Pattern.jpg?w=639&amp;ssl=1 639w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/10/Prototype-Pattern.jpg?resize=300%2C127&amp;ssl=1 300w" sizes="(max-width: 639px) 100vw, 639px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in code.</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>prototype interface</td><td>inode.go</td></tr><tr><td>Concrete Prototype 1</td><td>file.go</td></tr><tr><td>Concrete Prototype 2</td><td>folder.go</td></tr><tr><td>client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example</strong>:</h2>
+
+
+
+<p class="has-medium-font-size">In the context of golang let&#8217;s try to understand it with an example of os file system. The os file system has files and folders and folders itself contain files and folders. Each <strong>file</strong> and <strong>folder</strong> can be represented by an <strong>inode</strong> interface. <strong>inode</strong> interface also has the <strong>clone</strong>() function.</p>
+
+
+
+<p class="has-medium-font-size"><strong>inode.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type inode interface {
+    print(string)
+    clone() inode
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>file</strong> struct is represented as </p>
+
+
+
+<p class="has-medium-font-size"><strong>file.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type file struct {
+	name string
+}
+
+func (f *file) print(indentation string) {
+	fmt.Println(indentation + f.name)
+}
+
+func (f *file) clone() inode {
+	return &file{name: f.name + "_clone"}
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>folder</strong> struct is represented as</p>
+
+
+
+<p class="has-medium-font-size"><strong>folder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type folder struct {
+	childrens []inode
+	name      string
+}
+
+func (f *folder) print(indentation string) {
+	fmt.Println(indentation + f.name)
+	for _, i := range f.childrens {
+		i.print(indentation + indentation)
+	}
+}
+
+func (f *folder) clone() inode {
+	cloneFolder := &folder{name: f.name + "_clone"}
+	var tempChildrens []inode
+	for _, i := range f.childrens {
+		copy := i.clone()
+		tempChildrens = append(tempChildrens, copy)
+	}
+	cloneFolder.childrens = tempChildrens
+	return cloneFolder
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size">Since both <strong>file</strong> and <strong>folder</strong> struct implements the <strong>print</strong> and <strong>clone</strong> functions, hence they are of type <strong>inode</strong>. Also, notice the <strong>clone</strong> function in both file and folder. The <strong>clone</strong> function in both of them returns a copy of the respective file or folder. While cloning we append the keyword &#8220;_clone&#8221; for the name field. Let&#8217;s write the main function to test things out.</p>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    file1 := &file{name: "File1"}
+    file2 := &file{name: "File2"}
+    file3 := &file{name: "File3"}
+    folder1 := &folder{
+        childrens: []inode{file1},
+        name:      "Folder1",
+    }
+    folder2 := &folder{
+        childrens: []inode{folder1, file2, file3},
+        name:      "Folder2",
+    }
+    fmt.Println("\nPrinting hierarchy for Folder2")
+    folder2.print("  ")
+    cloneFolder := folder2.clone()
+    fmt.Println("\nPrinting hierarchy for clone Folder")
+    cloneFolder.print("  ")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Printing hierarchy for Folder2
+  Folder2
+    Folder1
+        File1
+    File2
+    File3
+
+Printing hierarchy for clone Folder
+  Folder2_clone
+    Folder1_clone
+        File1_clone
+    File2_clone
+    File3_clone</code></pre>
+<p>The post <a href="https://golangbyexamples.com/prototype-pattern-go/">Prototype Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/prototype-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">305</post-id>	</item>
+	</channel>
+</rss>

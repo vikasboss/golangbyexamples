@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>rename Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/rename/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/rename/</link>
+	<description></description>
+	<lastBuildDate>Thu, 16 Apr 2020 09:15:33 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>rename Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/rename/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Rename file or folder in Go (Golang)</title>
+		<link>https://golangbyexamples.com/rename-file-folder-golang/</link>
+					<comments>https://golangbyexamples.com/rename-file-folder-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 15 Apr 2020 21:15:15 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[file]]></category>
+		<category><![CDATA[folder]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[rename]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2004</guid>
+
+					<description><![CDATA[<p>Overview os.Rename() function can be used to rename a file or folder. Below is the signature of the function. old and new can be fully qualified as well. If the old and...</p>
+<p>The post <a href="https://golangbyexamples.com/rename-file-folder-golang/">Rename file or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">os.Rename() function can be used to rename a file or folder. Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Rename(old, new string) error</code></pre>
+
+
+
+<p class="has-medium-font-size"><br><strong>old</strong> and <strong>new</strong> can be fully qualified as well. If the <strong>old</strong> and <strong>new</strong> path doesn&#8217;t lie in the same directory then <strong>os.Rename() </strong>function behaves the same as moving a file or folder.<br></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<h2 class="wp-block-heading"><strong>Renaming a file</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is code for renaming a file</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a file
+    file, err := os.Create("temp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+
+    //Change permission so that it can be moved
+    err = os.Chmod("temp.txt", 0777)
+    if err != nil {
+        log.Println(err)
+    }
+
+
+    err = os.Rename("temp.txt", "newTemp.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<p class="has-medium-font-size">First, it will create a file named temp.txt in the current working directory. Then it will rename it to newTemp.txt</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Renaming a folder</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is code for renaming a folder<br></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a directory
+    err := os.Mkdir("temp", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+    err = os.Rename("temp", "newTemp")
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">First it will create a folder named temp in current working directory. Then it will rename it to newTemp</p>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/rename-file-folder-golang/">Rename file or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/rename-file-folder-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2004</post-id>	</item>
+	</channel>
+</rss>

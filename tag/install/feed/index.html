@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>install Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/install/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/install/</link>
+	<description></description>
+	<lastBuildDate>Sun, 08 Mar 2020 18:34:11 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>install Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/install/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Install GO (aka Golang) on Linux</title>
+		<link>https://golangbyexamples.com/golang-linux-installation/</link>
+					<comments>https://golangbyexamples.com/golang-linux-installation/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 08 Mar 2020 18:31:36 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[install]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1605</guid>
+
+					<description><![CDATA[<p>GO is available to be installed on Win, Mac, and Linux platforms. Let&#8217;s see the installation set up for Linux Install Download the archive of latest version of GO from here&#160; &#8211;...</p>
+<p>The post <a href="https://golangbyexamples.com/golang-linux-installation/">Install GO (aka Golang) on Linux</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">GO is available to be installed on Win, Mac, and Linux platforms.  Let&#8217;s see the installation set up for Linux</p>
+
+
+
+<p style="font-size:26px" class="has-text-color has-vivid-green-cyan-color"><strong>Install</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Download the archive of latest version of GO from here&nbsp; &#8211; <a href="https://golang.org/dl/">https://golang.org/dl/</a>. After downloading untar it at the location <strong>/usr/local. </strong>You can also run the below command to untar</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>After the untar then the below path contains the go binary <strong>&#8216;/usr/local/go/bin&#8217;</strong> . You have to add this location to your .bashrc. Open your .bashrc make the below entry. If the file doesn&#8217;t already exist then create it.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">export PATH=$PATH:/usr/local/go/bin</code></pre>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p style="font-size:26px" class="has-text-color has-vivid-green-cyan-color"><strong>Test Installation:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Relaunch the terminal and type the  command &#8216;which go&#8217; in the terminal.It will output <strong> /usr/local/go/bin/go.  </strong>This is the location of GO binary.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Try running the <strong>&#8216;go version&#8217; </strong> command. It will output the current GO Version</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Try running <strong>&#8216;go&#8217;</strong> command as well. It will output</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Go is a tool for managing Go source code.
+
+Usage:
+
+go <command> [arguments]
+
+The commands are:
+
+bug         start a bug report
+build       compile packages and dependencies
+clean       remove object files and cached files
+doc         show documentation for package or symbol
+env         print Go environment information
+fix         update packages to use new APIs
+fmt         gofmt (reformat) package sources
+generate    generate Go files by processing source
+get         add dependencies to current module and install them
+install     compile and install packages and dependencies
+list        list packages or modules
+mod         module maintenance
+run         compile and run Go program
+test        test packages
+tool        run specified go tool
+version     print Go version
+vet         report likely mistakes in packages
+
+Use "go help <command>" for more information about a command.
+
+Additional help topics:
+
+buildmode   build modes
+c           calling between Go and C
+cache       build and test caching
+environment environment variables
+filetype    file types
+go.mod      the go.mod file
+gopath      GOPATH environment variable
+gopath-get  legacy GOPATH go get
+goproxy     module proxy protocol
+importpath  import path syntax
+modules     modules, module versions, and more
+module-get  module-aware go get
+module-auth module authentication using go.sum
+module-private module configuration for non-public modules
+packages    package lists and patterns
+testflag    testing flags
+testfunc    testing functions
+
+Use "go help <topic>" for more information about that topic.</code></pre>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p style="font-size:26px" class="has-text-color has-vivid-green-cyan-color"><strong>Uninstall</strong></p>
+
+
+
+<p class="has-medium-font-size">To uninstall do below two steps</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Run below command to remove the files. It will require sudo permission.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rm -rf /usr/local/go</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Remove the below entry from the .bashrc file</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">export PATH=$PATH:/usr/local/go/bin</code></pre>
+<p>The post <a href="https://golangbyexamples.com/golang-linux-installation/">Install GO (aka Golang) on Linux</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/golang-linux-installation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1605</post-id>	</item>
+	</channel>
+</rss>

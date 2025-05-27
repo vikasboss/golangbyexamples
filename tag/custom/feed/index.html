@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>custom Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/custom/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/custom/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:28:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>custom Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/custom/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Sort a Custom Struct in Go (Golang)</title>
+		<link>https://golangbyexamples.com/sort-custom-struct-collection-golang/</link>
+					<comments>https://golangbyexamples.com/sort-custom-struct-collection-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 27 Dec 2019 16:26:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[custom]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[structs]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1009</guid>
+
+					<description><![CDATA[<p>Introduction GO has a sort package that provides utility primitives for the sorting of slices and user-defined types. Any collection can be sorted by the Sort function of sort package of GO...</p>
+<p>The post <a href="https://golangbyexamples.com/sort-custom-struct-collection-golang/">Sort a Custom Struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Introduction</strong></h1>
+
+
+
+<p class="has-medium-font-size">GO has a <strong>sort</strong> package that provides utility primitives for the sorting of slices and user-defined types. Any collection can be sorted by the <strong>Sort</strong> function of <strong>sort</strong> package of GO it if implements the <strong>sort.Interface</strong>. </p>
+
+
+
+<p class="has-medium-font-size">Below are the methods of sort.Interface</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/sort/#Interface">https://golang.org/pkg/sort/#Interface</a></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type Interface interface {
+    // Len is the number of elements in the collection.
+    Len() int
+    
+    // Less reports whether the element with
+    // index i should sort before the element with index j.
+    Less(i, j int) bool
+    
+    // Swap swaps the elements with indexes i and j.
+    Swap(i, j int)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working example to illustrate how we can use <strong>sort.Interface</strong> to sort a user-defined struct. In below example <br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We created a custom struct called <strong>employee</strong> with <strong>name</strong> and <strong>salary</strong> in dollars as fields</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have a <strong>employeeList</strong> which hold the list of <strong>employee</strong>.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>employeeList</strong> implements the <strong>Len(), Less(), Swap()</strong> method hence it implements the <strong>sort.Interface</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We sort the employee from highest salary to lowest salary. To sort employeeList we pass it to <strong>sort.Sort()</strong> function</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "sort"
+)
+
+type employee struct {
+    name   string
+    salary int
+}
+
+type employeeList []employee
+
+func (e employeeList) Len() int {
+    return len(e)
+}
+
+func (e employeeList) Less(i, j int) bool {
+    return e[i].salary > e[j].salary
+}
+
+func (e employeeList) Swap(i, j int) {
+    e[i], e[j] = e[j], e[i]
+}
+
+func main() {
+    eList := []employee{
+        employee{name: "John", salary: 3000},
+        employee{name: "Bill", salary: 4000},
+        employee{name: "Sam", salary: 1000},
+    }
+    sort.Sort(employeeList(eList))
+    for _, employee := range eList {
+        fmt.Printf("Name: %s Salary %d\n", employee.name, employee.salary)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Bill Salary 4000
+Name: John Salary 3000
+Name: Sam Salary 1000</code></pre>
+
+
+
+<p class="has-medium-font-size">To sort from lowest salary to highest salary we need to change the <strong>Less</strong> function with <strong>&#8216;>&#8217;</strong> sign</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (e employeeList) Less(i, j int) bool {
+    return e[i].salary > e[j].salary
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">After changing it when we run the program then output will be:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name: Sam Salary 1000
+Name: John Salary 3000
+Name: Bill Salary 4000</code></pre>
+<p>The post <a href="https://golangbyexamples.com/sort-custom-struct-collection-golang/">Sort a Custom Struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/sort-custom-struct-collection-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1009</post-id>	</item>
+	</channel>
+</rss>

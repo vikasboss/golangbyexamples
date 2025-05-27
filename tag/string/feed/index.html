@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>string Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/string/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/string/</link>
+	<description></description>
+	<lastBuildDate>Tue, 06 Apr 2021 12:40:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>string Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/string/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Iterate over a string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/iterate-over-a-string-golang/</link>
+					<comments>https://golangbyexamples.com/iterate-over-a-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 20 Jun 2020 15:42:35 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[iterate]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2322</guid>
+
+					<description><![CDATA[<p>In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters. All other...</p>
+<p>The post <a href="https://golangbyexamples.com/iterate-over-a-string-golang/">Iterate over a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters. All other characters are between 1 -4 bytes. To understand it more consider the below string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sameple := "a£c"</code></pre>
+
+
+
+<p class="has-medium-font-size">In above string</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>&#8216;a&#8217; takes one byte as per UTF-8</li><li>&#8216;£&#8217; takes two bytes as per UTF-8</li><li>&#8216;b&#8217; takes one byte as per UTF-8</li></ul>
+
+
+
+<p class="has-medium-font-size">The above string has 1+2+1 = 4 bytes altogether. Therefore when we try to print the length of the string using the standard <strong>len()</strong> function it will output 4 and not 3 as <strong>len()</strong> function returns the number of bytes in the string.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Length is %d\n", len(sample))</code></pre>
+
+
+
+<p class="has-medium-font-size">Hence standalone for loop cannot be used to iterate over all characters of a string as it will iterate over bytes and not character. So below <strong>for</strong> loop will instead iterate four times and the print value corresponding to a byte at that index.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"> for i := 0; i < len(sample); i++ {
+    fmt.Printf("%c\n", sample[i])
+ }</code></pre>
+
+
+
+<p class="has-medium-font-size">It will output below string which is not same as <strong>sample </strong>string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">aÂ£b</code></pre>
+
+
+
+<p class="has-medium-font-size">Not we have mentioned the above limitation of using len() function and for loop, let's see two ways of calculating the length of the string.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using for-range loop</li><li>By converting string to a rune array.</li></ul>
+
+
+
+<p class="has-large-font-size"><strong>Using for-range loop</strong></p>
+
+
+
+<p class="has-medium-font-size">for-rage iterates over the Unicode points( also referred to as rune in golang) in a string and will correctly output  a, £, b. Hence it can also be used to calculate the length of the string. Here is the format when using for-range with string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for index, character := range string {
+    //Do something with index and character
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Sample code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := "a£b"
+  
+    for i, letter := range sample {
+        fmt.Printf("Start Index: %d Value:%s\n", i, string(letter))
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Start Index: 0 Value:a
+Start Index: 1 Value:£
+Start Index: 3 Value:b</code></pre>
+
+
+
+<p class="has-large-font-size"><strong>By converting string to rune array</strong></p>
+
+
+
+<p class="has-medium-font-size">A rune represents a Unicode Point. By converting a string to rune array basically it is same as creating an array of Unicode Points of that string. Therefore once the string is converted into the rune array, it can be used to iterate over all characters of the string.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := "a£b"
+    runeSample := []rune(sample)
+    fmt.Printf("Length of given string is %d\n", len(runeSample))
+    //Iterate
+    for i := 0; i < len(runeSample); i++ {
+        fmt.Println(string(runeSample[i]))
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of given string is 3
+a
+£
+b</code></pre>
+<p>The post <a href="https://golangbyexamples.com/iterate-over-a-string-golang/">Iterate over a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/iterate-over-a-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2322</post-id>	</item>
+		<item>
+		<title>Length of string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/length-of-string-golang/</link>
+					<comments>https://golangbyexamples.com/length-of-string-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 20 Jun 2020 15:31:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[length]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2317</guid>
+
+					<description><![CDATA[<p>In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&#160;All other...</p>
+<p>The post <a href="https://golangbyexamples.com/length-of-string-golang/">Length of string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&nbsp;All other characters are between 1 -4 bytes. To understand it more consider the below string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := "a£c"</code></pre>
+
+
+
+<p class="has-medium-font-size">In above string</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>&#8216;a&#8217; takes one byte as per UTF-8</li><li>&#8216;£&#8217; takes two bytes as per UTF-8</li><li>&#8216;b&#8217; takes one byte as per UTF-8</li></ul>
+
+
+
+<p class="has-medium-font-size">The above string has 1+2+1 = 4 bytes altogether. Therefore when we try to print the length of the string using the standard <strong>len()</strong> function it will output 4 and not 3 as <strong>len()</strong> function returns the number of bytes in the string.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Length is %d\n", len(sample))</code></pre>
+
+
+
+<p class="has-medium-font-size">Hence standalone for loop cannot be used to iterate over all characters of a string as it will iterate over bytes and not character. So below <strong>for</strong> loop will instead iterate four times and the print value corresponding to a byte at that index.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for i := 0; i < len(sample); i++ {
+    fmt.Printf("%c\n", sample[i])
+ }</code></pre>
+
+
+
+<p class="has-medium-font-size">It will output below string which is not same as <strong>sample </strong>string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">aÂ£b</code></pre>
+
+
+
+<p class="has-medium-font-size">Not we have mentioned the above limitation of using len() function and for loop, let's see two ways of calculating the length of the string.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the <strong>RuneCountInString</strong> method of the utf8 package</li><li>Using for-range loop</li><li>By converting string to a rune array.</li></ul>
+
+
+
+<p class="has-large-font-size"><strong>Using the <strong>RuneCountInString</strong> method of the utf8 package</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>utf8</strong> package of golang provides a RuneCountInString method that can be used to get the length of the string. It correctly counts the number of runes in the string.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/unicode/utf8/#RuneCountInString ">https://golang.org/pkg/unicode/utf8/#RuneCountInString</a></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
+func main() {
+	sample := "a£b"
+
+	fmt.Printf("Length of given string is %d\n", utf8.RuneCountInString(sample))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of given string is 3</code></pre>
+
+
+
+<p class="has-large-font-size"><strong>Using for-range loop</strong></p>
+
+
+
+<p class="has-medium-font-size">for-range iterates over the Unicode points( also referred to as rune in golang) in a string and will correctly output&nbsp; a, £, b. Hence it can also be used to calculate the length of the string. Here is the format when using for-range with string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for index, character := range string {
+    //Do something with index and character
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Sample code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := "a£b"
+
+	len := 0
+	//With index and value
+	fmt.Println("Both Index and Value")
+	for i, letter := range sample {
+		len++
+		fmt.Printf("Start Index: %d Value:%s\n", i, string(letter))
+	}
+
+	fmt.Printf("Length of given string is %d\n", len)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Start Index: 0 Value:a
+Start Index: 1 Value:£
+Start Index: 3 Value:b
+Length of given string is 3</code></pre>
+
+
+
+<p class="has-large-font-size"><strong>By converting string to rune array</strong></p>
+
+
+
+<p class="has-medium-font-size">A rune represents a Unicode Point. By converting a string to rune array basically it is same as creating a array of Unicode Points of that string. Therefore once the string is converted into the rune array, it can be used to iterate over all characters of the string.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := "a£b"
+
+	runeSample := []rune(sample)
+
+	fmt.Printf("Length of given string is %d\n", len(runeSample))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of given string is 3</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/length-of-string-golang/">Length of string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/length-of-string-golang/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2317</post-id>	</item>
+		<item>
+		<title>Generate a random string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/generate-random-string-golang/</link>
+					<comments>https://golangbyexamples.com/generate-random-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2020 11:25:23 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[random]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1947</guid>
+
+					<description><![CDATA[<p>Overview &#8216;mat/rand&#8217; package of golang contains a Intn function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can...</p>
+<p>The post <a href="https://golangbyexamples.com/generate-random-string-golang/">Generate a random string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;mat/rand&#8217; </strong>package of golang contains a <strong>Intn</strong> function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can be utilized to generate a random string from a character set.</p>
+
+
+
+<p class="has-medium-font-size"><br>To know more about what pseudo-random number means, checkout this post &#8211; <a href="https://golangbyexamples.com/generate-random-number-golang">https://golangbyexamples.com/generate-random-number-golang</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of this method. It takes input a number n and will return a number x in range 0&lt;=x&lt;n.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Intn(n int) int</code></pre>
+
+
+
+<p class="has-medium-font-size">Above function can be used to generate a random string. Basically we first select a charSet. Then we use the above function to generate a random number and then use that random number to get a random character from the charSet. This random character is added to a string until we have a random string of desired length.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "strings"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    //Only lowercase
+    charSet := "abcdedfghijklmnopqrst"
+    var output strings.Builder
+    length := 10
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteString(string(randomChar))
+    }
+    fmt.Println(output.String())
+    output.Reset()
+
+    //Lowercase and Uppercase Both
+    charSet = "abcdedfghijklmnopqrstABCDEFGHIJKLMNOP"
+    length = 20
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteString(string(randomChar))
+    }
+    fmt.Println(output.String())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the output on my machine. On your's it might give a different output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">himsemkpkd
+nHaiEpccEdBfCFPtaBbi</code></pre>
+
+
+
+<p class="has-medium-font-size">In above program we are using character set as</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">abcdedfghijklmnopqrst and abcdedfghijklmnopqrstABCDEFGHIJKLMNOP</code></pre>
+
+
+
+<p class="has-medium-font-size">All the above characters in charSet were ASCII characters hence we were able to index a character in <strong>charSet</strong> string. But this could be problem if the <strong>charSet</strong> contains non-ASCII character. </p>
+
+
+
+<p class="has-medium-font-size">In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&nbsp;All other characters are between 1 to 4 bytes. Due to this it is not possible to index a character in a string.&nbsp; In GO, rune data type represents a Unicode point.&nbsp; Once a string is converted to an array of rune then it is possible to index a character in that array of rune.<br></p>
+
+
+
+<p class="has-medium-font-size">So in case, the character set contains some characters that are not ASCII they might occupy more than 1 bytes. In that case, we cannot use the above code to generate a random string as we cannot index into the charSet. For this case, we have to first convert a string into a rune array so that we can index into the rune array to the character and then incrementally form the random string. </p>
+
+
+
+<p class="has-medium-font-size">As in the below example, our charSet contains a non-ASCII character <strong>'£'. </strong>This character occupies two bytes</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "strings"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+    //Only lowercase and £
+    charSet := []rune("abcdedfghijklmnopqrst£")
+    var output strings.Builder
+    length := 10
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteRune(randomChar)
+    }
+    fmt.Println(output.String())
+    output.Reset()
+ 
+   //Lowercase and Uppercase Both and £
+    charSet = []rune("abcdedfghijklmnopqrstABCDEFGHIJKLMNOP£")
+    length = 20
+    for i := 0; i < length; i++ {
+        random := rand.Intn(len(charSet))
+        randomChar := charSet[random]
+        output.WriteRune(randomChar)
+    }
+    fmt.Println(output.String())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong>:</p>
+
+
+
+<p class="has-medium-font-size">Below is the output on my machine. On yours it might give a different output</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">aidqpbse£j
+rebhjblsePsLpGBPOhfB</code></pre>
+<p>The post <a href="https://golangbyexamples.com/generate-random-string-golang/">Generate a random string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/generate-random-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1947</post-id>	</item>
+		<item>
+		<title>Shuffle a string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/shuffle-string-golang/</link>
+					<comments>https://golangbyexamples.com/shuffle-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 02 Apr 2020 06:45:12 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[shuffle]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1921</guid>
+
+					<description><![CDATA[<p>Overview math/rand package of GO provides a Shuffle method that can be used to shuffle a string. This method pseudo-randomizes the order of elements using the default source. pseudo-randomizes means that for...</p>
+<p>The post <a href="https://golangbyexamples.com/shuffle-string-golang/">Shuffle a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math/rand</strong> package of GO provides a <strong>Shuffle</strong> method that can be used to shuffle a string. This method pseudo-randomizes the order of elements using the default source. pseudo-randomizes means that for a fixed input seed it will generate the same randomization. That is why in our program we will initialize the rand package with a different seed every time.<br></p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Shuffle(n int, swap func(i, j int))</code></pre>
+
+
+
+<p class="has-medium-font-size">This function takes in below arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>First is the total number of characters in the given string.</li><li>The second is a swap function that will be called for different indexes <strong>i</strong> and <strong>j. </strong>You need to provide your own swap function that will swap your elements in the string.</li></ul>
+
+
+
+<p class="has-medium-font-size">Also note that this function will panic if n&lt;0. In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&nbsp;All other characters are between 1 to 4 bytes. Due to this it is not possible to index a character in a string.&nbsp; In GO, rune data type represents a Unicode point.&nbsp; Once a string is converted to an array of rune then it is possible to index a character in that array of rune.</p>
+
+
+
+<p class="has-medium-font-size">You can learn more the above issue here &#8211; <a href="https://golangbyexamples.com/number-characters-string-golang/">https://golangbyexamples.com/number-characters-string-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">For this reason in the below program for shuffling a given string , we are first converting a string into a rune array so that we can index into the rune array and use that index to swap characters in that string to shuffle the string.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().Unix())
+
+    in := "abcdedf£"
+
+    inRune := []rune(in)
+    rand.Shuffle(len(inRune), func(i, j int) {
+        inRune[i], inRune[j] = inRune[j], inRune[i]
+    })
+    fmt.Println(string(inRune))
+
+    rand.Shuffle(len(inRune), func(i, j int) {
+        inRune[i], inRune[j] = inRune[j], inRune[i]
+    })
+    fmt.Println(string(inRune))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p class="has-medium-font-size">It will produce a different output on your machine.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">dd£cebaf
+feb£cadd</code></pre>
+<p>The post <a href="https://golangbyexamples.com/shuffle-string-golang/">Shuffle a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/shuffle-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1921</post-id>	</item>
+		<item>
+		<title>Pick a random character in string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/pick-random-character-string-golang/</link>
+					<comments>https://golangbyexamples.com/pick-random-character-string-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 31 Mar 2020 15:59:17 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[character]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pick]]></category>
+		<category><![CDATA[random]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1918</guid>
+
+					<description><![CDATA[<p>Overview &#8216;mat/rand&#8217; package of golang contains a Intn function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can...</p>
+<p>The post <a href="https://golangbyexamples.com/pick-random-character-string-golang/">Pick a random character in string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;mat/rand&#8217; </strong>package of golang contains a <strong>Intn</strong> function that can be used to generate a pseudo-random number between [0,n). Bracket at the end means that n is exclusive. This function can be utilized to pick a random element in a string. We can generate a random between 0 and length-1 of string. Then we can use that random number to index into the string and get the result.</p>
+
+
+
+<p class="has-medium-font-size">But there is one problem in above approach. In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters. All other characters are between 1 -4 bytes. Due to this it is not possible to index a character in a string.  In GO, rune data type represents a Unicode point.  Once a string is converted to an array of rune then it is possible to index a character in that array of rune. </p>
+
+
+
+<p class="has-medium-font-size">You can learn more the above issue here &#8211; <a href="https://golangbyexamples.com/number-characters-string-golang/">https://golangbyexamples.com/number-characters-string-golang/</a></p>
+
+
+
+<p class="has-medium-font-size">For this reason in below program for picking a random in a given string , we  are first converting a string into a rune array so that we can index into the rune array and then return the random character.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/rand"
+)
+
+func main() {
+    in := "abcdedf£"
+    inRune := []rune(in)
+    randomIndex := rand.Intn(len(inRune))
+    pick := inRune[randomIndex]
+    fmt.Println(string(pick))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">One of a,b,c,d,e,f,£</code></pre>
+<p>The post <a href="https://golangbyexamples.com/pick-random-character-string-golang/">Pick a random character in string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/pick-random-character-string-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1918</post-id>	</item>
+		<item>
+		<title>Character in Go (Golang)</title>
+		<link>https://golangbyexamples.com/character-in-go/</link>
+					<comments>https://golangbyexamples.com/character-in-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 06 Jan 2020 16:52:28 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[char]]></category>
+		<category><![CDATA[character]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[rune]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1107</guid>
+
+					<description><![CDATA[<p>Overview Golang does not have any data type of &#8216;char&#8216;. Therefore byte is used to represent the ASCII character. byte is an alias for uint8, hence is of 8 bits or 1...</p>
+<p>The post <a href="https://golangbyexamples.com/character-in-go/">Character in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Golang does not have any data type of &#8216;<strong>char</strong>&#8216;. Therefore </p>
+
+
+
+<p></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>byte</strong> is used to represent the ASCII character. byte is an alias for uint8, hence is of 8 bits or 1 byte and can represent all ASCII characters from 0 to 255</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>rune</strong> is used to represent all UNICODE characters which include every character that exists. rune is an alias for <strong>int32 </strong>and can represent all UNICODE characters. It is 4 bytes in size.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A <strong>string</strong> of one length can also be used to represent a character implicitly. The size of one character string will depend upon the encoding of that character. For utf-8 encoding, it will be between 1-4 bytes</li></ul>
+
+
+
+<p class="has-medium-font-size">To declare either a <strong>byte</strong> or a <strong>rune</strong> we use single quotes. While declaring <strong>byte</strong> we have to specify the type,  If we don&#8217;t specify the type, then the default type is meant as a <strong>rune. </strong></p>
+
+
+
+<p class="has-medium-font-size">To declare a <strong>string</strong>, we use double quotes or backquotes. Double quotes string honors escape character while back quotes string is a raw literal string and doesn&#8217;t honor any kind of escaping. </p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Code Example</strong></h1>
+
+
+
+<p class="has-medium-font-size">See the program below. It shows</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A byte representing the character &#8216;<strong>a</strong>&#8216;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A rune representing the pound sign &#8216;<strong>£</strong>&#8216;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A string having one character micro sign <strong>&#8216;µ&#8217;</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    //If you don't specify type here
+    var b byte = 'a'
+    
+    fmt.Println("Priting Byte:")
+    //Print Size, Type and Character
+    fmt.Printf("Size: %d\nType: %s\nCharacter: %c\n", unsafe.Sizeof(b), reflect.TypeOf(b), b)
+    
+    r := '£'
+    
+    fmt.Println("\nPriting Rune:")
+    //Print Size, Type, CodePoint and Character
+    fmt.Printf("Size: %d\nType: %s\nUnicode CodePoint: %U\nCharacter: %c\n", unsafe.Sizeof(r), reflect.TypeOf(r), r, r)
+
+    s := "µ" //Micro sign
+    fmt.Println("\nPriting String:")
+    fmt.Printf("Size: %d\nType: %s\nCharacter: %s\n", unsafe.Sizeof(s), reflect.TypeOf(s), s)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Priting Byte:
+Size: 1
+Type: uint8
+Character: a
+
+Priting Rune:
+Size: 4
+Type: int32
+Unicode CodePoint: U+00A3
+Character: £
+
+Priting String:
+Size: 16
+Type: string
+Character: µ</code></pre>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Caveats</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Declaring a  byte with a NON-ASCII character will raise a compiler error as below. I tried with a character having a corresponding code as 285</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">constant 285 overflows byte</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only a single character can be declared inside a single quote while initializing <strong>byte</strong> or a <strong>rune</strong>. On trying to add two character between single quote, below compiler warning will be generated</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">invalid character literal (more than one character)</code></pre>
+<p>The post <a href="https://golangbyexamples.com/character-in-go/">Character in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/character-in-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1107</post-id>	</item>
+	</channel>
+</rss>

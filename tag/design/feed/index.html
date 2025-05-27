@@ -1,0 +1,2134 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>design Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/design/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/design/</link>
+	<description></description>
+	<lastBuildDate>Tue, 06 Oct 2020 16:27:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>design Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/design/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Visitor Design Pattern in Go(Golang)</title>
+		<link>https://golangbyexamples.com/visitor-design-pattern-go/</link>
+					<comments>https://golangbyexamples.com/visitor-design-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 14:10:45 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[visitor]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=730</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Visitor Design Pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/visitor-design-pattern-go/">Visitor Design Pattern in Go(Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Visitor Design Pattern is a Behavioural design pattern that lets you add behaviour to a struct without actually modifying the struct.<br>Let&#8217;s understand the visitor pattern with an example. Let&#8217;s say you are the maintainer of a lib which has different shape structs such as </p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Square</li><li>Circle</li><li>Triangle</li></ol>
+
+
+
+<p class="has-medium-font-size">Each of the above shape structs implements a common interface <strong>shape. </strong>There are many teams in your company which are using your lib. Now let&#8217;s say one of the team wants you to add one more behaviour (<strong>getArea()</strong>) to the Shape structs. </p>
+
+
+
+<p class="has-medium-font-size">There are many options to solve this problem</p>
+
+
+
+<p class="has-medium-font-size"><strong>First Option</strong></p>
+
+
+
+<p class="has-medium-font-size">The first option that comes to the mind is to add <strong>getArea()</strong> method in the <strong>shape</strong> interface and then each shape struct can implement the getArea() method. This seems trivial but there are some problems:<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>As a maintainer of the library, you don&#8217;t want to alter a highly tested code of your library by adding additional behaviours.</li><li>There might be more request by the teams using your library for more behaviours such as<strong> getNumSides()</strong>, <strong>getMiddleCoordinates()</strong>. Then, in this case, you don&#8217;t want to keep modifying your library. But you do want other teams to extend your library without actual modification of the code much.</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Second Option</strong></p>
+
+
+
+<p class="has-medium-font-size">The second option is that the team requesting the feature can write the logic for behaviour themselves. So based upon the shape struct type they like below code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">if shape.type == square {
+   //Calculate area for squre
+} elseif shape.type == circle {
+    //Calculate area of triangle 
+} elseif shape.type == "triangle" {
+    //Calculate area of triangle
+} else {
+   //Raise error
+} </code></pre>
+
+
+
+<p class="has-medium-font-size">Above code is also problematic as you are not able to take the full advantage of interfaces and instead do an explicit type checking which is fragile. Second, getting the type at run time may have a performance impact or maybe even not possible in some languages.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Third Option</strong></p>
+
+
+
+<p class="has-medium-font-size">The third option is to solve the above problem using the visitor pattern. We define a visitor interface like below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type visitor interface {
+   visitForSquare(square)
+   visitForCircle(circle)
+   visitForTriangle(triangle)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The functions <strong>visitforSquare(square), visitForCircle(circle), visitForTriangle</strong>(<strong>triangle</strong>) allows us to add functionality to Square, Circle and Triangle respectively.</p>
+
+
+
+<p class="has-medium-font-size">Now the question which comes to mind is why can&#8217;t we have a single method visit<strong>(shape)</strong> in the visitor interface. The reason we don&#8217;t have it because GO and also some other languages support method overloading. So a different method for each of the struct.</p>
+
+
+
+<p class="has-medium-font-size">We add an <strong>accept </strong>method to the shape interface with below signature and each of the shape struct needs to define this method.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func accept(v visitor)</code></pre>
+
+
+
+<p class="has-medium-font-size">But wait for a second, we just mentioned that we don&#8217;t want to modify our existing shape structs. But when using Visitor Pattern we do have to modify our shape structs but this modification will only be done once. In case adding any additional behaviour such as <strong>getNumSides()</strong>, <strong>getMiddleCoordinates() </strong>will use the same above <strong>accept(v visitor)</strong> function without any further change to the shape structs. Basically the shape structs just need to be modified once and all future request of additional behaviours will be handled using the same accept function. Let&#8217;s see how.</p>
+
+
+
+<p class="has-medium-font-size">The square struct will implement an accept method like below: </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func (obj *squre) accept(v visitor){
+    v.visitForSquare(obj)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">and similarly, circle and triangle will also define an accept function as above.</p>
+
+
+
+<p class="has-medium-font-size">Now the team requesting for the <strong>getArea()</strong> behaviour can simply define the concrete implementation of visitor interface and write the area calculation logic in that concrete implementation.</p>
+
+
+
+<p class="has-medium-font-size"><strong>areaCalculator.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type areaCalculator struct{
+    area int
+}
+
+func (a *areaCalculator) visitForSquare(s *square){
+    //Calculate are for square
+}
+func (a *areaCalculator) visitForCircle(s *square){
+    //Calculate are for circle
+}
+func (a *areaCalculator) visitForTriangle(s *square){
+    //Calculate are for triangle
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">To calculate the area of a square we first create an instance of the square they can simply call.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">sq := &square{}
+ac := &areaCalculator{}
+sq.accept(ac)</code></pre>
+
+
+
+<p class="has-medium-font-size">Similarly, other team requesting for <strong>getMiddleCoordinates() </strong>behaviour can define another concrete implementation of the visitor interface similar to above.</p>
+
+
+
+<p class="has-medium-font-size"><strong>middleCoordinates.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type middleCoordinates struct {
+    x int
+    y int
+}
+
+func (a *middleCoordinates) visitForSquare(s *square) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+}
+
+func (a *middleCoordinates) visitForCircle(c *circle) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+}
+
+func (a *middleCoordinates) visitForTriangle(t *triangle) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram:</strong></h1>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="323" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-1.jpg?resize=640%2C323&#038;ssl=1" alt="" class="wp-image-734" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-1.jpg?w=779&amp;ssl=1 779w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-1.jpg?resize=300%2C151&amp;ssl=1 300w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-1.jpg?resize=768%2C387&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the practical example of shape struct and areaCalculator we gave above</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="640" height="323" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-2.jpg?resize=640%2C323&#038;ssl=1" alt="" class="wp-image-735" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-2.jpg?w=779&amp;ssl=1 779w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-2.jpg?resize=300%2C151&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Visitor-Design-Pattern-2.jpg?resize=768%2C387&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Example&#8221;</strong> below</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>element</td><td>shape.go</td></tr><tr><td>Concrete Element A</td><td>square.go</td></tr><tr><td>Concrete Element B</td><td>circle.go</td></tr><tr><td>Concrete Element C</td><td>rectangle.go</td></tr><tr><td>Visitor</td><td>visitor.go</td></tr><tr><td>Concrete Visitor 1</td><td>areaCalculator.go</td></tr><tr><td>Concrete Visitor 2</td><td>middleCoordinates.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>shape.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type shape interface {
+    getType() string
+    accept(visitor)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>square.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type square struct {
+    side int
+}
+
+func (s *square) accept(v visitor) {
+    v.visitForSquare(s)
+}
+
+func (s *square) getType() string {
+    return "Square"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>circle.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type circle struct {
+    radius int
+}
+
+func (c *circle) accept(v visitor) {
+    v.visitForCircle(c)
+}
+
+func (c *circle) getType() string {
+    return "Circle"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>rectangle.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type rectangle struct {
+    l int
+    b int
+}
+
+func (t *rectangle) accept(v visitor) {
+    v.visitForrectangle(t)
+}
+
+func (t *rectangle) getType() string {
+    return "rectangle"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>visitor.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type visitor interface {
+    visitForSquare(*square)
+    visitForCircle(*circle)
+    visitForrectangle(*rectangle)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>areaCalculator.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+)
+
+type areaCalculator struct {
+    area int
+}
+
+func (a *areaCalculator) visitForSquare(s *square) {
+    //Calculate area for square. After calculating the area assign in to the area instance variable
+    fmt.Println("Calculating area for square")
+}
+
+func (a *areaCalculator) visitForCircle(s *circle) {
+    //Calculate are for circle. After calculating the area assign in to the area instance variable
+    fmt.Println("Calculating area for circle")
+}
+
+func (a *areaCalculator) visitForrectangle(s *rectangle) {
+    //Calculate are for rectangle. After calculating the area assign in to the area instance variable
+    fmt.Println("Calculating area for rectangle")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>middleCoordinates.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type middleCoordinates struct {
+    x int
+    y int
+}
+
+func (a *middleCoordinates) visitForSquare(s *square) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+    fmt.Println("Calculating middle point coordinates for square")
+}
+
+func (a *middleCoordinates) visitForCircle(c *circle) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+    fmt.Println("Calculating middle point coordinates for circle")
+}
+
+func (a *middleCoordinates) visitForrectangle(t *rectangle) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+    fmt.Println("Calculating middle point coordinates for rectangle")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    square := &square{side: 2}
+    circle := &circle{radius: 3}
+    rectangle := &rectangle{l: 2, b: 3}
+   
+    areaCalculator := &areaCalculator{}
+    square.accept(areaCalculator)
+    circle.accept(areaCalculator)
+    rectangle.accept(areaCalculator)
+   
+    fmt.Println()
+    middleCoordinates := &middleCoordinates{}
+    square.accept(middleCoordinates)
+    circle.accept(middleCoordinates)
+    rectangle.accept(middleCoordinates)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Calculating area for square
+Calculating area for circle
+Calculating area for rectangle
+
+Calculating middle point coordinates for square
+Calculating middle point coordinates for circle
+Calculating middle point coordinates for rectangle</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type shape interface {
+    getType() string
+    accept(visitor)
+}
+
+type square struct {
+    side int
+}
+
+func (s *square) accept(v visitor) {
+    v.visitForSquare(s)
+}
+
+func (s *square) getType() string {
+    return "Square"
+}
+
+type circle struct {
+    radius int
+}
+
+func (c *circle) accept(v visitor) {
+    v.visitForCircle(c)
+}
+
+func (c *circle) getType() string {
+    return "Circle"
+}
+
+type rectangle struct {
+    l int
+    b int
+}
+
+func (t *rectangle) accept(v visitor) {
+    v.visitForrectangle(t)
+}
+
+func (t *rectangle) getType() string {
+    return "rectangle"
+}
+
+type visitor interface {
+    visitForSquare(*square)
+    visitForCircle(*circle)
+    visitForrectangle(*rectangle)
+}
+
+type areaCalculator struct {
+    area int
+}
+
+func (a *areaCalculator) visitForSquare(s *square) {
+    //Calculate area for square. After calculating the area assign in to the area instance variable
+    fmt.Println("Calculating area for square")
+}
+
+func (a *areaCalculator) visitForCircle(s *circle) {
+    //Calculate are for circle. After calculating the area assign in to the area instance variable
+    fmt.Println("Calculating area for circle")
+}
+
+func (a *areaCalculator) visitForrectangle(s *rectangle) {
+    //Calculate are for rectangle. After calculating the area assign in to the area instance variable
+    fmt.Println("Calculating area for rectangle")
+}
+
+type middleCoordinates struct {
+    x int
+    y int
+}
+
+func (a *middleCoordinates) visitForSquare(s *square) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+    fmt.Println("Calculating middle point coordinates for square")
+}
+
+func (a *middleCoordinates) visitForCircle(c *circle) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+    fmt.Println("Calculating middle point coordinates for circle")
+}
+
+func (a *middleCoordinates) visitForrectangle(t *rectangle) {
+    //Calculate middle point coordinates for square. After calculating the area assign in to the x and y instance variable.
+    fmt.Println("Calculating middle point coordinates for rectangle")
+}
+
+func main() {
+    square := &square{side: 2}
+    circle := &circle{radius: 3}
+    rectangle := &rectangle{l: 2, b: 3}
+    areaCalculator := &areaCalculator{}
+    square.accept(areaCalculator)
+    circle.accept(areaCalculator)
+    rectangle.accept(areaCalculator)
+    
+    fmt.Println()
+    middleCoordinates := &middleCoordinates{}
+    square.accept(middleCoordinates)
+    circle.accept(middleCoordinates)
+    rectangle.accept(middleCoordinates)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Calculating area for square
+Calculating area for circle
+Calculating area for rectangle
+
+Calculating middle point coordinates for square
+Calculating middle point coordinates for circle
+Calculating middle point coordinates for rectangle</code></pre>
+<p>The post <a href="https://golangbyexamples.com/visitor-design-pattern-go/">Visitor Design Pattern in Go(Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/visitor-design-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">730</post-id>	</item>
+		<item>
+		<title>Template Method Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/template-method-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/template-method-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 13:28:50 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[method]]></category>
+		<category><![CDATA[pattern]]></category>
+		<category><![CDATA[template]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=724</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Template Method Design Pattern is...</p>
+<p>The post <a href="https://golangbyexamples.com/template-method-design-pattern-golang/">Template Method Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Template Method Design Pattern is a behavioral design pattern that lets you define a template or algorithm for a particular operation.&nbsp;&nbsp;Let&#8217;s understand the template design pattern with an example.</p>
+
+
+
+<p class="has-medium-font-size">Consider the example of One Time Password or OTP. There are different types of OTP that can be triggered for eg. OTP can be <strong>SMS</strong> OTP or <strong>EMAIL</strong> OTP.&nbsp; But irrespective it is an <strong>SMS</strong> OTP or <strong>EMAIL</strong> OTP,&nbsp; the entire steps of the OTP process are the same.&nbsp; The steps are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Generate a random n digit number.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Save this number in the cache for later verification.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Prepare the content</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Send the notification</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Publish the metrics</li></ul>
+
+
+
+<p class="has-medium-font-size">Even in the future let&#8217;s say a push notification <strong>OTP</strong> is introduced but still it will go through the above steps.</p>
+
+
+
+<p class="has-medium-font-size">In such scenarios when the steps of a particular operation are the same but the steps of the operations can be implemented in a different way by different implementors , then that becomes a candidate for the Template Method Design Pattern. We define a template or algorithm which comprises of a fixed number of methods. The implementer of the operation overrides the methods of the template. </p>
+
+
+
+<p class="has-medium-font-size">Now check out the below code example. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>iOtp</strong> represents an interface that defines the set of methods that any otp type should implement</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>sms</strong> and <strong>email</strong> are the implementors of <strong>iOtp</strong> interface</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>otp</strong> is the struct which defines the template method <strong>genAndSendOTP(). otp</strong> embeds <strong>iOtp</strong> interface.&nbsp; </li></ul>
+
+
+
+<p class="has-medium-font-size">Important: The combination of iOtp interface and otp struct provides the capabilities of Abstract Class in go. For reference see </p>
+
+
+
+<figure class="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-welcome-to-golang-by-example"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="fqHnV3R5rZ"><a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted"  title="&#8220;Abstract Class in GO: Complete Guide&#8221; &#8212; Welcome To Golang By Example" src="https://golangbyexamples.com/go-abstract-class/embed/#?secret=IJrupn5jVu#?secret=fqHnV3R5rZ" data-secret="fqHnV3R5rZ" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>otp.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iOtp interface {
+    genRandomOTP(int) string
+    saveOTPCache(string)
+    getMessage(string) string
+    sendNotification(string) error
+    publishMetric()
+}
+
+type otp struct {
+    iOtp iOtp
+}
+
+func (o *otp) genAndSendOTP(otpLength int) error {
+    otp := o.iOtp.genRandomOTP(otpLength)
+    o.iOtp.saveOTPCache(otp)
+    message := o.iOtp.getMessage(otp)
+    err := o.iOtp.sendNotification(message)
+    if err != nil {
+        return err
+    }
+    o.iOtp.publishMetric()
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>sms.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type sms struct {
+    otp
+}
+
+func (s *sms) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("SMS: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *sms) saveOTPCache(otp string) {
+    fmt.Printf("SMS: saving otp: %s to cache\n", otp)
+}
+
+func (s *sms) getMessage(otp string) string {
+    return "SMS OTP for login is " + otp
+}
+
+func (s *sms) sendNotification(message string) error {
+    fmt.Printf("SMS: sending sms: %s\n", message)
+    return nil
+}
+
+func (s *sms) publishMetric() {
+    fmt.Printf("SMS: publishing metrics\n")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>email.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type email struct {
+    otp
+}
+
+func (s *email) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *email) saveOTPCache(otp string) {
+    fmt.Printf("EMAIL: saving otp: %s to cache\n", otp)
+}
+
+func (s *email) getMessage(otp string) string {
+    return "EMAIL OTP for login is " + otp
+}
+
+func (s *email) sendNotification(message string) error {
+    fmt.Printf("EMAIL: sending email: %s\n", message)
+    return nil
+}
+
+func (s *email) publishMetric() {
+    fmt.Printf("EMAIL: publishing metrics\n")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    smsOTP := &sms{}
+    o := otp{
+        iOtp: smsOTP,
+    }
+    o.genAndSendOTP(4)
+    fmt.Println("")
+    emailOTP := &email{}
+    o = otp{
+        iOtp: emailOTP,
+    }
+    o.genAndSendOTP(4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">SMS: generating random otp 1234
+SMS: saving otp: 1234 to cache
+SMS: sending sms: SMS OTP for login is 1234
+SMS: publishing metrics
+
+EMAIL: generating random otp 1234
+EMAIL: saving otp: 1234 to cache
+EMAIL: sending email: EMAIL OTP for login is 1234
+EMAIL: publishing metrics</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type iOtp interface {
+    genRandomOTP(int) string
+    saveOTPCache(string)
+    getMessage(string) string
+    sendNotification(string) error
+    publishMetric()
+}
+
+type otp struct {
+    iOtp iOtp
+}
+
+func (o *otp) genAndSendOTP(otpLength int) error {
+    otp := o.iOtp.genRandomOTP(otpLength)
+    o.iOtp.saveOTPCache(otp)
+    message := o.iOtp.getMessage(otp)
+    err := o.iOtp.sendNotification(message)
+    if err != nil {
+        return err
+    }
+    o.iOtp.publishMetric()
+    return nil
+}
+
+type sms struct {
+    otp
+}
+
+func (s *sms) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("SMS: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *sms) saveOTPCache(otp string) {
+    fmt.Printf("SMS: saving otp: %s to cache\n", otp)
+}
+
+func (s *sms) getMessage(otp string) string {
+    return "SMS OTP for login is " + otp
+}
+
+func (s *sms) sendNotification(message string) error {
+    fmt.Printf("SMS: sending sms: %s\n", message)
+    return nil
+}
+
+func (s *sms) publishMetric() {
+    fmt.Printf("SMS: publishing metrics\n")
+}
+
+type email struct {
+    otp
+}
+
+func (s *email) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *email) saveOTPCache(otp string) {
+    fmt.Printf("EMAIL: saving otp: %s to cache\n", otp)
+}
+
+func (s *email) getMessage(otp string) string {
+    return "EMAIL OTP for login is " + otp
+}
+
+func (s *email) sendNotification(message string) error {
+    fmt.Printf("EMAIL: sending email: %s\n", message)
+    return nil
+}
+
+func (s *email) publishMetric() {
+    fmt.Printf("EMAIL: publishing metrics\n")
+}
+
+func main() {
+    smsOTP := &sms{}
+    o := otp{
+        iOtp: smsOTP,
+    }
+    o.genAndSendOTP(4)
+    fmt.Println("")
+    emailOTP := &email{}
+    o = otp{
+        iOtp: emailOTP,
+    }
+    o.genAndSendOTP(4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">SMS: generating random otp 1234
+SMS: saving otp: 1234 to cache
+SMS: sending sms: SMS OTP for login is 1234
+SMS: publishing metrics
+
+EMAIL: generating random otp 1234
+EMAIL: saving otp: 1234 to cache
+EMAIL: sending email: EMAIL OTP for login is 1234
+EMAIL: publishing metrics</code></pre>
+<p>The post <a href="https://golangbyexamples.com/template-method-design-pattern-golang/">Template Method Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/template-method-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">724</post-id>	</item>
+		<item>
+		<title>Observer Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/observer-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/observer-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 29 Nov 2019 18:10:48 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[observer]]></category>
+		<category><![CDATA[observer design pattern in go]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=687</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Observer Design Pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/observer-design-pattern-golang/">Observer Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Observer Design Pattern is a behavioral design pattern. This pattern allows an instance <strong>(called subject)</strong> to publish events to other multiple instances <strong>(called observers).</strong>&nbsp; These <strong>observers</strong> subscribe to the <strong>subject</strong> and hence get notified by events in case of any change happening in the <strong>subject. </strong><br></p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s take an example. In the E-Commerce website, many items go out of stock. There can be customers, who are interested in a particular item that went out of stock. There are three solutions to this problem<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>The customer keeps checking the availability of the item at some frequency.</li><li>E-Commerce bombard customers with all new items available which are in stock</li><li>The customer subscribes only to the particular item he is interested in&nbsp;and gets notified in the case that item is available. Also, multiple customers can subscribe to the same product</li></ol>
+
+
+
+<p class="has-medium-font-size">Option 3 is most viable, and this is what Observer Patter is all about. The major components of the observer pattern are:<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>Subject</strong> &#8211; It is the instance to which publishes an event when anything changes.&nbsp;</li><li><strong>Observer</strong> &#8211; It subscribes to the subject and gets notified by the events.</li></ol>
+
+
+
+<p class="has-medium-font-size">Generally,  <strong>Subject</strong> and <strong>Observer</strong> are implemented as an interface. Concrete implementation of both are used</p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram:</strong></h1>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="640" height="440" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?resize=640%2C440&#038;ssl=1" alt="" class="wp-image-688" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?w=671&amp;ssl=1 671w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?resize=300%2C206&amp;ssl=1 300w" sizes="auto, (max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping:</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Practical Example&#8221;</strong> below<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Subject</td><td>subject.go</td></tr><tr><td>Concrete Subject</td><td>item.go</td></tr><tr><td>observer</td><td>observer.go</td></tr><tr><td>Concrete Observer 1</td><td>customer.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Practical Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>subject.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type subject interface {
+    register(Observer observer)
+    deregister(Observer observer)
+    notifyAll()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>item.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type item struct {
+    observerList []observer
+    name         string
+    inStock      bool
+}
+
+func newItem(name string) *item {
+    return &item{
+        name: name,
+    }
+}
+
+func (i *item) updateAvailability() {
+    fmt.Printf("Item %s is now in stock\n", i.name)
+    i.inStock = true
+    i.notifyAll()
+}
+
+func (i *item) register(o observer) {
+    i.observerList = append(i.observerList, o)
+}
+
+func (i *item) deregister(o observer) {
+    i.observerList = removeFromslice(i.observerList, o)
+}
+
+func (i *item) notifyAll() {
+    for _, observer := range i.observerList {
+        observer.update(i.name)
+    }
+}
+
+func removeFromslice(observerList []observer, observerToRemove observer) []observer {
+    observerListLength := len(observerList)
+    for i, observer := range observerList {
+        if observerToRemove.getID() == observer.getID() {
+            observerList[observerListLength-1], observerList[i] = observerList[i], observerList[observerListLength-1]
+            return observerList[:observerListLength-1]
+        }
+    }
+    return observerList
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>observer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type observer interface {
+    update(string)
+    getID() string
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>customer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type customer struct {
+    id string
+}
+
+func (c *customer) update(itemName string) {
+    fmt.Printf("Sending email to customer %s for item %s\n", c.id, itemName)
+}
+
+func (c *customer) getID() string {
+    return c.id
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    shirtItem := newItem("Nike Shirt")
+    observerFirst := &customer{id: "abc@gmail.com"}
+    observerSecond := &customer{id: "xyz@gmail.com"}
+    shirtItem.register(observerFirst)
+    shirtItem.register(observerSecond)
+    shirtItem.updateAvailability()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Item Nike Shirt is now in stock
+Sending email to customer abc@gmail.com for item Nike Shirt
+Sending email to customer xyz@gmail.com for item Nike Shirt</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type subject interface {
+    register(Observer observer)
+    deregister(Observer observer)
+    notifyAll()
+}
+
+type item struct {
+    observerList []observer
+    name         string
+    inStock      bool
+}
+
+func newItem(name string) *item {
+    return &item{
+        name: name,
+    }
+}
+
+func (i *item) updateAvailability() {
+    fmt.Printf("Item %s is now in stock\n", i.name)
+    i.inStock = true
+    i.notifyAll()
+}
+
+func (i *item) register(o observer) {
+    i.observerList = append(i.observerList, o)
+}
+
+func (i *item) deregister(o observer) {
+    i.observerList = removeFromslice(i.observerList, o)
+}
+
+func (i *item) notifyAll() {
+    for _, observer := range i.observerList {
+        observer.update(i.name)
+    }
+}
+
+func removeFromslice(observerList []observer, observerToRemove observer) []observer {
+    observerListLength := len(observerList)
+    for i, observer := range observerList {
+        if observerToRemove.getID() == observer.getID() {
+            observerList[observerListLength-1], observerList[i] = observerList[i], observerList[observerListLength-1]
+            return observerList[:observerListLength-1]
+        }
+    }
+    return observerList
+}
+
+type observer interface {
+    update(string)
+    getID() string
+}
+
+type customer struct {
+    id string
+}
+
+func (c *customer) update(itemName string) {
+    fmt.Printf("Sending email to customer %s for item %s\n", c.id, itemName)
+}
+
+func (c *customer) getID() string {
+    return c.id
+}
+
+func main() {
+    shirtItem := newItem("Nike Shirt")
+    observerFirst := &customer{id: "abc@gmail.com"}
+    observerSecond := &customer{id: "xyz@gmail.com"}
+    shirtItem.register(observerFirst)
+    shirtItem.register(observerSecond)
+    shirtItem.updateAvailability()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Item Nike Shirt is now in stock
+Sending email to customer abc@gmail.com for item Nike Shirt
+Sending email to customer xyz@gmail.com for item Nike Shirt</code></pre>
+<p>The post <a href="https://golangbyexamples.com/observer-design-pattern-golang/">Observer Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/observer-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">687</post-id>	</item>
+		<item>
+		<title>Adapter Design Pattern in Go (GoLang)</title>
+		<link>https://golangbyexamples.com/adapter-design-pattern-go/</link>
+					<comments>https://golangbyexamples.com/adapter-design-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 01 Nov 2019 13:50:07 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[adapter]]></category>
+		<category><![CDATA[adapter design pattern]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=334</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: This design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/adapter-design-pattern-go/">Adapter Design Pattern in Go (GoLang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction: </strong></h1>
+
+
+
+<p class="has-medium-font-size">This design pattern is a Structural Design Pattern. The patter is best understood with an example. Let&#8217;s say you have two laptops<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>MacBook Pro</li><li>Windows Laptop</li></ol>
+
+
+
+<p class="has-medium-font-size">MacBook Pro has a USB port that is <strong>square</strong> in shape and Windows have a USB port that is <strong>circular</strong> in shape. You as a client have a USB cable that is square in shape so it can only be inserted in the mac laptop. So you see the problem here</p>
+
+
+
+<p class="has-medium-font-size"><strong>Problem:</strong></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have a class (Client) that is expecting some features of an object (square USB port here), but we have another object called adaptee (Windows Laptop here) which offers the same functionality but through a different interface( circular port)</li></ul>
+
+
+
+<p class="has-medium-font-size">This is where Adapter Pattern comes into the picture. We create a class known as Adapter that will </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Adhere to the same interface which client expects ( Square USB port here)</li><li>Translate the request from the client to the adaptee in the form that adaptee expects. Basically, in our example act as an adapter that accepts USB in square port and then inserts into circular port in windows laptop.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>When to Use</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use this design pattern when the objects implement a different interface as required by the client. </li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram</strong></h1>
+
+
+
+<figure class="wp-block-image"><img loading="lazy" decoding="async" width="561" height="421" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-1.jpg?resize=561%2C421&#038;ssl=1" alt="" class="wp-image-469" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-1.jpg?w=561&amp;ssl=1 561w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-1.jpg?resize=300%2C225&amp;ssl=1 300w" sizes="auto, (max-width: 561px) 100vw, 561px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the example given above</p>
+
+
+
+<figure class="wp-block-image"><img loading="lazy" decoding="async" width="581" height="421" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-2.jpg?resize=581%2C421&#038;ssl=1" alt="" class="wp-image-470" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-2.jpg?w=581&amp;ssl=1 581w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Adapter-Design-Pattern-2.jpg?resize=300%2C217&amp;ssl=1 300w" sizes="auto, (max-width: 581px) 100vw, 581px" data-recalc-dims="1" /></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h1>
+
+
+
+<p class="has-medium-font-size"><br>The below table represents the mapping from the UML diagram actors to actual implementation actors in code.<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Target</td><td>computer.go</td></tr><tr><td>Concrete Prototype 1</td><td>mac.go</td></tr><tr><td>Concrete Prototype 2 (Adapter)</td><td>windowsAdapter.go</td></tr><tr><td>adaptee</td><td>windows.go</td></tr><tr><td>client</td><td>client.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong>:</h1>
+
+
+
+<p class="has-medium-font-size"><strong>computer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type computer interface {
+    insertInSquarePort()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>mac.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type mac struct {
+}
+
+func (m *mac) insertInSquarePort() {
+    fmt.Println("Insert square port into mac machine")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>windowsAdapter.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type windowsAdapter struct {
+	windowMachine *windows
+}
+
+func (w *windowsAdapter) insertInSquarePort() {
+	w.windowMachine.insertInCirclePort()
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>windows.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type windows struct{}
+
+func (w *windows) insertInCirclePort() {
+    fmt.Println("Insert circle port into windows machine")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>client.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type client struct {
+}
+
+func (c *client) insertSquareUsbInComputer(com computer) {
+    com.insertInSquarePort()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    client := &client{}
+    mac := &mac{}
+    client.insertSquareUsbInComputer(mac)
+    windowsMachine := &windows{}
+    windowsMachineAdapter := &windowsAdapter{
+        windowMachine: windowsMachine,
+    }
+    client.insertSquareUsbInComputer(windowsMachineAdapter)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Insert square port into mac machine
+Insert circle port into windows machine</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/adapter-design-pattern-go/">Adapter Design Pattern in Go (GoLang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/adapter-design-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">334</post-id>	</item>
+		<item>
+		<title>State Design pattern in Go</title>
+		<link>https://golangbyexamples.com/state-design-pattern-go/</link>
+					<comments>https://golangbyexamples.com/state-design-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 25 Sep 2019 16:44:45 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[designpattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[patter]]></category>
+		<category><![CDATA[state]]></category>
+		<category><![CDATA[state design pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=259</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition: State design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/state-design-pattern-go/">State Design pattern in Go</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:</strong></h2>
+
+
+
+<p class="has-medium-font-size">State design pattern is a behavioral design pattern that is based on Finite State Machine. We will explain the State Design Pattern in the context of an example of a Vending Machine. For simplicity, let&#8217;s assume that vending machine only has one type of item or product.&nbsp;Also for simplicity lets assume that a Vending Machine can be in 4 different states</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>hasItem</strong></li><li><strong>noItem</strong></li><li><strong>itemRequested</strong></li><li><strong>hasMoney</strong></li></ol>
+
+
+
+<p class="has-medium-font-size">A vending machine will also have different actions. Again for simplicity lets assume that there are only four actions:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>Select the item</strong></li><li><strong>Add the item</strong></li><li><strong>Insert Money</strong></li><li><strong>Dispense Item</strong></li></ol>
+
+
+
+<h2 class="wp-block-heading"><strong>When To Use</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Use the State design pattern when the object can be in many different states.&nbsp;Depending upon current request the object needs to change its current state</strong><ul><li>In the above example, Vending Machine can be in many different states. A Vending Machine will move from one state to another. Let&#8217;s say Vending Machine is in&nbsp;<strong>itemRequested </strong>then it will move to&nbsp;<strong>hasMoney </strong>state once the action &#8220;Insert Money&#8221; is done</li></ul></li><li>Use when an object will have different responses to the same request depending upon the current state. Using state design pattern here will prevent a lot of conditional statements<ul><li>For example in the case of Vending Machine, if a user is want to purchase an item then the machine will proceed if it is <strong>hasItemState</strong> or it will reject if it is in <strong>noItemState</strong>. If you notice here that the Vending Machine on the request of purchase of an item gives two different responses depending upon whether it is in&nbsp;<strong>hasItemState </strong>or&nbsp;<strong>noItemState.&nbsp; </strong>Do notice the vendingMachine.go file below, it doesn&#8217;t have any kind of conditional statement. All the logic is being handled by concrete state implementations.</li></ul></li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram</strong></h2>
+
+
+
+<figure class="wp-block-image"><img loading="lazy" decoding="async" width="639" height="271" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/State-Design-Pattern-1.jpg?resize=639%2C271&#038;ssl=1" alt="" class="wp-image-260" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/State-Design-Pattern-1.jpg?w=639&amp;ssl=1 639w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/State-Design-Pattern-1.jpg?resize=300%2C127&amp;ssl=1 300w" sizes="auto, (max-width: 639px) 100vw, 639px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size"><br>The below table represents the mapping from the UML diagram actors to actual implementation actors in code.<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Context</td><td>vendingMachine.go</td></tr><tr><td>State Interface</td><td>state.go</td></tr><tr><td>Concrete State 1</td><td>noItemState.go</td></tr><tr><td>Concrete State 2</td><td>hasItemState.go</td></tr><tr><td>Concrete State 3</td><td>itemRequestedState.go</td></tr><tr><td>Concrete State 4</td><td>hasMoneyState.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Explanation:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have an interface &#8220;State&#8221; which defines signatures of functions that represents action in the context of Vending Machine. Below are the actions function signatures<ol><li>addItem(int) error</li><li>requestItem() error</li><li>insertMoney(money int) error</li><li>dispenseItem() error</li></ol></li><li>Each of the concrete state implementations implements all 4 above function and either move to another state on these actions or gives some response.</li><li>Each of the concrete state also embeds a pointer to current Vending Machine object so that state transition can happen on that object.</li></ul>
+
+
+
+<p>Now lets look at code&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example:</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>vendingMachine.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type vendingMachine struct {
+    hasItem       state
+    itemRequested state
+    hasMoney      state
+    noItem        state
+
+    currentState state
+
+    itemCount int
+    itemPrice int
+}
+
+func newVendingMachine(itemCount, itemPrice int) *vendingMachine {
+    v := &vendingMachine{
+        itemCount: itemCount,
+        itemPrice: itemPrice,
+    }
+    hasItemState := &hasItemState{
+        vendingMachine: v,
+    }
+    itemRequestedState := &itemRequestedState{
+        vendingMachine: v,
+    }
+    hasMoneyState := &hasMoneyState{
+        vendingMachine: v,
+    }
+    noItemState := &noItemState{
+        vendingMachine: v,
+    }
+
+    v.setState(hasItemState)
+    v.hasItem = hasItemState
+    v.itemRequested = itemRequestedState
+    v.hasMoney = hasMoneyState
+    v.noItem = noItemState
+    return v
+}
+
+func (v *vendingMachine) requestItem() error {
+    return v.currentState.requestItem()
+}
+
+func (v *vendingMachine) addItem(count int) error {
+    return v.currentState.addItem(count)
+}
+
+func (v *vendingMachine) insertMoney(money int) error {
+    return v.currentState.insertMoney(money)
+}
+
+func (v *vendingMachine) dispenseItem() error {
+    return v.currentState.dispenseItem()
+}
+
+func (v *vendingMachine) setState(s state) {
+    v.currentState = s
+}
+
+func (v *vendingMachine) incrementItemCount(count int) {
+    fmt.Printf("Adding %d items\n", count)
+    v.itemCount = v.itemCount + count
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>state.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type state interface {
+    addItem(int) error
+    requestItem() error
+    insertMoney(money int) error
+    dispenseItem() error
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>noItemState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type noItemState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *noItemState) requestItem() error {
+    return fmt.Errorf("Item out of stock")
+}
+
+func (i *noItemState) addItem(count int) error {
+    i.vendingMachine.incrementItemCount(count)
+    i.vendingMachine.setState(i.vendingMachine.hasItem)
+    return nil
+}
+
+func (i *noItemState) insertMoney(money int) error {
+    return fmt.Errorf("Item out of stock")
+}
+func (i *noItemState) dispenseItem() error {
+    return fmt.Errorf("Item out of stock")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>hasItemState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type hasItemState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *hasItemState) requestItem() error {
+    if i.vendingMachine.itemCount == 0 {
+        i.vendingMachine.setState(i.vendingMachine.noItem)
+        return fmt.Errorf("No item present")
+    }
+    fmt.Printf("Item requestd\n")
+    i.vendingMachine.setState(i.vendingMachine.itemRequested)
+    return nil
+}
+
+func (i *hasItemState) addItem(count int) error {
+    fmt.Printf("%d items added\n", count)
+    i.vendingMachine.incrementItemCount(count)
+    return nil
+}
+
+func (i *hasItemState) insertMoney(money int) error {
+    return fmt.Errorf("Please select item first")
+}
+func (i *hasItemState) dispenseItem() error {
+    return fmt.Errorf("Please select item first")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>itemRequestedState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type itemRequestedState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *itemRequestedState) requestItem() error {
+    return fmt.Errorf("Item already requested")
+}
+
+func (i *itemRequestedState) addItem(count int) error {
+    return fmt.Errorf("Item Dispense in progress")
+}
+
+func (i *itemRequestedState) insertMoney(money int) error {
+    if money < i.vendingMachine.itemPrice {
+        fmt.Errorf("Inserted money is less. Please insert %d", i.vendingMachine.itemPrice)
+    }
+    fmt.Println("Money entered is ok")
+    i.vendingMachine.setState(i.vendingMachine.hasMoney)
+    return nil
+}
+
+func (i *itemRequestedState) dispenseItem() error {
+    return fmt.Errorf("Please insert money first")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>hasMoneyState.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type hasMoneyState struct {
+    vendingMachine *vendingMachine
+}
+
+func (i *hasMoneyState) requestItem() error {
+    return fmt.Errorf("Item dispense in progress")
+}
+
+func (i *hasMoneyState) addItem(count int) error {
+    return fmt.Errorf("Item dispense in progress")
+}
+
+func (i *hasMoneyState) insertMoney(money int) error {
+    return fmt.Errorf("Item out of stock")
+}
+
+func (i *hasMoneyState) dispenseItem() error {
+    fmt.Println("Dispensing Item")
+    i.vendingMachine.itemCount = i.vendingMachine.itemCount - 1
+    if i.vendingMachine.itemCount == 0 {
+        i.vendingMachine.setState(i.vendingMachine.noItem)
+    } else {
+        i.vendingMachine.setState(i.vendingMachine.hasItem)
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+)
+
+func main() {
+    vendingMachine := newVendingMachine(1, 10)
+    err := vendingMachine.requestItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    err = vendingMachine.insertMoney(10)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    err = vendingMachine.dispenseItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    fmt.Println()
+    err = vendingMachine.addItem(2)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    fmt.Println()
+
+    err = vendingMachine.requestItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    err = vendingMachine.insertMoney(10)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+
+    err = vendingMachine.dispenseItem()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Item requestd
+Money entered is ok
+Dispensing Item
+
+Adding 2 items
+
+Item requestd
+Money entered is ok
+Dispensing Item</code></pre>
+<p>The post <a href="https://golangbyexamples.com/state-design-pattern-go/">State Design pattern in Go</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/state-design-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">259</post-id>	</item>
+		<item>
+		<title>Builder Pattern in GoLang</title>
+		<link>https://golangbyexamples.com/builder-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/builder-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 04 Sep 2019 17:58:52 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[builder]]></category>
+		<category><![CDATA[creational]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[designpatter]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=243</guid>
+
+					<description><![CDATA[<p>Definition: Builder Pattern is a creational design pattern used for constructing complex objects. Below is the UML diagram. Note: Interested in understanding how all other design patterns can be implemented in GO....</p>
+<p>The post <a href="https://golangbyexamples.com/builder-pattern-golang/">Builder Pattern in GoLang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Definition:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Builder Pattern is a creational design pattern used for constructing complex objects. Below is the UML diagram.</p>
+
+
+
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram</strong></h1>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img loading="lazy" decoding="async" width="511" height="278" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?resize=511%2C278&#038;ssl=1" alt="" data-id="244" data-link="https://golangbyexamples.com/?attachment_id=244" class="wp-image-244" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?w=511&amp;ssl=1 511w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?resize=300%2C163&amp;ssl=1 300w" sizes="auto, (max-width: 511px) 100vw, 511px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping (Also Refer 5th point &#8211; Example)</strong></h1>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Director</td><td>director.go</td></tr><tr><td>Builder Interface</td><td>iBuilder.go</td></tr><tr><td>Concrete Builder 1</td><td>normalBuilder.go</td></tr><tr><td>Concrete Builder 2</td><td>iglooBuilder.go</td></tr><tr><td>Product</td><td>house.go</td></tr></tbody></table></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>When To Use</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use Builder pattern when the object constructed is big and requires multiple steps. It helps in less size of the constructor.  The construction of the house becomes simple and it does not require a large constructor</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When a different version of the same product needs to be created. For example, in the below code we see a different version of house ie. igloo and the normal house being constructed by <strong>iglooBuilder </strong>and <strong>normalBuilder</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When half constructed final object should not exist. Again referring to below code the house created will either be created fully or not created at all. The Concrete Builder struct holds the temporary state of house object being created</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>iBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iBuilder interface {
+    setWindowType()
+    setDoorType()
+    setNumFloor()
+    getHouse() house
+}
+
+func getBuilder(builderType string) iBuilder {
+    if builderType == "normal" {
+        return &normalBuilder{}
+    }
+    if builderType == "igloo" {
+        return &iglooBuilder{}
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>normalBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type normalBuilder struct {
+    windowType string
+    doorType   string
+    floor      int
+}
+
+func newNormalBuilder() *normalBuilder {
+    return &normalBuilder{}
+}
+
+func (b *normalBuilder) setWindowType() {
+    b.windowType = "Wooden Window"
+}
+
+func (b *normalBuilder) setDoorType() {
+    b.doorType = "Wooden Door"
+}
+
+func (b *normalBuilder) setNumFloor() {
+    b.floor = 2
+}
+
+func (b *normalBuilder) getHouse() house {
+    return house{
+        doorType:   b.doorType,
+        windowType: b.windowType,
+        floor:      b.floor,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>iglooBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iglooBuilder struct {
+    windowType string
+    doorType   string
+    floor      int
+}
+
+func newIglooBuilder() *iglooBuilder {
+    return &iglooBuilder{}
+}
+
+func (b *iglooBuilder) setWindowType() {
+    b.windowType = "Snow Window"
+}
+
+func (b *iglooBuilder) setDoorType() {
+    b.doorType = "Snow Door"
+}
+
+func (b *iglooBuilder) setNumFloor() {
+    b.floor = 1
+}
+
+func (b *iglooBuilder) getHouse() house {
+    return house{
+        doorType:   b.doorType,
+        windowType: b.windowType,
+        floor:      b.floor,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>house.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type house struct {
+    windowType string
+    doorType   string
+    floor      int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>director.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type director struct {
+    builder iBuilder
+}
+
+func newDirector(b iBuilder) *director {
+    return &director{
+        builder: b,
+    }
+}
+
+func (d *director) setBuilder(b iBuilder) {
+    d.builder = b
+}
+
+func (d *director) buildHouse() house {
+    d.builder.setDoorType()
+    d.builder.setWindowType()
+    d.builder.setNumFloor()
+    return d.builder.getHouse()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    normalBuilder := getBuilder("normal")
+    iglooBuilder := getBuilder("igloo")
+
+    director := newDirector(normalBuilder)
+    normalHouse := director.buildHouse()
+
+    fmt.Printf("Normal House Door Type: %s\n", normalHouse.doorType)
+    fmt.Printf("Normal House Window Type: %s\n", normalHouse.windowType)
+    fmt.Printf("Normal House Num Floor: %d\n", normalHouse.floor)
+
+    director.setBuilder(iglooBuilder)
+    iglooHouse := director.buildHouse()
+
+    fmt.Printf("\nIgloo House Door Type: %s\n", iglooHouse.doorType)
+    fmt.Printf("Igloo House Window Type: %s\n", iglooHouse.windowType)
+    fmt.Printf("Igloo House Num Floor: %d\n", iglooHouse.floor)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Normal House Door Type: Wooden Door
+Normal House Window Type: Wooden Window
+Normal House Num Floor: 2
+
+Igloo House Door Type: Snow Door
+Igloo House Window Type: Snow Window
+Igloo House Num Floor: 1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/builder-pattern-golang/">Builder Pattern in GoLang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/builder-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">243</post-id>	</item>
+	</channel>
+</rss>

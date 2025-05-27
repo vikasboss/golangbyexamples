@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>mediator Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/mediator/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/mediator/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:38:23 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>mediator Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/mediator/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Mediator Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/mediator-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/mediator-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 28 Nov 2019 20:01:50 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[mediator]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=680</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Mediator design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/mediator-design-pattern-golang/">Mediator Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Introduction:</strong></h2>
+
+
+
+<p class="has-medium-font-size">Mediator design pattern is a behavioral design pattern. This pattern suggests creating a mediator object to prevent direct communication among objects so that direct dependencies between them is avoided.</p>
+
+
+
+<p class="has-medium-font-size">One very good example of a mediator patter is the railway system platform.&nbsp; Two trains never communicate between themselves for the availability of the platform. The <strong>stationManager</strong> acts as a mediator and makes the platform available to only one of the trains. The train connects with <strong>stationManager</strong> and acts accordingly. It maintains a queue of waiting trains. In case of any train leaving a platform, it notifies one of the train to arrive on the platform next.</p>
+
+
+
+<p class="has-medium-font-size">Notice how <strong>stationManger</strong> acts as a mediator between the <strong>trains</strong> and the <strong>platform</strong> in the code below.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>passengerTrain and goodsTrain implement the train interface.</li><li>stationManger implements the mediator interface.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>train.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type train interface {
+    requestArrival()
+    departure()
+    permitArrival()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>passengerTrain.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type passengerTrain struct {
+    mediator mediator
+}
+
+func (g *passengerTrain) requestArrival() {
+    if g.mediator.canLand(g) {
+        fmt.Println("PassengerTrain: Landing")
+    } else {
+        fmt.Println("PassengerTrain: Waiting")
+    }
+}
+
+func (g *passengerTrain) departure() {
+    fmt.Println("PassengerTrain: Leaving")
+    g.mediator.notifyFree()
+}
+
+func (g *passengerTrain) permitArrival() {
+    fmt.Println("PassengerTrain: Arrival Permitted. Landing")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>goodsTrain.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type goodsTrain struct {
+    mediator mediator
+}
+
+func (g *goodsTrain) requestArrival() {
+    if g.mediator.canLand(g) {
+        fmt.Println("GoodsTrain: Landing")
+    } else {
+        fmt.Println("GoodsTrain: Waiting")
+    }
+}
+
+func (g *goodsTrain) departure() {
+    g.mediator.notifyFree()
+    fmt.Println("GoodsTrain: Leaving")
+}
+
+func (g *goodsTrain) permitArrival() {
+    fmt.Println("GoodsTrain: Arrival Permitted. Landing")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>mediator.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type mediator interface {
+    canLand(train) bool
+    notifyFree()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>stationManager.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "sync"
+
+type stationManager struct {
+    isPlatformFree bool
+    lock           *sync.Mutex
+    trainQueue     []train
+}
+
+func newStationManger() *stationManager {
+    return &stationManager{
+        isPlatformFree: true,
+        lock:           &sync.Mutex{},
+    }
+}
+
+func (s *stationManager) canLand(t train) bool {
+    s.lock.Lock()
+    defer s.lock.Unlock()
+    if s.isPlatformFree {
+        s.isPlatformFree = false
+        return true
+    }
+    s.trainQueue = append(s.trainQueue, t)
+    return false
+}
+
+func (s *stationManager) notifyFree() {
+    s.lock.Lock()
+    defer s.lock.Unlock()
+    if !s.isPlatformFree {
+        s.isPlatformFree = true
+    }
+    if len(s.trainQueue) > 0 {
+        firstTrainInQueue := s.trainQueue[0]
+        s.trainQueue = s.trainQueue[1:]
+        firstTrainInQueue.permitArrival()
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    stationManager := newStationManger()
+    passengerTrain := &passengerTrain{
+        mediator: stationManager,
+    }
+    goodsTrain := &goodsTrain{
+        mediator: stationManager,
+    }
+    passengerTrain.requestArrival()
+    goodsTrain.requestArrival()
+    passengerTrain.departure()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">PassengerTrain: Landing
+GoodsTrain: Waiting
+PassengerTrain: Leaving
+GoodsTrain: Arrival Permitted. Landing</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "sync"
+)
+
+type train interface {
+    requestArrival()
+    departure()
+    permitArrival()
+}
+
+type passengerTrain struct {
+    mediator mediator
+}
+
+func (g *passengerTrain) requestArrival() {
+    if g.mediator.canLand(g) {
+        fmt.Println("PassengerTrain: Landing")
+    } else {
+        fmt.Println("PassengerTrain: Waiting")
+    }
+}
+
+func (g *passengerTrain) departure() {
+    fmt.Println("PassengerTrain: Leaving")
+    g.mediator.notifyFree()
+}
+
+func (g *passengerTrain) permitArrival() {
+    fmt.Println("PassengerTrain: Arrival Permitted. Landing")
+}
+
+type goodsTrain struct {
+    mediator mediator
+}
+
+func (g *goodsTrain) requestArrival() {
+    if g.mediator.canLand(g) {
+        fmt.Println("GoodsTrain: Landing")
+    } else {
+        fmt.Println("GoodsTrain: Waiting")
+    }
+}
+
+func (g *goodsTrain) departure() {
+    g.mediator.notifyFree()
+    fmt.Println("GoodsTrain: Leaving")
+}
+
+func (g *goodsTrain) permitArrival() {
+    fmt.Println("GoodsTrain: Arrival Permitted. Landing")
+}
+
+type mediator interface {
+    canLand(train) bool
+    notifyFree()
+}
+
+type stationManager struct {
+    isPlatformFree bool
+    lock           *sync.Mutex
+    trainQueue     []train
+}
+
+func newStationManger() *stationManager {
+    return &stationManager{
+        isPlatformFree: true,
+        lock:           &sync.Mutex{},
+    }
+}
+
+func (s *stationManager) canLand(t train) bool {
+    s.lock.Lock()
+    defer s.lock.Unlock()
+    if s.isPlatformFree {
+        s.isPlatformFree = false
+        return true
+    }
+    s.trainQueue = append(s.trainQueue, t)
+    return false
+}
+
+func (s *stationManager) notifyFree() {
+    s.lock.Lock()
+    defer s.lock.Unlock()
+    if !s.isPlatformFree {
+        s.isPlatformFree = true
+    }
+    if len(s.trainQueue) > 0 {
+        firstTrainInQueue := s.trainQueue[0]
+        s.trainQueue = s.trainQueue[1:]
+        firstTrainInQueue.permitArrival()
+    }
+}
+
+func main() {
+    stationManager := newStationManger()
+    passengerTrain := &passengerTrain{
+        mediator: stationManager,
+    }
+    goodsTrain := &goodsTrain{
+        mediator: stationManager,
+    }
+    passengerTrain.requestArrival()
+    goodsTrain.requestArrival()
+    passengerTrain.departure()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">PassengerTrain: Landing
+GoodsTrain: Waiting
+PassengerTrain: Leaving
+GoodsTrain: Arrival Permitted. Landing</code></pre>
+<p>The post <a href="https://golangbyexamples.com/mediator-design-pattern-golang/">Mediator Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/mediator-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">680</post-id>	</item>
+	</channel>
+</rss>

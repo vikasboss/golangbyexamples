@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>pretty Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/pretty/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/pretty/</link>
+	<description></description>
+	<lastBuildDate>Fri, 08 Jan 2021 16:25:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>pretty Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/pretty/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Pretty print struct variables in Go (Golang)</title>
+		<link>https://golangbyexamples.com/print-struct-variables-golang/</link>
+					<comments>https://golangbyexamples.com/print-struct-variables-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 13 Jun 2020 18:16:58 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pretty]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2229</guid>
+
+					<description><![CDATA[<p>Note: If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&#160;Golang Comprehensive Tutorial Series. Now let&#8217;s see the current tutorial....</p>
+<p>The post <a href="https://golangbyexamples.com/print-struct-variables-golang/">Pretty print struct variables in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>Note:</strong> If you are interested in learning Golang, then for that we have a golang comprehensive tutorial series. Do check it out –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Comprehensive Tutorial Series</a>. Now let&#8217;s see the current tutorial. Below is the table of contents.</p>
+
+
+
+<h1 class="wp-block-heading">Overview</h1>
+
+
+
+<p class="has-medium-font-size">There<strong>&nbsp;</strong>are two ways to print all struct variables including all its key and values.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the <strong>fmt</strong> package</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Printing the struct in JSON form using the <strong>json/encoding</strong> package. This also allows pretty print of a struct as well.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s say we have an employee struct as below:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    name   string
+    age    int
+    salary int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see the two ways in which we can print the instance of the employee struct.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Using the fmt package</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>fmt.Printf()</strong> function can be used to print a struct.&nbsp; Different format identifiers can be used to print a struct in different ways. Let&#8217;s see how different format identifiers can be used to print a struct in different formats.</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s first create an instance of employee</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">emp := employee{name: "Sam", age: 31, salary: 2000}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%v</strong> &#8211; It will print only values. Field name will not be printed. This is the default way of printing a struct. Eg</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("%v", emp)  -  {Sam 31 2000}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>%+v &#8211; </strong>It will print both field and value. Eg</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("%+v", emp) - {name:Sam age:31 salary:2000}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>%#v &#8211; It will print the struct name, also both field and value. Eg</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("%#v", emp) - main.employee{name:"Sam", age:31, salary:2000}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>fmt.Println()</strong> function can also be used to print a struct. Since %v is the default for <strong>fmt.Printlin()</strong> function, hence output will be same as using %v for <strong>fmt.Printf()</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Println(emp) - {Sam 31 2000}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working program too</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type employee struct {
+    name   string
+    age    int
+    salary int
+}
+
+func main() {
+    emp := employee{name: "Sam", age: 31, salary: 2000}
+    fmt.Printf("Emp: %v\n", emp)
+    fmt.Printf("Emp: %+v\n", emp)
+    fmt.Printf("Emp: %#v\n", emp)
+    fmt.Println(emp)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Emp: {Sam 31 2000}
+Emp: {name:Sam age:31 salary:2000}
+Emp: main.employee{name:"Sam", age:31, salary:2000}
+{Sam 31 2000}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Printing the struct in JSON form</strong></h1>
+
+
+
+<p class="has-medium-font-size">Second method is to print the struct in the JSON format. <strong>Marshal</strong> and <strong>MarshalIndent</strong> function of <strong>encoding/json</strong> package can be used to print a struct in JSON format. Here is the difference</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Marshal</strong> &#8211; Below is the signature of the <strong>Marshal</strong> function. This function returns the JSON encoding of <strong>v </strong>by traversing the value recursively</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Marshal(v interface{}) ([]byte, error)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>MarshalIndent</strong>&#8211; Below is the signature of the <strong>MarshalIndent</strong> function. It is similar to <strong>Marshal </strong>function but applies Indent to format the output. So it can be used to pretty print a struct</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">MarshalIndent(v interface{}, prefix, indent string) ([]byte, error)</code></pre>
+
+
+
+<p class="has-medium-font-size">It is to be noted that both <strong>Marshal</strong> and <strong>MarshalIndent</strong> function can only access the exported fields of a struct, which means that only the capitalized fields can be accessed and encoded in JSON form.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+)
+
+type employee struct {
+    Name   string
+    Age    int
+    salary int
+}
+
+func main() {
+    emp := employee{Name: "Sam", Age: 31, salary: 2000}
+    //Marshal
+    empJSON, err := json.Marshal(emp)
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Printf("Marshal funnction output %s\n", string(empJSON))
+
+    //MarshalIndent
+    empJSON, err = json.MarshalIndent(emp, "", "  ")
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Printf("MarshalIndent funnction output %s\n", string(empJSON))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Marshal funnction output {"Name":"Sam","Age":31}
+
+MarshalIndent funnction output {
+  "Name": "Sam",
+  "Age": 31
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The salary field is not printed in the output because it begins with a lowercase letter and is not exported. The <strong>Marshal</strong> function output is not formatted while the <strong>MarshalIndent</strong> function output is formatted.</p>
+
+
+
+<p class="has-medium-font-size"><strong>golang </strong>also allows the JSON encoded struct key name to be different by the use of struct meta fields. Let&#8217;s first understand what is struct meta fields. A struct in go also allows adding metadata to its fields. These meta fields can be used to encode decode into different forms, doing some forms of validations on struct fields, etc. So basically any meta information can be stored with fields of a struct and can be used by any package or library for different purposes.</p>
+
+
+
+<p class="has-medium-font-size">Below is the format for attaching a meta-data. Meta-data is a string literal i.e it is enclosed in backquotes</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type strutName struct{
+   fieldName type `key:value key2:value2`
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Now for our use case, we will add JSON tags to employee struct as below. Marshal function will use the key name specified in the tags</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    Name   string `json:"n"`
+    Age    int    `json:"a"`
+    Salary int    `json:"s"`
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see full program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+)
+
+type employee struct {
+    Name   string `json:"n"`
+    Age    int    `json:"a"`
+    Salary int    `json:"s"`
+}
+
+func main() {
+    emp := employee{Name: "Sam", Age: 31, Salary: 2000}
+    //Converting to jsonn
+    empJSON, err := json.MarshalIndent(emp, '', '  ')
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Println(string(empJSON))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">{
+  "n": "Sam",
+  "a": 31,
+  "s": 2000
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">The key name in the output is the same as specified in the JSON meta tags.</p>
+
+
+
+<p class="has-large-font-size"><strong>Printing nested struct</strong></p>
+
+
+
+<p class="has-medium-font-size">Even if the struct contains another struct , same method as discussed above can be used to print the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+)
+
+type address struct {
+    City    string `json:"city"`
+    Country string `json:"country"`
+}
+
+type employee struct {
+    Name    string  `json:"name"`
+    Age     int     `json:"age"`
+    Salary  int     `json:"salary"`
+    Address address `json:"address"`
+}
+
+func main() {
+    address := address{City: "some_city", Country: "some_country"}
+    emp := employee{Name: "Sam", Age: 31, Salary: 2000, Address: address}
+    //Converting to json
+    empJSON, err := json.MarshalIndent(emp, "", "  ")
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    fmt.Printf("MarshalIndent funnction output\n %s\n", string(empJSON))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">MarshalIndent function output
+ {
+  "name": "Sam",
+  "age": 31,
+  "salary": 2000,
+  "address": {
+    "city": "some_city",
+    "country": "some_country"
+  }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">This is all about printing a struct. I hope you have liked this article. Please share the feedback in the comments.</p>
+<p>The post <a href="https://golangbyexamples.com/print-struct-variables-golang/">Pretty print struct variables in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/print-struct-variables-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2229</post-id>	</item>
+	</channel>
+</rss>

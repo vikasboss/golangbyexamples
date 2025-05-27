@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>directory Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/directory/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/directory/</link>
+	<description></description>
+	<lastBuildDate>Mon, 04 Oct 2021 18:23:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>directory Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/directory/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Get Current User&#8217;s Home Directory in Go (Golang)</title>
+		<link>https://golangbyexamples.com/get-current-user-home-directory-go/</link>
+					<comments>https://golangbyexamples.com/get-current-user-home-directory-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 20:31:59 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[home]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2049</guid>
+
+					<description><![CDATA[<p>Overview &#8216;os/user&#8217; package can be used to get the current user home directory Let&#8217;s see a working code Code Output</p>
+<p>The post <a href="https://golangbyexamples.com/get-current-user-home-directory-go/">Get Current User&#8217;s Home Directory in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-large-font-size"><strong>Overview</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>&#8216;os/user&#8217; </strong>package can be used to get the current user home directory</p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a working code</p>
+
+
+
+<p class="has-large-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os/user"
+)
+
+func main() {
+    user, err := user.Current()
+    if err != nil {
+        log.Fatalf(err.Error())
+    }
+    homeDirectory := user.HomeDir
+    fmt.Printf("Home Directory: %s\n", homeDirectory)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Home Directory: "some_home_directory"</code></pre>
+<p>The post <a href="https://golangbyexamples.com/get-current-user-home-directory-go/">Get Current User&#8217;s Home Directory in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/get-current-user-home-directory-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2049</post-id>	</item>
+		<item>
+		<title>Change folder/directory permissions in Go (Golang)</title>
+		<link>https://golangbyexamples.com/change-folder-directory-permissions-go/</link>
+					<comments>https://golangbyexamples.com/change-folder-directory-permissions-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 17:45:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[folder]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[permissions]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2036</guid>
+
+					<description><![CDATA[<p>os.Chmod() function can be used to change the permissions of an existing folder or directory. Below is the signature of the function Code Output:</p>
+<p>The post <a href="https://golangbyexamples.com/change-folder-directory-permissions-go/">Change folder/directory permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.Chmod()</strong> function can be used to change the permissions of an existing folder or directory. Below is the signature of the function</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Chmod(name string, mode FileMode) error</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    err := os.Mkdir("new", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+    stats, err := os.Stat("new")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission Folder Before: %s\n", stats.Mode())
+    err = os.Chmod("new", 0700)
+    if err != nil {
+        log.Fatal(err)
+    }
+    stats, err = os.Stat("new")
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Permission Folder After:  %s\n", stats.Mode())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Permission Folder Before: drwxr-xr-x
+Permission Folder After:  drwx------</code></pre>
+<p>The post <a href="https://golangbyexamples.com/change-folder-directory-permissions-go/">Change folder/directory permissions in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/change-folder-directory-permissions-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2036</post-id>	</item>
+		<item>
+		<title>Create a directory or folder in Go (Golang)</title>
+		<link>https://golangbyexamples.com/create-directory-folder-golang/</link>
+					<comments>https://golangbyexamples.com/create-directory-folder-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2020 18:31:08 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[create]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[folder]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2019</guid>
+
+					<description><![CDATA[<p>Overview os.Mkdir() function can be used to create a directory or folder in go. Below is the signature of the function. It takes in two parameters The first parameter is the named...</p>
+<p>The post <a href="https://golangbyexamples.com/create-directory-folder-golang/">Create a directory or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>os.Mkdir()</strong> function can be used to create a directory or folder in go.</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Mkdir(name string, perm FileMode)</code></pre>
+
+
+
+<p class="has-medium-font-size">It takes in two parameters</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The first parameter is the named directory. If the named directory is a fully qualified path it will create a directory at that path. If not it will create a directory with respect to current working directory</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The second parameter specifies the permission bits. The folder or directory is created with this permission bits</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    //Create a folder/directory at a full qualified path
+    err := os.Mkdir("/Users/temp", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    //Create a folder/directory at a full qualified path
+    err = os.Mkdir("temp", 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">It will create a directory temp at location /Users location and at the current working directory location</code></pre>
+
+
+
+<p class="has-medium-font-size"></p>
+<p>The post <a href="https://golangbyexamples.com/create-directory-folder-golang/">Create a directory or folder in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/create-directory-folder-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2019</post-id>	</item>
+		<item>
+		<title>Get Current Working Directory in Go (Golang)</title>
+		<link>https://golangbyexamples.com/current-working-directory-golang/</link>
+					<comments>https://golangbyexamples.com/current-working-directory-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Jan 2020 04:56:21 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pwd]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1171</guid>
+
+					<description><![CDATA[<p>os.Getwd() is used to get the current working directory. Output will similar to pwd command on linux Output: Current Working Direcoty: &#60;will be current working directory on the machine></p>
+<p>The post <a href="https://golangbyexamples.com/current-working-directory-golang/">Get Current Working Directory in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.Getwd() </strong>is used to get the current working directory. Output will similar to <strong>pwd</strong> command on linux</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    currentWorkingDirectory, err := os.Getwd()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Current Wroking Direcoty: %s", currentWorkingDirectory)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<p>Current Working Direcoty: &lt;will be current working directory on the machine></p>
+<p>The post <a href="https://golangbyexamples.com/current-working-directory-golang/">Get Current Working Directory in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/current-working-directory-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1171</post-id>	</item>
+		<item>
+		<title>Check if file is a directory or not in Go (Golang)</title>
+		<link>https://golangbyexamples.com/check-if-file-is-a-directory-go/</link>
+					<comments>https://golangbyexamples.com/check-if-file-is-a-directory-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 15 Jan 2020 15:38:21 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1132</guid>
+
+					<description><![CDATA[<p>See the below code to know if a file is a file or it is a directory If temp is a file output will be = &#8220;temp is a file&#8221; If temp...</p>
+<p>The post <a href="https://golangbyexamples.com/check-if-file-is-a-directory-go/">Check if file is a directory or not in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">See the below code to know if a file is a file or it is a directory<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If temp is a file output will be = &#8220;temp is a file&#8221;</li><li>If temp is a directory output will be = &#8220;temp is a directory&#8221;</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+var (
+    fileInfo *os.FileInfo
+    err      error
+)
+
+func main() {
+    info, err := os.Stat("temp")
+    if os.IsNotExist(err) {
+        log.Fatal("File does not exist.")
+    }
+    if info.IsDir() {
+        fmt.Println("temp is a directory")
+    } else {
+        fmt.Println("temp is a file")
+    }
+}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/check-if-file-is-a-directory-go/">Check if file is a directory or not in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/check-if-file-is-a-directory-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1132</post-id>	</item>
+		<item>
+		<title>Check if a file or directory exists in Go (Golang)</title>
+		<link>https://golangbyexamples.com/check-if-file-or-directory-exists-go/</link>
+					<comments>https://golangbyexamples.com/check-if-file-or-directory-exists-go/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 15 Jan 2020 15:37:42 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[directory]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1131</guid>
+
+					<description><![CDATA[<p>os.Stat and os.IsNotExist() can be used to check whether a particular file or directory exist or not. File Exists&#160; &#160; Folder Exists</p>
+<p>The post <a href="https://golangbyexamples.com/check-if-file-or-directory-exists-go/">Check if a file or directory exists in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size"><strong>os.Stat</strong> and <strong>os.IsNotExist()</strong> can be used to check whether a particular file or directory exist or not. </p>
+
+
+
+<h1 class="wp-block-heading"><strong>File Exists&nbsp; &nbsp; </strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    fileinfo, err := os.Stat("temp.txt")
+    if os.IsNotExist(err) {
+        log.Fatal("File does not exist.")
+    }
+    log.Println(fileinfo)
+}</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Folder Exists</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    folderInfo, err := os.Stat("temp")
+    if os.IsNotExist(err) {
+        log.Fatal("Folder does not exist.")
+    }
+    log.Println(folderInfo)
+}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/check-if-file-or-directory-exists-go/">Check if a file or directory exists in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/check-if-file-or-directory-exists-go/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1131</post-id>	</item>
+	</channel>
+</rss>

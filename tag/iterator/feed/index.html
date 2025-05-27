@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>iterator Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/iterator/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/iterator/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:39:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>iterator Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/iterator/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Iterator Design Pattern in Golang</title>
+		<link>https://golangbyexamples.com/go-iterator-design-pattern/</link>
+					<comments>https://golangbyexamples.com/go-iterator-design-pattern/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 13:09:27 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[iterator]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=717</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Iterator design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/go-iterator-design-pattern/">Iterator Design Pattern in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Iterator design pattern is a behavioral design pattern. In this pattern, the collection struct provides an iterator which lets it go through each element in the collection struct in sequence without exposing its underlying implementation.<br>Below are basic components of the Iterator Design Pattern</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Iterator</strong> <strong>Interface</strong> :&nbsp; this interface provides basic operations such as <strong>hasNext()</strong>, <strong>getNext()</strong> etc. These operations as the name suggests lets you traverse a collection, restarting iteration, etc</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Collection interface</strong>: this interface represents the collection that needs to be traversed. This interface defines a method <strong>createIterator()</strong> which returns <strong>iterator</strong> type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Concrete Iterator:</strong> the concrete implementation of iterator interface</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Concrete Collection</strong>: the concrete implementation of Collection interface</li></ul>
+
+
+
+<p class="has-medium-font-size">The main idea behind this pattern is to expose the iteration logic of a Collection struct into a different object (which implements the iterator interface). This iterator provides a generic method of iterating over a collection independent of its type.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram:</strong></h1>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="520" height="403" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Iterator-Design-Pattern-1.jpg?resize=520%2C403&#038;ssl=1" alt="" class="wp-image-719" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Iterator-Design-Pattern-1.jpg?w=520&amp;ssl=1 520w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Iterator-Design-Pattern-1.jpg?resize=300%2C233&amp;ssl=1 300w" sizes="(max-width: 520px) 100vw, 520px" data-recalc-dims="1" /></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Example&#8221;</strong> below</p>
+
+
+
+<figure class="wp-block-table"><table class=""><tbody><tr><td>Collection</td><td>collection.go</td></tr><tr><td>Concrete Collection</td><td>userCollection.go</td></tr><tr><td>Iterator</td><td>mac.go</td></tr><tr><td>Concrete Iterator 1</td><td>userIterator.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>collection.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type collection interface {
+    createIterator() iterator
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>userCollection.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type userCollection struct {
+    users []*user
+}
+
+func (u *userCollection) createIterator() iterator {
+    return &userIterator{
+        users: u.users,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>iterator.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iterator interface {
+    hasNext() bool
+    getNext() *user
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>userIterator.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type userIterator struct {
+    index int
+    users []*user
+}
+
+func (u *userIterator) hasNext() bool {
+    if u.index < len(u.users) {
+        return true
+    }
+    return false
+}
+
+func (u *userIterator) getNext() *user {
+    if u.hasNext() {
+        user := u.users[u.index]
+        u.index++
+        return user
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>user.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type user struct {
+    name string
+    age  int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    user1 := &user{
+        name: "a",
+        age:  30,
+    }
+    user2 := &user{
+        name: "b",
+        age:  20,
+    }
+    userCollection := &userCollection{
+        users: []*user{user1, user2},
+    }
+    iterator := userCollection.createIterator()
+    for iterator.hasNext() {
+        user := iterator.getNext()
+        fmt.Printf("User is %+v\n", user)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">User is &{name:a age:30}
+User is &{name:b age:20}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type collection interface {
+    createIterator() iterator
+}
+
+type userCollection struct {
+    users []*user
+}
+
+func (u *userCollection) createIterator() iterator {
+    return &userIterator{
+        users: u.users,
+    }
+}
+
+type iterator interface {
+    hasNext() bool
+    getNext() *user
+}
+
+type userIterator struct {
+    index int
+    users []*user
+}
+
+func (u *userIterator) hasNext() bool {
+    if u.index < len(u.users) {
+        return true
+    }
+    return false
+}
+
+func (u *userIterator) getNext() *user {
+    if u.hasNext() {
+        user := u.users[u.index]
+        u.index++
+        return user
+    }
+    return nil
+}
+
+type user struct {
+    name string
+    age  int
+}
+
+func main() {
+    user1 := &#038;user{
+        name: "a",
+        age:  30,
+    }
+    user2 := &#038;user{
+        name: "b",
+        age:  20,
+    }
+    userCollection := &#038;userCollection{
+        users: []*user{user1, user2},
+    }
+    iterator := userCollection.createIterator()
+    for iterator.hasNext() {
+        user := iterator.getNext()
+        fmt.Printf("User is %+v\n", user)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">User is &{name:a age:30}
+User is &{name:b age:20}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/go-iterator-design-pattern/">Iterator Design Pattern in Golang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-iterator-design-pattern/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">717</post-id>	</item>
+	</channel>
+</rss>

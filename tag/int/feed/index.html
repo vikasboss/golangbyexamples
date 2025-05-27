@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>int Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/int/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/int/</link>
+	<description></description>
+	<lastBuildDate>Wed, 01 Jan 2020 17:53:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>int Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/int/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Know Size and Range of int or uint in Go (Golang)</title>
+		<link>https://golangbyexamples.com/go-size-range-int-uint/</link>
+					<comments>https://golangbyexamples.com/go-size-range-int-uint/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 01 Jan 2020 17:53:13 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[int]]></category>
+		<category><![CDATA[range]]></category>
+		<category><![CDATA[uint]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1062</guid>
+
+					<description><![CDATA[<p>Overview int is a signed Integer data type uint is an unsigned Integer data type Size and range of int and uint in go is platform-dependent meaning that the size and range...</p>
+<p>The post <a href="https://golangbyexamples.com/go-size-range-int-uint/">Know Size and Range of int or uint in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>int is a signed Integer data type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>uint is an unsigned Integer data type </li></ul>
+
+
+
+<p class="has-medium-font-size">Size and range of <strong>int</strong> and <strong>uint</strong> in go is platform-dependent meaning that the size and range depend whether the underlying platform is 32-bit or a 64-bit machine.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Size Table</strong></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td><strong>Type</strong></td><td><strong>Size (32 bit machine)</strong></td><td><strong>Size (64 bit machine)</strong></td></tr><tr><td>int</td><td>32 bits or 4 byte</td><td>64 bits or 8 byte</td></tr><tr><td>uint</td><td>32 bits or 4 byte</td><td>64 bits or 8 byte</td></tr></tbody></table></figure>
+
+
+
+<p><strong>Range Table</strong></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td><strong>Type</strong></td><td><strong>Size (32 bit machine)</strong></td><td><strong>Size (64 bit machine)</strong></td></tr><tr><td>int</td><td>-2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1</td><td>-2<sup>63</sup>&nbsp;to 2<sup>63</sup>&nbsp;-1</td></tr><tr><td>uint</td><td>0 to 2<sup>32</sup>&nbsp;-1</td><td>0 to 2<sup>64</sup>&nbsp;-1</td></tr></tbody></table></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Know Size and Range</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>bits </strong>package of golang can help know the size of an <strong>int </strong>or <strong>uint </strong>on your system. <strong>bits.UintSize</strong> is the const that stores this value. It is calculated as below</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>unsafe.Sizeof() </strong>function can also be used to see the size of <strong>int </strong>or<strong> unit</strong> in bytes</li></ul>
+
+
+
+<p class="has-medium-font-size">Once the size is known, the range can be deduced based upon size. See the below code for printing size.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/bits"
+    "unsafe"
+)
+
+func main() {
+    //This is computed as 
+    //const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64
+    sizeInBits := bits.UintSize
+    fmt.Printf("%d bits\n", sizeInBits)
+
+    //Using unsafe.Sizeof() function. It will print size in bytes
+    var a int
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+
+    //Using unsafe.Sizeof() function. It will print size in bytes
+    var b uint
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(b))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">64 bits
+8 bytes
+8 bytes</code></pre>
+<p>The post <a href="https://golangbyexamples.com/go-size-range-int-uint/">Know Size and Range of int or uint in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-size-range-int-uint/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1062</post-id>	</item>
+	</channel>
+</rss>

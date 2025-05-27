@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>interface Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/interface/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/interface/</link>
+	<description></description>
+	<lastBuildDate>Sat, 09 Oct 2021 03:18:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>interface Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/interface/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Go : Check if type implements an interface</title>
+		<link>https://golangbyexamples.com/go-check-if-type-implements-interface/</link>
+					<comments>https://golangbyexamples.com/go-check-if-type-implements-interface/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 01 Dec 2019 13:52:08 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[interface]]></category>
+		<category><![CDATA[type]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=796</guid>
+
+					<description><![CDATA[<p>Sometimes there can be scenarios where it is needed to know if your type satisfies an interface or not. This can be easily achieved using a blank identifier. In the above program,...</p>
+<p>The post <a href="https://golangbyexamples.com/go-check-if-type-implements-interface/">Go : Check if type implements an interface</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Sometimes there can be scenarios where it is needed to know if your type satisfies an interface or not. This can be easily achieved using a blank identifier.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type shape interface {
+    getNumSides() int
+    getArea() int
+}
+
+type square struct {
+    len int
+}
+
+func (s square) getNumSides() int {
+    return 4
+}
+
+// func (s square) getArea() int {
+//  return s.len * 2
+// }
+
+func main() {
+    //Verify that *square implement shape
+    var _ shape = square{}
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">In the above program, we have commented out the square&#8217;s <strong>getArea() </strong>function. On &#8220;go build&#8221; above program gives the error</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">main.go:25:6: cannot use square literal (type square) as type shape in assignment:
+        square does not implement shape (missing getArea method)</code></pre>
+
+
+
+<p class="has-medium-font-size">On uncommenting the <strong>getArea() </strong>method the error goes away. To check if a pointer of the type implements the interface then it can be done as below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var _ shape = &square{}</code></pre>
+
+
+
+<p><strong>OR</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var _ shape = (*square)(nil)</code></pre>
+
+
+
+<p class="has-medium-font-size">First one will give the error </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">main.go:25:6: cannot use (*square)(nil) (type *square) as type shape in assignment:
+        *square does not implement shape (missing getArea method)</code></pre>
+
+
+
+<p class="has-medium-font-size">while the latter one will give error </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">main.go:25:6: cannot use &square literal (type *square) as type shape in assignment:
+        *square does not implement shape (missing getArea method)</code></pre>
+<p>The post <a href="https://golangbyexamples.com/go-check-if-type-implements-interface/">Go : Check if type implements an interface</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-check-if-type-implements-interface/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">796</post-id>	</item>
+		<item>
+		<title>Inheritance in GO using interface</title>
+		<link>https://golangbyexamples.com/inheritance-go-interface/</link>
+					<comments>https://golangbyexamples.com/inheritance-go-interface/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 09 Aug 2019 12:32:52 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[inheritance]]></category>
+		<category><![CDATA[interface]]></category>
+		<category><![CDATA[struct]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=145</guid>
+
+					<description><![CDATA[<p>This post describes inheritance using interface. Do visit our Inheritance in Go Complete Guide post for full reference Go supports inheritance by embedding struct or using interface. There are different ways of...</p>
+<p>The post <a href="https://golangbyexamples.com/inheritance-go-interface/">Inheritance in GO using interface</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This post describes inheritance using interface. Do visit our Inheritance in Go Complete Guide post for full reference</p>
+
+
+
+<figure class="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-welcome-to-golang-by-example"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="ZXUMNIsae2"><a href="https://golangbyexamples.com/oop-inheritance-golang-complete/">OOP: Inheritance in GOLANG complete guide</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted"  title="&#8220;OOP: Inheritance in GOLANG complete guide&#8221; &#8212; Welcome To Golang By Example" src="https://golangbyexamples.com/oop-inheritance-golang-complete/embed/#?secret=lwzs553n8n#?secret=ZXUMNIsae2" data-secret="ZXUMNIsae2" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+
+
+
+<p class="has-medium-font-size">Go supports inheritance by embedding struct or using interface. There are different ways of doing it and each having some limitations. The different ways are:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>By using embedded struct &#8211; The parent struct is embedded in child struct. The limitation is that subtyping is not possible with this approach. You cannot pass the child struct to a function that expects base. Refer this link for more details –<strong><a href="https://golangbyexamples.com/inheritance-go-struct/">Inheritance using struct</a></strong></li><li><strong>By using interfaces</strong> &#8211; Subtyping is possible but the limitation is that one has no way to refer to common properties. Current post describes this approach</li><li>By using interface + struct &#8211; This fixes the limitations of above two approach but one limitation is that overriding methods is not possible. But there is a workaround. Refer to this link for more details &#8211; <strong><a href="https://golangbyexamples.com/inheritance-go-interface-struct/">Inheritance using interface + struct</a></strong></li></ol>
+
+
+
+<p class="has-medium-font-size"><strong>Details:</strong></p>
+
+
+
+<p class="has-medium-font-size">The child struct implements the methods of a common interface. This approach also solves the problem of subtyping. See below code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type iBase interface {
+	say()
+}
+
+type child struct {
+	style string
+}
+
+func (b *child) say() {
+	fmt.Println(b.style)
+}
+
+func check(b iBase) {
+	b.say()
+}
+
+func main() {
+	child := &child{
+		style: "somestyle",
+	}
+	child.say()
+	check(child)
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">somestyle
+somestyle</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Limitation:</strong></p>
+
+
+
+<p class="has-medium-font-size">This approach has a limitation that it is not possible to refer to common properties as an interface can not have any properties. This problem is solved by the mixed approach of using Struct + Interface.</p>
+<p>The post <a href="https://golangbyexamples.com/inheritance-go-interface/">Inheritance in GO using interface</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/inheritance-go-interface/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">145</post-id>	</item>
+		<item>
+		<title>Inheritance in GO using struct (Embedding)</title>
+		<link>https://golangbyexamples.com/inheritance-go-struct/</link>
+					<comments>https://golangbyexamples.com/inheritance-go-struct/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 09 Aug 2019 11:43:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[inheritance]]></category>
+		<category><![CDATA[interface]]></category>
+		<category><![CDATA[struct]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=139</guid>
+
+					<description><![CDATA[<p>This post desicribes inheritance using struct only. Do visit our Inheritance in Go Complete Guide post for full reference Go supports inheritance by embedding struct or using interface. There are different ways...</p>
+<p>The post <a href="https://golangbyexamples.com/inheritance-go-struct/">Inheritance in GO using struct (Embedding)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This post desicribes inheritance using struct only. Do visit our Inheritance in Go Complete Guide post for full reference</p>
+
+
+
+<figure class="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-welcome-to-golang-by-example"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="zH9oZkEbS3"><a href="https://golangbyexamples.com/oop-inheritance-golang-complete/">OOP: Inheritance in GOLANG complete guide</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted"  title="&#8220;OOP: Inheritance in GOLANG complete guide&#8221; &#8212; Welcome To Golang By Example" src="https://golangbyexamples.com/oop-inheritance-golang-complete/embed/#?secret=z8WWaJ1OiI#?secret=zH9oZkEbS3" data-secret="zH9oZkEbS3" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+
+
+
+<p class="has-medium-font-size">Go supports inheritance by embedding struct or using interface. There are different ways of doing it and each having some limitations. The different ways are:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>By using embedded struct</strong> &#8211; The parent struct is embedded in child struct. The limitation is that subtyping is not possible with this approach. You cannot pass the child struct to a function that expects base. The current post describes this approach.</li><li>By using interfaces &#8211; Subtyping is possible but the limitation is that one has no way to refer to common properties. Refer this link for more details &#8211;  <a href="https://golangbyexamples.com/inheritance-go-interface/"><strong>Inheritance using Interface</strong></a></li><li>By using interface + struct &#8211;  This fixes the limitations of above two approach but one limitation is that overriding methods is not possible. But there is a workaround. Refer to this link for more details &#8211; <a href="https://golangbyexamples.com/inheritance-go-interface-struct/"><strong>Inheritance using interface + struct</strong></a></li></ol>
+
+
+
+<p class="has-medium-font-size"><strong>Details:</strong></p>
+
+
+
+<p class="has-medium-font-size">In inheritance using a struct, a base struct is embedded in child struct and base properties and methods can directly be called on child struct. See below code:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type base struct {
+	value string
+}
+
+func (b *base) say() {
+	fmt.Println(b.value)
+}
+
+type child struct {
+	base  //embedding
+	style string
+}
+
+func check(b base) {
+	b.say()
+}
+
+func main() {
+	base := base{value: "somevalue"}
+	child := &child{
+		base:  base,
+		style: "somestyle",
+	}
+	child.say()
+	//check(child)
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">somevalue</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Limitation: </strong></p>
+
+
+
+<p class="has-medium-font-size">Subtyping is not supported. You cannot pass the child struct to a function that expects base. </p>
+
+
+
+<p class="has-medium-font-size">For example in the above code if you uncomment  <strong>//check(child)</strong> it will give compilation error:  &#8220;cannot use child (type *child) as type base in argument to check&#8221;. To fix this we can do inheritance using Interface<br></p>
+<p>The post <a href="https://golangbyexamples.com/inheritance-go-struct/">Inheritance in GO using struct (Embedding)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/inheritance-go-struct/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139</post-id>	</item>
+		<item>
+		<title>Interface to struct in Go (Golang)</title>
+		<link>https://golangbyexamples.com/interface-to-struct/</link>
+					<comments>https://golangbyexamples.com/interface-to-struct/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 18 Mar 2019 16:38:18 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[convert]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[interface]]></category>
+		<category><![CDATA[struct]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=73</guid>
+
+					<description><![CDATA[<p>We come around a situation sometimes in programming where an empty interface might a struct internally and we have to get the concrete struct out of it. Whoever is not aware of...</p>
+<p>The post <a href="https://golangbyexamples.com/interface-to-struct/">Interface to struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">We come around a situation sometimes in programming where an empty interface might a struct internally and we have to get the concrete struct out of it. Whoever is not aware of what an empty interface is should read this excellent article: https://research.swtch.com/interfaces. </p>
+
+
+
+<p class="has-medium-font-size">For conversion of interface{} to a struct, we will use the library &#8211; <a href="https://github.com/mitchellh/mapstructure">https://github.com/mitchellh/mapstructure</a> .  Let&#8217;s understand how to convert the interface to a struct by an example:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+
+	"github.com/mitchellh/mapstructure"
+)
+
+type NewCustomerEvent struct {
+	Name  string
+	Phone string
+	Email string
+}
+
+func main() {
+	newCustomer := NewCustomerEvent{Name: "x", Phone: "082213909101", Email: "xyz@gmail.com"}
+	convert(newCustomer)
+}
+
+func convert(event interface{}) {
+	c := NewCustomerEvent{}
+	mapstructure.Decode(event, &c)
+	fmt.Printf("Event is: %v", c)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output: </strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Event is: {x 082213909101 xyz@gmail.com}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/interface-to-struct/">Interface to struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/interface-to-struct/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">73</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>pattern Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/pattern/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/pattern/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:39:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>pattern Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/pattern/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Template Method Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/template-method-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/template-method-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 13:28:50 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[method]]></category>
+		<category><![CDATA[pattern]]></category>
+		<category><![CDATA[template]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=724</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Template Method Design Pattern is...</p>
+<p>The post <a href="https://golangbyexamples.com/template-method-design-pattern-golang/">Template Method Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Template Method Design Pattern is a behavioral design pattern that lets you define a template or algorithm for a particular operation.&nbsp;&nbsp;Let&#8217;s understand the template design pattern with an example.</p>
+
+
+
+<p class="has-medium-font-size">Consider the example of One Time Password or OTP. There are different types of OTP that can be triggered for eg. OTP can be <strong>SMS</strong> OTP or <strong>EMAIL</strong> OTP.&nbsp; But irrespective it is an <strong>SMS</strong> OTP or <strong>EMAIL</strong> OTP,&nbsp; the entire steps of the OTP process are the same.&nbsp; The steps are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Generate a random n digit number.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Save this number in the cache for later verification.&nbsp;</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Prepare the content</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Send the notification</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Publish the metrics</li></ul>
+
+
+
+<p class="has-medium-font-size">Even in the future let&#8217;s say a push notification <strong>OTP</strong> is introduced but still it will go through the above steps.</p>
+
+
+
+<p class="has-medium-font-size">In such scenarios when the steps of a particular operation are the same but the steps of the operations can be implemented in a different way by different implementors , then that becomes a candidate for the Template Method Design Pattern. We define a template or algorithm which comprises of a fixed number of methods. The implementer of the operation overrides the methods of the template. </p>
+
+
+
+<p class="has-medium-font-size">Now check out the below code example. </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>iOtp</strong> represents an interface that defines the set of methods that any otp type should implement</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>sms</strong> and <strong>email</strong> are the implementors of <strong>iOtp</strong> interface</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>otp</strong> is the struct which defines the template method <strong>genAndSendOTP(). otp</strong> embeds <strong>iOtp</strong> interface.&nbsp; </li></ul>
+
+
+
+<p class="has-medium-font-size">Important: The combination of iOtp interface and otp struct provides the capabilities of Abstract Class in go. For reference see </p>
+
+
+
+<figure class="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-welcome-to-golang-by-example"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="fqHnV3R5rZ"><a href="https://golangbyexamples.com/go-abstract-class/">Abstract Class in GO: Complete Guide</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted"  title="&#8220;Abstract Class in GO: Complete Guide&#8221; &#8212; Welcome To Golang By Example" src="https://golangbyexamples.com/go-abstract-class/embed/#?secret=IJrupn5jVu#?secret=fqHnV3R5rZ" data-secret="fqHnV3R5rZ" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>otp.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iOtp interface {
+    genRandomOTP(int) string
+    saveOTPCache(string)
+    getMessage(string) string
+    sendNotification(string) error
+    publishMetric()
+}
+
+type otp struct {
+    iOtp iOtp
+}
+
+func (o *otp) genAndSendOTP(otpLength int) error {
+    otp := o.iOtp.genRandomOTP(otpLength)
+    o.iOtp.saveOTPCache(otp)
+    message := o.iOtp.getMessage(otp)
+    err := o.iOtp.sendNotification(message)
+    if err != nil {
+        return err
+    }
+    o.iOtp.publishMetric()
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>sms.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type sms struct {
+    otp
+}
+
+func (s *sms) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("SMS: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *sms) saveOTPCache(otp string) {
+    fmt.Printf("SMS: saving otp: %s to cache\n", otp)
+}
+
+func (s *sms) getMessage(otp string) string {
+    return "SMS OTP for login is " + otp
+}
+
+func (s *sms) sendNotification(message string) error {
+    fmt.Printf("SMS: sending sms: %s\n", message)
+    return nil
+}
+
+func (s *sms) publishMetric() {
+    fmt.Printf("SMS: publishing metrics\n")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>email.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type email struct {
+    otp
+}
+
+func (s *email) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *email) saveOTPCache(otp string) {
+    fmt.Printf("EMAIL: saving otp: %s to cache\n", otp)
+}
+
+func (s *email) getMessage(otp string) string {
+    return "EMAIL OTP for login is " + otp
+}
+
+func (s *email) sendNotification(message string) error {
+    fmt.Printf("EMAIL: sending email: %s\n", message)
+    return nil
+}
+
+func (s *email) publishMetric() {
+    fmt.Printf("EMAIL: publishing metrics\n")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    smsOTP := &sms{}
+    o := otp{
+        iOtp: smsOTP,
+    }
+    o.genAndSendOTP(4)
+    fmt.Println("")
+    emailOTP := &email{}
+    o = otp{
+        iOtp: emailOTP,
+    }
+    o.genAndSendOTP(4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">SMS: generating random otp 1234
+SMS: saving otp: 1234 to cache
+SMS: sending sms: SMS OTP for login is 1234
+SMS: publishing metrics
+
+EMAIL: generating random otp 1234
+EMAIL: saving otp: 1234 to cache
+EMAIL: sending email: EMAIL OTP for login is 1234
+EMAIL: publishing metrics</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type iOtp interface {
+    genRandomOTP(int) string
+    saveOTPCache(string)
+    getMessage(string) string
+    sendNotification(string) error
+    publishMetric()
+}
+
+type otp struct {
+    iOtp iOtp
+}
+
+func (o *otp) genAndSendOTP(otpLength int) error {
+    otp := o.iOtp.genRandomOTP(otpLength)
+    o.iOtp.saveOTPCache(otp)
+    message := o.iOtp.getMessage(otp)
+    err := o.iOtp.sendNotification(message)
+    if err != nil {
+        return err
+    }
+    o.iOtp.publishMetric()
+    return nil
+}
+
+type sms struct {
+    otp
+}
+
+func (s *sms) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("SMS: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *sms) saveOTPCache(otp string) {
+    fmt.Printf("SMS: saving otp: %s to cache\n", otp)
+}
+
+func (s *sms) getMessage(otp string) string {
+    return "SMS OTP for login is " + otp
+}
+
+func (s *sms) sendNotification(message string) error {
+    fmt.Printf("SMS: sending sms: %s\n", message)
+    return nil
+}
+
+func (s *sms) publishMetric() {
+    fmt.Printf("SMS: publishing metrics\n")
+}
+
+type email struct {
+    otp
+}
+
+func (s *email) genRandomOTP(len int) string {
+    randomOTP := "1234"
+    fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
+    return randomOTP
+}
+
+func (s *email) saveOTPCache(otp string) {
+    fmt.Printf("EMAIL: saving otp: %s to cache\n", otp)
+}
+
+func (s *email) getMessage(otp string) string {
+    return "EMAIL OTP for login is " + otp
+}
+
+func (s *email) sendNotification(message string) error {
+    fmt.Printf("EMAIL: sending email: %s\n", message)
+    return nil
+}
+
+func (s *email) publishMetric() {
+    fmt.Printf("EMAIL: publishing metrics\n")
+}
+
+func main() {
+    smsOTP := &sms{}
+    o := otp{
+        iOtp: smsOTP,
+    }
+    o.genAndSendOTP(4)
+    fmt.Println("")
+    emailOTP := &email{}
+    o = otp{
+        iOtp: emailOTP,
+    }
+    o.genAndSendOTP(4)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">SMS: generating random otp 1234
+SMS: saving otp: 1234 to cache
+SMS: sending sms: SMS OTP for login is 1234
+SMS: publishing metrics
+
+EMAIL: generating random otp 1234
+EMAIL: saving otp: 1234 to cache
+EMAIL: sending email: EMAIL OTP for login is 1234
+EMAIL: publishing metrics</code></pre>
+<p>The post <a href="https://golangbyexamples.com/template-method-design-pattern-golang/">Template Method Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/template-method-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">724</post-id>	</item>
+		<item>
+		<title>Factory Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/golang-factory-design-pattern/</link>
+					<comments>https://golangbyexamples.com/golang-factory-design-pattern/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 09:33:49 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[factory]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=707</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction:&#160; Factory design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/golang-factory-design-pattern/">Factory Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Introduction:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size">Factory design pattern is a creational design pattern and it is also one of the most commonly used pattern. This pattern provides a way to hide the creation logic of the instances being created.<br>The client only interacts with a factory struct and tells the kind of instances that needs to be created. The factory class interacts with the corresponding concrete structs and returns the correct instance back.<br>In below example </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have <strong>iGun</strong> interface which defines all methods a gun should have</li><li>There is <strong>gun</strong> struct that implements the <strong>iGun</strong> interface.</li><li>Two concrete guns <strong>ak47</strong> and <strong>maverick</strong>. Both embed <strong>gun</strong> struct and hence also indirectly implement all methods of <strong>iGun</strong> and hence are of <strong>iGun</strong> type</li><li> We have a <strong>gunFactory</strong> struct which creates the gun of type <strong>ak47</strong> or <strong>maverick</strong>. </li><li>The <strong>main.go</strong> acts as a client and instead of directly interacting with <strong>ak47</strong> or <strong>maverick</strong>, it relies on <strong>gunFactory</strong> to create instances of <strong>ak47</strong> and <strong>maverick</strong></li></ul>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="320" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?resize=640%2C320&#038;ssl=1" alt="" class="wp-image-708" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?w=807&amp;ssl=1 807w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?resize=300%2C150&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-1.jpg?resize=768%2C384&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the example given above</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="640" height="415" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?resize=640%2C415&#038;ssl=1" alt="" class="wp-image-709" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?w=809&amp;ssl=1 809w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?resize=300%2C195&amp;ssl=1 300w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Factory-Design-Pattern-2.jpg?resize=768%2C498&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping:</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Example&#8221;</strong> below</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>ProductFactory</td><td>gunFactory.go</td></tr><tr><td>iProduct</td><td>iGun.go</td></tr><tr><td>Product</td><td>gun.go</td></tr><tr><td>Concrete iProduct 1</td><td>ak47go</td></tr><tr><td>Concrete iProduct 1</td><td>maverick.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Example:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>iGun.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iGun interface {
+    setName(name string)
+    setPower(power int)
+    getName() string
+    getPower() int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>gun.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type gun struct {
+    name  string
+    power int
+}
+
+func (g *gun) setName(name string) {
+    g.name = name
+}
+
+func (g *gun) getName() string {
+    return g.name
+}
+
+func (g *gun) setPower(power int) {
+    g.power = power
+}
+
+func (g *gun) getPower() int {
+    return g.power
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>ak47.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type ak47 struct {
+    gun
+}
+
+func newAk47() iGun {
+    return &ak47{
+        gun: gun{
+            name:  "AK47 gun",
+            power: 4,
+        },
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>maverick.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type maverick struct {
+    gun
+}
+
+func newMaverick() iGun {
+    return &maverick{
+        gun: gun{
+            name:  "Maverick gun",
+            power: 5,
+        },
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>gunFactory.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func getGun(gunType string) (iGun, error) {
+    if gunType == "ak47" {
+        return newAk47(), nil
+    }
+    if gunType == "maverick" {
+        return newMaverick(), nil
+    }
+    return nil, fmt.Errorf("Wrong gun type passed")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    ak47, _ := getGun("ak47")
+    maverick, _ := getGun("maverick")
+    printDetails(ak47)
+    printDetails(maverick)
+}
+
+func printDetails(g iGun) {
+    fmt.Printf("Gun: %s", g.getName())
+    fmt.Println()
+    fmt.Printf("Power: %d", g.getPower())
+    fmt.Println()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Gun: AK47 gun
+Power: 4
+Gun: Maverick gun
+Power: 5</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type iGun interface {
+    setName(name string)
+    setPower(power int)
+    getName() string
+    getPower() int
+}
+
+type gun struct {
+    name  string
+    power int
+}
+
+func (g *gun) setName(name string) {
+    g.name = name
+}
+
+func (g *gun) getName() string {
+    return g.name
+}
+
+func (g *gun) setPower(power int) {
+    g.power = power
+}
+
+func (g *gun) getPower() int {
+    return g.power
+}
+
+type ak47 struct {
+    gun
+}
+
+func newAk47() iGun {
+    return &ak47{
+        gun: gun{
+            name:  "AK47 gun",
+            power: 4,
+        },
+    }
+}
+
+type maverick struct {
+    gun
+}
+
+func newMaverick() iGun {
+    return &maverick{
+        gun: gun{
+            name:  "Maverick gun",
+            power: 5,
+        },
+    }
+}
+
+func getGun(gunType string) (iGun, error) {
+    if gunType == "ak47" {
+        return newAk47(), nil
+    }
+    if gunType == "maverick" {
+        return newMaverick(), nil
+    }
+    return nil, fmt.Errorf("Wrong gun type passed")
+}
+
+func main() {
+    ak47, _ := getGun("ak47")
+    maverick, _ := getGun("maverick")
+    printDetails(ak47)
+    printDetails(maverick)
+}
+
+func printDetails(g iGun) {
+    fmt.Printf("Gun: %s", g.getName())
+    fmt.Println()
+    fmt.Printf("Power: %d", g.getPower())
+    fmt.Println()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Gun: AK47 gun
+Power: 4
+Gun: Maverick gun
+Power: 5</code></pre>
+<p>The post <a href="https://golangbyexamples.com/golang-factory-design-pattern/">Factory Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/golang-factory-design-pattern/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">707</post-id>	</item>
+		<item>
+		<title>Memento Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/memento-design-pattern-go/</link>
+					<comments>https://golangbyexamples.com/memento-design-pattern-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 29 Nov 2019 19:11:34 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[memento]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=694</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Memento design pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/memento-design-pattern-go/">Memento Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Memento design pattern is a behavioral design pattern. It allows us to save checkpoints for an object and thus allow an object to revert to its previous state. Basically it helps in undo-redo operations on an object. Below are the design components of the Memento Design Pattern.<br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Originator</strong>: It is the actual object whose state is saved as a memento.&nbsp;</li><li><strong>Memento</strong>: This is the object which saves the state of the originator</li><li><strong>Caretaker</strong>: This is the object that saves multiple mementos. Given an index, it returns the corresponding memento.&nbsp;</li></ul>
+
+
+
+<p class="has-medium-font-size">The originator defines two methods. <strong>savememento()</strong> and <strong>restorememento()</strong> <br></p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>savememento()-</strong> in this method the originator saves its internal state into a memento object.</li><li><strong>restorememento()-</strong> this method takes input as a memento object. The originator restores itself to the pass memento.&nbsp; Hence a previous state is restored.</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Practical Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>originator.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type originator struct {
+    state string
+}
+
+func (e *originator) createMemento() *memento {
+    return &memento{state: e.state}
+}
+
+func (e *originator) restorememento(m *memento) {
+    e.state = m.getSavedState()
+}
+
+func (e *originator) setState(state string) {
+    e.state = state
+}
+
+func (e *originator) getState() string {
+    return e.state</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>memento.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type memento struct {
+    state string
+}
+
+func (m *memento) getSavedState() string {
+    return m.state
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>caretaker.go</strong></p>
+
+
+
+<p class="has-medium-font-size">Notice that the caretaker contains the mementoArray which holds all the memento. </p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type caretaker struct {
+    mementoArray []*memento
+}
+
+func (c *caretaker) addMemento(m *memento) {
+    c.mementoArray = append(c.mementoArray, m)
+}
+
+func (c *caretaker) getMenento(index int) *memento {
+    return c.mementoArray[index]
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    caretaker := &caretaker{
+        mementoArray: make([]*memento, 0),
+    }
+    originator := &originator{
+        state: "A",
+    }
+    fmt.Printf("Originator Current State: %s\n", originator.getState())
+    caretaker.addMemento(originator.createMemento())
+    
+    originator.setState("B")
+    fmt.Printf("Originator Current State: %s\n", originator.getState())
+    
+    caretaker.addMemento(originator.createMemento())
+    originator.setState("C")
+    
+    fmt.Printf("Originator Current State: %s\n", originator.getState())
+    caretaker.addMemento(originator.createMemento())
+    
+    originator.restorememento(caretaker.getMenento(1))
+    fmt.Printf("Restored to State: %s\n", originator.getState())
+    
+    originator.restorememento(caretaker.getMenento(0))
+    fmt.Printf("Restored to State: %s\n", originator.getState())
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">originator Current State: A
+originator Current State: B
+originator Current State: C
+Restored to State: B
+Restored to State: A
+</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type originator struct {
+    state string
+}
+
+func (e *originator) createMemento() *memento {
+    return &memento{state: e.state}
+}
+
+func (e *originator) restoreState(m *memento) {
+    e.state = m.getSavedState()
+}
+
+func (e *originator) setState(state string) {
+    e.state = state
+}
+
+func (e *originator) getState() string {
+    return e.state
+}
+
+type memento struct {
+    state string
+}
+
+func (m *memento) getSavedState() string {
+    return m.state
+}
+
+type caretaker struct {
+    mementoArray []*memento
+}
+
+func (c *caretaker) addMemento(m *memento) {
+    c.mementoArray = append(c.mementoArray, m)
+}
+
+func (c *caretaker) getMenento(index int) *memento {
+    return c.mementoArray[index]
+}
+
+func main() {
+    caretaker := &caretaker{
+        mementoArray: make([]*memento, 0),
+    }
+    originator := &originator{
+        state: "A",
+    }
+    fmt.Printf("Originator Current State: %s\n", originator.getState())
+    caretaker.addMemento(originator.createMemento())
+    originator.setState("B")
+    fmt.Printf("Originator Current State: %s\n", originator.getState())
+    caretaker.addMemento(originator.createMemento())
+    originator.setState("C")
+    fmt.Printf("Originator Current State: %s\n", originator.getState())
+    caretaker.addMemento(originator.createMemento())
+    originator.restoreState(caretaker.getMenento(1))
+    fmt.Printf("Restored to State: %s\n", originator.getState())
+    originator.restoreState(caretaker.getMenento(0))
+    fmt.Printf("Restored to State: %s\n", originator.getState())
+}</code></pre>
+
+
+
+<p><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">originator Current State: A
+originator Current State: B
+originator Current State: C
+Restored to State: B
+Restored to State: A</code></pre>
+<p>The post <a href="https://golangbyexamples.com/memento-design-pattern-go/">Memento Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/memento-design-pattern-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">694</post-id>	</item>
+		<item>
+		<title>Observer Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/observer-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/observer-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 29 Nov 2019 18:10:48 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[observer]]></category>
+		<category><![CDATA[observer design pattern in go]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=687</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Observer Design Pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/observer-design-pattern-golang/">Observer Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Observer Design Pattern is a behavioral design pattern. This pattern allows an instance <strong>(called subject)</strong> to publish events to other multiple instances <strong>(called observers).</strong>&nbsp; These <strong>observers</strong> subscribe to the <strong>subject</strong> and hence get notified by events in case of any change happening in the <strong>subject. </strong><br></p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s take an example. In the E-Commerce website, many items go out of stock. There can be customers, who are interested in a particular item that went out of stock. There are three solutions to this problem<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>The customer keeps checking the availability of the item at some frequency.</li><li>E-Commerce bombard customers with all new items available which are in stock</li><li>The customer subscribes only to the particular item he is interested in&nbsp;and gets notified in the case that item is available. Also, multiple customers can subscribe to the same product</li></ol>
+
+
+
+<p class="has-medium-font-size">Option 3 is most viable, and this is what Observer Patter is all about. The major components of the observer pattern are:<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>Subject</strong> &#8211; It is the instance to which publishes an event when anything changes.&nbsp;</li><li><strong>Observer</strong> &#8211; It subscribes to the subject and gets notified by the events.</li></ol>
+
+
+
+<p class="has-medium-font-size">Generally,  <strong>Subject</strong> and <strong>Observer</strong> are implemented as an interface. Concrete implementation of both are used</p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram:</strong></h1>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="640" height="440" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?resize=640%2C440&#038;ssl=1" alt="" class="wp-image-688" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?w=671&amp;ssl=1 671w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?resize=300%2C206&amp;ssl=1 300w" sizes="auto, (max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping:</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Practical Example&#8221;</strong> below<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Subject</td><td>subject.go</td></tr><tr><td>Concrete Subject</td><td>item.go</td></tr><tr><td>observer</td><td>observer.go</td></tr><tr><td>Concrete Observer 1</td><td>customer.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Practical Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>subject.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type subject interface {
+    register(Observer observer)
+    deregister(Observer observer)
+    notifyAll()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>item.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type item struct {
+    observerList []observer
+    name         string
+    inStock      bool
+}
+
+func newItem(name string) *item {
+    return &item{
+        name: name,
+    }
+}
+
+func (i *item) updateAvailability() {
+    fmt.Printf("Item %s is now in stock\n", i.name)
+    i.inStock = true
+    i.notifyAll()
+}
+
+func (i *item) register(o observer) {
+    i.observerList = append(i.observerList, o)
+}
+
+func (i *item) deregister(o observer) {
+    i.observerList = removeFromslice(i.observerList, o)
+}
+
+func (i *item) notifyAll() {
+    for _, observer := range i.observerList {
+        observer.update(i.name)
+    }
+}
+
+func removeFromslice(observerList []observer, observerToRemove observer) []observer {
+    observerListLength := len(observerList)
+    for i, observer := range observerList {
+        if observerToRemove.getID() == observer.getID() {
+            observerList[observerListLength-1], observerList[i] = observerList[i], observerList[observerListLength-1]
+            return observerList[:observerListLength-1]
+        }
+    }
+    return observerList
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>observer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type observer interface {
+    update(string)
+    getID() string
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>customer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type customer struct {
+    id string
+}
+
+func (c *customer) update(itemName string) {
+    fmt.Printf("Sending email to customer %s for item %s\n", c.id, itemName)
+}
+
+func (c *customer) getID() string {
+    return c.id
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    shirtItem := newItem("Nike Shirt")
+    observerFirst := &customer{id: "abc@gmail.com"}
+    observerSecond := &customer{id: "xyz@gmail.com"}
+    shirtItem.register(observerFirst)
+    shirtItem.register(observerSecond)
+    shirtItem.updateAvailability()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Item Nike Shirt is now in stock
+Sending email to customer abc@gmail.com for item Nike Shirt
+Sending email to customer xyz@gmail.com for item Nike Shirt</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type subject interface {
+    register(Observer observer)
+    deregister(Observer observer)
+    notifyAll()
+}
+
+type item struct {
+    observerList []observer
+    name         string
+    inStock      bool
+}
+
+func newItem(name string) *item {
+    return &item{
+        name: name,
+    }
+}
+
+func (i *item) updateAvailability() {
+    fmt.Printf("Item %s is now in stock\n", i.name)
+    i.inStock = true
+    i.notifyAll()
+}
+
+func (i *item) register(o observer) {
+    i.observerList = append(i.observerList, o)
+}
+
+func (i *item) deregister(o observer) {
+    i.observerList = removeFromslice(i.observerList, o)
+}
+
+func (i *item) notifyAll() {
+    for _, observer := range i.observerList {
+        observer.update(i.name)
+    }
+}
+
+func removeFromslice(observerList []observer, observerToRemove observer) []observer {
+    observerListLength := len(observerList)
+    for i, observer := range observerList {
+        if observerToRemove.getID() == observer.getID() {
+            observerList[observerListLength-1], observerList[i] = observerList[i], observerList[observerListLength-1]
+            return observerList[:observerListLength-1]
+        }
+    }
+    return observerList
+}
+
+type observer interface {
+    update(string)
+    getID() string
+}
+
+type customer struct {
+    id string
+}
+
+func (c *customer) update(itemName string) {
+    fmt.Printf("Sending email to customer %s for item %s\n", c.id, itemName)
+}
+
+func (c *customer) getID() string {
+    return c.id
+}
+
+func main() {
+    shirtItem := newItem("Nike Shirt")
+    observerFirst := &customer{id: "abc@gmail.com"}
+    observerSecond := &customer{id: "xyz@gmail.com"}
+    shirtItem.register(observerFirst)
+    shirtItem.register(observerSecond)
+    shirtItem.updateAvailability()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Item Nike Shirt is now in stock
+Sending email to customer abc@gmail.com for item Nike Shirt
+Sending email to customer xyz@gmail.com for item Nike Shirt</code></pre>
+<p>The post <a href="https://golangbyexamples.com/observer-design-pattern-golang/">Observer Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/observer-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">687</post-id>	</item>
+		<item>
+		<title>Builder Pattern in GoLang</title>
+		<link>https://golangbyexamples.com/builder-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/builder-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 04 Sep 2019 17:58:52 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[builder]]></category>
+		<category><![CDATA[creational]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[designpatter]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=243</guid>
+
+					<description><![CDATA[<p>Definition: Builder Pattern is a creational design pattern used for constructing complex objects. Below is the UML diagram. Note: Interested in understanding how all other design patterns can be implemented in GO....</p>
+<p>The post <a href="https://golangbyexamples.com/builder-pattern-golang/">Builder Pattern in GoLang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Definition:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Builder Pattern is a creational design pattern used for constructing complex objects. Below is the UML diagram.</p>
+
+
+
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram</strong></h1>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img loading="lazy" decoding="async" width="511" height="278" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?resize=511%2C278&#038;ssl=1" alt="" data-id="244" data-link="https://golangbyexamples.com/?attachment_id=244" class="wp-image-244" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?w=511&amp;ssl=1 511w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/09/Builder-Design-Patter-1.jpg?resize=300%2C163&amp;ssl=1 300w" sizes="auto, (max-width: 511px) 100vw, 511px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping (Also Refer 5th point &#8211; Example)</strong></h1>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Director</td><td>director.go</td></tr><tr><td>Builder Interface</td><td>iBuilder.go</td></tr><tr><td>Concrete Builder 1</td><td>normalBuilder.go</td></tr><tr><td>Concrete Builder 2</td><td>iglooBuilder.go</td></tr><tr><td>Product</td><td>house.go</td></tr></tbody></table></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>When To Use</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use Builder pattern when the object constructed is big and requires multiple steps. It helps in less size of the constructor.  The construction of the house becomes simple and it does not require a large constructor</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When a different version of the same product needs to be created. For example, in the below code we see a different version of house ie. igloo and the normal house being constructed by <strong>iglooBuilder </strong>and <strong>normalBuilder</strong></li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When half constructed final object should not exist. Again referring to below code the house created will either be created fully or not created at all. The Concrete Builder struct holds the temporary state of house object being created</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>iBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iBuilder interface {
+    setWindowType()
+    setDoorType()
+    setNumFloor()
+    getHouse() house
+}
+
+func getBuilder(builderType string) iBuilder {
+    if builderType == "normal" {
+        return &normalBuilder{}
+    }
+    if builderType == "igloo" {
+        return &iglooBuilder{}
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>normalBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type normalBuilder struct {
+    windowType string
+    doorType   string
+    floor      int
+}
+
+func newNormalBuilder() *normalBuilder {
+    return &normalBuilder{}
+}
+
+func (b *normalBuilder) setWindowType() {
+    b.windowType = "Wooden Window"
+}
+
+func (b *normalBuilder) setDoorType() {
+    b.doorType = "Wooden Door"
+}
+
+func (b *normalBuilder) setNumFloor() {
+    b.floor = 2
+}
+
+func (b *normalBuilder) getHouse() house {
+    return house{
+        doorType:   b.doorType,
+        windowType: b.windowType,
+        floor:      b.floor,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>iglooBuilder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type iglooBuilder struct {
+    windowType string
+    doorType   string
+    floor      int
+}
+
+func newIglooBuilder() *iglooBuilder {
+    return &iglooBuilder{}
+}
+
+func (b *iglooBuilder) setWindowType() {
+    b.windowType = "Snow Window"
+}
+
+func (b *iglooBuilder) setDoorType() {
+    b.doorType = "Snow Door"
+}
+
+func (b *iglooBuilder) setNumFloor() {
+    b.floor = 1
+}
+
+func (b *iglooBuilder) getHouse() house {
+    return house{
+        doorType:   b.doorType,
+        windowType: b.windowType,
+        floor:      b.floor,
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>house.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type house struct {
+    windowType string
+    doorType   string
+    floor      int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>director.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type director struct {
+    builder iBuilder
+}
+
+func newDirector(b iBuilder) *director {
+    return &director{
+        builder: b,
+    }
+}
+
+func (d *director) setBuilder(b iBuilder) {
+    d.builder = b
+}
+
+func (d *director) buildHouse() house {
+    d.builder.setDoorType()
+    d.builder.setWindowType()
+    d.builder.setNumFloor()
+    return d.builder.getHouse()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    normalBuilder := getBuilder("normal")
+    iglooBuilder := getBuilder("igloo")
+
+    director := newDirector(normalBuilder)
+    normalHouse := director.buildHouse()
+
+    fmt.Printf("Normal House Door Type: %s\n", normalHouse.doorType)
+    fmt.Printf("Normal House Window Type: %s\n", normalHouse.windowType)
+    fmt.Printf("Normal House Num Floor: %d\n", normalHouse.floor)
+
+    director.setBuilder(iglooBuilder)
+    iglooHouse := director.buildHouse()
+
+    fmt.Printf("\nIgloo House Door Type: %s\n", iglooHouse.doorType)
+    fmt.Printf("Igloo House Window Type: %s\n", iglooHouse.windowType)
+    fmt.Printf("Igloo House Num Floor: %d\n", iglooHouse.floor)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Normal House Door Type: Wooden Door
+Normal House Window Type: Wooden Window
+Normal House Num Floor: 2
+
+Igloo House Door Type: Snow Door
+Igloo House Window Type: Snow Window
+Igloo House Num Floor: 1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/builder-pattern-golang/">Builder Pattern in GoLang</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/builder-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">243</post-id>	</item>
+	</channel>
+</rss>

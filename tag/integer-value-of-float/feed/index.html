@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>integer value of float Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/integer-value-of-float/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/integer-value-of-float/</link>
+	<description></description>
+	<lastBuildDate>Wed, 25 Mar 2020 17:50:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>integer value of float Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/integer-value-of-float/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Get Integer value of a float in Go (Golang)</title>
+		<link>https://golangbyexamples.com/integer-value-of-float/</link>
+					<comments>https://golangbyexamples.com/integer-value-of-float/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 25 Mar 2020 17:47:11 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[integer value of float]]></category>
+		<category><![CDATA[trunc]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1816</guid>
+
+					<description><![CDATA[<p>Overview math package of GO provides a Trunc method that can be used to get integer value of a float Below is the signature of the function. It takes input a float...</p>
+<p>The post <a href="https://golangbyexamples.com/integer-value-of-float/">Get Integer value of a float in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>math</strong> package of GO provides a <strong>Trunc</strong> method that can be used to get integer value of a float</p>
+
+
+
+<p class="has-medium-font-size">Below is the signature of the function. It takes input a float and also returns a float.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Trunc(x float64) float64</code></pre>
+
+
+
+<p class="has-medium-font-size">Some special cases of <strong>Trunc</strong> function are</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Trunc(±0) = ±0</li><li>Trunc(±Inf) = ±Inf</li><li>Trunc(NaN) = NaN</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    res := math.Trunc(1.6)
+    fmt.Println(res)
+
+    res = math.Trunc(-1.6)
+    fmt.Println(res)
+
+    res = math.Trunc(1)
+    fmt.Println(res)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">1
+-1
+1</code></pre>
+<p>The post <a href="https://golangbyexamples.com/integer-value-of-float/">Get Integer value of a float in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/integer-value-of-float/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1816</post-id>	</item>
+	</channel>
+</rss>

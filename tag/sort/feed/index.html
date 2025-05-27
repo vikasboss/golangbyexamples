@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>sort Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/sort/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/sort/</link>
+	<description></description>
+	<lastBuildDate>Sat, 28 Dec 2019 15:53:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>sort Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/sort/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Bubble Sort in Go (Golang)</title>
+		<link>https://golangbyexamples.com/go-bubble-sort/</link>
+					<comments>https://golangbyexamples.com/go-bubble-sort/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Dec 2019 15:46:16 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[algorithms]]></category>
+		<category><![CDATA[bubble sort in golang]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[sort]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1046</guid>
+
+					<description><![CDATA[<p>Introduction In bubble sort: In each iteration i (starting with 0) , we start from first element and repeatedly swap adjacent elements if in wrong order up till length (len-i) where len...</p>
+<p>The post <a href="https://golangbyexamples.com/go-bubble-sort/">Bubble Sort in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Introduction</strong></h1>
+
+
+
+<p class="has-medium-font-size">In bubble sort:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In each iteration i (starting with 0) , we start from first element and repeatedly swap adjacent elements if in wrong order up till length (<strong>len-i</strong>) where <strong>len</strong> is the length of the array.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>At the end of the iteration, either the largest or smallest element (depending upon order is ascending or descending) is at position <strong>(len-i)</strong></li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Time Complexity</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>O(n*n)</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Space Complexity</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Space Complexity of bubble sort is O(1)</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Implementation:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := []int{3, 4, 5, 2, 1}
+    bubbleSort(sample)
+    sample = []int{3, 4, 5, 2, 1, 7, 8, -1, -3}
+    bubbleSort(sample)
+}
+
+func bubbleSort(arr []int) {
+    len := len(arr)
+    for i := 0; i < len-1; i++ {
+        for j := 0; j < len-i-1; j++ {
+            if arr[j] > arr[j+1] {
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+            }
+        }
+    }
+    fmt.Println("\nAfter Bubble Sorting")
+    for _, val := range arr {
+        fmt.Println(val)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">After Bubble Sorting
+1
+2
+3
+4
+5
+
+After Bubble Sorting
+-3
+-1
+1
+2
+3
+4
+5
+7
+8</code></pre>
+<p>The post <a href="https://golangbyexamples.com/go-bubble-sort/">Bubble Sort in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-bubble-sort/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1046</post-id>	</item>
+	</channel>
+</rss>

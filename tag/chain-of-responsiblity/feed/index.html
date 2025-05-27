@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>chain of responsiblity Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/chain-of-responsiblity/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/chain-of-responsiblity/</link>
+	<description></description>
+	<lastBuildDate>Tue, 08 Sep 2020 20:52:59 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>chain of responsiblity Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/chain-of-responsiblity/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Chain of Responsibility Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/</link>
+					<comments>https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 15 Nov 2019 18:34:53 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[chain of responsibility design pattern in golang]]></category>
+		<category><![CDATA[chain of responsiblity]]></category>
+		<category><![CDATA[design pattern in go]]></category>
+		<category><![CDATA[design pattern in golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=571</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition:&#160; Chain of Responsibility Design Pattern...</p>
+<p>The post <a href="https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/">Chain of Responsibility Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size">Chain of Responsibility Design Pattern is a behavioral design pattern. It lets you create a chain of request handlers. For every incoming request, it is passed through the chain and each of the handler:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Processes the request or skips the processing.</li><li>Decides whether to pass the request to the next handler in the chain or not</li></ol>
+
+
+
+<p class="has-medium-font-size">Chain of Responsibility Design pattern will be best understood with an example. Let&#8217;s take the case of a hospital. A hospital has multiple departments such as:</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Reception</li><li>Doctor</li><li>Medicine Room</li><li>Cashier</li></ol>
+
+
+
+<p class="has-medium-font-size">Whenever any patient arrives he first goes to <strong>Reception</strong> then to <b>Doctor </b>then to <strong>Medicine Room </strong>and then to <strong>Cashier</strong> and so on. In a way, a patient is sent into a chain of departments which when done, sends the patient to further departments. This is where the Chain of Responsibility pattern comes into the picture.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>When to Use:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The pattern is applicable when there are multiple candidates to process the same request.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>When you don&#8217;t want the client to choose the receiver as multiple objects can handle the request. Also, you want to decouple the client from receivers. The Client only needs to know the first element in the chain.</li></ul>
+
+
+
+<p class="has-medium-font-size">&nbsp; &nbsp; &nbsp; &nbsp; -As in the example of the hospital, a patient first goes to the reception and then reception based upon a patient&#8217;s current status sends up to the next handler in the chain.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="577" height="299" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-1.jpg?resize=577%2C299&#038;ssl=1" alt="" data-id="629" data-full-url="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-1.jpg?fit=577%2C299&amp;ssl=1" data-link="https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/chain-of-responsibility-design-pattern-1/" class="wp-image-629" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-1.jpg?w=577&amp;ssl=1 577w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-1.jpg?resize=300%2C155&amp;ssl=1 300w" sizes="(max-width: 577px) 100vw, 577px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the practical example given below</p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-2 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img decoding="async" width="640" height="202" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-2.jpg?resize=640%2C202&#038;ssl=1" alt="" data-id="630" data-full-url="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-2.jpg?fit=887%2C280&amp;ssl=1" data-link="https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/chain-of-responsibility-design-pattern-2/" class="wp-image-630" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-2.jpg?w=887&amp;ssl=1 887w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-2.jpg?resize=300%2C95&amp;ssl=1 300w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-2.jpg?resize=768%2C242&amp;ssl=1 768w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Chain-of-Responsibility-Design-Pattern-2.jpg?resize=850%2C268&amp;ssl=1 850w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>handler</td><td>department.go</td></tr><tr><td>Concrete Handler 1</td><td>account.go</td></tr><tr><td>Concrete Handler 2</td><td>doctor.go</td></tr><tr><td>Concrete Handler 3</td><td>medical.go</td></tr><tr><td>Concrete Handler 4</td><td>cashier.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example:</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>department.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type department interface {
+    execute(*patient)
+    setNext(department)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>reception.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type reception struct {
+    next department
+}
+
+func (r *reception) execute(p *patient) {
+    if p.registrationDone {
+        fmt.Println("Patient registration already done")
+        r.next.execute(p)
+        return
+    }
+    fmt.Println("Reception registering patient")
+    p.registrationDone = true
+    r.next.execute(p)
+}
+
+func (r *reception) setNext(next department) {
+    r.next = next
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>doctor.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type doctor struct {
+    next department
+}
+
+func (d *doctor) execute(p *patient) {
+    if p.doctorCheckUpDone {
+        fmt.Println("Doctor checkup already done")
+        d.next.execute(p)
+        return
+    }
+    fmt.Println("Doctor checking patient")
+    p.doctorCheckUpDone = true
+    d.next.execute(p)
+}
+
+func (d *doctor) setNext(next department) {
+    d.next = next
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>medical.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type medical struct {
+    next department
+}
+
+func (m *medical) execute(p *patient) {
+    if p.medicineDone {
+        fmt.Println("Medicine already given to patient")
+        m.next.execute(p)
+        return
+    }
+    fmt.Println("Medical giving medicine to patient")
+    p.medicineDone = true
+    m.next.execute(p)
+}
+
+func (m *medical) setNext(next department) {
+    m.next = next
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>cashier.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type cashier struct {
+	next department
+}
+
+func (c *cashier) execute(p *patient) {
+	if p.paymentDone {
+		fmt.Println("Payment Done")
+	}
+	fmt.Println("Cashier getting money from patient patient")
+}
+
+func (c *cashier) setNext(next department) {
+	c.next = next
+}
+</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>patient.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type patient struct {
+    name              string
+    registrationDone  bool
+    doctorCheckUpDone bool
+    medicineDone      bool
+    paymentDone       bool
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    cashier := &cashier{}
+    //Set next for medical department
+    medical := &medical{}
+    medical.setNext(cashier)
+    //Set next for doctor department
+    doctor := &doctor{}
+    doctor.setNext(medical)
+    //Set next for reception department
+    reception := &reception{}
+    reception.setNext(doctor)
+    patient := &patient{name: "abc"}
+    //Patient visiting
+    reception.execute(patient)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Reception registering patient
+Doctor checking patient
+Medical giving medicine to patient
+Cashier getting money from patient patient</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type department interface {
+    execute(*patient)
+    setNext(department)
+}
+
+type reception struct {
+    next department
+}
+
+func (r *reception) execute(p *patient) {
+    if p.registrationDone {
+        fmt.Println("Patient registration already done")
+        r.next.execute(p)
+        return
+    }
+    fmt.Println("Reception registering patient")
+    p.registrationDone = true
+    r.next.execute(p)
+}
+
+func (r *reception) setNext(next department) {
+    r.next = next
+}
+
+type doctor struct {
+    next department
+}
+
+func (d *doctor) execute(p *patient) {
+    if p.doctorCheckUpDone {
+        fmt.Println("Doctor checkup already done")
+        d.next.execute(p)
+        return
+    }
+    fmt.Println("Doctor checking patient")
+    p.doctorCheckUpDone = true
+    d.next.execute(p)
+}
+
+func (d *doctor) setNext(next department) {
+    d.next = next
+}
+
+type medical struct {
+    next department
+}
+
+func (m *medical) execute(p *patient) {
+    if p.medicineDone {
+        fmt.Println("Medicine already given to patient")
+        m.next.execute(p)
+        return
+    }
+    fmt.Println("Medical giving medicine to patient")
+    p.medicineDone = true
+    m.next.execute(p)
+}
+
+func (m *medical) setNext(next department) {
+    m.next = next
+}
+
+type cashier struct {
+    next department
+}
+
+func (c *cashier) execute(p *patient) {
+    if p.paymentDone {
+        fmt.Println("Payment Done")
+    }
+    fmt.Println("Cashier getting money from patient patient")
+}
+
+func (c *cashier) setNext(next department) {
+    c.next = next
+}
+
+type patient struct {
+    name              string
+    registrationDone  bool
+    doctorCheckUpDone bool
+    medicineDone      bool
+    paymentDone       bool
+}
+
+func main() {
+    cashier := &cashier{}
+   
+    //Set next for medical department
+    medical := &medical{}
+    medical.setNext(cashier)
+   
+    //Set next for doctor department
+    doctor := &doctor{}
+    doctor.setNext(medical)
+   
+    //Set next for reception department
+    reception := &reception{}
+    reception.setNext(doctor)
+   
+    patient := &patient{name: "abc"}
+    //Patient visiting
+    reception.execute(patient)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Reception registering patient
+Doctor checking patient
+Medical giving medicine to patient
+Cashier getting money from patient patient</code></pre>
+<p>The post <a href="https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/">Chain of Responsibility Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/chain-of-responsibility-design-pattern-in-golang/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">571</post-id>	</item>
+	</channel>
+</rss>

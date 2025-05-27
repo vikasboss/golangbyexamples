@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>understanding variables in go Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/understanding-variables-in-go/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/understanding-variables-in-go/</link>
+	<description></description>
+	<lastBuildDate>Wed, 03 Mar 2021 18:40:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>understanding variables in go Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/understanding-variables-in-go/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Variables in Go (Golang)</title>
+		<link>https://golangbyexamples.com/variables-in-golang-complete-guide/</link>
+					<comments>https://golangbyexamples.com/variables-in-golang-complete-guide/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 30 Apr 2020 14:42:27 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[understanding variables in go]]></category>
+		<category><![CDATA[using variables in go]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2067</guid>
+
+					<description><![CDATA[<p>This is the chapter 6 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&#160;Golang Comprehensive Tutorial Series Next Tutorial&#160;–&#160;All basic data typesPrevious Tutorial&#160;–&#160;Packages and...</p>
+<p>The post <a href="https://golangbyexamples.com/variables-in-golang-complete-guide/">Variables in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This is the chapter 6 of the golang comprehensive tutorial series. Refer to this link for other chapters of the series –&nbsp;<a href="https://golangbyexamples.com/golang-comprehensive-tutorial/"><u>Golang Comprehensive Tutorial Series</u></a></p>
+
+
+
+<p class="has-medium-font-size"><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/all-basic-data-types-golang/">All basic data types</a><br><strong>Previous Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/packages-modules-go-second/">Packages and Modules – Part 2</a></p>
+
+
+
+<p class="has-medium-font-size">Now let’s check out the current tutorial. Below is the table of contents for the current tutorial.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>What is variable</strong></h1>
+
+
+
+<p class="has-medium-font-size">A variable is the name of a memory location. That memory location may store a value of any type. So each variable has a type associated with it which determines the size and range of that variable and also the operations defined on that variable.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Naming Conventions</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A variable name can only start with a letter or an underscore.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It can be followed by any number of letters, numbers or underscores after that</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Go is case sensitive so uppercase and lowercase letters are treated differently.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The variable name cannot be any keyword name in Go</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>There is no limit on the length of the variable name. </li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>But it is advisable to have the variable name of optimum length.</li></ul>
+
+
+
+<h1 class="wp-block-heading"><strong>Declaring a variable</strong></h1>
+
+
+
+<p class="has-medium-font-size">In GO variables are declared using the <strong>var</strong> keyword but there are other ways of declaring a variable too as we will see later in this tutorial. Let&#8217;s explore different ways of declaring a variable</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Single variable declaration without initial value</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format of a single variable declaration without initial value being assigned. First is the <strong>var</strong> keyword, second is the <strong>variable name</strong> and third is the <strong>variable type</strong>.&nbsp; Also note when the value is not provided , then the variable is initialised with the default value of that type which is also known as zero value of that type. In Go default value or zero value of <strong>int</strong> is zero</p>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color has-medium-font-size"><strong>var &lt;variable_name&gt; &lt;type&gt;</strong></p>
+
+
+
+<p class="has-medium-font-size">See the below example, it declares a var named <strong>aaa</strong> of type <strong>int</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var aaa int
+    fmt.Println(aaa)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output: </strong>It will print the default value of int which is zero</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Single variable declaration with initial value</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format of a single variable declaration with initial&nbsp;value being assigned. Everything is same as above, only thing additional is that we assign value to the variable at the end</p>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color has-medium-font-size"><strong>var &lt;variable_name&gt; &lt;type&gt; = &lt;value&gt;</strong></p>
+
+
+
+<p class="has-medium-font-size">See below example, it declares a var named <strong>aaa</strong> of type <strong>int </strong>and gives a value <strong>8</strong> to it</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var aaa int = 8
+    fmt.Println(aaa)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Multiple variable declaration without initial value</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format of a multiple variable declaration without initial value being assigned. Please note only variables of same type can be declared together. The type comes at the end</p>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color has-medium-font-size"><strong>var &lt;name1>, &lt;name2></strong>,&#8230;.<strong>&lt;nameN> &lt;type></strong></p>
+
+
+
+<p class="has-medium-font-size">See below example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var aaa, bbb int
+    fmt.Println(aaa)
+    fmt.Println(bbb)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output: </strong>It will print the default or zero value of <strong>int</strong> which is zero for both <strong>aaa</strong> and <strong>bbb</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+0</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Multiple variable declaration with initial value</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format of a multiple variable declaration with initial value being assigned. Please note only variables of same type can be declared together. The type comes at the end</p>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color has-medium-font-size"><strong>var &lt;name1>, &lt;name2>, …..,&lt;nameN> &lt;type> = &lt;value1>, &lt;value2>, …..,&lt;valueN></strong></p>
+
+
+
+<p class="has-medium-font-size">See below code example. Variable <strong>aaa</strong> and <strong>bbb</strong> are given a value of 8 and 9 respectively in a single declaration</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var aaa, bbb int = 8, 9
+    fmt.Println(aaa)
+    fmt.Println(bbb)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8
+9</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Declare variables of different types</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format for declaring multiple variables with different types. Value can or cannot be assigned to the variable at that time. Variables for which value is not assigned will get default value of that type. In below example we see three declarations.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var (
+        aaa int
+        bbb int    = 8
+        ccc string = "a"
+    )
+
+    fmt.Println(aaa)
+    fmt.Println(bbb)
+    fmt.Println(ccc)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">0
+8
+a</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Variable Declaration with no type or Type Inference</strong></h2>
+
+
+
+<p class="has-medium-font-size">Variables can also be declared without specifying the type.</p>
+
+
+
+<p class="has-medium-font-size">The GO compiler based upon the value assigned to the variable will figure out the type. So if the variable has an initial value, then the type can be omitted.&nbsp; This is also called <strong>Type Inference</strong>. Below is the format for such declaration</p>
+
+
+
+<p class="has-vivid-cyan-blue-color has-text-color has-medium-font-size"><strong>var &lt;varialbe_name&gt; = &lt;value&gt;</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the type inference table for basic types <strong>int</strong>, <strong>float</strong>, <strong>complex numbers</strong>, <strong>string</strong>, <strong>boolean</strong>, <strong>characters</strong>. It basically means that if the value is an integer the type of the variable inferred will be <strong>int</strong>, if the value is a float then type of the variable inferred will be <strong>float64</strong> and so on based upon below table.</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Integers</td><td>int</td></tr><tr><td>Floats</td><td>float64</td></tr><tr><td>Complex Numbers</td><td>complex128</td></tr><tr><td>Strings</td><td>string</td></tr><tr><td>Booleans</td><td>bool</td></tr><tr><td>Characters</td><td>int32 or rune</td></tr></tbody></table></figure>
+
+
+
+<p class="has-medium-font-size">For other types such as <strong>Array</strong>, <strong>Pointer</strong>, <strong>Structure,</strong> etc, type Inference will happen based on the value. Let&#8217;s see a working example of the above point.&nbsp; Notice that type of t is correctly inferred as int as the value assigned to it is 123 which is int. Similarly type of u is also correctly inferred as <strong>string</strong> as the value assigned to it is a <strong>string</strong>.</p>
+
+
+
+<p class="has-medium-font-size">Also notice that the type of variable <strong>z</strong> is inferred correctly as a struct <strong>main.sample</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var t = 123      //Type Inferred will be int
+    var u = "circle" //Type Inferred will be string
+    var v = 5.6      //Type Inferred will be float64
+    var w = true     //Type Inferred will be bool
+    var x = 'a'      //Type Inferred will be rune
+    var y = 3 + 5i   //Type Inferred will be complex128
+    var z = sample{name: "test"}  //Type Inferred will be main.Sample
+
+    fmt.Printf("Type: %T Value: %v\n", t, t)
+    fmt.Printf("Type: %T Value: %v\n", u, u)
+    fmt.Printf("Type: %T Value: %v\n", v, v)
+    fmt.Printf("Type: %T Value: %v\n", w, w)
+    fmt.Printf("Type: %T Value: %v\n", x, x)
+    fmt.Printf("Type: %T Value: %v\n", y, y)
+    fmt.Printf("Type: %T Value: %v\n", z, z)
+}
+
+type sample struct {
+    name string
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Type: int Value: 123
+Type: string Value: circle
+Type: float64 Value: 5.6
+Type: bool Value: true
+Type: int32 Value: 97
+Type: complex128 Value: (3+5i)
+Type: main.sample Value: &{test}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Short variable declaration</strong></h2>
+
+
+
+<p class="has-medium-font-size">Go provides another way of declaring variables which is using the <strong>:=</strong> operator. When <strong>:=</strong> operator is used both <strong>var </strong>keyword and type info can be omitted. Below is the format for such declaration</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"><variable_name> := <value></code></pre>
+
+
+
+<p class="has-medium-font-size">Type inference will happen as explained above. Let&#8217;s see a working example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    t := 123      //Type Inferred will be int
+    u := "circle" //Type Inferred will be string
+    v := 5.6      //Type Inferred will be float64
+    w := true     //Type Inferred will be bool
+    x := 'a'      //Type Inferred will be rune
+    y := 3 + 5i   //Type Inferred will be complex128
+    z := sample{name: "test"}  //Type Inferred will be main.Sample
+
+    fmt.Printf("Type: %T Value: %v\n", t, t)
+    fmt.Printf("Type: %T Value: %v\n", u, u)
+    fmt.Printf("Type: %T Value: %v\n", v, v)
+    fmt.Printf("Type: %T Value: %v\n", w, w)
+    fmt.Printf("Type: %T Value: %v\n", x, x)
+    fmt.Printf("Type: %T Value: %v\n", y, y)
+    fmt.Printf("Type: %T Value: %v\n", z, z)
+}
+
+type sample struct {
+    name string
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Type: int Value: 123
+Type: string Value: circle
+Type: float64 Value: 5.6
+Type: bool Value: true
+Type: int32 Value: 97
+Type: complex128 Value: (3+5i)
+Type: main.sample Value: &{test}</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to be noted about the := operator</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>:= operator is only available within a function. It is not allowed outside the function.</li><li>A variable once declared using := cannot be redeclared using the := operator. So below statement will raise a compiler error &nbsp;&#8220;<strong>no new variables in the left side of&nbsp;:=&#8221;</strong> .</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a := 8
+a := 16</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>:= operator can also be used to declare multiple variables in a single line. See below example</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a,b := 1, 2</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In case of multiple declaration, := can also be used again for a particular variable if atleast one of the variables on left hand side is new. See below example. Notice that b is again declared using := This is only possible if atleast one of the variable is new which is variable <strong>c</strong> here. In this case it acts as a assignment for variable <strong>b</strong></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    a, b := 1, 2
+    b, c := 3, 4
+    fmt.Println(a, b, c)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1, 3, 4</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Important Points</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A unused variable will be reported as a compiler error. GO compiler doesn&#8217;t allow any unused variable. This is an optimization in GO. Same is applicable for constant too as we will see later. For eg below program will raise a compiler error</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a declared but not used</code></pre>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    var a = 1
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A variable declared within an inner scope having the same name as variable declared in the outer scope will shadow the variable in the outer scope.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+var a = 123
+
+func main() {
+    var a = 456
+    fmt.Println(a)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">456</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Variable Expression &#8211; While the declaration variable can also be assigned an expression or a function call. See the below example.<ul><li>Variable <strong>a</strong> is declared with expression 5 +3</li><li>Variable <strong>b</strong> is declared with a function call&nbsp; math.Max(4, 5), whose result will be assigned to b at run time.</li></ul></li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "math"
+)
+func main() {
+    a := 5 + 3
+    b := math.Max(4, 5)
+    fmt.Println(a)
+    fmt.Println(b)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">8
+5</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A variable once intialized with a particular type, cannot be assigned a value of different type later. This is applicable for short hand declaration is well. See below example</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    var aaa int = 1
+    aaa = "atest"
+
+    bbb := 1
+    bbb = "btest"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">cannot use "atest" (type untyped string) as type int in assignment
+cannot use "btest" (type untyped string) as type int in assignment</code></pre>
+
+
+
+<p class="has-medium-font-size">Variable <strong>aaa</strong> has been assigned a type of <strong>int</strong>, hence compiler raises error on assigning a value of type string to it. For variable <strong>bbb</strong>, the type inferred is <strong>int, </strong>hence it also raises a compiler error on assigning a value of type string to it.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Scope of a Variable (Local and Global Variable)</strong></h1>
+
+
+
+<p class="has-medium-font-size">A variable declaration can be done at the package level or a function level or a block level. Scope of a variable defines where that variable is accessible and also the life of the variable. Golang variables can be divided into two categories based on scope</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Local Variable</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Global Variable</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Local Variable</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Local variables are variables which are defined within a block or a function level</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>An example of the block is a for loop or a range loop etc.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>These variables are only be accessed from within their block or function</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>These variables only live till the end of the block or a function in which they are declared. After that, they are Garbage Collected.</li></ul>
+
+
+
+<p class="has-medium-font-size">See below example</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>i is not available after the for loop</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Similarly aaa is not available outside the function in which it is declared.</li></ul>
+
+
+
+<p class="has-medium-font-size">Hence below program will raise compiler error</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">undefined: i
+undefined: aaa</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var aaa = "test"
+    fmt.Println(aaa)
+    for i := 0; i < 3; i++ {
+        fmt.Println(i)
+    }
+    fmt.Println(i)
+}
+
+func testLocal() {
+    fmt.Println(aaa)
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Global Variable</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>A variable will be global within a package if it is declared at the top of a file outside the scope of any function or block.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If this variable name starts with a lowercase letter then it can be accessed from within the the package which contains this variable definition.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>If the variable name stats with a uppercase letter then it can be accessed from outside different package other than which it is declared.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Global variable are available throughout the lifetime of a program</li></ul>
+
+
+
+<p class="has-medium-font-size">For example in below program variable <strong>aaa</strong> will be a global variable available throughout <strong>main</strong> package. It will be available in any function inside <strong>main</strong> package. Do note that variable name will not be available outside <strong>main</strong> package as its name starts with a lowercase letter.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+var aaa = "test"
+
+func main() {
+    testGlobal()
+}
+
+func testGlobal() {
+    fmt.Println(aaa)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">test</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about variables&nbsp; in golang. Hope you have liked this article. Please share feedback or improvements or mistakes in comments.</p>
+
+
+
+<p class="has-medium-font-size"><strong><strong>Next Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/all-basic-data-types-golang/">All basic data types</a><br><strong>Previous Tutorial</strong>&nbsp;–&nbsp;<a href="https://golangbyexamples.com/packages-modules-go-second/">Packages and Modules – Part 2</a></strong></p>
+<p>The post <a href="https://golangbyexamples.com/variables-in-golang-complete-guide/">Variables in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/variables-in-golang-complete-guide/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2067</post-id>	</item>
+	</channel>
+</rss>

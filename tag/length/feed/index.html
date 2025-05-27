@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>length Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/length/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/length/</link>
+	<description></description>
+	<lastBuildDate>Tue, 06 Apr 2021 12:40:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>length Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/length/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Length of string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/length-of-string-golang/</link>
+					<comments>https://golangbyexamples.com/length-of-string-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 20 Jun 2020 15:31:04 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[length]]></category>
+		<category><![CDATA[string]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2317</guid>
+
+					<description><![CDATA[<p>In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&#160;All other...</p>
+<p>The post <a href="https://golangbyexamples.com/length-of-string-golang/">Length of string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters.&nbsp;All other characters are between 1 -4 bytes. To understand it more consider the below string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := "a£c"</code></pre>
+
+
+
+<p class="has-medium-font-size">In above string</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>&#8216;a&#8217; takes one byte as per UTF-8</li><li>&#8216;£&#8217; takes two bytes as per UTF-8</li><li>&#8216;b&#8217; takes one byte as per UTF-8</li></ul>
+
+
+
+<p class="has-medium-font-size">The above string has 1+2+1 = 4 bytes altogether. Therefore when we try to print the length of the string using the standard <strong>len()</strong> function it will output 4 and not 3 as <strong>len()</strong> function returns the number of bytes in the string.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Printf("Length is %d\n", len(sample))</code></pre>
+
+
+
+<p class="has-medium-font-size">Hence standalone for loop cannot be used to iterate over all characters of a string as it will iterate over bytes and not character. So below <strong>for</strong> loop will instead iterate four times and the print value corresponding to a byte at that index.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for i := 0; i < len(sample); i++ {
+    fmt.Printf("%c\n", sample[i])
+ }</code></pre>
+
+
+
+<p class="has-medium-font-size">It will output below string which is not same as <strong>sample </strong>string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">aÂ£b</code></pre>
+
+
+
+<p class="has-medium-font-size">Not we have mentioned the above limitation of using len() function and for loop, let's see two ways of calculating the length of the string.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Using the <strong>RuneCountInString</strong> method of the utf8 package</li><li>Using for-range loop</li><li>By converting string to a rune array.</li></ul>
+
+
+
+<p class="has-large-font-size"><strong>Using the <strong>RuneCountInString</strong> method of the utf8 package</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>utf8</strong> package of golang provides a RuneCountInString method that can be used to get the length of the string. It correctly counts the number of runes in the string.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/unicode/utf8/#RuneCountInString ">https://golang.org/pkg/unicode/utf8/#RuneCountInString</a></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
+func main() {
+	sample := "a£b"
+
+	fmt.Printf("Length of given string is %d\n", utf8.RuneCountInString(sample))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of given string is 3</code></pre>
+
+
+
+<p class="has-large-font-size"><strong>Using for-range loop</strong></p>
+
+
+
+<p class="has-medium-font-size">for-range iterates over the Unicode points( also referred to as rune in golang) in a string and will correctly output&nbsp; a, £, b. Hence it can also be used to calculate the length of the string. Here is the format when using for-range with string</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for index, character := range string {
+    //Do something with index and character
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Sample code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := "a£b"
+
+	len := 0
+	//With index and value
+	fmt.Println("Both Index and Value")
+	for i, letter := range sample {
+		len++
+		fmt.Printf("Start Index: %d Value:%s\n", i, string(letter))
+	}
+
+	fmt.Printf("Length of given string is %d\n", len)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Start Index: 0 Value:a
+Start Index: 1 Value:£
+Start Index: 3 Value:b
+Length of given string is 3</code></pre>
+
+
+
+<p class="has-large-font-size"><strong>By converting string to rune array</strong></p>
+
+
+
+<p class="has-medium-font-size">A rune represents a Unicode Point. By converting a string to rune array basically it is same as creating a array of Unicode Points of that string. Therefore once the string is converted into the rune array, it can be used to iterate over all characters of the string.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+	sample := "a£b"
+
+	runeSample := []rune(sample)
+
+	fmt.Printf("Length of given string is %d\n", len(runeSample))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of given string is 3</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/length-of-string-golang/">Length of string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/length-of-string-golang/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2317</post-id>	</item>
+		<item>
+		<title>Length of a map in Go (Golang)</title>
+		<link>https://golangbyexamples.com/length-map-golang/</link>
+					<comments>https://golangbyexamples.com/length-map-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 08 Jun 2020 18:29:59 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[length]]></category>
+		<category><![CDATA[map]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2208</guid>
+
+					<description><![CDATA[<p>The golang builtin function len() can be used to get the length of the map which is number of key-value pairs present in the map. Below is the format for using this...</p>
+<p>The post <a href="https://golangbyexamples.com/length-map-golang/">Length of a map in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">The golang builtin function <strong>len()</strong> can be used to get the length of the map which is number of key-value pairs present in the map. Below is the format for using this function on the map.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">len(mapName)</code></pre>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    //Declare
+    employeeSalary := make(map[string]int)
+
+    //Adding a key value
+    employeeSalary["Tom"] = 2000
+    employeeSalary["Sam"] = 1200
+
+    lenOfMap := len(employeeSalary)
+    fmt.Println(lenOfMap)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">2</code></pre>
+<p>The post <a href="https://golangbyexamples.com/length-map-golang/">Length of a map in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/length-map-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2208</post-id>	</item>
+	</channel>
+</rss>

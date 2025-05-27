@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>index Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/index/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/index/</link>
+	<description></description>
+	<lastBuildDate>Mon, 16 Mar 2020 18:35:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>index Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/index/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Index character in a string in Go (Golang)</title>
+		<link>https://golangbyexamples.com/go-index-character-string/</link>
+					<comments>https://golangbyexamples.com/go-index-character-string/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 16 Mar 2020 18:33:01 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[index]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1727</guid>
+
+					<description><![CDATA[<p>In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters. All other...</p>
+<p>The post <a href="https://golangbyexamples.com/go-index-character-string/">Index character in a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In Golang string is a sequence of bytes. A string literal actually represents a UTF-8 sequence of bytes. In UTF-8, ASCII characters are single-byte corresponding to the first 128 Unicode characters. All other characters are between 1 -4 bytes. Due to this, it is not possible to index a character in a string.</p>
+
+
+
+<p class="has-medium-font-size"> For example, see below the program and its output.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := "ab£c"
+    for i := 0; i < 4; i++ {
+        fmt.Printf("%c\n", sample[i])
+    }
+    fmt.Printf("Length is %d\n", len(sample))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a
+b
+Â
+£
+Length is 5</code></pre>
+
+
+
+<p class="has-medium-font-size">As you might have noticed, it prints different characters than expected and length is also 5 instead of 4. Why is that? To answer please remember we said that a string is essentially a slice of bytes. Let's print that slice of bytes using</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">sample := "ab£c"
+fmt.Println([]byte(sample))</code></pre>
+
+
+
+<p class="has-medium-font-size">The output will be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[97 98 194 163 99]</code></pre>
+
+
+
+<p class="has-medium-font-size">This is the mapping of each of character to its byte sequence. As you can notice <strong>a</strong>, <strong>b</strong>, <strong>c</strong> take each 1 byte but <strong>£</strong> takes two bytes. That is why the length of the string is 5 and not 4</p>
+
+
+
+<figure class="wp-block-table"><table class=""><tbody><tr><td>a</td><td>97</td></tr><tr><td>b</td><td>98</td></tr><tr><td>£</td><td>194, 163</td></tr><tr><td>c</td><td>99</td></tr></tbody></table></figure>
+
+
+
+<p class="has-medium-font-size">Then how we can index into a string. This is where <strong>rune</strong> data type comes into picture In GO, <strong>rune</strong> data type represents a Unicode point. You can learn more about rune here - <a href="https://golangbyexamples.com/understanding-rune-in-golang">https://golangbyexamples.com/understanding-rune-in-golang</a></p>
+
+
+
+<p class="has-medium-font-size"> Once a string is converted to an array of <strong>rune</strong> then it is possible to index a character in that array of rune. See below code</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := "ab£c"
+    sampleRune := []rune(sample)
+
+    fmt.Printf("%c\n", sampleRune[0])
+    fmt.Printf("%c\n", sampleRune[1])
+    fmt.Printf("%c\n", sampleRune[2])
+    fmt.Printf("%c\n", sampleRune[3])
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">a
+b
+£
+c</code></pre>
+
+
+
+<p class="has-medium-font-size">Also to mention you can use range operator to iterate over all Unicode characters in the string, but to index character in a string, you can convert it to an array of <strong>rune</strong>.</p>
+<p>The post <a href="https://golangbyexamples.com/go-index-character-string/">Index character in a string in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-index-character-string/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1727</post-id>	</item>
+	</channel>
+</rss>

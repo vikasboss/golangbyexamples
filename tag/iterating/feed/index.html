@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>iterating Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/iterating/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/iterating/</link>
+	<description></description>
+	<lastBuildDate>Tue, 12 Nov 2019 18:58:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>iterating Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/iterating/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Go: Different ways of iterating over an Array and Slice</title>
+		<link>https://golangbyexamples.com/go-different-ways-iterating-array-slice/</link>
+					<comments>https://golangbyexamples.com/go-different-ways-iterating-array-slice/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 20 Oct 2019 07:20:42 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[iterating]]></category>
+		<category><![CDATA[iteration]]></category>
+		<category><![CDATA[slice]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=318</guid>
+
+					<description><![CDATA[<p>Go provides many different ways of iterating over an array. All examples below are also applicable to slice. Let&#8217;s define an array of letters first Using the range operator With index and...</p>
+<p>The post <a href="https://golangbyexamples.com/go-different-ways-iterating-array-slice/">Go: Different ways of iterating over an Array and Slice</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Go provides many different ways of iterating over an array. All examples below are also applicable to slice. </p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s define an array of <strong>letters</strong> first</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">letters := []string{"a", "b", "c", "d", "e"}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Using the range operator</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>With index and value</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for i, letter := range letters {
+   fmt.Printf("%d %s\n", i, letter)
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only Value</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for _, letter := range letters {
+   fmt.Println(letter)
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Only index</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for i := range letters {
+   fmt.Println(i)
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Without value and index. Just print array values</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">i := 0
+for range letters {
+  fmt.Println(i)
+  i++
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Using Only For operator</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Single initialization and post</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">len := len(letters)
+for i := 0; i < len; i++ {
+  fmt.Println(letters[i])
+}</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Multiple initialization and post statement</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">len := len(letters)
+for i, j := 0, len; i < j; i, j = i+1, j-1 {
+  fmt.Println(letters[i])
+}</code></pre>
+<p>The post <a href="https://golangbyexamples.com/go-different-ways-iterating-array-slice/">Go: Different ways of iterating over an Array and Slice</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-different-ways-iterating-array-slice/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">318</post-id>	</item>
+	</channel>
+</rss>

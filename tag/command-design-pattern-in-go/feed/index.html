@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>command design pattern in go Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/command-design-pattern-in-go/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/command-design-pattern-in-go/</link>
+	<description></description>
+	<lastBuildDate>Sat, 01 Feb 2020 20:24:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>command design pattern in go Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/command-design-pattern-in-go/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Command Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/command-design-pattern-in-golang/</link>
+					<comments>https://golangbyexamples.com/command-design-pattern-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 16 Nov 2019 17:20:56 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[command design pattern in go]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=594</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; https://golangbyexamples.com/all-design-patterns-golang/ Introduction: Command Design Pattern is a behavioral design pattern. It suggests...</p>
+<p>The post <a href="https://golangbyexamples.com/command-design-pattern-in-golang/">Command Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/https://golangbyexamples.com/all-design-patterns-golan">https://golangbyexamples.com/all-design-patterns-golang/</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Introduction:</strong></h2>
+
+
+
+<p class="has-medium-font-size">Command Design Pattern is a behavioral design pattern. It suggests encapsulating the request as a standalone object. The created object has all the information about the request and thus can execute it independently.<br></p>
+
+
+
+<p class="has-medium-font-size">The basic components that are used in the command design pattern are:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Receiver</strong> &#8211; It is the class which contains the business logic. The command object only delays its requests to the receiver.</li><li><strong>Command</strong> &#8211; embeds receiver and binds a particular action of the receiver.</li><li><strong>Invoker</strong> &#8211; It embeds the command and envokes the command by calling the command&#8217;s execute method.</li><li><strong>Client</strong> &#8211; It creates the command with the appropriate receiver bypassing the receiver to the command&#8217;s constructor. After that, it also associates the resulting command with an invoker.</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s understand a situation after which it will be clear why the command pattern is useful.&nbsp; Imagine the case of a TV. A TV can be turned <strong>ON</strong> by either</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>Remote ON Button</li><li>On Button on the tv.</li></ol>
+
+
+
+<p class="has-medium-font-size">Both these trigger points do the same thing i.e. turn the TV on. In order to ON the TV, we can implement the ON command object with the receiver as the TV. When execute() method is called on this ON command object, it in turn call TV.on() function. So in this case:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Receiver </strong>is the <strong>TV</strong></li><li><strong>Command </strong>is the <strong>ON command object </strong>which embeds <strong>TV</strong></li><li><strong>Invoker</strong> is the <strong>Remote ON Button</strong> or the <strong>ON Button on the TV</strong>. Both embed the <strong>ON command object</strong></li></ul>
+
+
+
+<p class="has-medium-font-size">Notice here that we have wrapped the request of turning the <strong>TV</strong> on into an <strong>ON command object </strong>which can be invoked by multiple invokers. This ON command object embeds the receiver (TV here) and can be executed independently.</p>
+
+
+
+<p class="has-medium-font-size">As another example, imagine the case of an <strong>Adobe Photoshop</strong> Application. In Photoshop a Save operation can be triggered from 3 places</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>From the menu.</li><li>From the button on the upper bar.</li><li>Using shortcut Ctrl+S.</li></ol>
+
+
+
+<p class="has-medium-font-size">All three trigger points do the same thing, i.e save the current image in the application. This saves can be wrapped into a Save Command Object with a current image open in the application as the receiver. </p>
+
+
+
+<p class="has-medium-font-size"><br>What&#8217;s the benefit of creating a separate command object in the above examples.</p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>It decouples the UI logic from underlying business logic</li><li>No need to create different handlers for each of the invokers.</li><li>The command object contains all the information it needs to execute. Hence it can also be used for delayed execution.</li></ol>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s look at the UML diagram now.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Notice how Invoker embeds the command. The request is sent to the Invoker and it passes the request to the encapsulated command object.</li><li>All the Concrete Command Object embed the receiver</li></ul>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="640" height="362" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Command-Design-Pattern.jpg?resize=640%2C362&#038;ssl=1" alt="" data-id="632" data-full-url="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Command-Design-Pattern.jpg?fit=770%2C436&amp;ssl=1" data-link="https://golangbyexamples.com/command-design-pattern-in-golang/command-design-pattern/" class="wp-image-632" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Command-Design-Pattern.jpg?w=770&amp;ssl=1 770w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Command-Design-Pattern.jpg?resize=300%2C170&amp;ssl=1 300w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Command-Design-Pattern.jpg?resize=768%2C435&amp;ssl=1 768w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size"><br>The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Practical Example&#8221;</strong> below<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Invoker</td><td>button.go</td></tr><tr><td>Command Interface</td><td>command.go</td></tr><tr><td>Concrete Command 1</td><td>onCommand.go</td></tr><tr><td>Concrete Command 2</td><td>offCommand.go</td></tr><tr><td>Receiver Interface</td><td>device.go</td></tr><tr><td>Concrete Receiver</td><td>tv.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example:</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>button.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type button struct {
+    command command
+}
+
+func (b *button) press() {
+    b.command.execute()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>command.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type command interface {
+    execute()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>onCommand.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type onCommand struct {
+    device device
+}
+
+func (c *onCommand) execute() {
+    c.device.on()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>offCommand.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type offCommand struct {
+    device device
+}
+
+func (c *offCommand) execute() {
+    c.device.off()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>device.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type device interface {
+    on()
+    off()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>tv.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type tv struct {
+    isRunning bool
+}
+
+func (t *tv) on() {
+    t.isRunning = true
+    fmt.Println("Turning tv on")
+}
+
+func (t *tv) off() {
+    t.isRunning = false
+    fmt.Println("Turning tv off")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    tv := &tv{}
+    onCommand := &onCommand{
+        device: tv,
+    }
+    offCommand := &offCommand{
+        device: tv,
+    }
+    onButton := &button{
+        command: onCommand,
+    }
+    onButton.press()
+    offButton := &button{
+        command: offCommand,
+    }
+    offButton.press()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Turning tv on
+Turning tv off</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type button struct {
+    command command
+}
+
+func (b *button) press() {
+    b.command.execute()
+}
+
+type command interface {
+    execute()
+}
+
+type offCommand struct {
+    device device
+}
+
+func (c *offCommand) execute() {
+    c.device.off()
+}
+
+type onCommand struct {
+    device device
+}
+
+func (c *onCommand) execute() {
+    c.device.on()
+}
+
+type device interface {
+    on()
+    off()
+}
+
+type tv struct {
+    isRunning bool
+}
+
+func (t *tv) on() {
+    t.isRunning = true
+    fmt.Println("Turning tv on")
+}
+
+func (t *tv) off() {
+    t.isRunning = false
+    fmt.Println("Turning tv off")
+}
+
+func main() {
+    tv := &tv{}
+    onCommand := &onCommand{
+        device: tv,
+    }
+    offCommand := &offCommand{
+        device: tv,
+    }
+    onButton := &button{
+        command: onCommand,
+    }
+    onButton.press()
+    offButton := &button{
+        command: offCommand,
+    }
+    offButton.press()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Turning tv on
+Turning tv off</code></pre>
+<p>The post <a href="https://golangbyexamples.com/command-design-pattern-in-golang/">Command Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/command-design-pattern-in-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">594</post-id>	</item>
+	</channel>
+</rss>

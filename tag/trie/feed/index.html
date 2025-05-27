@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>trie Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/trie/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/trie/</link>
+	<description></description>
+	<lastBuildDate>Wed, 01 Jan 2020 18:03:18 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>trie Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/trie/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Trie Implementation in Go (Golang)</title>
+		<link>https://golangbyexamples.com/trie-implementation-in-go/</link>
+					<comments>https://golangbyexamples.com/trie-implementation-in-go/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 01 Jan 2020 18:01:33 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[data structure]]></category>
+		<category><![CDATA[trie]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1067</guid>
+
+					<description><![CDATA[<p>Overview A trie is a data structure for efficient information retrieval. It is a special kind of tree where a path starting from root to a particular node can define a word...</p>
+<p>The post <a href="https://golangbyexamples.com/trie-implementation-in-go/">Trie Implementation in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">A trie is a data structure for efficient information retrieval. It is a special kind of tree where a path starting from root to a particular node can define a word that is stored in this tree. A trie can be built for entire ASCII_SIZE, ALPHABETS,  NUMBERS depending upon the use case. For, eg below will be the properties of a Trie data structure supporting small case alphabet letters</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each node has ALBHABET_SIZE=26 children. Each child node is a trie node itself and has ALBHABET_SIZE=26 children.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each node is at an index in its parent&#8217; children node array and represents an ASCII character. For eg for a particular node, the first non-nil children node will mean the presence of char &#8216;a&#8217;,  second non-nil children node means the presence of &#8216;b&#8217; and so on. Absence of a child at an index means no value</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each node also has a boolean field indicating whether the node is the end of word or not</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The root node is the starting node and has ALBHABET_SIZE=26 children. root is associated with an empty value</li></ul>
+
+
+
+<p class="has-medium-font-size">For eg for keywords [&#8220;sam&#8221;, &#8220;john&#8221;, &#8220;tim&#8221;, &#8220;jose&#8221;] below trie will be created</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="261" height="321" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2020/01/trie.jpg?resize=261%2C321&#038;ssl=1" alt="" class="wp-image-1070" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2020/01/trie.jpg?w=261&amp;ssl=1 261w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2020/01/trie.jpg?resize=244%2C300&amp;ssl=1 244w" sizes="(max-width: 261px) 100vw, 261px" data-recalc-dims="1" /></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+const (
+   //ALBHABET_SIZE total characters in english alphabet
+    ALBHABET_SIZE = 26
+)
+
+type trieNode struct {
+    childrens [ALBHABET_SIZE]*trieNode
+    isWordEnd bool
+}
+
+type trie struct {
+    root *trieNode
+}
+
+func initTrie() *trie {
+    return &trie{
+        root: &trieNode{},
+    }
+}
+
+func (t *trie) insert(word string) {
+    wordLength := len(word)
+    current := t.root
+    for i := 0; i < wordLength; i++ {
+        index := word[i] - 'a'
+        if current.childrens[index] == nil {
+            current.childrens[index] = &#038;trieNode{}
+        }
+        current = current.childrens[index]
+    }
+    current.isWordEnd = true
+}
+
+func (t *trie) find(word string) bool {
+    wordLength := len(word)
+    current := t.root
+    for i := 0; i < wordLength; i++ {
+        index := word[i] - 'a'
+        if current.childrens[index] == nil {
+            return false
+        }
+        current = current.childrens[index]
+    }
+    if current.isWordEnd {
+        return true
+    }
+    return false
+}
+
+func main() {
+    trie := initTrie()
+    words := []string{"sam", "john", "tim", "jose", "rose",
+        "cat", "dog", "dogg", "roses"}
+    for i := 0; i < len(words); i++ {
+        trie.insert(words[i])
+    }
+    wordsToFind := []string{"sam", "john", "tim", "jose", "rose",
+        "cat", "dog", "dogg", "roses", "rosess", "ans", "san"}
+    for i := 0; i < len(wordsToFind); i++ {
+        found := trie.find(wordsToFind[i])
+        if found {
+            fmt.Printf("Word \"%s\" found in trie\n", wordsToFind[i])
+        } else {
+            fmt.Printf("Word \"%s\" not found in trie\n", wordsToFind[i])
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Word "sam" found in trie
+Word "john" found in trie
+Word "tim" found in trie
+Word "jose" found in trie
+Word "rose" found in trie
+Word "cat" found in trie
+Word "dog" found in trie
+Word "dogg" found in trie
+Word "roses" found in trie
+Word "rosess" not found in trie
+Word "ans" not found in trie
+Word "san" not found in trie</code></pre>
+<p>The post <a href="https://golangbyexamples.com/trie-implementation-in-go/">Trie Implementation in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/trie-implementation-in-go/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1067</post-id>	</item>
+	</channel>
+</rss>

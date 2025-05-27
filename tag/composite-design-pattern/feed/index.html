@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>composite design pattern Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/composite-design-pattern/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/composite-design-pattern/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:37:41 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>composite design pattern Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/composite-design-pattern/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Composite Design Pattern in Go (GoLang)</title>
+		<link>https://golangbyexamples.com/composite-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/composite-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 04 Nov 2019 06:11:45 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[composite design pattern]]></category>
+		<category><![CDATA[composite design pattern in go]]></category>
+		<category><![CDATA[composite design pattern in golang]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=344</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Definition:&#160; This is a structural design...</p>
+<p>The post <a href="https://golangbyexamples.com/composite-design-pattern-golang/">Composite Design Pattern in Go (GoLang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Definition:&nbsp; </strong></h2>
+
+
+
+<p class="has-medium-font-size">This is a structural design pattern. Composition design pattern is used when we want a Group of objects called &#8216;composite&#8217; is treated in a similar way as a single object. It comes under structural design pattern as it allows you to compose objects into a tree structure. Each of the individual objects in the tree structure can be treated in the same way irrespective of whether they are Complex or Primitive. <br> Let&#8217;s try to understand it with an example of a file system of OS. In the file system, there are two types of objects <strong>File</strong> and <strong>Folder. </strong>There are cases when File and Folder are treated to be the same way. It will be more clear as we go along.</p>
+
+
+
+<h2 class="wp-block-heading"><br><strong>When to Use</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Composite Design pattern makes sense to use in cases when the composite and individual object needs to be treated in the same way from a client perspective. </li></ul>
+
+
+
+<p class="has-medium-font-size">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8211; In our example above of the file system, let&#8217;s say search operation of a particular keyword needs to be executed. Now, this search operation applies to both <strong>File </strong>and <strong>Folder. </strong>For a <strong>File,</strong> it will just look into the contents of the file and for a <strong>Folder,</strong> it will go through all files in the hierarchy in that folder to find that keyword</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Use this pattern when the composite and individual object form a tree-like structure</li></ul>
+
+
+
+<p class="has-medium-font-size">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8211;&nbsp; In our example, <strong>File </strong>and <strong>Folder </strong>do form a tree structure<br></p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram</strong></h2>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Component</strong> &#8211; It is the interface which defines the common operations for both the <strong>Composite</strong> and <strong>Leaf</strong> objects</li><li><strong>Composite &#8211; </strong>It implements <strong>Component</strong> interface and embeds an array of child <strong>Components</strong></li><li><strong>Leaf &#8211; </strong>it is the primitive object in the tree. It also implements the <strong>Component</strong> Interface</li></ul>
+
+
+
+<figure class="wp-block-image"><img fetchpriority="high" decoding="async" width="537" height="401" src="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Composite-Design-Pattern-1.jpg?resize=537%2C401&#038;ssl=1" alt="" class="wp-image-346" srcset="https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Composite-Design-Pattern-1.jpg?w=537&amp;ssl=1 537w, https://i2.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Composite-Design-Pattern-1.jpg?resize=300%2C224&amp;ssl=1 300w" sizes="(max-width: 537px) 100vw, 537px" data-recalc-dims="1" /></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the example given above</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" width="537" height="401" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Composite-Design-Pattern-2.jpg?resize=537%2C401&#038;ssl=1" alt="" class="wp-image-348" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Composite-Design-Pattern-2.jpg?w=537&amp;ssl=1 537w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Composite-Design-Pattern-2.jpg?resize=300%2C224&amp;ssl=1 300w" sizes="(max-width: 537px) 100vw, 537px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in code.</p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Component interface</td><td>component.go</td></tr><tr><td>Composite</td><td>folder.go</td></tr><tr><td>Leaf</td><td>file.go</td></tr><tr><td>client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example </strong></h2>
+
+
+
+<p class="has-medium-font-size">In the<strong> </strong>example below <strong>component</strong> is the&nbsp;interface and <strong>file</strong> and <strong>folder</strong> implement this interface<strong>.</strong></p>
+
+
+
+<p class="has-medium-font-size"><strong>component.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type component interface {
+    search(string)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>folder.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type folder struct {
+    components []component
+    name       string
+}
+
+func (f *folder) search(keyword string) {
+    fmt.Printf("Serching recursively for keyword %s in folder %s\n", keyword, f.name)
+    for _, composite := range f.components {
+        composite.search(keyword)
+    }
+}
+
+func (f *folder) add(c component) {
+    f.components = append(f.components, c)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>file.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type file struct {
+    name string
+}
+
+func (f *file) search(keyword string) {
+    fmt.Printf("Searching for keyword %s in file %s\n", keyword, f.name)
+}
+
+func (f *file) getName() string {
+    return f.name
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    file1 := &file{name: "File1"}
+    file2 := &file{name: "File2"}
+    file3 := &file{name: "File3"}
+    folder1 := &folder{
+        name: "Folder1",
+    }
+    folder1.add(file1)
+    folder2 := &folder{
+        name: "Folder2",
+    }
+    folder2.add(file2)
+    folder2.add(file3)
+    folder2.add(folder1)
+    folder2.search("rose")
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Serching recursively for keyword rose in folder Folder2
+Searching for keyword rose in file File2
+Searching for keyword rose in file File3
+Serching recursively for keyword rose in folder Folder1
+Searching for keyword rose in file File1</code></pre>
+
+
+
+<p></p>
+<p>The post <a href="https://golangbyexamples.com/composite-design-pattern-golang/">Composite Design Pattern in Go (GoLang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/composite-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">344</post-id>	</item>
+	</channel>
+</rss>

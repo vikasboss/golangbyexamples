@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>observer design pattern in go Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/observer-design-pattern-in-go/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/observer-design-pattern-in-go/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:38:38 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>observer design pattern in go Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/observer-design-pattern-in-go/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Observer Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/observer-design-pattern-golang/</link>
+					<comments>https://golangbyexamples.com/observer-design-pattern-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 29 Nov 2019 18:10:48 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[observer]]></category>
+		<category><![CDATA[observer design pattern in go]]></category>
+		<category><![CDATA[pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=687</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction: Observer Design Pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/observer-design-pattern-golang/">Observer Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Introduction:</strong></h1>
+
+
+
+<p class="has-medium-font-size">Observer Design Pattern is a behavioral design pattern. This pattern allows an instance <strong>(called subject)</strong> to publish events to other multiple instances <strong>(called observers).</strong>&nbsp; These <strong>observers</strong> subscribe to the <strong>subject</strong> and hence get notified by events in case of any change happening in the <strong>subject. </strong><br></p>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s take an example. In the E-Commerce website, many items go out of stock. There can be customers, who are interested in a particular item that went out of stock. There are three solutions to this problem<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>The customer keeps checking the availability of the item at some frequency.</li><li>E-Commerce bombard customers with all new items available which are in stock</li><li>The customer subscribes only to the particular item he is interested in&nbsp;and gets notified in the case that item is available. Also, multiple customers can subscribe to the same product</li></ol>
+
+
+
+<p class="has-medium-font-size">Option 3 is most viable, and this is what Observer Patter is all about. The major components of the observer pattern are:<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li><strong>Subject</strong> &#8211; It is the instance to which publishes an event when anything changes.&nbsp;</li><li><strong>Observer</strong> &#8211; It subscribes to the subject and gets notified by the events.</li></ol>
+
+
+
+<p class="has-medium-font-size">Generally,  <strong>Subject</strong> and <strong>Observer</strong> are implemented as an interface. Concrete implementation of both are used</p>
+
+
+
+<h1 class="wp-block-heading"><strong>UML Diagram:</strong></h1>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="440" src="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?resize=640%2C440&#038;ssl=1" alt="" class="wp-image-688" srcset="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?w=671&amp;ssl=1 671w, https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Observer-Design-Pattern-1.jpg?resize=300%2C206&amp;ssl=1 300w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Mapping:</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below table represents the mapping from the UML diagram actors to actual implementation actors in <strong>&#8220;Practical Example&#8221;</strong> below<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>Subject</td><td>subject.go</td></tr><tr><td>Concrete Subject</td><td>item.go</td></tr><tr><td>observer</td><td>observer.go</td></tr><tr><td>Concrete Observer 1</td><td>customer.go</td></tr><tr><td>Client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Practical Example:</strong></h1>
+
+
+
+<p class="has-medium-font-size"><strong>subject.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type subject interface {
+    register(Observer observer)
+    deregister(Observer observer)
+    notifyAll()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>item.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type item struct {
+    observerList []observer
+    name         string
+    inStock      bool
+}
+
+func newItem(name string) *item {
+    return &item{
+        name: name,
+    }
+}
+
+func (i *item) updateAvailability() {
+    fmt.Printf("Item %s is now in stock\n", i.name)
+    i.inStock = true
+    i.notifyAll()
+}
+
+func (i *item) register(o observer) {
+    i.observerList = append(i.observerList, o)
+}
+
+func (i *item) deregister(o observer) {
+    i.observerList = removeFromslice(i.observerList, o)
+}
+
+func (i *item) notifyAll() {
+    for _, observer := range i.observerList {
+        observer.update(i.name)
+    }
+}
+
+func removeFromslice(observerList []observer, observerToRemove observer) []observer {
+    observerListLength := len(observerList)
+    for i, observer := range observerList {
+        if observerToRemove.getID() == observer.getID() {
+            observerList[observerListLength-1], observerList[i] = observerList[i], observerList[observerListLength-1]
+            return observerList[:observerListLength-1]
+        }
+    }
+    return observerList
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>observer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type observer interface {
+    update(string)
+    getID() string
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>customer.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type customer struct {
+    id string
+}
+
+func (c *customer) update(itemName string) {
+    fmt.Printf("Sending email to customer %s for item %s\n", c.id, itemName)
+}
+
+func (c *customer) getID() string {
+    return c.id
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+func main() {
+    shirtItem := newItem("Nike Shirt")
+    observerFirst := &customer{id: "abc@gmail.com"}
+    observerSecond := &customer{id: "xyz@gmail.com"}
+    shirtItem.register(observerFirst)
+    shirtItem.register(observerSecond)
+    shirtItem.updateAvailability()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Item Nike Shirt is now in stock
+Sending email to customer abc@gmail.com for item Nike Shirt
+Sending email to customer xyz@gmail.com for item Nike Shirt</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Full Working Code:</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type subject interface {
+    register(Observer observer)
+    deregister(Observer observer)
+    notifyAll()
+}
+
+type item struct {
+    observerList []observer
+    name         string
+    inStock      bool
+}
+
+func newItem(name string) *item {
+    return &item{
+        name: name,
+    }
+}
+
+func (i *item) updateAvailability() {
+    fmt.Printf("Item %s is now in stock\n", i.name)
+    i.inStock = true
+    i.notifyAll()
+}
+
+func (i *item) register(o observer) {
+    i.observerList = append(i.observerList, o)
+}
+
+func (i *item) deregister(o observer) {
+    i.observerList = removeFromslice(i.observerList, o)
+}
+
+func (i *item) notifyAll() {
+    for _, observer := range i.observerList {
+        observer.update(i.name)
+    }
+}
+
+func removeFromslice(observerList []observer, observerToRemove observer) []observer {
+    observerListLength := len(observerList)
+    for i, observer := range observerList {
+        if observerToRemove.getID() == observer.getID() {
+            observerList[observerListLength-1], observerList[i] = observerList[i], observerList[observerListLength-1]
+            return observerList[:observerListLength-1]
+        }
+    }
+    return observerList
+}
+
+type observer interface {
+    update(string)
+    getID() string
+}
+
+type customer struct {
+    id string
+}
+
+func (c *customer) update(itemName string) {
+    fmt.Printf("Sending email to customer %s for item %s\n", c.id, itemName)
+}
+
+func (c *customer) getID() string {
+    return c.id
+}
+
+func main() {
+    shirtItem := newItem("Nike Shirt")
+    observerFirst := &customer{id: "abc@gmail.com"}
+    observerSecond := &customer{id: "xyz@gmail.com"}
+    shirtItem.register(observerFirst)
+    shirtItem.register(observerSecond)
+    shirtItem.updateAvailability()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Item Nike Shirt is now in stock
+Sending email to customer abc@gmail.com for item Nike Shirt
+Sending email to customer xyz@gmail.com for item Nike Shirt</code></pre>
+<p>The post <a href="https://golangbyexamples.com/observer-design-pattern-golang/">Observer Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/observer-design-pattern-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">687</post-id>	</item>
+	</channel>
+</rss>

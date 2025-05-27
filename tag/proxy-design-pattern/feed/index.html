@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>proxy design pattern Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/proxy-design-pattern/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/proxy-design-pattern/</link>
+	<description></description>
+	<lastBuildDate>Fri, 27 Dec 2019 16:37:56 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>proxy design pattern Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/proxy-design-pattern/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Proxy Design Pattern in Go (Golang)</title>
+		<link>https://golangbyexamples.com/proxy-design-pattern-in-golang/</link>
+					<comments>https://golangbyexamples.com/proxy-design-pattern-in-golang/#comments</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 16 Nov 2019 17:29:05 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[design pattern]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[proxy design pattern]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=599</guid>
+
+					<description><![CDATA[<p>Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference &#8211; All Design Patterns in Go (Golang) Introduction:&#160; Proxy Design Pattern is a...</p>
+<p>The post <a href="https://golangbyexamples.com/proxy-design-pattern-in-golang/">Proxy Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">Note: Interested in understanding how all other design patterns can be implemented in GO. Please see this full reference  &#8211; <a href="https://golangbyexamples.com/all-design-patterns-golang/">All Design Patterns in Go (Golang)</a></p>
+
+
+
+<h2 class="wp-block-heading"><strong>Introduction:&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size">Proxy Design Pattern is a structural design pattern. This pattern suggests providing an extra layer of indirection for controlled and intelligent access to the main object.</p>
+
+
+
+<p class="has-medium-font-size"><br>In this pattern, a new proxy class is created that implements the same interface as the main object. This lets you execute some behavior before the actual logic of the main object. Let&#8217;s understand it more with an example<br></p>
+
+
+
+<ol class="has-medium-font-size wp-block-list"><li>A debit card is a proxy for your bank account. It follows the same interface as the bank account, and it is easier to use.</li><li>A web server such as Nginx can act as a proxy for your application server. It provides<ul><li>Controlled access to your application server &#8211; For example, it can do rate limiting</li><li>Additional behavior &#8211; For example, it can do some caching</li></ul></li></ol>
+
+
+
+<p class="has-medium-font-size">Let&#8217;ss see the UML Diagram</p>
+
+
+
+<h2 class="wp-block-heading"><strong>UML Diagram:</strong></h2>
+
+
+
+<p class="has-medium-font-size">In below UML diagram</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Subject: </strong>it represents the interface which proxy and the realSubject should follow</li><li><strong>Proxy</strong>: The proxy class embeds the realSubject and passes on the request to the realSubject after it has finished its processing </li><li><strong>RealSubject</strong>: This is the class that holds the main business logic and which is kept behind a proxy</li><li><strong>Client: </strong>Can interact with both proxy and realSubject as they both follow the same interface.</li></ul>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img fetchpriority="high" decoding="async" width="535" height="253" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-1.jpg?resize=535%2C253&#038;ssl=1" alt="" data-id="643" data-full-url="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-1.jpg?fit=535%2C253&amp;ssl=1" data-link="https://golangbyexamples.com/proxy-design-pattern-in-golang/proxy-design-pattern-1/" class="wp-image-643" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-1.jpg?w=535&amp;ssl=1 535w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-1.jpg?resize=300%2C142&amp;ssl=1 300w" sizes="(max-width: 535px) 100vw, 535px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<p class="has-medium-font-size">Below is the corresponding mapping UML diagram with the practical example of nginx and application server which was described above.</p>
+
+
+
+<figure class="wp-block-gallery columns-1 is-cropped wp-block-gallery-2 is-layout-flex wp-block-gallery-is-layout-flex"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img decoding="async" width="535" height="253" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-2.jpg?resize=535%2C253&#038;ssl=1" alt="" data-id="644" data-full-url="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-2.jpg?fit=535%2C253&amp;ssl=1" data-link="https://golangbyexamples.com/proxy-design-pattern-in-golang/proxy-design-pattern-2/" class="wp-image-644" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-2.jpg?w=535&amp;ssl=1 535w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2019/11/Proxy-Design-Pattern-2.jpg?resize=300%2C142&amp;ssl=1 300w" sizes="(max-width: 535px) 100vw, 535px" data-recalc-dims="1" /></figure></li></ul></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Mapping&nbsp;</strong></h2>
+
+
+
+<p class="has-medium-font-size"><br>The below table represents the mapping from the UML diagram actors to actual implementation actors in code<br></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td>subject</td><td>server.go</td></tr><tr><td>proxy</td><td>nginx.go</td></tr><tr><td>realSubject</td><td>application.go</td></tr><tr><td>client</td><td>main.go</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading"><strong>Practical Example:</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>server.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type server interface {
+    handleRequest(string, string) (int, string)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>nginx.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type nginx struct {
+    application       *application
+    maxAllowedRequest int
+    rateLimiter       map[string]int
+}
+
+func newNginxServer() *nginx {
+    return &nginx{
+        application:       &application{},
+        maxAllowedRequest: 2,
+        rateLimiter:       make(map[string]int),
+    }
+}
+
+func (n *nginx) handleRequest(url, method string) (int, string) {
+    allowed := n.checkRateLimiting(url)
+    if !allowed {
+        return 403, "Not Allowed"
+    }
+    return n.application.handleRequest(url, method)
+}
+
+func (n *nginx) checkRateLimiting(url string) bool {
+    if n.rateLimiter[url] == 0 {
+        n.rateLimiter[url] = 1
+    }
+    if n.rateLimiter[url] > n.maxAllowedRequest {
+        return false
+    }
+    n.rateLimiter[url] = n.rateLimiter[url] + 1
+    return true
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>application.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+type application struct {
+}
+
+func (a *application) handleRequest(url, method string) (int, string) {
+    if url == "/app/status" && method == "GET" {
+        return 200, "Ok"
+    }
+    if url == "/create/user" && method == "POST" {
+        return 201, "User Created"
+    }
+    return 404, "Not Ok"
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    nginxServer := newNginxServer()
+    appStatusURL := "/app/status"
+    createuserURL := "/create/user"
+    httpCode, body := nginxServer.handleRequest(appStatusURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(appStatusURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(appStatusURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(createuserURL, "POST")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(createuserURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Url: /app/status
+HttpCode: 200
+Body: Ok
+
+Url: /app/status
+HttpCode: 200
+Body: Ok
+
+Url: /app/status
+HttpCode: 403
+Body: Not Allowed
+
+Url: /app/status
+HttpCode: 201
+Body: User Created
+
+Url: /app/status
+HttpCode: 404
+Body: Not Ok</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Full Working Code:</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+type server interface {
+    handleRequest(string, string) (int, string)
+}
+
+type nginx struct {
+    application       *application
+    maxAllowedRequest int
+    rateLimiter       map[string]int
+}
+
+func newNginxServer() *nginx {
+    return &nginx{
+        application:       &application{},
+        maxAllowedRequest: 2,
+        rateLimiter:       make(map[string]int),
+    }
+}
+
+func (n *nginx) handleRequest(url, method string) (int, string) {
+    allowed := n.checkRateLimiting(url)
+    if !allowed {
+        return 403, "Not Allowed"
+    }
+    return n.application.handleRequest(url, method)
+}
+
+func (n *nginx) checkRateLimiting(url string) bool {
+    if n.rateLimiter[url] == 0 {
+        n.rateLimiter[url] = 1
+    }
+    if n.rateLimiter[url] > n.maxAllowedRequest {
+        return false
+    }
+    n.rateLimiter[url] = n.rateLimiter[url] + 1
+    return true
+}
+
+type application struct {
+}
+
+func (a *application) handleRequest(url, method string) (int, string) {
+    if url == "/app/status" && method == "GET" {
+        return 200, "Ok"
+    }
+    if url == "/create/user" && method == "POST" {
+        return 201, "User Created"
+    }
+    return 404, "Not Ok"
+}
+
+func main() {
+    nginxServer := newNginxServer()
+    appStatusURL := "/app/status"
+    createuserURL := "/create/user"
+    httpCode, body := nginxServer.handleRequest(appStatusURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(appStatusURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(appStatusURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(createuserURL, "POST")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+    httpCode, body = nginxServer.handleRequest(createuserURL, "GET")
+    fmt.Printf("\nUrl: %s\nHttpCode: %d\nBody: %s\n", appStatusURL, httpCode, body)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Url: /app/status
+HttpCode: 200
+Body: Ok
+
+Url: /app/status
+HttpCode: 200
+Body: Ok
+
+Url: /app/status
+HttpCode: 403
+Body: Not Allowed
+
+Url: /app/status
+HttpCode: 201
+Body: User Created
+
+Url: /app/status
+HttpCode: 404
+Body: Not Ok</code></pre>
+<p>The post <a href="https://golangbyexamples.com/proxy-design-pattern-in-golang/">Proxy Design Pattern in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/proxy-design-pattern-in-golang/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">599</post-id>	</item>
+	</channel>
+</rss>

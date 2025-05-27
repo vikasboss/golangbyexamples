@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>range Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/range/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/range/</link>
+	<description></description>
+	<lastBuildDate>Fri, 26 Feb 2021 18:50:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>range Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/range/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Validate the range of the integer in a struct in Go (Golang)</title>
+		<link>https://golangbyexamples.com/range-int-struct-validate-golang/</link>
+					<comments>https://golangbyexamples.com/range-int-struct-validate-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 26 Feb 2021 18:50:16 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[gp]]></category>
+		<category><![CDATA[range]]></category>
+		<category><![CDATA[validation]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5162</guid>
+
+					<description><![CDATA[<p>Overview The below library can be used to validate the range of an integer in a struct in Golang gopkg.in/go-playground/validator.v9 &#8211; https://pkg.go.dev/github.com/go-playground/validator For this tutorial, we will use the below employee struct...</p>
+<p>The post <a href="https://golangbyexamples.com/range-int-struct-validate-golang/">Validate the range of the integer in a struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">The below library can be used to validate the range of an integer in a struct in Golang</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>gopkg.in/go-playground/validator.v9</strong> &#8211; <a href="https://pkg.go.dev/github.com/go-playground/validator">https://pkg.go.dev/github.com/go-playground/validator</a></li></ul>
+
+
+
+<p class="has-medium-font-size">For this tutorial, we will use the below employee struct</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+    Age int
+}</code></pre>
+
+
+
+<h1 class="wp-block-heading"><strong>Example</strong></h1>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see an example for the same. Below is the code</p>
+
+
+
+<p class="has-medium-font-size"><strong>go.mod</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">module sample.com/validate
+go 1.14
+require (
+    github.com/go-playground/universal-translator v0.17.0 // indirect
+    github.com/leodido/go-urn v1.2.1 // indirect
+    gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
+    gopkg.in/go-playground/validator.v9 v9.31.0
+)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>main.go</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+import (
+    "fmt"
+    "gopkg.in/go-playground/validator.v9"
+)
+var validate *validator.Validate
+type employee struct {
+    Age int `validate:"required,gte=10,lte=20"`
+}
+func main() {
+    e := employee{}
+    err := validateStruct(e)
+    if err != nil {
+        fmt.Printf("Error: %s\n", err)
+    }
+    e = employee{Age: 5}
+    err = validateStruct(e)
+    if err != nil {
+        fmt.Printf("Error: %s\n", err)
+    }
+    e = employee{Age: 25}
+    err = validateStruct(e)
+    if err != nil {
+        fmt.Printf("Error: %s\n", err)
+    }
+}
+func validateStruct(e employee) error {
+    validate = validator.New()
+    err := validate.Struct(e)
+    if err != nil {
+        return err
+    }
+    return nil
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Error: Key: 'employee.Age' Error:Field validation for 'Age' failed on the 'required' tag
+Error: Key: 'employee.Age' Error:Field validation for 'Age' failed on the 'gte' tag
+Error: Key: 'employee.Age' Error:Field validation for 'Age' failed on the 'lte' tag</code></pre>
+
+
+
+<p class="has-medium-font-size">First, we need to declare the instance of Validate</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var validate *validator.Validate</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice here that we need to associate meta tags with fields of the struct to let the validator know that you want to validate this field. In the above example, we added the tag with the Age field. This tag is interpreted by the playground validate library. Notice we added three validations for the <strong>Age</strong> field</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>required</strong> &#8211; validates that the field is present</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>gte</strong> &#8211; validate that the field value is greater than equal to a particular value</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>lte</strong> &#8211; validate that the field value is less than equal to a particular value</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type employee struct {
+	Age int `validate:"required,gte=10,lte=20"`
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Then call the Struct method to validate the struct</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">validate.Struct(e)</code></pre>
+
+
+
+<p class="has-medium-font-size">For</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e := employee{}</code></pre>
+
+
+
+<p class="has-medium-font-size">it gives the output as below is <strong>Age</strong> field is empty</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Error: Key: 'employee.Age' Error:Field validation for 'Age' failed on the 'required' tag</code></pre>
+
+
+
+<p class="has-medium-font-size">For</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e := employee{Age: 5}</code></pre>
+
+
+
+<p class="has-medium-font-size">it gives the output as below as <strong>Age</strong> field value is 5 which is less than 10</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Error: Key: 'employee.Age' Error:Field validation for 'Age' failed on the 'gte' tag</code></pre>
+
+
+
+<p class="has-medium-font-size">For</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">e := employee{Age: 25}</code></pre>
+
+
+
+<p class="has-medium-font-size">it gives the output as below as <strong>Age</strong> field value is 25 which is greater than 20</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Error: Key: 'employee.Age' Error:Field validation for 'Age' failed on the 'lte' tag</code></pre>
+<p>The post <a href="https://golangbyexamples.com/range-int-struct-validate-golang/">Validate the range of the integer in a struct in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/range-int-struct-validate-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5162</post-id>	</item>
+		<item>
+		<title>Know Size and Range of int or uint in Go (Golang)</title>
+		<link>https://golangbyexamples.com/go-size-range-int-uint/</link>
+					<comments>https://golangbyexamples.com/go-size-range-int-uint/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 01 Jan 2020 17:53:13 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[int]]></category>
+		<category><![CDATA[range]]></category>
+		<category><![CDATA[uint]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1062</guid>
+
+					<description><![CDATA[<p>Overview int is a signed Integer data type uint is an unsigned Integer data type Size and range of int and uint in go is platform-dependent meaning that the size and range...</p>
+<p>The post <a href="https://golangbyexamples.com/go-size-range-int-uint/">Know Size and Range of int or uint in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>int is a signed Integer data type</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>uint is an unsigned Integer data type </li></ul>
+
+
+
+<p class="has-medium-font-size">Size and range of <strong>int</strong> and <strong>uint</strong> in go is platform-dependent meaning that the size and range depend whether the underlying platform is 32-bit or a 64-bit machine.</p>
+
+
+
+<p class="has-medium-font-size"><strong>Size Table</strong></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td><strong>Type</strong></td><td><strong>Size (32 bit machine)</strong></td><td><strong>Size (64 bit machine)</strong></td></tr><tr><td>int</td><td>32 bits or 4 byte</td><td>64 bits or 8 byte</td></tr><tr><td>uint</td><td>32 bits or 4 byte</td><td>64 bits or 8 byte</td></tr></tbody></table></figure>
+
+
+
+<p><strong>Range Table</strong></p>
+
+
+
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-blue-background-color has-background"><tbody><tr><td><strong>Type</strong></td><td><strong>Size (32 bit machine)</strong></td><td><strong>Size (64 bit machine)</strong></td></tr><tr><td>int</td><td>-2<sup>31</sup>&nbsp;to 2<sup>31</sup>&nbsp;-1</td><td>-2<sup>63</sup>&nbsp;to 2<sup>63</sup>&nbsp;-1</td></tr><tr><td>uint</td><td>0 to 2<sup>32</sup>&nbsp;-1</td><td>0 to 2<sup>64</sup>&nbsp;-1</td></tr></tbody></table></figure>
+
+
+
+<h1 class="wp-block-heading"><strong>Know Size and Range</strong></h1>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>bits </strong>package of golang can help know the size of an <strong>int </strong>or <strong>uint </strong>on your system. <strong>bits.UintSize</strong> is the const that stores this value. It is calculated as below</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>unsafe.Sizeof() </strong>function can also be used to see the size of <strong>int </strong>or<strong> unit</strong> in bytes</li></ul>
+
+
+
+<p class="has-medium-font-size">Once the size is known, the range can be deduced based upon size. See the below code for printing size.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "math/bits"
+    "unsafe"
+)
+
+func main() {
+    //This is computed as 
+    //const uintSize = 32 << (^uint(0) >> 32 & 1) // 32 or 64
+    sizeInBits := bits.UintSize
+    fmt.Printf("%d bits\n", sizeInBits)
+
+    //Using unsafe.Sizeof() function. It will print size in bytes
+    var a int
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+
+    //Using unsafe.Sizeof() function. It will print size in bytes
+    var b uint
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(b))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">64 bits
+8 bytes
+8 bytes</code></pre>
+<p>The post <a href="https://golangbyexamples.com/go-size-range-int-uint/">Know Size and Range of int or uint in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-size-range-int-uint/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1062</post-id>	</item>
+	</channel>
+</rss>

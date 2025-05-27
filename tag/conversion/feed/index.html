@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>conversion Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/conversion/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/conversion/</link>
+	<description></description>
+	<lastBuildDate>Mon, 27 Jan 2020 18:24:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>conversion Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/conversion/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Time Conversion in Go (Golang)</title>
+		<link>https://golangbyexamples.com/time-conversion-in-golang/</link>
+					<comments>https://golangbyexamples.com/time-conversion-in-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 27 Jan 2020 18:19:03 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[conversion]]></category>
+		<category><![CDATA[epcoh]]></category>
+		<category><![CDATA[time.Time]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=1231</guid>
+
+					<description><![CDATA[<p>Overview Time can be represented in GO in below 5 formats: time.Time object Unix Time (Also known as Epoch Time) &#8211; It is the number of seconds elapsed since 00:00:00 UTC on 1...</p>
+<p>The post <a href="https://golangbyexamples.com/time-conversion-in-golang/">Time Conversion in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h1>
+
+
+
+<p class="has-medium-font-size">Time can be represented in GO in below 5 formats:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>time.Time </strong>object</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unix Time (Also known as Epoch Time)</strong> &#8211; It is the number of seconds elapsed since 00:00:00 UTC on 1 January 1970. This time is also known as the Unix epoch</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unix Nano</strong> &#8211;  It is the number of nanoseconds elapsed since 00:00:00 UTC on 1 January 1970</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unix MilliSecond</strong> &#8211; It is the number of milliseconds elapsed since 00:00:00 UTC on 1 January 1970</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Unix MicroSecond</strong> &#8211; It is the number of microseconds elapsed since 00:00:00 UTC on 1 January 1970</li></ul>
+
+
+
+<p></p>
+
+
+
+<h1 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Conversions</strong></h1>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>time.Time To Others</strong></h2>
+
+
+
+<p class="has-medium-font-size">Let:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-graphql">timeT := time.Now()</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix := timeT.Unix()</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Millisecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMilli := int64(time.Nanosecond) * timeT.UnixNano() / int64(time.Millisecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Microsecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMicro := int64(time.Nanosecond) * timeT.UnixNano() / int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Nanosecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixNano := timeT.UnixNano()</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Full Working Code</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    timeT := time.Now() //It will return time.Time object with current timestamp
+    fmt.Printf("time.Time %s\n", timeT)
+
+    //Converstion to Time Unix also known as epoch time
+    tUnix := timeT.Unix()
+    fmt.Printf("timeUnix: %d\n", tUnix)
+
+    //Conversion to Time Unix Millisecond
+    tUnixMilli := int64(time.Nanosecond) * timeT.UnixNano() / int64(time.Millisecond)
+    fmt.Printf("timeUnixMilli: %d\n", tUnixMilli)
+
+    //Conversion to Time Unix Microsecond
+    tUnixMicro := int64(time.Nanosecond) * timeT.UnixNano() / int64(time.Microsecond)
+    fmt.Printf("timeUnixMicro: %d\n", tUnixMicro)
+
+    //Conversion to Time Unix Nanosecond
+    tUnixNano := timeT.UnixNano()
+    fmt.Printf("timeUnixNano: %d\n", tUnixNano)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">time.Time 2020-01-27 23:03:21.528106 +0530 IST m=+0.000191621
+timeUnix: 1580146401
+timeUnixMilli: 1580146401528
+timeUnixMicro: 1580146401528106
+timeUnixNano: 1580146401528106000</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>time Unix To Others</strong></h2>
+
+
+
+<p class="has-medium-font-size">Let</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix := time.Now().Unix()</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>time.Time</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix := timeT.Unix()</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Millisecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"> tUnixMili := tUnix * int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Microsecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMicro := tUnix * int64(time.Millisecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Nanosecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixNano := tUnix * int64(time.Second)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Full Working Code</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    tUnix := time.Now().Unix()
+    fmt.Printf("timeUnix %d\n", tUnix)
+
+    //Conversion to time.Time
+    timeT := time.Unix(tUnix, 0)
+    fmt.Printf("time.Time: %s\n", timeT)
+
+    //Conversion to Time Unix Millisecond
+    tUnixMili := tUnix * int64(time.Microsecond)
+    fmt.Printf("timeUnixMilli: %d\n", tUnixMili)
+
+    //Conversion to Time Unix Microsecond
+    tUnixMicro := tUnix * int64(time.Millisecond)
+    fmt.Printf("timeUnixMicro: %d\n", tUnixMicro)
+
+    //Conversion to Time Unix Nanosecond
+    tUnixNano := tUnix * int64(time.Second)
+    fmt.Printf("timeUnixNano: %d\n", tUnixNano)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">timeUnix 1580146705
+time.Time: 2020-01-27 23:08:25 +0530 IST
+timeUnixMilli: 1580146705000
+timeUnixMicro: 1580146705000000
+timeUnixNano: 1580146705000000000</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>time Unix MilliSecond To Others</strong></h2>
+
+
+
+<p class="has-medium-font-size">Let</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMilli := int64(time.Nanosecond) * time.Now().UnixNano() / int64(time.Millisecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>time.Time</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix := tUnixMilli / int64(time.Microsecond)
+tUnixNanoRemainder := (tUnixMilli % int64(time.Microsecond)) * int64(time.Millisecond)
+timeT := time.Unix(tUnix, tUnixNanoRemainder)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix </strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix = tUnixMilli / int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Microsecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMicro := tUnixMilli * int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Nanosecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixNano := tUnixMilli * int64(time.Millisecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Full Working Code:</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    tUnixMilli := int64(time.Nanosecond) * time.Now().UnixNano() / int64(time.Millisecond)
+    fmt.Printf("timeMilli %d\n", tUnixMilli)
+
+    //Conversion to time.Time
+    tUnix := tUnixMilli / int64(time.Microsecond)
+    tUnixNanoRemainder := (tUnixMilli % int64(time.Microsecond)) * int64(time.Millisecond)
+    timeT := time.Unix(tUnix, tUnixNanoRemainder)
+    fmt.Printf("time.Time: %s\n", timeT)
+
+    //Conversion to Time Unix
+    tUnix = tUnixMilli / int64(time.Microsecond)
+    fmt.Printf("timeUnix: %d\n", tUnix)
+
+    //Conversion to Time Unix Microsecond
+    tUnixMicro := tUnixMilli * int64(time.Microsecond)
+    fmt.Printf("timeUnixMicro: %d\n", tUnixMicro)
+
+    //Conversion to Time Unix Nanosecond
+    tUnixNano := tUnixMilli * int64(time.Millisecond)
+    fmt.Printf("timeUnixNano: %d\n", tUnixNano)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">timeMilli 1580146846747
+time.Time: 2020-01-27 23:10:46.747 +0530 IST
+timeUnix: 1580146846
+timeUnixMicro: 1580146846747000
+timeUnixNano: 1580146846747000000</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>time Unix MicroSecond To Others</strong></h2>
+
+
+
+<p class="has-medium-font-size">Let</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMicro := int64(time.Nanosecond) * time.Now().UnixNano() / int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>time.Time</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix := tUnixMicro / int64(time.Millisecond)
+tUnixNanoRemainder := (tUnixMicro % int64(time.Millisecond)) * int64(time.Microsecond)
+timeT := time.Unix(tUnix, tUnixNanoRemainder)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix </strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix = tUnixMicro / int64(time.Millisecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Millisecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">tUnixMilli := tUnixMicro / int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Nanosecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixNano := tUnixMicro * int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Full Working Code:</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    tUnixMicro := int64(time.Nanosecond) * time.Now().UnixNano() / int64(time.Microsecond)
+    fmt.Printf("tUnixMicro %d\n", tUnixMicro)
+
+    //Conversion to time.Time
+    tUnix := tUnixMicro / int64(time.Millisecond)
+    tUnixNanoRemainder := (tUnixMicro % int64(time.Millisecond)) * int64(time.Microsecond)
+    timeT := time.Unix(tUnix, tUnixNanoRemainder)
+    fmt.Printf("time.Time: %s\n", timeT)
+
+    //Converstion to Time Unix
+    tUnix = tUnixMicro / int64(time.Millisecond)
+    fmt.Printf("timeUnix: %d\n", tUnix)
+
+    //Converstion to Time Unix Milli
+    tUnixMilli := tUnixMicro / int64(time.Microsecond)
+    fmt.Printf("timeUnixMill: %d\n", tUnixMilli)
+
+    //Converstion to Time Unix Nano
+    tUnixNano := tUnixMicro * int64(time.Microsecond)
+    fmt.Printf("timeUnixNano: %d\n", tUnixNano)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMicro 1580147023233931
+time.Time: 2020-01-27 23:13:43.233931 +0530 IST
+timeUnix: 1580147023
+timeUnixMill: 1580147023233
+timeUnixNano: 1580147023233931000</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2 class="has-vivid-green-cyan-color has-text-color wp-block-heading"><strong>time Unix NanoSecond To Others</strong></h2>
+
+
+
+<p class="has-medium-font-size">Let</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixNano := time.Now().UnixNano()</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>time.Time</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix := tUnixNano / int64(time.Second)
+tUnixNanoRemainder := (tUnixNano % int64(time.Second))
+timeT := time.Unix(tUnix, tUnixNanoRemainder)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix </strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnix = tUnixNano / int64(time.Second)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Millisecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixMilli := tUnixNano / int64(time.Millisecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Time Unix Microsecond</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">tUnixMicro := tUnixNano / int64(time.Microsecond)</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Full Working Code</strong></h3>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    tUnixNano := time.Now().UnixNano()
+    fmt.Printf("tUnixNano %d\n", tUnixNano)
+
+    //Conversion to time.Time
+    tUnix := tUnixNano / int64(time.Second)
+    tUnixNanoRemainder := (tUnixNano % int64(time.Second))
+    timeT := time.Unix(tUnix, tUnixNanoRemainder)
+    fmt.Printf("time.Time: %s\n", timeT)
+
+    //Conversion to Time Unix
+    tUnix = tUnixNano / int64(time.Second)
+    fmt.Printf("timeUnix: %d\n", tUnix)
+
+    //Conversion to Time Unix Milli
+    tUnixMilli := tUnixNano / int64(time.Millisecond)
+    fmt.Printf("timeUnixMilli: %d\n", tUnixMilli)
+
+    //Conversion to Time Unix Micro
+    tUnixMicro := tUnixNano / int64(time.Microsecond)
+    fmt.Printf("timeUnixMicro: %d\n", tUnixMicro)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">tUnixNano 1580147160564568000
+time.Time: 2020-01-27 23:16:00.564568 +0530 IST
+timeUnix: 1580147160
+timeUnixMill: 1580147160564
+timeUnixMicro: 1580147160564568</code></pre>
+<p>The post <a href="https://golangbyexamples.com/time-conversion-in-golang/">Time Conversion in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/time-conversion-in-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1231</post-id>	</item>
+	</channel>
+</rss>

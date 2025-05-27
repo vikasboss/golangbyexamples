@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>fprintln Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/fprintln/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/fprintln/</link>
+	<description></description>
+	<lastBuildDate>Sun, 02 May 2021 17:54:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>fprintln Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/fprintln/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Understanding Fprintln function in Go (Golang)</title>
+		<link>https://golangbyexamples.com/fprintln-golang/</link>
+					<comments>https://golangbyexamples.com/fprintln-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 02 May 2021 17:10:30 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[fprintln]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=5587</guid>
+
+					<description><![CDATA[<p>Overview Fprintln is defined in the fmt package and is used to format a string using the default format specifier and write it to io.Writer instance passed to it. It also adds...</p>
+<p>The post <a href="https://golangbyexamples.com/fprintln-golang/">Understanding Fprintln function in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="640" height="359" src="https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln-1024x574.png?resize=640%2C359&#038;ssl=1" alt="fprintln image" class="wp-image-5588" srcset="https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?resize=1024%2C574&amp;ssl=1 1024w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?resize=300%2C168&amp;ssl=1 300w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?resize=768%2C430&amp;ssl=1 768w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?resize=1536%2C860&amp;ssl=1 1536w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?resize=850%2C476&amp;ssl=1 850w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?w=2046&amp;ssl=1 2046w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?w=1280&amp;ssl=1 1280w, https://i1.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/fprintln.png?w=1920&amp;ssl=1 1920w" sizes="(max-width: 640px) 100vw, 640px" data-recalc-dims="1" /></figure>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size"><strong>Fprintln</strong> is defined in the <strong>fmt</strong> package and is used to format a string using the default format specifier and write it to <strong>io.Writer</strong> instance passed to it. It also adds a new line.</p>
+
+
+
+<p class="has-medium-font-size"><a href="https://golang.org/pkg/fmt/#Fprintln">https://golang.org/pkg/fmt/#Fprintln</a></p>
+
+
+
+<p class="has-medium-font-size">Below is the function prototype of <strong>Fprintln</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">func Fprintln(w io.Writer, a ...interface{}) (n int, err error)</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Fprintln </strong>is also a variadic function meaning that it can have multiple arguments.&nbsp;Here are the details about its arguments</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The first argument is the <strong>io.Writer</strong> instance to which it writes</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The next is a variable number of arguments. Each of the arguments in this list could be string, int, struct, or anything. That is why it is an empty interface. Each of these arguments is formatted using the default specifier</li></ul>
+
+
+
+<p class="has-medium-font-size"><strong>Fprintln</strong> formats the string using the default format specifier adds a new line after the string. <strong>Fprintln</strong> takes a variable number of arguments where each argument is an empty interface. It returns the number of characters printed and any error if happens. Since the argument type is an empty interface we can pass any data type to it. We can pass a string, int, float, struct, or any other data type. Each of the arguments to the <strong>Fprintln</strong> function is formatted according to the default format specifier of that argument type. For example, the struct will be formatted according to the below specifier</p>
+
+
+
+<p class="has-medium-font-size">There is also another function <strong>Fprint</strong> provided by <strong>fmt</strong> package which is the same as <strong>Fprintln. </strong>The only difference being</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Fprintln</strong> appends a new line while <strong>Fprint</strong> does not append a new line.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">%v</code></pre>
+
+
+
+<p class="has-medium-font-size">This format specifier only prints the Value part in the struct. Let&#8217;s see an example.</p>
+
+
+
+<h2 class="has-luminous-vivid-orange-color has-text-color wp-block-heading"><strong>Program</strong></h2>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+type employee struct {
+	Name string
+	Age  int
+}
+
+func main() {
+	name := "John"
+	age := 21
+	fmt.Fprintln(os.Stdout, "Name is: ", name)
+	fmt.Fprintln(os.Stdout, "Age is: ", age)
+	e := employee{
+		Name: name,
+		Age:  age,
+	}
+	fmt.Fprintln(os.Stdout, e)
+	fmt.Fprintln(os.Stdout, "a", 12, "b", 12.0)
+
+	bytesPrinted, err := fmt.Fprintln(os.Stdout, "Name is: ", name)
+	if err != nil {
+		log.Fatalln("Error occured", err)
+	}
+	fmt.Println(bytesPrinted)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name is:  John
+Age is:  21
+{John 21}
+a 12 b 12
+Name is:  John
+15</code></pre>
+
+
+
+<p class="has-medium-font-size">Some important points to note about the <strong>FPrintln</strong> function</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>In all the <strong>Fprintln </strong>functions above we pass it the instance of <strong>os.Stdout</strong> which implements the <strong>io.Writer</strong> interface. Basically with <strong>os.Stdout</strong>, <strong>Fprintln </strong>writes to standard output. This is how <strong>os. Stdout</strong> is defined.</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Stdout = NewFile(uintptr(syscall.Stdout), "/dev/stdout")</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It appends a new line at the end. That is why each of the output is on a different line</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Each of the arguments will be separated by space in the output. That is why</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">fmt.Fprintln(os.Stdout,"Name is: ", name)</code></pre>
+
+
+
+<p class="has-medium-font-size">prints</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name is: John</code></pre>
+
+
+
+<p class="has-medium-font-size">Space is introduced automatically between the two arguments.</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>It returns the number of characters printed or any error if happens</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">bytesPrinted, err := fmt.Fprintln(os.Stdout, "Name is: ", name)
+if err != nil {
+    log.Fatalln("Error occured", err)
+}
+fmt.Println(bytesPrinted)</code></pre>
+
+
+
+<p class="has-medium-font-size">will output below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name is: John
+14</code></pre>
+
+
+
+<p class="has-medium-font-size">The number of <strong>bytesPrinted</strong> is 14 as 14 characters are outputted</p>
+
+
+
+<p class="has-medium-font-size"><strong>Fprintln </strong>can also be used to write to a file. Since the file instance in golang implements the <strong>io.Writer</strong>, this is not a problem. Below is the program for the same</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+type employee struct {
+	Name string
+	Age  int
+}
+
+func main() {
+	file, err := os.Create("./temp.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	name := "John"
+	age := 21
+	fmt.Fprintln(file, "Name is: ", name)
+	fmt.Fprintln(file, "Age is: ", age)
+	e := employee{
+		Name: name,
+		Age:  age,
+	}
+	fmt.Fprintln(file, e)
+	fmt.Fprintln(file, "a", 12, "b", 12.0)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<p class="has-medium-font-size">It will create file name temp.txt in the current directory with the below contents. In this program we replaced <strong>os.Stdou</strong>t with the file created.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Name is:  John
+Age is:  21
+{John 21}
+a 12 b 12</code></pre>
+
+
+
+<p class="has-medium-font-size">Also, check out our Golang advance tutorial Series &#8211; <a href="https://golangbyexamples.com/golang-comprehensive-tutorial/">Golang Advance Tutorial</a></p>
+<p>The post <a href="https://golangbyexamples.com/fprintln-golang/">Understanding Fprintln function in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/fprintln-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5587</post-id>	</item>
+	</channel>
+</rss>

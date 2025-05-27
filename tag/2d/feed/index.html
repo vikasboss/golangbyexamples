@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>2d Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/2d/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/2d/</link>
+	<description></description>
+	<lastBuildDate>Sun, 10 Jan 2021 19:02:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>2d Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/2d/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Two Dimensional (2d) and Multi-Dimensional Array and Slice in Go (Golang)</title>
+		<link>https://golangbyexamples.com/two-dimensional-array-slice-golang/</link>
+					<comments>https://golangbyexamples.com/two-dimensional-array-slice-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 15 May 2020 21:25:39 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[2d]]></category>
+		<category><![CDATA[3d]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[slice]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=2146</guid>
+
+					<description><![CDATA[<p>In go multi-dimension is possible for both array and slice. Let&#8217;s see both of them in detail. Multi-Dimensional Arrays Overview Below is the format for declaring a multidimensional dimensional array where len1...</p>
+<p>The post <a href="https://golangbyexamples.com/two-dimensional-array-slice-golang/">Two Dimensional (2d) and Multi-Dimensional Array and Slice in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">In go multi-dimension is possible for both array and slice. Let&#8217;s see both of them in detail.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Multi-Dimensional Arrays</strong></h1>
+
+
+
+<h2 class="wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">Below is the format for declaring a multidimensional dimensional array</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">[len1][len2][len3]....[lenN]T{}</code></pre>
+
+
+
+<p class="has-medium-font-size">where</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>len1 , len2 .. lenN are length of each of the dimensions</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>T is the data type</li></ul>
+
+
+
+<p class="has-medium-font-size">All the rules that apply to the one-dimensional array also apply to the multidimensional array as well. It is also possible to specify the array elements during the declaration. In case the array elements are not specified during declaration, then all the array elements are allotted the default zero value of the<strong> &lt;data_type&gt;</strong></p>
+
+
+
+<p class="has-medium-font-size">Below is the format for declaring a two dimensional array with array elements specified.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var sample = [len1][len2]T{{a11, a12 .. a1y},
+                       {a21, a22 .. a2y},
+                       {.. },
+                       {ax1, ax2 .. axy}}     </code></pre>
+
+
+
+<p class="has-medium-font-size">where</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>len1</strong> denotes the number of rows</li><li><strong>len2</strong> denotes the number of columns</li><li><strong>aij</strong> denotes an element present at i row and j column</li><li><strong>T</strong> is the data type</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a small example illustrating above points:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+
+    sample := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+
+    fmt.Printf("Number of rows in array: %d\n", len(sample))
+    fmt.Printf("Number of columns in array: %d\n", len(sample[0]))
+    fmt.Printf("Total number of elements in array: %d\n", len(sample)*len(sample[0]))
+
+    fmt.Println("Traversing Array")
+    for _, row := range sample {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number of rows in array: 2
+Number of columns in array: 3
+Total number of elements in array: 6
+Traversing Array
+1
+2
+3
+4
+5
+6</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice in the above program how are we able to get the number of rows, column and also the total number of elements in the array</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Number of rows = len(sample)</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Number of columns = len(sample[0])</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Number of total elements = len(sample)*len(sample[0])</li></ul>
+
+
+
+<p class="has-medium-font-size">The same idea can be extended to three dimensions, four dimensions, and so on. Let&#8217;s see a small example of three dimensional array as well. In below program we are creating a 2*2*3 dimensional array.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [2][2][3]int{{{1, 2, 3}, {4, 5, 6}}, {{7, 8, 9}, {10, 11, 12}}}
+
+    fmt.Printf("Length of first dimension: %d\n", len(sample))
+    fmt.Printf("Length of second dimension: %d\n", len(sample[0]))
+    fmt.Printf("Length of third dimension: %d\n", len(sample[0][0]))
+
+    fmt.Printf("Overall Dimension of the array: %d*%d*%d\n", len(sample), len(sample[0]), len(sample[0][0]))
+    fmt.Printf("Total number of elements in array: %d\n", len(sample)*len(sample[0])*len(sample[0][0]))
+
+    for _, first := range sample {
+        for _, second := range first {
+            for _, value := range second {
+                fmt.Println(value)
+            }
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of first dimension: 2
+Length of second dimension: 2
+Length of third dimension: 3
+Overall Dimension of the array: 2*2*3
+Total number of elements in array: 12
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Accessing elements of a multi dimensional array</strong></h2>
+
+
+
+<p class="has-medium-font-size">An element of a multi-dimensional array can be accessed using the index of each of the dimensions. For example, a two-dimensional array can be accessed by provided its row index and column index. Once we are able to access them using the index of each of the dimensions, then it is also possible to assign a new value to it as well. Let&#8217;s see a program</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+    //Print array element
+    fmt.Println(sample[0][0])
+    fmt.Println(sample[0][1])
+    fmt.Println(sample[0][2])
+    fmt.Println(sample[1][0])
+    fmt.Println(sample[1][1])
+    fmt.Println(sample[1][2])
+    
+    //Assign new values
+    sample[0][0] = 6
+    sample[0][1] = 5
+    sample[0][2] = 4
+    sample[1][0] = 3
+    sample[1][1] = 2
+    sample[1][2] = 1
+
+    fmt.Println()
+    fmt.Println(sample[0][0])
+    fmt.Println(sample[0][1])
+    fmt.Println(sample[0][2])
+    fmt.Println(sample[1][0])
+    fmt.Println(sample[1][1])
+    fmt.Println(sample[1][2])
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1
+2
+3
+4
+5
+6
+
+6
+5
+4
+3
+2
+1</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Traversal of a multidimensional array</strong></h2>
+
+
+
+<p class="has-medium-font-size">A multidimensional array can be traversed using:</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>for-range loop</li><li>for loop</li></ul>
+
+
+
+<p class="has-medium-font-size">Let&#8217;s see a code example for traversal of a two dimensional array.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+    fmt.Println("Using for-range")
+    for _, row := range sample {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+
+    fmt.Println("\nUsing for loop")
+    for i := 0; i < 2; i++ {
+        for j := 0; j < 3; j++ {
+            fmt.Println(sample[i][j])
+        }
+    }
+
+    fmt.Println("\nUsing for loop - Second way")
+    for i := 0; i < len(sample); i++ {
+        for j := 0; j < len(sample[i]); j++ {
+            fmt.Println(sample[i][j])
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Using for-rage
+1
+2
+3
+4
+5
+6
+
+Using for loop
+1
+2
+3
+4
+5
+6
+
+Using for loop 
+1
+2
+3
+4
+5
+6</code></pre>
+
+
+
+<p class="has-medium-font-size">Some points to note about above program</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>We have to use a nested range for traversal using a for-range loop. The first range traverses each of the rows. The second range traverses the individual array present at that row</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The same goes for iterating using for loop.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>len(sample) gives the number of rows.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>len(sample[i]) gives the number of columns present at row i.</li></ul>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>The same idea can be extended to three dimensional, four-dimensional array element too.</li></ul>
+
+
+
+<h2 class="wp-block-heading"><strong>How multidimensional array is stored in memory</strong></h2>
+
+
+
+<p class="has-medium-font-size">Memory allocated for array is contiguous irrespective of weather an array is one dimensional or two dimensional. For example in case of two dimension array the second row starts in memory where the first row ends. Let's see a program illustrating this point</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := [2][3]byte{}
+
+    fmt.Println("First row")
+    fmt.Println(&sample[0][0])
+    fmt.Println(&sample[0][1])
+    fmt.Println(&sample[0][2])
+
+    fmt.Println("\nSecond row")
+    fmt.Println(&sample[1][0])
+    fmt.Println(&sample[1][1])
+    fmt.Println(&sample[1][2])
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">First row
+0xc0000b4002
+0xc0000b4003
+0xc0000b4004
+
+Second row
+0xc0000b4005
+0xc0000b4006
+0xc0000b4007</code></pre>
+
+
+
+<p class="has-medium-font-size">Notice all the address are contiguous. And the second row starts where the first row ends.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Multi-dimensional Slices</strong></h1>
+
+
+
+<h2 class="wp-block-heading"><strong>Overview</strong></h2>
+
+
+
+<p class="has-medium-font-size">As the multidimensional array is an array of arrays, similarly multi-dimensional slice is a slice of slices. To understand this, let's first look at the definition of a slice. A slice points to an underlying array and is internally represented by a slice header. A slice header is a struct which looks like&nbsp; this</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">type SliceHeader struct {
+        Data uintptr
+        Len  int
+        Cap  int
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Data</strong> field in slice header is pointer to the underlying array. For a one dimensional slice, we have below declaration</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">oneDSlice := make([]int, 2)</code></pre>
+
+
+
+<p class="has-medium-font-size">To declare a two dimensional slice the declaration would be</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">twoDSlice := make([][]int, 2)</code></pre>
+
+
+
+<p class="has-medium-font-size">Above declaration means that we want to create a <strong>slice</strong> of 2 slices. Carefully understand this point. But wait a second here, we haven't specified the second dimension here, meaning what is the length of each of the inner 2 slices. In case of slice, each of the inner slice has to be explicitly intialised like below</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">for i := range twoDSlice {
+    twoDSlice[i] = make([]int, 3)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">So using range on the original slice, we specify the length each of 2 slices using make.&nbsp; Below is one other way of doing the same but with slice elements specified</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">var twoDSlice = make([][]int, 2)
+twoDSlice[0] = []int{1, 2, 3}
+twoDSlice[1] = []int{4, 5, 6}</code></pre>
+
+
+
+<p class="has-medium-font-size">Basically, with the above declaration, we create a slice of 2*3 dimensions which is a two-dimensional slice. The same idea can be extended to two-dimension, three-dimension, and so on.</p>
+
+
+
+<p class="has-medium-font-size">A complete working example of above two points</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    twoDSlice1 := make([][]int, 3)
+    for i := range twoDSlice1 {
+        twoDSlice1[i] = make([]int, 3)
+    }
+    fmt.Printf("Number of rows in slice: %d\n", len(twoDSlice1))
+    fmt.Printf("Number of columns in arsliceray: %d\n", len(twoDSlice1[0]))
+    fmt.Printf("Total number of elements in slice: %d\n", len(twoDSlice1)*len(twoDSlice1[0]))
+    fmt.Println("First Slice")
+    for _, row := range twoDSlice1 {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+    twoDSlice2 := make([][]int, 2)
+    twoDSlice2[0] = []int{1, 2, 3}
+    twoDSlice2[1] = []int{4, 5, 6}
+    fmt.Println()
+    fmt.Printf("Number of rows in slice: %d\n", len(twoDSlice2))
+    fmt.Printf("Number of columns in arsliceray: %d\n", len(twoDSlice2[0]))
+    fmt.Printf("Total number of elements in slice: %d\n", len(twoDSlice2)*len(twoDSlice2[0]))
+    fmt.Println("Second Slice")
+    for _, row := range twoDSlice2 {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number of rows in slice: 2
+Number of columns in arsliceray: 3
+Total number of elements in slice: 6
+First Slice
+0
+0
+0
+0
+0
+0
+
+Number of rows in slice: 2
+Number of columns in arsliceray: 3
+Total number of elements in slice: 6
+Second Slice
+1
+2
+3
+4
+5
+6</code></pre>
+
+
+
+<p class="has-medium-font-size">We mentioned above that we&nbsp;are creating a two-dimensional slice of 2*3 dimensions.&nbsp; With that said the thought that might be coming to your mind is whether it is possible to have different lengths for inner slices. Yes, it is possible. Unlike arrays which have inner arrays of the same length, in case of slice since we initialize each of the inner slices individually, it is possible to have different length for inner slices </p>
+
+
+
+<p class="has-medium-font-size">Let's see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    twoDSlice := make([][]int, 2)
+    twoDSlice[0] = []int{1, 2, 3}
+    twoDSlice[1] = []int{4, 5}
+  
+    fmt.Printf("Number of rows in slice: %d\n", len(twoDSlice))
+    fmt.Printf("Len of first row: %d\n", len(twoDSlice[0]))
+    fmt.Printf("Len of second row: %d\n", len(twoDSlice[1]))
+    fmt.Println("Traversing slice")
+    for _, row := range twoDSlice {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Number of rows in slice: 2
+Len of first row: 3
+Len of second row: 2
+Traversing slice
+1
+2
+3
+4
+5</code></pre>
+
+
+
+<p class="has-medium-font-size">Let's see a small example of a three-dimensional slice as well. In the below program, we are creating a slice of 2*2*3 dimensions.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := make([][][]int, 2)
+    for i := range sample {
+        sample[i] = make([][]int, 2)
+        for j := range sample[i] {
+            sample[i][j] = make([]int, 3)
+        }
+    }
+    
+    fmt.Printf("Length of first dimension: %d\n", len(sample))
+    fmt.Printf("Length of second dimension: %d\n", len(sample[0]))
+    fmt.Printf("Length of third dimension: %d\n", len(sample[0][0]))
+    fmt.Printf("Overall Dimension of the slice: %d*%d*%d\n", len(sample), len(sample[0]), len(sample[0][0]))
+    fmt.Printf("Total number of elements in slice: %d\n", len(sample)*len(sample[0])*len(sample[0][0]))
+    for _, first := range sample {
+        for _, second := range first {
+            for _, value := range second {
+                fmt.Println(value)
+            }
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Length of first dimension: 2
+Length of second dimension: 2
+Length of third dimension: 3
+Overall Dimension of the slice: 2*2*3
+Total number of elements in slice: 12
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Accessing Multi-Dimensional Slice elements</strong></h2>
+
+
+
+<p class="has-medium-font-size">Accessing slice elements is the same as accessing elements of an array. Let's see an example</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := make([][]int, 2)
+    sample[0] = []int{1, 2, 3}
+    sample[1] = []int{4, 5, 6}
+
+    //Print array element
+    fmt.Println(sample[0][0])
+    fmt.Println(sample[0][1])
+    fmt.Println(sample[0][2])
+    fmt.Println(sample[1][0])
+    fmt.Println(sample[1][1])
+    fmt.Println(sample[1][2])
+
+    //Assign new values
+    sample[0][0] = 6
+    sample[0][1] = 5
+    sample[0][2] = 4
+    sample[1][0] = 3
+    sample[1][1] = 2
+    sample[1][2] = 1
+
+    fmt.Println()
+    fmt.Println(sample[0][0])
+    fmt.Println(sample[0][1])
+    fmt.Println(sample[0][2])
+    fmt.Println(sample[1][0])
+    fmt.Println(sample[1][1])
+    fmt.Println(sample[1][2])
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">1
+2
+3
+4
+5
+6
+
+6
+5
+4
+3
+2
+1</code></pre>
+
+
+
+<h2 class="wp-block-heading"><strong>Traversal of a multi dimensional slice. </strong></h2>
+
+
+
+<p class="has-medium-font-size">Traversing a multidimensional slice is the same as traversing a multi-dimensional array. A multidimensional slice can be traversed using</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>for-range loop</li><li>for loop</li></ul>
+
+
+
+<p class="has-medium-font-size">Let's see an example:</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := make([][]int, 2)
+    sample[0] = []int{1, 2, 3}
+    sample[1] = []int{4, 5, 6}
+    fmt.Println("Using for-range")
+    for _, row := range sample {
+        for _, val := range row {
+            fmt.Println(val)
+        }
+    }
+
+    fmt.Println("\nUsing for loop - Second way")
+    for i := 0; i < len(sample); i++ {
+        for j := 0; j < len(sample[i]); j++ {
+            fmt.Println(sample[i][j])
+        }
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<h2 class="wp-block-heading"><strong>How multidimensional slice is stored in memory</strong></h2>
+
+
+
+<p class="has-medium-font-size">Since in the case of the slice, each of the inner slices is initialized separately hence it is possible that inner slice might not be contiguous in memory with respect to each other. Although each of the elements within each of inner slice will be at the contiguous location. Let's see a program illustrating this point.</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    sample := make([][]byte, 2)
+    sample[0] = make([]byte, 3)
+
+    //testVariable := "s"
+    //fmt.Println(testVariable)
+    
+    sample[1] = make([]byte, 3)
+
+    fmt.Println("First row")
+    fmt.Println(&sample[0][0])
+    fmt.Println(&sample[0][1])
+    fmt.Println(&sample[0][2])
+
+    fmt.Println("\nSecond row")
+    fmt.Println(&sample[1][0])
+    fmt.Println(&sample[1][1])
+    fmt.Println(&sample[1][2])
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">First row
+0xc000018072
+0xc000018073
+0xc000018074
+
+Second row
+0xc000018080
+0xc000018081
+0xc000018082</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Please Note: </strong>There is a caveat in the above program. Since the second inner slice is initialized just after the first inner slice, there is a possibility that the address allotted to both of them is contiguous. It can happen but not always. Uncomment the line for test variable and then both the inner slice will not be allotted contiguous address. In the case of an array, all inner arrays will be stored at contiguous locations always.</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Conclusion</strong></h1>
+
+
+
+<p class="has-medium-font-size">This is all about multidimensional array and slice in golang. I hope you have liked this article. Please share the feedback in the comments.</p>
+<p>The post <a href="https://golangbyexamples.com/two-dimensional-array-slice-golang/">Two Dimensional (2d) and Multi-Dimensional Array and Slice in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/two-dimensional-array-slice-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2146</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>object Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/object/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/object/</link>
+	<description></description>
+	<lastBuildDate>Sun, 01 Dec 2019 13:47:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>object Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/object/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Find the type of an object in Go (Golang)</title>
+		<link>https://golangbyexamples.com/find-the-type-of-an-object-in-golang/</link>
+					<comments>https://golangbyexamples.com/find-the-type-of-an-object-in-golang/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 01 Dec 2019 13:46:52 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[object]]></category>
+		<category><![CDATA[type]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=792</guid>
+
+					<description><![CDATA[<p>This article will describe different ways of knowing the type of an object in Go Using Reflect Package Reflect package provides some useful inspect functions that let us know the type Output:...</p>
+<p>The post <a href="https://golangbyexamples.com/find-the-type-of-an-object-in-golang/">Find the type of an object in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This article will describe different ways of knowing the type of an object in Go</p>
+
+
+
+<h1 class="wp-block-heading"><strong>Using Reflect Package</strong></h1>
+
+
+
+<p class="has-medium-font-size">Reflect package provides some useful inspect functions that let us know the type</p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "reflect"
+)
+
+func main() {
+    var test interface{}
+    test = "test_string"
+    fmt.Println(reflect.TypeOf(test))
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">string</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Using Type Assertion</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    var test interface{}
+    test = "test_string"
+    val, ok := test.(string)
+    if ok {
+        fmt.Printf("Test is of type string with value %s\n", val)
+    } else {
+        fmt.Printf("Unknown Type %T", test)
+    }
+    test = 2
+    val2, ok := test.(int)
+    if ok {
+        fmt.Printf("Test is of type int with value %d\n", val2)
+    } else {
+        fmt.Printf("Unknown Type %T", test)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">Test is of type string with value test_string
+Test is of type int with value 2</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Using Switch</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    printType("test_string")
+    printType(2)
+}
+
+func printType(t interface{}) {
+    switch v := t.(type) {
+    case string:
+        fmt.Println("Type: string")
+    case int:
+        fmt.Println("Type: int")
+    default:
+        fmt.Printf("Unknown Type %T", v)
+    }
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-">Type: string
+Type: int</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading"><strong>Using printf or sprintf</strong></h1>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    var test interface{}
+    test = "test_string"
+    //Using Sprintf
+    testType := fmt.Sprintf("%T", test)
+    fmt.Println(testType)
+    //Using printf
+    fmt.Printf("%T\n", test)
+}</code></pre>
+
+
+
+<p class="has-medium-font-size"><strong>Output:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">string
+string</code></pre>
+<p>The post <a href="https://golangbyexamples.com/find-the-type-of-an-object-in-golang/">Find the type of an object in Go (Golang)</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/find-the-type-of-an-object-in-golang/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">792</post-id>	</item>
+	</channel>
+</rss>

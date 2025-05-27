@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>logger Archives - Welcome To Golang By Example</title>
+	<atom:link href="https://golangbyexamples.com/tag/logger/feed/" rel="self" type="application/rss+xml" />
+	<link>https://golangbyexamples.com/tag/logger/</link>
+	<description></description>
+	<lastBuildDate>Sat, 30 Nov 2019 18:05:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>https://i0.wp.com/golangbyexamples.com/wp-content/uploads/2021/05/cropped-go_border-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>logger Archives - Welcome To Golang By Example</title>
+	<link>https://golangbyexamples.com/tag/logger/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">159787465</site>	<item>
+		<title>Go Logger Rotation</title>
+		<link>https://golangbyexamples.com/go-logger-rotation/</link>
+					<comments>https://golangbyexamples.com/go-logger-rotation/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 30 Nov 2019 17:59:29 +0000</pubDate>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[go]]></category>
+		<category><![CDATA[golang]]></category>
+		<category><![CDATA[logger]]></category>
+		<category><![CDATA[rotate]]></category>
+		<guid isPermaLink="false">https://golangbyexamples.com/?p=761</guid>
+
+					<description><![CDATA[<p>This article is about how we rotate log files from within the go app without having to worry about the disk full alerts. We are going to use https://github.com/lestrrat/go-file-rotatelogs for log rotation....</p>
+<p>The post <a href="https://golangbyexamples.com/go-logger-rotation/">Go Logger Rotation</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-medium-font-size">This article is about how we rotate log files from within the go app without having to worry about the disk full alerts.</p>
+
+
+
+<p class="has-medium-font-size">We are going to use <a href="https://github.com/lestrrat/go-file-rotatelogs">https://github.com/lestrrat/go-file-rotatelogs</a> for log rotation. </p>
+
+
+
+<p class="has-medium-font-size"><strong>Example:</strong> In the example below we are setting </p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>MaxAge</strong> to 10 seconds. It sets the max-age of a log file before it is purged from the file system. Meaning the file will be deleted after 10 seconds. See</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rotatelogs.WithMaxAge(time.Second*10)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>RotationTime </strong>is 1 second<strong>. </strong>It sets the time when the file will be rotated. So the file will be rotated every second. See </li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rotatelogs.WithRotationTime(time.Second*1)</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Location </strong>is /var/log/service/ . See</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">path := "/var/log/service/"</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Pattern</strong> of the file is &#8220;old.UTC..2019-11-30.22:40:10&#8221; . See</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go"> fmt.Sprintf("%s.%s", path, "%Y-%m-%d.%H:%M:%S")</code></pre>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li><strong>Link Path </strong>is/var/log/service/current. This file would be a symlink for the actual file. See</li></ul>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">rotatelogs.WithLinkName("/var/log/service/current")</code></pre>
+
+
+
+<p></p>
+
+
+
+<p class="has-medium-font-size"><strong>Code:</strong></p>
+
+
+
+<pre class="wp-block-prismatic-blocks"><code class="language-go">package main
+
+import (
+    "fmt"
+    "log"
+    "time"
+    rotatelogs "github.com/lestrrat/go-file-rotatelogs"
+    "github.com/sirupsen/logrus"
+)
+
+func initiLogger() {
+    path := "/var/log/service/old.UTC."
+    writer, err := rotatelogs.New(
+        fmt.Sprintf("%s.%s", path, "%Y-%m-%d.%H:%M:%S"),
+        rotatelogs.WithLinkName("/var/log/service/current"),
+        rotatelogs.WithMaxAge(time.Second*10),
+        rotatelogs.WithRotationTime(time.Second*1),
+    )
+    if err != nil {
+        log.Fatalf("Failed to Initialize Log File %s", err)
+    }
+    log.SetOutput(writer)
+    return
+}
+
+func main() {
+    initiLogger()
+    for i := 0; i < 100; i++ {
+        time.Sleep(time.Second * 1)
+        log.Printf("Hello, World!")
+    }
+    fmt.Scanln()
+}</code></pre>
+
+
+
+<p class="has-medium-font-size">Go to the location /var/log/service/. You will notice</p>
+
+
+
+<ul class="has-medium-font-size wp-block-list"><li>Files are rotated every second.</li><li>Max age of the file is 10 seconds. So every file will be deleted after 10 seconds.</li></ul>
+<p>The post <a href="https://golangbyexamples.com/go-logger-rotation/">Go Logger Rotation</a> appeared first on <a href="https://golangbyexamples.com">Welcome To Golang By Example</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://golangbyexamples.com/go-logger-rotation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">761</post-id>	</item>
+	</channel>
+</rss>
